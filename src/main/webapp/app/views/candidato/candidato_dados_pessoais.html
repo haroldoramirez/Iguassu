@@ -1,0 +1,142 @@
+<accordion-group is-open="panel.open1">
+    <accordion-heading>
+        Dados Pessoais <i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open1, 'glyphicon-chevron-right': !panel.open1}"></i>
+    </accordion-heading>
+
+    <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-12 col-sm-12 col-lg-12">
+            <div class="col-xs-3 col-3 col-sm-3 col-lg-3">
+                <div class="form-group">
+                    <a class="thumbnail">
+                        <img src="./images/yeoman.png" alt="Foto">
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-9 col-9 col-sm-9 col-lg-6">
+                <!-- data-ng-class="{'col-xs-9 col-9 col-sm-9 col-lg-6':candidato.id, 'col-xs-9 col-9 col-sm-9 col-lg-9':!candidato.id}" -->
+                <div class="col-xs-12 col-12 col-sm-12 col-lg-12">
+                    <label class="control-label">Nome Completo* </label>
+								<span class="navbar-right">
+										<input 	type="radio" name="genero" ng-model="candidato.genero"
+                                                  value="MASCULINO">
+														&nbsp<strong>Masculino</strong>
+										<input 	type="radio" name="genero" ng-model="candidato.genero"
+                                                  value="FEMININO">
+														&nbsp<strong>Feminino*</strong>
+								</span>
+                    <div class="form-group">
+                        <div class="controls">
+                            <input data-ng-model="candidato.nome" type="text" placeholder="Insira o nome do candidato (a) ..." class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-6 col-sm-6 col-lg-4">
+                    <label class="control-label">Situação&nbsp</label>
+                    <div class="form-group has-success">
+                        <div class="controls">
+                            <select class="form-control" data-ng-model="candidato.situacao">
+                                <option value="DISPONIVEL">Disponível</option>
+                                <option value="BLOQUEADO">Bloqueado</option>
+                                <option value="ENCAMINHADO">Encaminhado (a)</option>
+                                <option value="EMPREGADO">Empregado (a)</option>
+                                <option value="EMPREGADOPELAIGUASSU">Empregado (a) pela Iguassu</option>
+                                <option value="INADIMPLENTE">Empregado (a) pela Iguassu e inadimplente</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-6 col-sm-6 col-lg-4">
+                    <div class="form-group">
+                        <label class="control-label">Nacionalidade</label>
+                        <a class="glyphicon glyphicon-refresh" data-ng-click="getPais()"></a>
+                        <a class="glyphicon glyphicon-plus" data-ng-click="openPais('sm')"></a>
+                        <div class="controls">
+                            <select class="form-control" data-ng-model="candidato.nacionalidade" >
+                                <option ng-show="candidato.nacionalidade.id" data-ng-selected="candidato.nacionalidade.id"> {{candidato.nacionalidade.nome}}</option>
+                                <option ng-repeat="pais in paises">{{pais.nome}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-6 col-sm-6 col-lg-4">
+                    <div class="form-group">
+                        <label class="control-label">Estado Civil</label>
+                        <div class="controls">
+                            <select class="form-control" data-ng-model="candidato.estadoCivil">
+                                <option data-ng-show="candidato.estadoCivil!=null&&candidato.estadoCivil!=''"
+                                        value="" disabled selected>{{candidato.estadoCivil}}</option>
+                                <option data-ng-value="Solteiro">Solteiro</option>
+                                <option data-ng-value="Casado">Casado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-12 col-sm-6 col-lg-6">
+                    <label class="control-label">RG</label>
+                    <div class="form-group">
+                        <div class="controls">
+                            <input data-ng-model="candidato.rg" type="text" placeholder="Insira o RG do candidato (a) ..." class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-12 col-sm-6 col-lg-6">
+                    <label class="control-label">CPF</label>
+                    <div class="form-group">
+                        <div class="controls">
+                            <input data-ng-model="candidato.cpf" type="text" ui-mask="999.999.999-99" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-6 col-6 col-sm-6 col-lg-6">
+                    <div class="form-group">
+                        <label class="control-label">Data de nascimento*</label>
+                        <div class="controls">
+                            <input data-ng-model="candidato.dataNasc" type="date" placeholder="Insira a data de nascimento do candidato (a) ..." class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 col-2 col-sm-12 col-lg-6">
+                    <div class="form-group">
+                        <label class="control-label">&nbsp</label>
+                        <div class="controls">
+                            <a data-ng-class="{'btn btn-warning': candidato.necessidadesEspeciais.length>0, 'btn btn-default': candidato.necessidadesEspeciais.length==0}" data-ng-show="candidato.id"  type="button" data-ng-click="openNecessidadeEspecialDoCandidato()" title="Necessidades especiais" class="form-control">
+                                <span class="fa fa-wheelchair"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-12 col-sm-12 col-lg-12">
+                    <hr>
+                    <div class="form-group">
+                        <label class="control-label">Observações</label>
+                        <div class="controls">
+                            <textarea data-ng-model="candidato.observacoes" class="form-control" rows="6"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-3" >
+                <div class="form-group">
+                    <label class="control-label">Telefone residencial</label>
+                    <div class="controls">
+                        <input data-ng-model="candidato.telefoneResidencial" type="text" class="form-control" ui-mask="(99) 9999-9999">
+                    </div>
+                    <label class="control-label">Telefone comercial</label>
+                    <div class="controls">
+                        <input data-ng-model="candidato.telefoneComercial" type="text" ui-mask="(99) 9999-9999" class="form-control">
+                    </div>
+                    <label class="control-label">Telefone celular</label>
+                    <div class="controls">
+                        <input data-ng-model="candidato.telefoneCelular" ui-mask="(99) 9999-9999" type="text" class="form-control">
+                    </div>
+                    <label class="control-label">Email</label>
+                    <div class="controls">
+                        <input data-ng-model="candidato.email" type="text"  placeholder="exemplo@exemlo.com" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</accordion-group>

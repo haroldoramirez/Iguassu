@@ -1,0 +1,82 @@
+/*       * Style tweaks       * --------------------------------------------------       */
+body {
+	padding-top: 70px;
+}
+
+footer {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+/*       * Off Canvas       * --------------------------------------------------       */
+@media screen and(max-width: 768px) {
+	.row-offcanvas {
+		position: relative;
+		-webkit-transition: all 0.25s ease-out;
+		-moz-transition: all 0.25s ease-out;
+		transition: all 0.25s ease-out;
+	}
+	.row-offcanvas-right .sidebar-offcanvas {
+		right: -50%;
+		/* 6 columns */
+	}
+	.row-offcanvas-left .sidebar-offcanvas {
+		left: -50%;
+		/* 6 columns */
+	}
+	.row-offcanvas-right.active {
+		right: 50%;
+		/* 6 columns */
+	}
+	.row-offcanvas-left.active {
+		left: 50%;
+		/* 6 columns */
+	}
+	.sidebar-offcanvas {
+		position: absolute;
+		top: 0;
+		width: 50%;
+		/* 6 columns */
+	}
+}
+
+#entrar {
+    color: #6D6D6D;
+}
+
+.slide-animate-container {
+
+  position:relative;
+  height:50%;
+  overflow:hidden;
+}
+
+.slide-animate {
+  padding:100px;
+}
+
+.slide-animate.ng-enter, .slide-animate.ng-leave {
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  display:block;
+  padding:0px;
+}
+
+.slide-animate.ng-enter {
+  top:-50px;
+}
+.slide-animate.ng-enter.ng-enter-active {
+  top:0;
+}
+
+.slide-animate.ng-leave {
+  top:0;
+}
+.slide-animate.ng-leave.ng-leave-active {
+  top:50px;
+}

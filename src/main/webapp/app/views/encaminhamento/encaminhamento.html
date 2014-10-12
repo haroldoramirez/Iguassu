@@ -1,0 +1,108 @@
+<div class="view" >
+<!-- data-ng-controller="EncaminhamentoCtrl" -->
+
+	<div class="page-header">
+		<h1>Encaminhamentos</h1>
+	</div>
+	<div class="container-fluid">
+		<p class="navbar-right">
+			<input type="checkbox" data-ng-model="isOpen" > Exibir somente um painel por vêz
+				<button class="btn btn-default btn-sm" data-ng-click="editEncaminhamento(encaminhamento)" type="button" title="Clique para atualizar'" data-ng-show="encaminhamento.id"><span class="glyphicon glyphicon-refresh"></span></button>
+				<button class="btn btn-primary btn-sm" onclick="window.print(); return false;" type="button" title="Clique para Imprimir ou pressione as teclas 'Ctrl + P'"><span class="glyphicon glyphicon-print"></span></button>
+				<button class="btn btn-default btn-sm" data-ng-click="isCollapsed = !isCollapsed" type="button" title="Opções de filtro"><span class="glyphicon glyphicon-filter"></span></button>
+				<button class="btn btn-default btn-sm" data-ng-click="panel.open1 = false; panel.open2 = false; panel.open3 = false; panel.open4 = false; panel.open5 = false; panel.open6 = false;" type="button" title="Clique para fechar todos os paineis"><span class="glyphicon glyphicon-minus"></span></button>
+				<button class="btn btn-default btn-sm" data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true;" type="button" title="Clique para abrir todos os paineis"><span class="glyphicon glyphicon-plus"></span></button>
+		</p>
+	</div>
+
+	<accordion close-others="isOpen">
+		<accordion-group is-open="panel.open1" > 
+			<accordion-heading>
+				Dados do Encaminhamento <i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open1, 'glyphicon-chevron-right': !panel.open1}"></i>
+			</accordion-heading>
+			<div class="row row-offcanvas row-offcanvas-right">
+				<div class="col-xs-12 col-sm-12">
+					<div class="col-6 col-sm-6 col-lg-3">
+						<div class="form-group">
+							<label class="control-label">Candidatos</label> 
+									<a class="glyphicon glyphicon-refresh" data-ng-click="getCandidato()"></a>								
+									<a class="glyphicon glyphicon-plus" href="#vagas"></a>
+							<div class="controls">
+								<select class="form-control" data-ng-model="encaminhamento.candidato" data-ng-options="(candidato.nome) for candidato in candidatos">
+									<option value="" data-ng-selected="encaminhamento.id">{{encaminhamento.candidato.nome}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Vagas</label> 
+									<a class="glyphicon glyphicon-refresh" data-ng-click="getVaga()"></a>								
+									<a class="glyphicon glyphicon-plus" href="#vagas"></a>
+							<div class="controls">
+								<select class="form-control" data-ng-model="encaminhamento.vaga" data-ng-options="(vaga.cargo.nome) for vaga in vagas">
+									<option value="" data-ng-selected="vaga.id">{{encaminhamento.vaga.cargo.nome}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-6 col-sm-6 col-lg-6">
+						<div class="form-group">
+							<label class="control-label">Observações</label>
+							<div class="controls">
+								<textarea class="form-control" data-ng-model="encaminhamento.observacoes" rows="5" placeholder="Insira aqui as observações da encaminhamento"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</accordion-group>
+	</accordion>
+
+	<!-- Menu da consultar -->
+
+	<div class="col-xs-12 col-sm-12">
+		<div class="btn-group btn-group-justified">
+			<div class="btn-group">
+				<button type="button" class="btn btn-default" data-ng-click="getEncaminhamento()"><span class="glyphicon glyphicon-search">&nbspConsultar</span></button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary" data-ng-disabled="!encaminhamento.vaga.id||!encaminhamento.candidato.id" data-ng-click="postEncaminhamento()"><span class="glyphicon glyphicon-save">&nbspSalvar</span></button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default" data-ng-click="limpe()"><span class="glyphicon glyphicon-file">&nbspLimpar</span></button>
+			</div>
+		</div>
+			<br/>
+
+		<div data-ng-show="msg.msg" class="alert alert-{{msg.type}} alert-dismissable fixed">
+  			<button type="button" class="close"  data-ng-click="closeAlert()">&times;</button>
+  			<strong>{{msg.encaminhamento.nome}}</strong> {{msg.msg}}		
+		</div>
+		<div  data-ng-show="msg.progress" class="progress progress-striped active">
+		  <div class="progress-bar"  data-role="progressbar" data-aria-valuenow="45" data-aria-valuemin="0" data-aria-valuemax="100" style="width: 100%">
+		    <span class="sr-only">45% Complete</span>
+		  </div>
+		</div>
+		
+		<table class="table table-hover">
+			<tr>
+				<th>Cargo</th>
+				<th>Empresa</th>
+				<th>Candidato</th>
+				<th>Salário</th>
+				<th>Situação</th>
+				<th></th>
+			</tr>
+			<tr data-ng-repeat="encaminhamento in encaminhamentos">
+				<td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editEncaminhamento(encaminhamento)">{{encaminhamento.vaga.cargo.nome}}</td>
+				<td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editEncaminhamento(encaminhamento)">{{encaminhamento.vaga.empresa.nome}}</td>
+				<td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editEncaminhamento(encaminhamento)">{{encaminhamento.candidato.nome}}</td>
+				<td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editEncaminhamento(encaminhamento)">{{encaminhamento.vaga.salario}}</td>
+				<td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editEncaminhamento(encaminhamento)">{{encaminhamento.situacao}}</td>
+				<td>
+					<span data-ng-click="deleteEncaminhamento(encaminhamento.id)" class="glyphicon glyphicon-trash"></span>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</div>

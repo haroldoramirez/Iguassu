@@ -1,0 +1,47 @@
+<div class="col-xs-12 col-12 col-sm-12 col-lg-12" data-collapse="isCollapsed==false">
+    <div class="col-xs-12 col-12 col-sm-12 col-lg-6" >
+        <label class="control-label">Necessidades Especiais</label>
+        <a class="glyphicon glyphicon-refresh" data-ng-click="getNecessidadeEspecial()"></a>
+        <a class="glyphicon glyphicon-plus" data-ng-click="openNecessidadeEspecial()"></a>
+        <select class="form-control" data-ng-model="candidato.endereco.bairro" data-ng-options="(bairro.nome + ' ' +'/' +' ' + bairro.cidade.nome+ ' ' +'/' +' ' + bairro.cidade.estado.nome+ ' ' +'/' +' ' + bairro.cidade.estado.pais.nome) for bairro in bairros">
+            <option value="" data-ng-selected="candidato.id">{{candidato.endereco.bairro.nome}} /{{candidato.endereco.bairro.cidade.nome}} / {{candidato.endereco.bairro.cidade.estado.nome}} / {{candidato.endereco.bairro.cidade.estado.pais.nome}}</option>
+        </select>
+    </div>
+    <div class="col-xs-12 col-12 col-sm-12 col-lg-6" >
+        <label class="control-label">Cursos</label>
+        <a class="glyphicon glyphicon-refresh" data-ng-click="getCurso()"></a>
+        <a class="glyphicon glyphicon-plus" data-ng-click="openCurso()"></a>
+								<span class="navbar-right"> <!-- gambia -->
+										Filtrar por:
+									<input type="checkbox" data-ng-model="curso.selected" data-ng-value="choicesCurso[0]" name="selected">&nbspConclusão	
+									<input type="radio" data-ng-model="curso.selected" data-ng-value="choicesCurso[1]" name="selected">&nbspCurso
+									<input type="radio" data-ng-model="curso.selected" data-ng-value="choicesCurso[2]" name="selected">&nbspCategoria
+								</span>
+        <select class="form-control" data-ng-model="candidato.endereco.bairro" data-ng-options="(bairro.nome + ' ' +'/' +' ' + bairro.cidade.nome+ ' ' +'/' +' ' + bairro.cidade.estado.nome+ ' ' +'/' +' ' + bairro.cidade.estado.pais.nome) for bairro in bairros">
+            <option value="" data-ng-selected="candidato.id">{{candidato.endereco.bairro.nome}} /{{candidato.endereco.bairro.cidade.nome}} / {{candidato.endereco.bairro.cidade.estado.nome}} / {{candidato.endereco.bairro.cidade.estado.pais.nome}}</option>
+        </select>
+    </div>
+    <div class="col-xs-12 col-12 col-sm-12 col-lg-4">
+        <label class="control-label">Experiência(cargos)</label>
+        <a class="glyphicon glyphicon-refresh" data-ng-click="getCargo()"></a>
+        <a class="glyphicon glyphicon-plus" data-ng-click="openCargo()"></a>
+        <select class="form-control" data-ng-model="candidato.endereco.bairro" data-ng-options="(bairro.nome + ' ' +'/' +' ' + bairro.cidade.nome+ ' ' +'/' +' ' + bairro.cidade.estado.nome+ ' ' +'/' +' ' + bairro.cidade.estado.pais.nome) for bairro in bairros">
+            <option value="" data-ng-selected="candidato.id">{{candidato.endereco.bairro.nome}} /{{candidato.endereco.bairro.cidade.nome}} / {{candidato.endereco.bairro.cidade.estado.nome}} / {{candidato.endereco.bairro.cidade.estado.pais.nome}}</option>
+        </select>
+    </div>
+    <div class="col-xs-12 col-12 col-sm-12 col-lg-2" >
+        <label class="control-label">Anos de experiencia</label>
+        <input type="number" placeholder="Insira o tempo de experiência ..." title="Tempo de experiência medido em anos"class="form-control">
+    </div>
+    <div class="col-xs-12 col-12 col-sm-12 col-lg-2">
+        <label class="control-label">Idade</label>
+        inicial
+        <input type="number" placeholder="Insira o tempo de experiência ..." title="Tempo de experiência medido em anos"class="form-control">
+    </div>
+    <div class="col-xs-12 col-12 col-sm-12 col-lg-2">
+        <label class="control-label">Idade</label>
+        final
+        <input type="number" placeholder="Insira o tempo de experiência ..." title="Tempo de experiência medido em anos"class="form-control">
+        <br>
+    </div>
+</div>

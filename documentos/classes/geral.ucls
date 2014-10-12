@@ -1,0 +1,1378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.5" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <package id="1" language="java" name="br.com.emanuelvictor.iguassu.web.controller" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="219" width="2511" x="2" y="111"/>    
+    <display autosize="false" stereotype="true" accessors="true"/>  
+  </package>  
+  <class id="2" language="java" name="br.com.emanuelvictor.iguassu.web.controller.ControllerBairro" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerBairro.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="130" y="189"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="br.com.emanuelvictor.iguassu.web.controller.ControllerCandidato" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerCandidato.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="251" y="262"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="br.com.emanuelvictor.iguassu.web.controller.ControllerCargo" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerCargo.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="418" y="190"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="br.com.emanuelvictor.iguassu.web.controller.ControllerCidade" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerCidade.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="563" y="264"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="br.com.emanuelvictor.iguassu.web.controller.ControllerContato" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerContato.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="705" y="191"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <package id="7" language="java" name="br.com.emanuelvictor.iguassu.web.service" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="231" width="2496" x="8" y="406"/>    
+    <display autosize="false" stereotype="true" accessors="true"/>  
+  </package>  
+  <class id="8" language="java" name="br.com.emanuelvictor.iguassu.web.service.ServiceBairro" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceBairro.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="122" y="485"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="br.com.emanuelvictor.iguassu.web.service.ServiceCandidato" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceCandidato.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="246" y="577"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="br.com.emanuelvictor.iguassu.web.service.ServiceCargo" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceCargo.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="413" y="509"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="br.com.emanuelvictor.iguassu.web.service.ServiceCidade" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceCidade.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="558" y="591"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="br.com.emanuelvictor.iguassu.web.service.ServiceContato" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceContato.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="709" y="502"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="br.com.emanuelvictor.iguassu.web.controller.ControllerEmpresa" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerEmpresa.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="830" y="266"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="br.com.emanuelvictor.iguassu.web.controller.ControllerEscolaridade" 
+    project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerEscolaridade.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="972" y="191"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="br.com.emanuelvictor.iguassu.web.controller.ControllerUsuario" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerUsuario.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1253" y="189"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="br.com.emanuelvictor.iguassu.web.controller.ControllerExperiencia" 
+    project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerExperiencia.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1112" y="266"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="br.com.emanuelvictor.iguassu.web.controller.ControllerEstado" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerEstado.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1412" y="270"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="br.com.emanuelvictor.iguassu.web.controller.ControllerPais" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerPais.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1543" y="188"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="br.com.emanuelvictor.iguassu.web.controller.ControllerLancamento" 
+    project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerLancamento.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1854" y="195"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="br.com.emanuelvictor.iguassu.web.controller.ControllerFuncionario" 
+    project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerFuncionario.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1732" y="272"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="br.com.emanuelvictor.iguassu.web.controller.ControllerVaga" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerVaga.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2243" y="283"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="br.com.emanuelvictor.iguassu.web.controller.ControllerInstituicaoDeEnsino" 
+    project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerInstituicaoDeEnsino.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2389" y="197"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="br.com.emanuelvictor.iguassu.web.controller.ControllerEncaminhamento" 
+    project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerEncaminhamento.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2110" y="195"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="br.com.emanuelvictor.iguassu.web.service.ServicePais" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServicePais.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1545" y="501"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="br.com.emanuelvictor.iguassu.web.service.ServiceFuncionario" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceFuncionario.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1744" y="576"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="br.com.emanuelvictor.iguassu.web.service.ServiceEstado" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceEstado.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1403" y="574"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="br.com.emanuelvictor.iguassu.web.service.ServiceExperiencia" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceExperiencia.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1110" y="588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="br.com.emanuelvictor.iguassu.web.service.ServiceUsuario" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceUsuario.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1240" y="499"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="br.com.emanuelvictor.iguassu.web.service.ServiceVaga" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceVaga.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2240" y="488"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="br.com.emanuelvictor.iguassu.web.service.ServiceEmpresa" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceEmpresa.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="829" y="588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="br.com.emanuelvictor.iguassu.web.service.ServiceInstituicaoDeEnsino" 
+    project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceInstituicaoDeEnsino.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2399" y="578"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="br.com.emanuelvictor.iguassu.web.controller.ControllerHome" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerHome.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1976" y="286"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="br.com.emanuelvictor.iguassu.web.service.ServiceEncaminhamento" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceEncaminhamento.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2054" y="580"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="br.com.emanuelvictor.iguassu.web.service.ServiceLancamento" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceLancamento.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1870" y="485"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <package id="35" language="java" name="br.com.emanuelvictor.iguassu.web.repository" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/repository" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="252" width="2507" x="7" y="717"/>    
+    <display autosize="false" stereotype="true" accessors="true"/>  
+  </package>  
+  <interface id="36" language="java" name="br.com.emanuelvictor.iguassu.web.repository.DAOCandidato" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOCandidato.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="250" y="917"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="37" language="java" name="br.com.emanuelvictor.iguassu.web.repository.DAOEscolaridade" 
+    project="Iguassu" file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOEscolaridade.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="960" y="816"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="38" language="java" name="br.com.emanuelvictor.iguassu.web.repository.DAOBairro" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOBairro.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="120" y="829"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="39" language="java" name="br.com.emanuelvictor.iguassu.web.repository.DAOEmpresa" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOEmpresa.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="831" y="918"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="40" language="java" name="br.com.emanuelvictor.iguassu.web.repository.DAOContato" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOContato.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="705" y="822"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="41" language="java" name="br.com.emanuelvictor.iguassu.web.repository.DAOFuncionario" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOFuncionario.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1747" y="913"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="42" language="java" name="br.com.emanuelvictor.iguassu.web.repository.DAOCargo" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOCargo.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="412" y="823"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="43" language="java" name="br.com.emanuelvictor.iguassu.web.repository.DAOPais" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOPais.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1555" y="826"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="44" language="java" name="br.com.emanuelvictor.iguassu.web.repository.DAOUsuario" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOUsuario.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1241" y="821"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="45" language="java" name="br.com.emanuelvictor.iguassu.web.repository.DAOInstituicaoDeEnsino" 
+    project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOInstituicaoDeEnsino.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2399" y="908"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="46" language="java" name="br.com.emanuelvictor.iguassu.web.repository.DAOVaga" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOVaga.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2247" y="812"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="47" language="java" name="br.com.emanuelvictor.iguassu.web.repository.DAOExperiencia" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOExperiencia.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1112" y="916"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="48" language="java" name="br.com.emanuelvictor.iguassu.web.repository.DAOLancamento" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOLancamento.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1886" y="816"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="49" language="java" name="br.com.emanuelvictor.iguassu.web.repository.DAOEncaminhamento" 
+    project="Iguassu" file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOEncaminhamento.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2065" y="904"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="50" language="java" name="br.com.emanuelvictor.iguassu.web.repository.DAOEstado" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOEstado.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1401" y="914"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="51" language="java" name="br.com.emanuelvictor.iguassu.web.repository.DAOCidade" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOCidade.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="561" y="915"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <class id="52" language="java" name="br.com.emanuelvictor.iguassu.web.service.ServiceEscolaridade" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceEscolaridade.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="960" y="499"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <package id="53" language="java" name="br.com.emanuelvictor.iguassu.web.entity" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="874" width="1940" x="2526" y="140"/>    
+    <display autosize="false" stereotype="true" accessors="true"/>  
+  </package>  
+  <class id="54" language="java" name="br.com.emanuelvictor.iguassu.web.entity.locale.Pais" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/locale/Pais.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2993" y="244"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="55" language="java" name="br.com.emanuelvictor.iguassu.web.entity.locale.Endereco" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/locale/Endereco.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3627" y="393"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="56" language="java" name="br.com.emanuelvictor.iguassu.web.entity.locale.Bairro" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/locale/Bairro.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3415" y="316"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="57" language="java" name="br.com.emanuelvictor.iguassu.web.entity.locale.Estado" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/locale/Estado.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3129" y="335"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="58" language="java" name="br.com.emanuelvictor.iguassu.web.entity.locale.Cidade" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/locale/Cidade.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3260" y="245"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="59" language="java" name="br.com.emanuelvictor.iguassu.web.entity.user.Perfil" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/user/Perfil.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3537" y="230"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="60" language="java" name="br.com.emanuelvictor.iguassu.web.entity.user.Usuario" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/user/Usuario.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3783" y="244"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="61" language="java" name="br.com.emanuelvictor.iguassu.web.entity.status.EstadoCivil" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/status/EstadoCivil.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3802" y="739"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="62" language="java" name="br.com.emanuelvictor.iguassu.web.entity.status.SituacaoEncaminhamento" 
+    project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/status/SituacaoEncaminhamento.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4268" y="382"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="63" language="java" name="br.com.emanuelvictor.iguassu.web.entity.status.SituacaoCandidato" 
+    project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/status/SituacaoCandidato.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4151" y="736"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="64" language="java" name="br.com.emanuelvictor.iguassu.web.entity.schooling.Curso" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/schooling/Curso.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2695" y="901"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="65" language="java" name="br.com.emanuelvictor.iguassu.web.entity.schooling.EnsinoSuperior" 
+    project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/schooling/EnsinoSuperior.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3219" y="901"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="66" language="java" name="br.com.emanuelvictor.iguassu.web.entity.schooling.EnsinoMedio" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/schooling/EnsinoMedio.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2957" y="901"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="67" language="java" name="br.com.emanuelvictor.iguassu.web.entity.schooling.EnsinoFundamental" 
+    project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/schooling/EnsinoFundamental.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3481" y="901"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="68" language="java" name="br.com.emanuelvictor.iguassu.web.entity.schooling.Escolaridade" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/schooling/Escolaridade.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3088" y="810"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="69" language="java" name="br.com.emanuelvictor.iguassu.web.entity.Experiencia" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Experiencia.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3778" y="566"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="70" language="java" name="br.com.emanuelvictor.iguassu.web.entity.Contato" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Contato.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4208" y="301"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="71" language="java" name="br.com.emanuelvictor.iguassu.web.entity.Funcionario" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Funcionario.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4152" y="483"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="72" language="java" name="br.com.emanuelvictor.iguassu.web.entity.Empresa" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Empresa.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3602" y="484"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="73" language="java" name="br.com.emanuelvictor.iguassu.web.entity.Encaminhamento" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Encaminhamento.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4353" y="603"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="74" language="java" name="br.com.emanuelvictor.iguassu.web.entity.Pessoa" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Pessoa.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3889" y="393"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="75" language="java" name="br.com.emanuelvictor.iguassu.web.entity.InstituicaoDeEnsino" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/InstituicaoDeEnsino.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3471" y="621"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="76" language="java" name="br.com.emanuelvictor.iguassu.web.entity.Vaga" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Vaga.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2837" y="429"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="77" language="java" name="br.com.emanuelvictor.iguassu.web.entity.Lancamento" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Lancamento.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4010" y="260"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="78" language="java" name="br.com.emanuelvictor.iguassu.web.entity.Candidato" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Candidato.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4057" y="607"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="79" language="java" name="br.com.emanuelvictor.iguassu.web.entity.Cargo" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Cargo.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3351" y="527"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="80" language="java" name="br.com.emanuelvictor.iguassu.web.util.BaseEntity" project="Iguassu" 
+    file="/Iguassu/src/main/java/br/com/emanuelvictor/iguassu/web/util/BaseEntity.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="169" x="3369" y="42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <generalization id="81">    
+    <end type="SOURCE" refId="79"/>    
+    <end type="TARGET" refId="80"/>  
+  </generalization>  
+  <generalization id="82">    
+    <end type="SOURCE" refId="67"/>    
+    <end type="TARGET" refId="68"/>  
+  </generalization>  
+  <association id="83">    
+    <end type="SOURCE" refId="55" navigable="false">      
+      <attribute id="84" name="bairro"/>      
+      <multiplicity id="85" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="86">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="87" name="daoInstituicaoDeEnsino"/>      
+      <multiplicity id="88" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="89">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="90" name="serviceCargo"/>      
+      <multiplicity id="91" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="92">    
+    <end type="SOURCE" refId="65"/>    
+    <end type="TARGET" refId="68"/>  
+  </generalization>  
+  <association id="93">    
+    <end type="SOURCE" refId="57" navigable="false">      
+      <attribute id="94" name="pais"/>      
+      <multiplicity id="95" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="54" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="96">    
+    <end type="SOURCE" refId="54"/>    
+    <end type="TARGET" refId="80"/>  
+  </generalization>  
+  <association id="97">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="98" name="daoCidade"/>      
+      <multiplicity id="99" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="51" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="100">    
+    <end type="SOURCE" refId="76"/>    
+    <end type="TARGET" refId="80"/>  
+  </generalization>  
+  <association id="101">    
+    <end type="SOURCE" refId="73" navigable="false">      
+      <attribute id="102" name="funcionario"/>      
+      <multiplicity id="103" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="71" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="104">    
+    <end type="SOURCE" refId="75"/>    
+    <end type="TARGET" refId="72"/>  
+  </generalization>  
+  <generalization id="105">    
+    <end type="SOURCE" refId="64"/>    
+    <end type="TARGET" refId="68"/>  
+  </generalization>  
+  <generalization id="106">    
+    <end type="SOURCE" refId="57"/>    
+    <end type="TARGET" refId="80"/>  
+  </generalization>  
+  <association id="107">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="108" name="daoContato"/>      
+      <multiplicity id="109" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="40" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="110">    
+    <end type="SOURCE" refId="63"/>    
+    <end type="TARGET" refId="80"/>  
+  </generalization>  
+  <association id="111">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="112" name="serviceFuncionario"/>      
+      <multiplicity id="113" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="114">    
+    <end type="SOURCE" refId="78" navigable="false">      
+      <attribute id="115" name="escolaridade"/>      
+      <multiplicity id="116" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="68" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="117">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="118" name="serviceEstado"/>      
+      <multiplicity id="119" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="120">    
+    <end type="SOURCE" refId="52" navigable="false">      
+      <attribute id="121" name="daoEscolaridade"/>      
+      <multiplicity id="122" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="123">    
+    <end type="SOURCE" refId="78" navigable="false">      
+      <attribute id="124" name="estadoCivil"/>      
+      <multiplicity id="125" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="61" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="126">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="127" name="daoLancamento"/>      
+      <multiplicity id="128" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="129">    
+    <end type="SOURCE" refId="56" navigable="false">      
+      <attribute id="130" name="cidade"/>      
+      <multiplicity id="131" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="58" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="132">    
+    <end type="SOURCE" refId="70"/>    
+    <end type="TARGET" refId="80"/>  
+  </generalization>  
+  <association id="133">    
+    <end type="SOURCE" refId="77" navigable="false">      
+      <attribute id="134" name="pessoa"/>      
+      <multiplicity id="135" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="74" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="136">    
+    <end type="SOURCE" refId="69" navigable="false">      
+      <attribute id="137" name="cargo"/>      
+      <multiplicity id="138" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="79" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="139">    
+    <end type="SOURCE" refId="60"/>    
+    <end type="TARGET" refId="80"/>  
+  </generalization>  
+  <association id="140">    
+    <end type="SOURCE" refId="68" navigable="false">      
+      <attribute id="141" name="instituicaoDeEnsino"/>      
+      <multiplicity id="142" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="75" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="143">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="144" name="serviceEncaminhamento">        
+        <position height="17" width="126" x="2088" y="530"/>      
+      </attribute>      
+      <multiplicity id="145" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="146">    
+    <end type="SOURCE" refId="73" navigable="false">      
+      <attribute id="147" name="candidato"/>      
+      <multiplicity id="148" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="78" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="149">    
+    <end type="SOURCE" refId="71"/>    
+    <end type="TARGET" refId="74"/>  
+  </generalization>  
+  <generalization id="150">    
+    <end type="SOURCE" refId="69"/>    
+    <end type="TARGET" refId="80"/>  
+  </generalization>  
+  <association id="151">    
+    <end type="SOURCE" refId="69" navigable="false">      
+      <attribute id="152" name="empresa"/>      
+      <multiplicity id="153" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="72" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="154">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="155" name="daoExperiencia"/>      
+      <multiplicity id="156" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="47" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="157">    
+    <end type="SOURCE" refId="74" navigable="false">      
+      <attribute id="158" name="endereco"/>      
+      <multiplicity id="159" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="55" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="160">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="161" name="serviceInstituicaoDeEnsino"/>      
+      <multiplicity id="162" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="163">    
+    <end type="SOURCE" refId="68"/>    
+    <end type="TARGET" refId="80"/>  
+  </generalization>  
+  <association id="164">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="165" name="servicePais"/>      
+      <multiplicity id="166" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="167">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="168" name="daoEncaminhamento"/>      
+      <multiplicity id="169" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="49" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="170">    
+    <end type="SOURCE" refId="74"/>    
+    <end type="TARGET" refId="80"/>  
+  </generalization>  
+  <association id="171">    
+    <end type="SOURCE" refId="78" navigable="false">      
+      <attribute id="172" name="situacaoDoCandidato"/>      
+      <multiplicity id="173" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="63" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="174">    
+    <end type="SOURCE" refId="73"/>    
+    <end type="TARGET" refId="80"/>  
+  </generalization>  
+  <association id="175">    
+    <end type="SOURCE" refId="76" navigable="false">      
+      <attribute id="176" name="endereco"/>      
+      <multiplicity id="177" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="55" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="178">    
+    <end type="SOURCE" refId="56"/>    
+    <end type="TARGET" refId="80"/>  
+  </generalization>  
+  <association id="179">    
+    <end type="SOURCE" refId="70" navigable="false">      
+      <attribute id="180" name="pessoa"/>      
+      <multiplicity id="181" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="74" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="182">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="183" name="serviceLancamento"/>      
+      <multiplicity id="184" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="185">    
+    <end type="SOURCE" refId="66"/>    
+    <end type="TARGET" refId="68"/>  
+  </generalization>  
+  <generalization id="186">    
+    <end type="SOURCE" refId="58"/>    
+    <end type="TARGET" refId="80"/>  
+  </generalization>  
+  <association id="187">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="188" name="serviceLancamento">        
+        <position height="17" width="102" x="1911" y="431"/>      
+      </attribute>      
+      <multiplicity id="189" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="190">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="191" name="serviceBairro"/>      
+      <multiplicity id="192" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="193">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="194" name="daoVaga"/>      
+      <multiplicity id="195" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="196">    
+    <end type="SOURCE" refId="76" navigable="false">      
+      <attribute id="197" name="empresa"/>      
+      <multiplicity id="198" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="72" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="199">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="200" name="daoFuncionario"/>      
+      <multiplicity id="201" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="202">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="203" name="daoCargo"/>      
+      <multiplicity id="204" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="205">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="206" name="daoUsuario"/>      
+      <multiplicity id="207" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="208">    
+    <end type="SOURCE" refId="61"/>    
+    <end type="TARGET" refId="80"/>  
+  </generalization>  
+  <association id="209">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="210" name="serviceCidade"/>      
+      <multiplicity id="211" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="212">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="213" name="serviceExperiencia"/>      
+      <multiplicity id="214" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="215">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="216" name="daoPais"/>      
+      <multiplicity id="217" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="43" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="218">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="219" name="serviceCandidato"/>      
+      <multiplicity id="220" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="221">    
+    <end type="SOURCE" refId="58" navigable="false">      
+      <attribute id="222" name="estado"/>      
+      <multiplicity id="223" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="57" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="224">    
+    <end type="SOURCE" refId="60" navigable="false">      
+      <attribute id="225" name="perfil"/>      
+      <multiplicity id="226" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="59" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="227">    
+    <end type="SOURCE" refId="69" navigable="false">      
+      <attribute id="228" name="candidato"/>      
+      <multiplicity id="229" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="78" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="230">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="231" name="serviceUsuario"/>      
+      <multiplicity id="232" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="233">    
+    <end type="SOURCE" refId="76" navigable="false">      
+      <attribute id="234" name="escolaridade"/>      
+      <multiplicity id="235" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="68" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="236">    
+    <end type="SOURCE" refId="73" navigable="false">      
+      <attribute id="237" name="situacaoEncaminhamento"/>      
+      <multiplicity id="238" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="62" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="239">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="240" name="daoEstado"/>      
+      <multiplicity id="241" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="50" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="242">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="243" name="daoBairro"/>      
+      <multiplicity id="244" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="245">    
+    <end type="SOURCE" refId="60" navigable="false">      
+      <attribute id="246" name="pessoa"/>      
+      <multiplicity id="247" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="74" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="248">    
+    <end type="SOURCE" refId="72"/>    
+    <end type="TARGET" refId="74"/>  
+  </generalization>  
+  <association id="249">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="250" name="serviceEscolaridade"/>      
+      <multiplicity id="251" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="252">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="253" name="serviceEmpresa"/>      
+      <multiplicity id="254" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="255">    
+    <end type="SOURCE" refId="76" navigable="false">      
+      <attribute id="256" name="cargo"/>      
+      <multiplicity id="257" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="79" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="258">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="259" name="serviceVaga"/>      
+      <multiplicity id="260" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="261">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="262" name="daoCandidato"/>      
+      <multiplicity id="263" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="264">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="265" name="serviceContato"/>      
+      <multiplicity id="266" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="267">    
+    <end type="SOURCE" refId="77"/>    
+    <end type="TARGET" refId="80"/>  
+  </generalization>  
+  <association id="268">    
+    <bendpoint x="4433" y="468"/>    
+    <bendpoint x="4394" y="250"/>    
+    <bendpoint x="3778" y="190"/>    
+    <bendpoint x="2894" y="192"/>    
+    <bendpoint x="2858" y="241"/>    
+    <end type="SOURCE" refId="73" navigable="false">      
+      <attribute id="269" name="vaga"/>      
+      <multiplicity id="270" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="76" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="271">    
+    <end type="SOURCE" refId="59"/>    
+    <end type="TARGET" refId="80"/>  
+  </generalization>  
+  <generalization id="272">    
+    <end type="SOURCE" refId="78"/>    
+    <end type="TARGET" refId="74"/>  
+  </generalization>  
+  <generalization id="273">    
+    <end type="SOURCE" refId="62"/>    
+    <end type="TARGET" refId="80"/>  
+  </generalization>  
+  <association id="274">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="275" name="daoEmpresa"/>      
+      <multiplicity id="276" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="277">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="278" name="serviceEncaminhamento">        
+        <position height="17" width="126" x="1891" y="533"/>      
+      </attribute>      
+      <multiplicity id="279" minimum="0" maximum="1">        
+        <position height="15" width="23" x="2018" y="535"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="false" package="false" protected="false" private="false" static="false"/>    
+    <operations public="false" package="false" protected="false" private="false" static="false"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

@@ -1,0 +1,235 @@
+<div class="view" >
+<!-- data-ng-controller="VagaCtrl" -->
+	<div class="page-header">
+		<h1>Vagas</h1>
+	</div>
+	
+	<div class="container-fluid">
+		<p class="navbar-right">
+			<input type="checkbox" data-ng-model="isOpen" > Exibir somente um painel por vêz
+				<button class="btn btn-default btn-sm" data-ng-click="editVaga(vaga)" type="button" title="Clique para atualizar'" data-ng-show="vaga.id"><span class="glyphicon glyphicon-refresh"></span></button>
+				<button class="btn btn-primary btn-sm" onclick="window.print(); return false;" type="button" title="Clique para Imprimir ou pressione as teclas 'Ctrl + P'"><span class="glyphicon glyphicon-print"></span></button>
+				<button class="btn btn-default btn-sm" data-ng-click="isCollapsed = !isCollapsed" type="button" title="Opções de filtro"><span class="glyphicon glyphicon-filter"></span></button>
+				<button class="btn btn-default btn-sm" data-ng-click="panel.open1 = false; panel.open2 = false; panel.open3 = false; panel.open4 = false; panel.open5 = false; panel.open6 = false;" type="button" title="Clique para fechar todos os paineis"><span class="glyphicon glyphicon-minus"></span></button>
+				<button class="btn btn-default btn-sm" data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true;" type="button" title="Clique para abrir todos os paineis"><span class="glyphicon glyphicon-plus"></span></button>
+		</p>
+	</div>
+
+	<accordion close-others="isOpen">
+	<accordion-group is-open="panel.open1" > 
+		<accordion-heading>
+			Dados da vaga <i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open1, 'glyphicon-chevron-right': !panel.open1}"></i>
+		</accordion-heading>
+	<div class="row row-offcanvas row-offcanvas-right">
+		<div class="col-xs-12 col-sm-12">
+			<div class="col-6 col-sm-6 col-lg-3">
+				<div class="form-group">
+					<label class="control-label">Cargos</label> 
+							<a class="glyphicon glyphicon-refresh" data-ng-click="getCargo()"></a>								
+							<a class="glyphicon glyphicon-plus" data-ng-click="openCargo('lg')"></a>
+					<div class="controls">
+						<select class="form-control" data-ng-model="vaga.cargo" data-ng-options="(cargo.nome) for cargo in cargos">
+							<option value="" data-ng-selected="vaga.id">{{vaga.cargo.nome}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label">Empresas</label> 
+							<a class="glyphicon glyphicon-refresh" data-ng-click="getEmpresa()"></a>								
+							<a class="glyphicon glyphicon-plus" href="#empresas"></a>
+					<div class="controls">
+						<select class="form-control" data-ng-model="vaga.empresa" data-ng-options="(empresa.nome) for empresa in empresas">
+							<option value="" data-ng-selected="empresa.id">{{vaga.empresa.nome}}</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="col-6 col-sm-6 col-lg-6">
+				<div class="form-group">
+					<label class="control-label">Observações</label>
+					<div class="controls">
+						<textarea class="form-control" data-ng-model="vaga.observacoes" rows="5" placeholder="Insira aqui as observações da vaga"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="col-6 col-sm-6 col-lg-3">
+				<div class="form-group">
+					<label class="control-label">Salário</label>
+					<div class="controls">
+						<input class="form-control" type="number" data-ng-model="vaga.salario" placeholder="Insira aqui as observações da vaga">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</accordion-group>
+<!-- 	<accordion-group data-ng-show="candidato.id" is-open="panel.open3">  -->
+<!-- 				<accordion-heading> -->
+<!-- 					Experiência <i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open3, 'glyphicon-chevron-right': !panel.open3}"></i> -->
+<!-- 				</accordion-heading> -->
+				
+<!-- 				<div class="row row-offcanvas row-offcanvas-right"> -->
+<!-- 					<div class="col-xs-12 col-sm-12">  -->
+<!-- <!-- 						<div class="col-xs-12 col-12 col-sm-12 col-lg-12" > -->
+<!-- 							<ul> -->
+<!-- 								<li> -->
+<!-- 									<strong>Técnico em informática</strong>(Montagem e manutenção de computadores) -->
+<!-- 									<a class="glyphicon glyphicon-plus" data-ng-click="openCargo()"></a> -->
+<!-- 									<ul> -->
+<!-- 										<li> -->
+<!-- 											<strong>UDC</strong>(10/29/2010-10/29/2010) -->
+<!-- 										</li> -->
+<!-- 										<li>	 -->
+<!-- 											<strong>Atividades Desenvolvidas:&nbsp</strong>Lidar com todo o parque de tecnologia da informação -->
+										
+<!-- 										</li> -->
+<!-- 										<li>	 -->
+<!-- 											<strong>Observações:&nbsp</strong> Com carta de recomendação -->
+<!-- 										</li> -->
+<!-- 									</ul> -->
+<!-- 									<hr>									 -->
+<!-- 								</li> -->
+<!-- 								<li> -->
+<!-- 									<strong>Técnico em informática</strong>(Montagem e manutenção de computadores) -->
+<!-- 									<a class="glyphicon glyphicon-plus" data-ng-click="openCargo()"></a> -->
+<!-- 									<ul> -->
+<!-- 										<li> -->
+<!-- 											<strong>UDC</strong>(10/29/2010-10/29/2010) -->
+<!-- 										</li> -->
+<!-- 										<li>	 -->
+<!-- 											<strong>Atividades Desenvolvidas:&nbsp</strong>Lidar com todo o parque de tecnologia da informação -->
+<!-- 										</li> -->
+<!-- 										<li>	 -->
+<!-- 											<strong>Observações:&nbsp</strong> Com carta de recomendação -->
+<!-- 										</li> -->
+<!-- 									</ul> -->
+<!-- 									<hr> -->
+<!-- 								</li> -->
+<!-- 								<li> -->
+<!-- 									<strong>Técnico em informática</strong>(Montagem e manutenção de computadores) -->
+<!-- 									<a class="glyphicon glyphicon-plus" data-ng-click="openCargo()"></a> -->
+<!-- 									<ul> -->
+<!-- 										<li> -->
+<!-- 											<strong>UDC</strong>(10/29/2010-10/29/2010) -->
+<!-- 										</li> -->
+<!-- 										<li>	 -->
+<!-- 											<strong>Atividades Desenvolvidas:&nbsp</strong>Lidar coasdfffffffffffffffffffffffffffm todo o parque de tecnologia da informação -->
+<!-- 										</li> -->
+<!-- 										<li>	 -->
+<!-- 											<strong>Observações:&nbsp</strong> Com carta de recomendação -->
+<!-- 										</li> -->
+<!-- 									</ul> -->
+<!-- 									<hr> -->
+<!-- 								</li> -->
+<!-- 							</ul> -->
+<!-- 						</div> -->
+<!-- 				</div> -->
+<!-- 			</accordion-group>  -->
+
+	<accordion-group is-open="panel.open4" > 
+		<accordion-heading >
+				Endereço <i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open4, 'glyphicon-chevron-right': !panel.open4}"></i>
+		</accordion-heading>
+				<div class="row row-offcanvas row-offcanvas-right">
+					<div class="col-xs-12 col-sm-12">
+							<div class="col-6 col-sm-6 col-lg-2">
+								<div class="form-group">
+									<label class="control-label">Rua</label>
+									<div class="controls">
+										<input type="text" data-ng-model="vaga.endereco.rua" placeholder="Insira o a rua da vaga ..." class="form-control">
+									</div>
+								</div>
+							</div>
+							<div class="col-6 col-sm-6 col-lg-1">
+								<div class="form-group">
+									<label class="control-label">Número</label>
+									<div class="controls">
+										<input type="text" data-ng-model="vaga.endereco.numero" placeholder="Insira o núemro da rua da vaga ..." class="form-control">
+									</div>
+								</div>
+							</div>
+							<div class="col-6 col-sm-6 col-lg-2">
+								<div class="form-group">
+									<label class="control-label">CEP</label>
+									<div class="controls">
+										<input type="text" data-ng-model="vaga.endereco.cep" placeholder="Insira o CEP da vaga ..." class="form-control">
+									</div>
+								</div>
+							</div>
+							<div class="col-6 col-sm-6 col-lg-2">
+								<div class="form-group">
+									<label class="control-label">Complemento</label>
+									<div class="controls">
+										<input type="text" data-ng-model="vaga.endereco.complemento" placeholder="Insira o complemento do endereço da vaga ..." class="form-control">
+									</div>
+								</div>
+							</div>
+							<div class="col-6 col-sm-12 col-lg-5" >
+								<label class="control-label">Bairros</label> 
+											<a class="glyphicon glyphicon-refresh" data-ng-click="getBairro()"></a>
+											<a class="glyphicon glyphicon-plus" data-ng-click="openBairro('lg')"></a>
+										<span class="navbar-right"> <!-- gambia -->
+											filtro:
+											<input type="radio" data-ng-model="address.selected" data-ng-value="choices[0]" name="selected">&nbspBairro
+											<input type="radio" data-ng-model="address.selected" data-ng-value="choices[1]" name="selected">&nbspCidade
+											<input type="radio" data-ng-model="address.selected" data-ng-value="choices[2]" name="selected">&nbspEstado
+											<input type="radio" data-ng-model="address.selected" data-ng-value="choices[3]" name="selected">&nbspPais
+									    </span> 
+								      	<select class="form-control" data-ng-model="vaga.endereco.bairro" data-ng-options="(bairro.nome + ' ' +'/' +' ' + bairro.cidade.nome+ ' ' +'/' +' ' + bairro.cidade.estado.nome+ ' ' +'/' +' ' + bairro.cidade.estado.pais.nome) for bairro in bairros">
+											<option value="" data-ng-selected="empresa.id">{{vaga.endereco.bairro.nome}} /{{vaga.endereco.bairro.cidade.nome}} / {{vaga.endereco.bairro.cidade.estado.nome}} / {{vaga.endereco.bairro.cidade.estado.pais.nome}}</option>
+										</select>
+							</div>
+				    </div>
+			  </div>
+		</accordion-group> 
+	</accordion>
+
+	<!-- Menu da consultar -->
+
+	<div class="col-xs-12 col-sm-12">
+		<div class="btn-group btn-group-justified">
+			<div class="btn-group">
+				<button type="button" class="btn btn-default" data-ng-click="getVaga()"><span class="glyphicon glyphicon-search">&nbspConsultar</span></button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary" data-ng-disabled="!vaga.cargo.id" data-ng-click="postVaga()"><span class="glyphicon glyphicon-save">&nbspSalvar</span></button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default" data-ng-click="limpe()"><span class="glyphicon glyphicon-file">&nbspLimpar</span></button>
+			</div>
+		</div>
+			<br/>
+
+		<div data-ng-show="msg.msg" class="alert alert-{{msg.type}} alert-dismissable fixed">
+  			<button type="button" class="close"  data-ng-click="closeAlert()">&times;</button>
+  			<strong>{{msg.vaga.nome}}</strong> {{msg.msg}}		
+		</div>
+		<div  data-ng-show="msg.progress" class="progress progress-striped active">
+		  <div class="progress-bar"  data-role="progressbar" data-aria-valuenow="45" data-aria-valuemin="0" data-aria-valuemax="100" style="width: 100%">
+		    <span class="sr-only">45% Complete</span>
+		  </div>
+		</div>
+		
+		<table class="table table-hover">
+			<tr>
+				<th>Cargo</th>
+				<th>Empresa</th>
+				<th>Salário</th>
+				<th>Endereço</th>
+				<th>Situação</th>
+				<th></th>
+			</tr>
+			<tr data-ng-repeat="vaga in vagas">
+				<td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editVaga(vaga)">{{vaga.cargo.nome}}</td>
+				<td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editVaga(vaga)">{{vaga.empresa.nome}}</td>
+				<td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editVaga(vaga)">{{vaga.salario}}</td>
+				<td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editVaga(vaga)">{{vaga.endereco.bairro.nome}} / {{vaga.endereco.bairro.cidade.nome}} / {{vaga.endereco.bairro.cidade.estado.nome}} / {{vaga.endereco.bairro.cidade.estado.pais.nome}}</td>
+				<td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editVaga(vaga)">{{vaga.situacaoDaVaga}}</td>
+				<td>
+					<span data-ng-click="deleteVaga(vaga.id)" class="glyphicon glyphicon-trash"></span>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</div>

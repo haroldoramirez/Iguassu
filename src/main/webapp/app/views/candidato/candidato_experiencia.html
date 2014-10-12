@@ -1,0 +1,45 @@
+<accordion-group is-open="panel.open5">
+    <accordion-heading>
+        Experiência
+        <i 	class="pull-right glyphicon"
+              data-ng-class="{'glyphicon-chevron-down': panel.open5, 'glyphicon-chevron-right': !panel.open5}">
+        </i>
+    </accordion-heading>
+
+    <div class="row row-offcanvas row-offcanvas-right" >
+        <div class="col-xs-12 col-sm-12">
+            <ul data-ng-show="experiencias.length<=0">
+                <li >
+                    <strong>Adicionar experiências</strong>
+                    <a class="glyphicon glyphicon-plus" data-ng-click="openExperiencia()"></a>
+                    <hr>
+                </li>
+            </ul>
+            <ul>
+                <li data-ng-repeat="experiencia in experiencias">
+                    <strong>{{experiencia.cargo.nome}}</strong>
+                    ({{experiencia.cargo.descricao}})
+							<span class="label label-warning"
+                                  data-ng-show="!experiencia.dataTermino">atuando</span>)
+                    <a class="glyphicon glyphicon-plus" data-ng-click="openExperiencia()"></a>
+                    <ul>
+                        <li data-ng-show="experiencia.empresa">
+                            <strong>{{experiencia.empresa.nome}}</strong>
+                            ({{experiencia.dataInicio|date}} - {{experiencia.dataTermino|date}})
+                        </li>
+                        <li data-ng-show="experiencia.atividades">
+                            <strong>Atividades Desenvolvidas:&nbsp</strong>
+                            {{experiencia.atividades}}Lidar com todo o parque de tecnologia da informação
+                        </li>
+                        <li data-ng-show="experiencia.observacoes">
+                            <strong>Observações:&nbsp</strong>
+                            {{experiencia.observacoes}}Com carta de recomendação
+                        </li>
+                    </ul>
+                    <p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</accordion-group>
