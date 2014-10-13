@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('iguassuApp')
-  .controller('CandidatoCtrl', function ($log, $modal, $scope, $routeParams, $location, Candidato, Pais) {
+  .controller('CandidatoCtrl', function ($log, $modal, $scope, $routeParams, $location, Candidato, Pais, toastr) {
    
 
    $scope.candidato = {};
@@ -25,26 +25,30 @@ angular.module('iguassuApp')
       }); 
     };
     $scope.getPais();
-    $scope.getCandidato();
+    $scope.getCandidatos();
    };
 
 
+
   $scope.save = function(){
-    console.log($scope.pne);
-    console.log($scope.candidato.necessidadeEspecial);
+    var msg = 'Cadastrado com sucesso';
+    if($scope.candidato.id){
+      msg = 'Atualizado com sucesso';
+    }
     if(!$scope.pne||$scope.pne===false){
        $scope.candidato.necessidadeEspecial = null;
     }
     Candidato.save($scope.candidato, function(data){
       $scope.candidato = data;
+      $location.path('/candidatos/'+$scope.candidato.id);
+      $scope.getCandidatos();
+      toastr.success(msg,$scope.candidato.nome);
     });
+
   };    
 
-  $scope.delete = function(){
-    
-  };
 
-  $scope.getCandidato = function(){
+  $scope.getCandidatos = function(){
     $scope.candidatos = Candidato.getAll();
   };
 
@@ -53,8 +57,20 @@ angular.module('iguassuApp')
   }
 
   $scope.limpar = function(){
-    $scope.candidato = null;
+    $scope.candidato = {};
+    $location.path('/candidatos');
   }
+
+  $scope.openDatePicker = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.opened = !$scope.opened;
+  };
+
+   //Aux
+  $scope.getPais = function(){
+     $scope.paises = Pais.getAll();
+  };
 
   $scope.openExperiencia = function(size) {
     var modalInstance = $modal.open({
@@ -74,11 +90,6 @@ angular.module('iguassuApp')
     }, function() {
       $log.info('Modal dismissed at: ' + new Date());
     });
-  };
-
-   //Aux
-  $scope.getPais = function(){
-     $scope.paises = Pais.getAll();
   };
 
 });

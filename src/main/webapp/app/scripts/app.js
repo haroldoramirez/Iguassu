@@ -17,6 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.utils',
+    'toastr',
+    'duScroll',
     'ui.bootstrap'
  ]).config(function($routeProvider) {
    $routeProvider

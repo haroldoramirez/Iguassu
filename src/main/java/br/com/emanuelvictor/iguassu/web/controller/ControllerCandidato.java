@@ -24,6 +24,13 @@ public class ControllerCandidato {
         return this.serviceCandidato.save(candidato);
     }
 
+    @RequestMapping(value = "/candidatos/{id}", method = RequestMethod.POST)
+    public
+    @ResponseBody
+    Candidato update(/*@PathVariable Long id,*/ @RequestBody Candidato candidato) {
+        return this.serviceCandidato.save(candidato);
+    }
+
     @RequestMapping(value = "/candidatos/{id}", method = RequestMethod.GET)
     public
     @ResponseBody

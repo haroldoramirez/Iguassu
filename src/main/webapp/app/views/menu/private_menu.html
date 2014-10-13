@@ -29,13 +29,17 @@
   </ul>
 
 <ul class="nav navbar-nav navbar-right">
-  <li class="dropdown">
-    <a class="dropdown-toggle" >
-      <span class="glyphicon glyphicon-user">Opções</span><b class="caret"></b></a>
-    <ul class="dropdown-menu">
-      <li><a href="#/configuracoes" class="glyphicon glyphicon-cog">Configurações</a></li>
-      <li class="divider"></li>
-      <li><a href="#/sair" class="glyphicon glyphicon-off">Sair</a></li>
-    </ul>
-  </li>
+  <li data-ng-class="{ active: isActive('/configuracoes')}"><a href="#/configuracoes">Configurações</a></li>
+  <li><a href="#/sair" id="sair" ><strong>Sair</strong></a></li>
+
+  <!--<li class="dropdown">-->
+    <!--<a class="dropdown-toggle" >-->
+      <!--<span class="glyphicon glyphicon-user">Opções</span><b class="caret"></b></a>-->
+    <!--<ul class="dropdown-menu">-->
+      <!--<li><a href="#/configuracoes" class="glyphicon glyphicon-cog">Configurações</a></li>-->
+      <!--<li class="divider"></li>-->
+      <!--<li><a href="#/sair" class="glyphicon glyphicon-off">Sair</a></li>-->
+    <!--</ul>-->
+  <!--</li>-->
 </ul>
+</div>

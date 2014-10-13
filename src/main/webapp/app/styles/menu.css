@@ -42,9 +42,12 @@ footer {
 #entrar {
     color: #6D6D6D;
 }
+#sair {
+    color: #610B0B;
+}
 
 .obrigatorio {
-    color: red;
+    color: #610B0B;
 }
 
 .slide-animate-container {

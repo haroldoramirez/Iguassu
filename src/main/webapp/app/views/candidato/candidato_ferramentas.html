@@ -1,21 +1,26 @@
 <p class="navbar-right">
     <input type="checkbox" data-ng-model="isOpen" > Exibir somente um painel por vêz
+    <button data-ng-click="limpar()" class="btn btn-default btn-sm"
+            type="button"
+            title="Novo candidato (a)">
+        <span class="glyphicon glyphicon-file"></span>
+    </button>
     <button ng-if="candidato.id" class="btn btn-default btn-sm"
             data-ng-click="encaminhar()"
             type="button" title="Clique para encaminhar o candidato'"
             data-ng-show="candidato.id">
         <span class="glyphicon glyphicon-send"></span>
     </button>
+    <button class="btn btn-default btn-sm"
+            data-ng-click="isCollapsed = !isCollapsed"
+            type="button" title="Opções de filtro">
+        <span class="glyphicon glyphicon-filter"></span>
+    </button>
     <button class="btn btn-primary btn-sm"
             onclick="window.print(); return false;"
             type="button"
             title="Clique para Imprimir ou pressione as teclas 'Ctrl + P'">
         <span class="glyphicon glyphicon-print"></span>
-    </button>
-    <button class="btn btn-default btn-sm"
-            data-ng-click="isCollapsed = !isCollapsed"
-            type="button" title="Opções de filtro">
-        <span class="glyphicon glyphicon-filter"></span>
     </button>
     <button class="btn btn-default btn-sm"
             data-ng-click="panel.open1 = false; panel.open2 = false; panel.open3 = false; panel.open4 = false; panel.open5 = false; panel.open6 = false;"

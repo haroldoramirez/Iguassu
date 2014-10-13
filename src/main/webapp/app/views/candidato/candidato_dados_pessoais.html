@@ -18,19 +18,20 @@
                     <label class="control-label">Código&nbsp</label>
                     <div class="form-group">
                         <div class="controls">
-                            <input disabled data-ng-model="candidato.id" type="text" placeholder="Identificação" class="form-control">
+                            <input data-ng-model="candidato.id" type="text" placeholder="Identificação" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-9 col-9 col-sm-9 col-lg-9">
                     <label class="control-label">Nome Completo <span class="obrigatorio">*</span> </label>
+                                <!--<span ng-class="{'obrigatorio': !candidato.genero}" class="navbar-right">-->
 								<span class="navbar-right">
-										<input 	type="radio" name="genero" ng-model="candidato.genero"
+										<input type="radio" name="genero" ng-model="candidato.genero"
                                                   value="MASCULINO">
 														&nbsp<strong>Masculino</strong>
-										<input 	type="radio" name="genero" ng-model="candidato.genero"
+										<input type="radio" name="genero" ng-model="candidato.genero"
                                                   value="FEMININO">
-														&nbsp<strong>Feminino&nbsp<span class="obrigatorio">*</span></strong>
+														&nbsp<strong >Feminino&nbsp<span class="obrigatorio">*</span></strong>
 								</span>
                     <div ng-class="{'form-group ': candidato.nome, 'form-group has-error': !candidato.nome}">
                         <div class="controls">
@@ -99,18 +100,26 @@
                         <label class="control-label">Data de nascimento&nbsp<span class="obrigatorio">*</span></label>
                     <div ng-class="{'form-group': candidato.dataNasc, 'form-group has-error': !candidato.dataNasc}">
                         <div class="controls">
-                            <input data-ng-model="candidato.dataNasc" type="date" placeholder="Insira a data de nascimento do candidato (a) ..." class="form-control">
+                            <p class="input-group">
+                                <input  type="text" class="form-control" datepicker-popup="dd/MM/yyyy"
+                                        ng-model="candidato.dataNasc" is-open="opened"
+                                        show-button-bar="false" required/>
+                                <span class="input-group-btn">
+                                  <button type="button" class="btn btn-default" ng-click="openDatePicker($event)">
+                                      <i class="glyphicon glyphicon-calendar"></i>
+                                  </button>
+                                </span>
+                            </p>
+                            <!--<input data-ng-model="candidato.dataNasc" type="date" placeholder="Insira a data de nascimento do candidato (a) ..." class="form-control">-->
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-2 col-2 col-sm-12 col-lg-6">
-                    <div class="form-group">{{pne}}
                         <span class="navbar-left"><input type="checkbox" value="{{pne}}" name="pne" ng-model="pne"></span>
-                        <label class="control-label">&nbspNecessidades Especiais</label>
+                        <label class="control-label">&nbspNecessidades Especiais&nbsp&nbsp<strong ng-if="pne" class="obrigatorio">*</strong></label>
+                    <div ng-class="{'form-group ': pne&&candidato.necessidadeEspecial, 'form-group has-error': pne&&!candidato.necessidadeEspecial}">
                         <div ng-if="pne" class="controls">
                             <select class="form-control" data-ng-model="candidato.necessidadeEspecial">
-                                <!--<option data-ng-show="candidato.necessidadeEspecial!=null&&candidato.necessidadeEspecial!=''"-->
-                                        <!--value="" disabled selected>{{candidato.necessidadeEspecial}}</option>-->
                                 <option value="AUDITIVA">Auditiva</option>
                                 <option value="VISUAL">Visual</option>
                                 <option value="FISICA">Física</option>
