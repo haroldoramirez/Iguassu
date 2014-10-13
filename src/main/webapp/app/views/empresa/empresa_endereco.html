@@ -1,7 +1,7 @@
-<accordion-group is-open="panel.open4">
+<accordion-group is-open="panel.open2">
 
     <accordion-heading >
-        Endereço <i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open4, 'glyphicon-chevron-right': !panel.open4}"></i>
+        Endereço <i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open2, 'glyphicon-chevron-right': !panel.open2}"></i>
     </accordion-heading>
 
     <div class="row row-offcanvas row-offcanvas-right">
@@ -11,8 +11,8 @@
                     <label class="control-label">Rua</label>
                     <div class="controls">
                         <input 	type="text"
-                                  data-ng-model="candidato.endereco.rua"
-                                  placeholder="Insira o a rua da candidato ..."
+                                  data-ng-model="empresa.endereco.rua"
+                                  placeholder="Insira o a rua da empresa ..."
                                   class="form-control">
                     </div>
                 </div>
@@ -22,8 +22,8 @@
                     <label class="control-label">Número</label>
                     <div class="controls">
                         <input 	type="text"
-                                  data-ng-model="candidato.endereco.numero"
-                                  placeholder="Insira o núemro da rua da candidato ..."
+                                  data-ng-model="empresa.endereco.numero"
+                                  placeholder="Insira o núemro da rua da empresa ..."
                                   class="form-control">
                     </div>
                 </div>
@@ -33,8 +33,8 @@
                     <label class="control-label">CEP</label>
                     <div class="controls">
                         <input 	type="text"
-                                  data-ng-model="candidato.endereco.cep"
-                                  placeholder="Insira o CEP da candidato ..."
+                                  data-ng-model="empresa.endereco.cep"
+                                  placeholder="Insira o CEP da empresa ..."
                                   class="form-control">
                     </div>
                 </div>
@@ -44,8 +44,8 @@
                     <label class="control-label">Complemento</label>
                     <div class="controls">
                         <input 	type="text"
-                                  data-ng-model="candidato.endereco.complemento"
-                                  placeholder="Insira o complemento do endereço da candidato ..."
+                                  data-ng-model="empresa.endereco.complemento"
+                                  placeholder="Insira o complemento do endereço da empresa ..."
                                   class="form-control">
                     </div>
                 </div>
@@ -55,8 +55,8 @@
                 <a class="glyphicon glyphicon-refresh" data-ng-click="getPais()"></a>
                 <a class="glyphicon glyphicon-plus" data-ng-click="openPais('lg')"></a>
                 <select class="form-control"
-                        data-ng-model="candidato.endereco.bairro.cidade.estado.pais" >
-                    <option value="" data-ng-selected="candidato.id">{{candidato.endereco.bairro.cidade.estado.pais.nome}}
+                        data-ng-model="empresa.endereco.bairro.cidade.estado.pais" >
+                    <option value="" data-ng-selected="empresa.id">{{empresa.endereco.bairro.cidade.estado.pais.nome}}
                     </option>
                 </select>
             </div>
@@ -65,9 +65,9 @@
                 <a class="glyphicon glyphicon-refresh" data-ng-click="getEstado()"></a>
                 <a class="glyphicon glyphicon-plus" data-ng-click="openEstado('lg')"></a>
                 <select class="form-control"
-                        data-ng-model="candidato.endereco.bairro.cidade.estado">
-                    <option value="" data-ng-selected="candidato.id">
-                        {{candidato.endereco.bairro.cidade.estado.nome}}
+                        data-ng-model="empresa.endereco.bairro.cidade.estado">
+                    <option value="" data-ng-selected="empresa.id">
+                        {{empresa.endereco.bairro.cidade.estado.nome}}
                     </option>
                 </select>
             </div>
@@ -75,9 +75,9 @@
                 <label class="control-label">Cidade</label>
                 <a class="glyphicon glyphicon-refresh" data-ng-click="getCidade()"></a>
                 <a class="glyphicon glyphicon-plus" data-ng-click="openCidade('lg')"></a>
-                <select class="form-control" data-ng-model="candidato.endereco.bairro.cidade" >
-                    <option value="" data-ng-selected="candidato.id">
-                        {{candidato.endereco.bairro.cidade.nome}}
+                <select class="form-control" data-ng-model="empresa.endereco.bairro.cidade" >
+                    <option value="" data-ng-selected="empresa.id">
+                        {{empresa.endereco.bairro.cidade.nome}}
                     </option>
                 </select>
             </div>
@@ -85,9 +85,9 @@
                 <label class="control-label">Bairro</label>
                 <a class="glyphicon glyphicon-refresh" data-ng-click="getBairro()"></a>
                 <a class="glyphicon glyphicon-plus" data-ng-click="openBairro('lg')"></a>
-                <select class="form-control" data-ng-model="candidato.endereco.bairro">
-                    <option value="" data-ng-selected="candidato.id">
-                        {{candidato.endereco.bairro.nome}}
+                <select class="form-control" data-ng-model="empresa.endereco.bairro">
+                    <option value="" data-ng-selected="empresa.id">
+                        {{empresa.endereco.bairro.nome}}
                     </option>
                 </select>
             </div>

@@ -14,17 +14,25 @@
             </div>
             <div class="col-xs-9 col-9 col-sm-9 col-lg-6">
                 <!-- data-ng-class="{'col-xs-9 col-9 col-sm-9 col-lg-6':candidato.id, 'col-xs-9 col-9 col-sm-9 col-lg-9':!candidato.id}" -->
-                <div class="col-xs-12 col-12 col-sm-12 col-lg-12">
-                    <label class="control-label">Nome Completo* </label>
+                <div class="col-xs-3 col-3 col-sm-3 col-lg-3">
+                    <label class="control-label">Código&nbsp</label>
+                    <div class="form-group">
+                        <div class="controls">
+                            <input disabled data-ng-model="candidato.id" type="text" placeholder="Identificação" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-9 col-9 col-sm-9 col-lg-9">
+                    <label class="control-label">Nome Completo <span class="obrigatorio">*</span> </label>
 								<span class="navbar-right">
 										<input 	type="radio" name="genero" ng-model="candidato.genero"
                                                   value="MASCULINO">
 														&nbsp<strong>Masculino</strong>
 										<input 	type="radio" name="genero" ng-model="candidato.genero"
                                                   value="FEMININO">
-														&nbsp<strong>Feminino*</strong>
+														&nbsp<strong>Feminino&nbsp<span class="obrigatorio">*</span></strong>
 								</span>
-                    <div class="form-group">
+                    <div ng-class="{'form-group ': candidato.nome, 'form-group has-error': !candidato.nome}">
                         <div class="controls">
                             <input data-ng-model="candidato.nome" type="text" placeholder="Insira o nome do candidato (a) ..." class="form-control">
                         </div>
@@ -32,7 +40,7 @@
                 </div>
                 <div class="col-xs-6 col-6 col-sm-6 col-lg-4">
                     <label class="control-label">Situação&nbsp</label>
-                    <div class="form-group has-success">
+                    <div class="form-group">
                         <div class="controls">
                             <select class="form-control" data-ng-model="candidato.situacao">
                                 <option value="DISPONIVEL">Disponível</option>
@@ -51,9 +59,8 @@
                         <a class="glyphicon glyphicon-refresh" data-ng-click="getPais()"></a>
                         <a class="glyphicon glyphicon-plus" data-ng-click="openPais('sm')"></a>
                         <div class="controls">
-                            <select class="form-control" data-ng-model="candidato.nacionalidade" >
-                                <option ng-show="candidato.nacionalidade.id" data-ng-selected="candidato.nacionalidade.id"> {{candidato.nacionalidade.nome}}</option>
-                                <option ng-repeat="pais in paises">{{pais.nome}}</option>
+                            <select class="form-control" data-ng-model="candidato.nacionalidade" data-ng-options="(pais.nome) for pais in paises">
+                                <option value="" disabled data-ng-selected="candidato.nacionalidade.id">{{candidato.nacionalidade.nome}}</option>
                             </select>
                         </div>
                     </div>
@@ -89,20 +96,27 @@
                 </div>
 
                 <div class="col-xs-6 col-6 col-sm-6 col-lg-6">
-                    <div class="form-group">
-                        <label class="control-label">Data de nascimento*</label>
+                        <label class="control-label">Data de nascimento&nbsp<span class="obrigatorio">*</span></label>
+                    <div ng-class="{'form-group': candidato.dataNasc, 'form-group has-error': !candidato.dataNasc}">
                         <div class="controls">
                             <input data-ng-model="candidato.dataNasc" type="date" placeholder="Insira a data de nascimento do candidato (a) ..." class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-2 col-2 col-sm-12 col-lg-6">
-                    <div class="form-group">
-                        <label class="control-label">&nbsp</label>
-                        <div class="controls">
-                            <a data-ng-class="{'btn btn-warning': candidato.necessidadesEspeciais.length>0, 'btn btn-default': candidato.necessidadesEspeciais.length==0}" data-ng-show="candidato.id"  type="button" data-ng-click="openNecessidadeEspecialDoCandidato()" title="Necessidades especiais" class="form-control">
-                                <span class="fa fa-wheelchair"></span>
-                            </a>
+                    <div class="form-group">{{pne}}
+                        <span class="navbar-left"><input type="checkbox" value="{{pne}}" name="pne" ng-model="pne"></span>
+                        <label class="control-label">&nbspNecessidades Especiais</label>
+                        <div ng-if="pne" class="controls">
+                            <select class="form-control" data-ng-model="candidato.necessidadeEspecial">
+                                <!--<option data-ng-show="candidato.necessidadeEspecial!=null&&candidato.necessidadeEspecial!=''"-->
+                                        <!--value="" disabled selected>{{candidato.necessidadeEspecial}}</option>-->
+                                <option value="AUDITIVA">Auditiva</option>
+                                <option value="VISUAL">Visual</option>
+                                <option value="FISICA">Física</option>
+                                <option value="MENTAL">Mental</option>
+                                <option value="OUTRO">Outro</option>
+                            </select>
                         </div>
                     </div>
                 </div>

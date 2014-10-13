@@ -5,12 +5,20 @@
     <li data-ng-class="{ active: isActive('/vagas')}"><a href="#/vagas">Vagas</a></li>
     <li data-ng-class="{ active: isActive('/encaminhamentos')}"><a href="#/encaminhamentos">Encaminhamentos</a></li>
     <li class="dropdown">
+       <a class="dropdown-toggle" >
+            <span >Relatórios</span><b class="caret"></b></a>
+        <ul class="dropdown-menu">
+           <li><a data-ng-click="openCurso('lg')" >Relatório 1</a></li>
+           <li><a data-ng-click="openCategoria('sm')" >Relatório 2</a></li>
+        </ul>
+    </li>
+    <li class="dropdown">
       <a class="dropdown-toggle" >
       <span >Outros</span><b class="caret"></b></a>
       <ul class="dropdown-menu">
         <li><a data-ng-click="openCurso('lg')" >Cursos</a></li>
         <li><a data-ng-click="openCategoria('sm')" >Categorias de Cursos</a></li>
-        <li><a data-ng-click="openNecessidadeEspecial()">Necessidades Especiais</a></li>
+        <!--<li><a data-ng-click="openNecessidadeEspecial()">Necessidades Especiais</a></li>-->
         <li><a data-ng-click="openCargo('lg')" >Cargos</a></li>
         <li><a data-ng-click="openBairro('lg')">Bairros</a></li>
         <li><a data-ng-click="openCidade()" >Cidades</a></li>

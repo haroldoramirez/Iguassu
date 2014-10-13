@@ -1,0 +1,18 @@
+<p class="navbar-right fixed">
+    <input type="checkbox" data-ng-model="isOpen" > Exibir somente um painel por vêz
+    <button class="btn btn-primary btn-sm"
+            type="button" onclick="window.print(); return false;"
+            title="Clique para Imprimir ou pressione as teclas 'Ctrl + P'">
+        <span class="glyphicon glyphicon-print"></span>
+    </button>
+    <button class="btn btn-default btn-sm"
+            data-ng-click="panel.open1 = false; panel.open2 = false; panel.open3 = false"
+            title="Clique para fechar todos os paineis">
+        <span class="glyphicon glyphicon-minus"></span>
+    </button>
+    <button class="btn btn-default btn-sm"
+            data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true"
+            title="Clique para abrir todos os paineis">
+        <span class="glyphicon glyphicon-plus"></span>
+    </button>
+</p>

@@ -57,7 +57,7 @@
         <th>Estado civil</th>
         <th>Endereço</th>
         <th>Situação</th>
-        <th></th>
+        <!--<th></th>-->
       </tr>
       <tr data-ng-repeat="candidato in candidatos">
         <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editCandidato(candidato)">{{candidato.nome}}</td>
@@ -66,10 +66,10 @@
         <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editCandidato(candidato)">{{candidato.estadoCivil}}</td>
         <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editCandidato(candidato)">{{candidato.endereco.bairro.nome}} / {{candidato.endereco.bairro.cidade.nome}} / {{candidato.endereco.bairro.cidade.estado.nome}} / {{candidato.endereco.bairro.cidade.estado.pais.nome}}</td>
         <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editCandidato(candidato)">{{candidato.situacao}}</td>
-        <td>
-          <span class="glyphicon glyphicon-print"></span>
-          <span data-ng-click="deleteCandidato(candidato.id)" class="glyphicon glyphicon-trash"></span>
-        </td>
+        <!--<td>-->
+          <!--<span class="glyphicon glyphicon-print"></span>-->
+          <!--<span data-ng-click="deleteCandidato(candidato.id)" class="glyphicon glyphicon-trash"></span>-->
+        <!--</td>-->
       </tr>
     </table>
 

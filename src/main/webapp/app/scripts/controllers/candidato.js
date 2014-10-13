@@ -5,12 +5,17 @@ angular.module('iguassuApp')
    
 
    $scope.candidato = {};
-   
+
+   $scope.pne = false;
+
    $scope.init = function(){
 
     if ($routeParams.id) {
       Candidato.get({id: $routeParams.id}, function(data){
         $scope.candidato = data;
+        if($scope.candidato.necessidadeEspecial){
+            $scope.pne = true;
+        }
         Candidato.getCursos({id: $routeParams.id}, function(data){
           $scope.cursosDoCandidato = data;
         });
@@ -25,6 +30,11 @@ angular.module('iguassuApp')
 
 
   $scope.save = function(){
+    console.log($scope.pne);
+    console.log($scope.candidato.necessidadeEspecial);
+    if(!$scope.pne||$scope.pne===false){
+       $scope.candidato.necessidadeEspecial = null;
+    }
     Candidato.save($scope.candidato, function(data){
       $scope.candidato = data;
     });
@@ -67,8 +77,8 @@ angular.module('iguassuApp')
   };
 
    //Aux
-   $scope.getPais = function(){
-    $scope.paises = Pais.getAll();
-   };
+  $scope.getPais = function(){
+     $scope.paises = Pais.getAll();
+  };
 
 });

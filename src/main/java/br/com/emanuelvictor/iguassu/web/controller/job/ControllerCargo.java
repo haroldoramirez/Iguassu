@@ -36,6 +36,11 @@ public class ControllerCargo {
 			return serviceCargo.find(nome, descricao);
 	}
 
+    @RequestMapping(value = "/cargos/{id}", method = RequestMethod.GET)
+    public @ResponseBody Object find(@PathVariable Long id) {
+        return  serviceCargo.find(id);
+    }
+
 	@RequestMapping(value = "/cargos/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody void delete(@PathVariable Long id) {
 				serviceCargo.delete(id);

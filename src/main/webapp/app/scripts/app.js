@@ -27,14 +27,23 @@ angular
      controller : 'CandidatoCtrl',
      templateUrl : './views/candidato/candidato.html'
    }).when('/empresas', {
+          controller : 'EmpresaCtrl',
+          templateUrl : './views/empresa/empresa.html'
+   }).when('/empresas/:id', {
      controller : 'EmpresaCtrl',
      templateUrl : './views/empresa/empresa.html'
    }).when('/vagas', {
+          controller : 'VagaCtrl',
+          templateUrl : './views/vaga/vaga.html'
+   }).when('/vagas/:id', {
      controller : 'VagaCtrl',
      templateUrl : './views/vaga/vaga.html'
    }).when('/encaminhamentos', {
      controller : 'EncaminhamentoCtrl',
      templateUrl : './views/encaminhamento/encaminhamento.html'
+   }).when('/encaminhamentos/:id', {
+          controller : 'EncaminhamentoCtrl',
+          templateUrl : './views/encaminhamento/encaminhamento.html'
    }).when('/login', {
      controller : '',
      templateUrl : './views/login.html'

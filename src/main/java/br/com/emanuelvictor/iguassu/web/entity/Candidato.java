@@ -57,7 +57,7 @@ public class Candidato extends Pessoa {
 	@Column(nullable = false)
 	private SituacaoDoCandidato situacao;
 
-    @ManyToOne(optional = true)
+    @ManyToOne(optional = true, cascade = CascadeType.REFRESH)
 	private Pais nacionalidade;
 
     public String getTelefoneResidencial() {

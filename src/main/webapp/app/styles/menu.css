@@ -43,6 +43,10 @@ footer {
     color: #6D6D6D;
 }
 
+.obrigatorio {
+    color: red;
+}
+
 .slide-animate-container {
 
   position:relative;

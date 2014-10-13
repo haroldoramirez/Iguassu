@@ -1,0 +1,37 @@
+<accordion-group is-open="panel.open1" >
+    <accordion-heading>
+        Dados da Empresa<i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open1, 'glyphicon-chevron-right': !panel.open1}"></i>
+    </accordion-heading>
+    <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-12">
+            <div data-ng-class="{'col-6 col-sm-8 col-lg-6': empresa.id, 'col-6 col-sm-6 col-lg-9': !empresa.id}">
+                <div class="form-group">
+                    <label class="control-label">Nome *</label>
+                    <div class="controls">
+                        <input data-ng-model="empresa.nome" type="text" placeholder="Insira o nome da empresa ..." class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-3" >
+                <div class="form-group">
+                    <label class="control-label">CNPJ</label>
+                    <div class="controls">
+                        <input data-ng-model="empresa.cnpj" type="text" placeholder="Insira o CNPJ da empresa ..." class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-lg-3" data-ng-show="empresa.id">
+                <label class="control-label">Contato</label>
+                <a class="glyphicon glyphicon-refresh" data-ng-click="getContato()"></a>
+                <a class="glyphicon glyphicon-plus" data-ng-click="openContato()"></a>
+                <div class="form-group">
+                    <div class="controls">
+                        <select class="form-control" data-ng-model="qualqeurcois" data-ng-options="(c.contactValue + ' ' +'/' +' ' + c.observacao) for c in contatos">
+                            <option value="" selected>Visualizar contatos</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</accordion-group>

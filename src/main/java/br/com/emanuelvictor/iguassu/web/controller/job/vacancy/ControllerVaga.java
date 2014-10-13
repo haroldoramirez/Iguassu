@@ -29,6 +29,11 @@ public class ControllerVaga {
 
 	}
 
+    @RequestMapping(value = "/vagas/{id}", method = RequestMethod.GET)
+    public @ResponseBody Object find(@PathVariable Long id) {
+       return serviceVaga.find(id);
+    }
+
 	@RequestMapping(value = "/vagas/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody void delete(@PathVariable Long id) {
         serviceVaga.delete(id);

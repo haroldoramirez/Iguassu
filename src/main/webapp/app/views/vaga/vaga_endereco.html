@@ -1,0 +1,56 @@
+<accordion-group is-open="panel.open2" >
+    <accordion-heading >
+        Endereço <i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open2, 'glyphicon-chevron-right': !panel.open2}"></i>
+    </accordion-heading>
+    <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-12">
+            <div class="col-6 col-sm-6 col-lg-2">
+                <div class="form-group">
+                    <label class="control-label">Rua</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="vaga.endereco.rua" placeholder="Insira o a rua da vaga ..." class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-lg-1">
+                <div class="form-group">
+                    <label class="control-label">Número</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="vaga.endereco.numero" placeholder="Insira o núemro da rua da vaga ..." class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-lg-2">
+                <div class="form-group">
+                    <label class="control-label">CEP</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="vaga.endereco.cep" placeholder="Insira o CEP da vaga ..." class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-lg-2">
+                <div class="form-group">
+                    <label class="control-label">Complemento</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="vaga.endereco.complemento" placeholder="Insira o complemento do endereço da vaga ..." class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-12 col-lg-5" >
+                <label class="control-label">Bairros</label>
+                <a class="glyphicon glyphicon-refresh" data-ng-click="getBairro()"></a>
+                <a class="glyphicon glyphicon-plus" data-ng-click="openBairro('lg')"></a>
+										<span class="navbar-right"> <!-- gambia -->
+											filtro:
+											<input type="radio" data-ng-model="address.selected" data-ng-value="choices[0]" name="selected">&nbspBairro
+											<input type="radio" data-ng-model="address.selected" data-ng-value="choices[1]" name="selected">&nbspCidade
+											<input type="radio" data-ng-model="address.selected" data-ng-value="choices[2]" name="selected">&nbspEstado
+											<input type="radio" data-ng-model="address.selected" data-ng-value="choices[3]" name="selected">&nbspPais
+									    </span>
+                <select class="form-control" data-ng-model="vaga.endereco.bairro" data-ng-options="(bairro.nome + ' ' +'/' +' ' + bairro.cidade.nome+ ' ' +'/' +' ' + bairro.cidade.estado.nome+ ' ' +'/' +' ' + bairro.cidade.estado.pais.nome) for bairro in bairros">
+                    <option value="" data-ng-selected="empresa.id">{{vaga.endereco.bairro.nome}} /{{vaga.endereco.bairro.cidade.nome}} / {{vaga.endereco.bairro.cidade.estado.nome}} / {{vaga.endereco.bairro.cidade.estado.pais.nome}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</accordion-group>
