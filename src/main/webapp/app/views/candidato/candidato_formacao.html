@@ -18,7 +18,7 @@
 
             <ul>
                 <li data-ng-repeat="cursoDoCandidato in cursosDoCandidato">
-                    <strong>{{cursoDoCandidato.curso.nome}}</strong>({{cursoDoCandidato.curso.categoria.nome}},
+                    <strong>{{cursoDoCandidato.curso.nome}}</strong>({{cursoDoCandidato.curso.categoriaCurso.nome}},
                     <span class="label label-success" data-ng-show="cursoDoCandidato.situacaoDoCurso=='concluido'">concluido</span>
                     <span class="label label-danger" data-ng-show="cursoDoCandidato.situacaoDoCurso=='trancado'">trancado</span>
                     <span class="label label-warning" data-ng-show="cursoDoCandidato.situacaoDoCurso=='cursando'">cursando</span>)

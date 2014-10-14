@@ -1,21 +1,15 @@
 'use strict';
 
 angular.module('iguassuApp')
-  .controller('CandidatoCtrl', function ($log, $modal, $scope, $routeParams, $location, Candidato, Pais, toastr) {
+  .controller('CandidatoCtrl', function ($log, $modal, $scope, $routeParams, $document, $location, Candidato, Pais, toastr) {
    
 
    $scope.candidato = {};
 
-   $scope.pne = false;
-
    $scope.init = function(){
-
     if ($routeParams.id) {
       Candidato.get({id: $routeParams.id}, function(data){
         $scope.candidato = data;
-        if($scope.candidato.necessidadeEspecial){
-            $scope.pne = true;
-        }
         Candidato.getCursos({id: $routeParams.id}, function(data){
           $scope.cursosDoCandidato = data;
         });
@@ -35,14 +29,12 @@ angular.module('iguassuApp')
     if($scope.candidato.id){
       msg = 'Atualizado com sucesso';
     }
-    if(!$scope.pne||$scope.pne===false){
-       $scope.candidato.necessidadeEspecial = null;
-    }
     Candidato.save($scope.candidato, function(data){
       $scope.candidato = data;
       $location.path('/candidatos/'+$scope.candidato.id);
       $scope.getCandidatos();
       toastr.success(msg,$scope.candidato.nome);
+      $document.scrollTopAnimated(0, 700);
     });
 
   };    
@@ -50,13 +42,16 @@ angular.module('iguassuApp')
 
   $scope.getCandidatos = function(){
     $scope.candidatos = Candidato.getAll();
+    //$document.scrollTopAnimated(0, 700); Fazer ir direto para a tebela
   };
 
   $scope.editCandidato = function(candidato){
+    $document.scrollTopAnimated(0, 700);
     $location.path('/candidatos/'+candidato.id);
   }
 
   $scope.limpar = function(){
+    $document.scrollTopAnimated(0, 700);
     $scope.candidato = {};
     $location.path('/candidatos');
   }

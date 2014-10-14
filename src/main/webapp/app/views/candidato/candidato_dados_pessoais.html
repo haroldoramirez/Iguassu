@@ -115,11 +115,14 @@
                     </div>
                 </div>
                 <div class="col-xs-2 col-2 col-sm-12 col-lg-6">
-                        <span class="navbar-left"><input type="checkbox" value="{{pne}}" name="pne" ng-model="pne"></span>
-                        <label class="control-label">&nbspNecessidades Especiais&nbsp&nbsp<strong ng-if="pne" class="obrigatorio">*</strong></label>
-                    <div ng-class="{'form-group ': pne&&candidato.necessidadeEspecial, 'form-group has-error': pne&&!candidato.necessidadeEspecial}">
-                        <div ng-if="pne" class="controls">
+                    <!--<span class="navbar-left"><input type="checkbox" name="pne" ng-model="pne"></span>-->
+                    <!--<label class="control-label">&nbspNecessidades Especiais&nbsp&nbsp<strong ng-if="pne" class="obrigatorio">*</strong></label>-->
+                    <label class="control-label">&nbspNecessidades Especiais&nbsp&nbsp</label>
+                    <!--<div ng-class="{'form-group ': pne&&candidato.necessidadeEspecial, 'form-group has-error': pne&&!candidato.necessidadeEspecial}">-->
+                    <div class="form-group">
+                        <div class="controls">
                             <select class="form-control" data-ng-model="candidato.necessidadeEspecial">
+                                <option value="">Nenhuma</option>
                                 <option value="AUDITIVA">Auditiva</option>
                                 <option value="VISUAL">Visual</option>
                                 <option value="FISICA">Física</option>
@@ -161,5 +164,4 @@
             </div>
         </div>
     </div>
-
 </accordion-group>
