@@ -67,7 +67,27 @@ angular.module('iguassuApp')
      $scope.paises = Pais.getAll();
   };
 
-  $scope.openExperiencia = function(size) {
+  $scope.openCursos = function(size) {
+    var modalInstance = $modal.open({
+      templateUrl : 'candidatoCurso.html',
+      controller : 'CandidatoCursoCtrl',
+      size : 'lg',
+      resolve : {
+        bundle : function() {
+          return {
+            candidato : $scope.candidato,
+            cursos : $scope.cursos
+          }
+        }
+      }
+    }).result.then(function(cursos) {
+      $scope.cursos = cursos;
+    }, function() {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+
+  $scope.openExperiencias = function(size) {
     var modalInstance = $modal.open({
       templateUrl : 'experiencia.html',
       controller : 'ExperienciaCtrl',

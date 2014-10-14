@@ -11,7 +11,7 @@
             <ul data-ng-show="experiencias.length<=0">
                 <li >
                     <strong>Adicionar experiências</strong>
-                    <a class="glyphicon glyphicon-plus" data-ng-click="openExperiencia()"></a>
+                    <a class="glyphicon glyphicon-plus" data-ng-click="openExperiencias()"></a>
                     <hr>
                 </li>
             </ul>
@@ -21,7 +21,7 @@
                     ({{experiencia.cargo.descricao}})
 							<span class="label label-warning"
                                   data-ng-show="!experiencia.dataTermino">atuando</span>)
-                    <a class="glyphicon glyphicon-plus" data-ng-click="openExperiencia()"></a>
+                    <a class="glyphicon glyphicon-plus" data-ng-click="openExperiencias()"></a>
                     <ul>
                         <li data-ng-show="experiencia.empresa">
                             <strong>{{experiencia.empresa.nome}}</strong>

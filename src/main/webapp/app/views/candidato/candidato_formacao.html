@@ -11,7 +11,7 @@
             <ul data-ng-show="cursosDoCandidato.length<=0">
                 <li >
                     <strong>Esse candidato não possui cursos</strong>
-                    <a class="glyphicon glyphicon-plus" data-ng-click="openCursoDoCandidato()"></a>
+                    <a class="glyphicon glyphicon-plus" data-ng-click="openCursos()"></a>
                     <hr>
                 </li>
             </ul>
@@ -22,7 +22,7 @@
                     <span class="label label-success" data-ng-show="cursoDoCandidato.situacaoDoCurso=='concluido'">concluido</span>
                     <span class="label label-danger" data-ng-show="cursoDoCandidato.situacaoDoCurso=='trancado'">trancado</span>
                     <span class="label label-warning" data-ng-show="cursoDoCandidato.situacaoDoCurso=='cursando'">cursando</span>)
-                    <a class="glyphicon glyphicon-plus" data-ng-click="openCursoDoCandidato()"></a>
+                    <a class="glyphicon glyphicon-plus" data-ng-click="openCursos()"></a>
                     <ul>
                         <li data-ng-show="cursoDoCandidato.instituicaoDeEnsino.nome">
                             <strong>Instituição de Ensino:&nbsp</strong>{{cursoDoCandidato.instituicaoDeEnsino.nome}}
