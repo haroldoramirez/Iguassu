@@ -1,17 +1,17 @@
-<accordion-group is-open="panel.open4">
+<accordion-group is-open="panel.open2">
 
     <accordion-heading>Formação
         <i 	class="pull-right glyphicon"
-              data-ng-class="{'glyphicon-chevron-down': panel.open4, 'glyphicon-chevron-right': !panel.open4}">
+              data-ng-class="{'glyphicon-chevron-down': panel.open2, 'glyphicon-chevron-right': !panel.open2}">
         </i>
     </accordion-heading>
 
     <div class="row row-offcanvas row-offcanvas-right">
         <div class="col-xs-12 col-sm-12">
             <ul data-ng-show="cursosDoCandidato.length<=0">
-                <li >
+                <li>
                     <strong>Esse candidato não possui cursos</strong>
-                    <a class="glyphicon glyphicon-plus" data-ng-click="openCursos()"></a>
+                    <a class="glyphicon glyphicon-plus" data-ng-click="openCursosDoCandidato()"></a>
                     <hr>
                 </li>
             </ul>
@@ -22,7 +22,7 @@
                     <span class="label label-success" data-ng-show="cursoDoCandidato.situacaoDoCurso=='concluido'">concluido</span>
                     <span class="label label-danger" data-ng-show="cursoDoCandidato.situacaoDoCurso=='trancado'">trancado</span>
                     <span class="label label-warning" data-ng-show="cursoDoCandidato.situacaoDoCurso=='cursando'">cursando</span>)
-                    <a class="glyphicon glyphicon-plus" data-ng-click="openCursos()"></a>
+                    <a class="glyphicon glyphicon-plus" data-ng-click="openCursosDoCandidato()"></a>
                     <ul>
                         <li data-ng-show="cursoDoCandidato.instituicaoDeEnsino.nome">
                             <strong>Instituição de Ensino:&nbsp</strong>{{cursoDoCandidato.instituicaoDeEnsino.nome}}

@@ -8,20 +8,20 @@
 
     <div class="row row-offcanvas row-offcanvas-right" >
         <div class="col-xs-12 col-sm-12">
-            <ul data-ng-show="experiencias.length<=0">
-                <li >
+            <ul data-ng-show="experienciasDoCandidato.length<=0">
+                <li>
                     <strong>Adicionar experiências</strong>
-                    <a class="glyphicon glyphicon-plus" data-ng-click="openExperiencias()"></a>
+                    <a class="glyphicon glyphicon-plus" data-ng-click="openExperienciasDoCandidato()"></a>
                     <hr>
                 </li>
             </ul>
             <ul>
-                <li data-ng-repeat="experiencia in experiencias">
+                <li data-ng-repeat="experiencia in experienciasDoCandidato">
                     <strong>{{experiencia.cargo.nome}}</strong>
-                    ({{experiencia.cargo.descricao}})
+                    ({{experiencia.cargo.descricao}},
 							<span class="label label-warning"
                                   data-ng-show="!experiencia.dataTermino">atuando</span>)
-                    <a class="glyphicon glyphicon-plus" data-ng-click="openExperiencias()"></a>
+                    <a class="glyphicon glyphicon-plus" data-ng-click="openExperienciasDoCandidato()"></a>
                     <ul>
                         <li data-ng-show="experiencia.empresa">
                             <strong>{{experiencia.empresa.nome}}</strong>
@@ -29,11 +29,11 @@
                         </li>
                         <li data-ng-show="experiencia.atividades">
                             <strong>Atividades Desenvolvidas:&nbsp</strong>
-                            {{experiencia.atividades}}Lidar com todo o parque de tecnologia da informação
+                            {{experiencia.atividades}}
                         </li>
                         <li data-ng-show="experiencia.observacoes">
                             <strong>Observações:&nbsp</strong>
-                            {{experiencia.observacoes}}Com carta de recomendação
+                            {{experiencia.observacoes}}
                         </li>
                     </ul>
                     <p>

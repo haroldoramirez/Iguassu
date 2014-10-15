@@ -13,6 +13,9 @@ angular.module('iguassuApp')
       return $resource(BaseUrl + '/candidatos/:id', {}, {
         getAll: {method: 'GET', url: BaseUrl + '/candidatos/', isArray: true},
         getCursos: {method: 'GET', url: BaseUrl + '/candidatos/:id' + '/cursos', isArray: true},
-        getExperiencias: {method: 'GET', url: BaseUrl + '/candidatos/:id' + '/experiencias', isArray: true}
+        saveCurso: {method: 'POST', url: BaseUrl + '/candidatos/cursos', isArray: false},
+        getExperiencias: {method: 'GET', url: BaseUrl + '/candidatos/:id' + '/experiencias', isArray: true},
+        saveExperiencia: {method: 'POST', url: BaseUrl + '/candidatos/experiencias', isArray: false},
+        deleteExperiencia: {method: 'DELETE', url: BaseUrl + '/candidatos/experiencias/:id'}
       });
     }]);

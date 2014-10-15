@@ -45,6 +45,7 @@ public class ControllerCandidato {
         return serviceCandidato.find();
     }
 
+//    ---- experiencias
 
     @RequestMapping(value = "/candidatos/experiencias", method = RequestMethod.POST)
     public
@@ -66,6 +67,8 @@ public class ControllerCandidato {
     void deleteExperiencia(@PathVariable Long id) {
         serviceCandidato.deleteExperiencia(id);
     }
+
+    //    ---- curso
 
     @RequestMapping(value = "/candidatos/cursos", method = RequestMethod.POST)
     public
