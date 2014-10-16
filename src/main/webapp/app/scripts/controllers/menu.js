@@ -8,29 +8,23 @@
  * Controller of the iguassuApp
  */
 angular.module('iguassuApp')
-  .controller('MenuCtrl', function ($rootScope, $scope, $http, $modal, $log, $location, $routeParams, BaseUrl, Empresa, Cargo, Pais, Candidato) {
+  .controller('MenuCtrl', function ($rootScope, $location) {
 
-  $rootScope.candidato = {};
-
-  $rootScope.getCandidatos = function(){
-      $rootScope.candidatos = Candidato.getAll();
-  };
-
-  $rootScope.getPaises = function(){
-     $rootScope.paises = Pais.getAll();
-  };
-
-  $rootScope.getEmpresas = function(){
-    $rootScope.empresas = Empresa.getAll();
-  };
-
-  $rootScope.getCargos = function(){
-    $rootScope.cargos = Cargo.getAll();
-  };
-
-  $scope.isActive = function(viewLocation) {
+  $rootScope.isActive = function(viewLocation) {
     return viewLocation === $location.path();
   };
 
+  $rootScope.isCollapsed = false;
+
+ $rootScope.isOpen = false;
+
+ $rootScope.panel = {
+   open1 : null,
+   open2 : null,
+   open3 : null,
+   open4 : null,
+   open5 : null,
+   open6 : null
+ };
 
 });

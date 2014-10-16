@@ -20,7 +20,7 @@ angular
     'toastr',
     'duScroll',
     'ui.bootstrap'
- ]).config(function($routeProvider) {
+ ]).config(function($routeProvider,toastrConfig) {
    $routeProvider
      .when('/candidatos', {
      controller : 'CandidatoCtrl',
@@ -58,6 +58,25 @@ angular
    }).otherwise({
      redirectTo : '/'
    });
+ angular.extend(toastrConfig, {
+  allowHtml: true,
+  closeButton: true,
+  closeHtml: '<button>&times;</button>',
+  containerId: 'toast-container',
+  extendedTimeOut: 5000,
+  iconClasses: {
+    error: 'toast-error',
+    info: 'toast-info',
+    success: 'toast-success',
+    warning: 'toast-warning'
+  },
+  messageClass: 'toast-message',
+  positionClass: 'toast-top-right',
+  tapToDismiss: true,
+  timeOut: 5000,
+  titleClass: 'toast-title',
+  toastClass: 'toast'
+});
  })/*.config(function($httpProvider){
 
      var interceptor = function ($rootScope, $q, $location) {
@@ -108,17 +127,83 @@ angular
            };
        };
        $httpProvider.responseInterceptors.push(interceptor);
- })*/.run(function($rootScope){
-   $rootScope.isCollapsed = false;
+ })*/
 
-   $rootScope.isOpen = false;
+.run(function($rootScope, $modal, Empresa, Cargo, Curso, CategoriasCursos, Pais, Candidato){
 
-   $rootScope.panel = {
-     open1 : null,
-     open2 : null,
-     open3 : null,
-     open4 : null,
-     open5 : null,
-     open6 : null
-   }
+  $rootScope.candidato = {};
+
+  $rootScope.getCandidatos = function(){
+      $rootScope.candidatos = Candidato.getAll();
+  };
+
+  $rootScope.getPaises = function(){
+     $rootScope.paises = Pais.getAll();
+  };
+
+  $rootScope.getEmpresas = function(){
+    $rootScope.empresas = Empresa.getAll();
+  };
+
+  $rootScope.getCargos = function(){
+    $rootScope.cargos = Cargo.getAll();
+  };
+
+  $rootScope.getCursos = function(){
+    $rootScope.cursos = Curso.getAll();
+  };
+
+  $rootScope.getCategoriasDeCursos = function(){
+    $rootScope.categoriasDeCursos = CategoriasCursos.getAll();
+  };
+
+
+  $rootScope.openCargos = function() {
+    if (!$rootScope.cargos) {
+      $rootScope.getCargos();
+    };
+    $modal.open({
+      templateUrl : 'cargos.html',
+      controller : 'CargoCtrl',
+      size : 'md'
+    }).result.then(function() {
+      $rootScope.getCargos();  
+    }, function(){
+      $rootScope.getCargos();
+    });
+  };
+
+  $rootScope.openCursos = function() {
+    if (!$rootScope.cursos) {
+      $rootScope.getCursos();
+    };
+    if (!$rootScope.categoriasDeCursos) {
+      $rootScope.getCategoriasCursos();
+    };
+    $modal.open({
+      templateUrl : 'cursos.html',
+      controller : 'CursoCtrl',
+      size : 'md'
+    }).result.then(function() {
+      $rootScope.getCursos();  
+    }, function(){
+      $rootScope.getCursos();
+    });
+  };
+
+  $rootScope.openCategoriasCursos = function() {
+    if (!$rootScope.categoriasDeCursos) {
+      $rootScope.getCategoriasDeCursos();
+    };
+    $modal.open({
+      templateUrl : 'categoriasDeCursos.html',
+      controller : 'CategoriaCursoCtrl',
+      size : 'md'
+    }).result.then(function() {
+      $rootScope.getCategoriasDeCursos();  
+    }, function(){
+      $rootScope.getCategoriasDeCursos();
+    });
+  };
+   
  });

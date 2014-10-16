@@ -12,5 +12,5 @@ angular.module('iguassuApp')
   function($resource, BaseUrl){
    return $resource(BaseUrl + '/cargos/:id', {}, {
      getAll: {method: 'GET', url: BaseUrl + '/cargos/', isArray: true}
-     });
+	});
   }]);

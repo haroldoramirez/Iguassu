@@ -1,623 +1,390 @@
-<script type="text/ng-template" id="necessidadeEspecialDoCandidato.html">
-    				<div class="modal-header">
-						<button type="button" class="close" data-ng-click="cancel()" data-dismiss="modal">&times;</button>
-            			<h4 class="modal-title">Necessidades especiais do candidato</h4>
-        			</div>
-       				<div class="modal-body">
-						<div class="col-12 col-sm-12 col-lg-12">
-							<div class="form-group">
-								<label class="control-label">Necessidade Especial</label>
-									<a class="glyphicon glyphicon-refresh" data-ng-click="getNecessidadeEspecial()"></a>	
-									<a class="glyphicon glyphicon-plus" data-ng-click="openNecessidadeEspecial()"></a>
-								<select class="form-control" data-ng-model="newNecessidadeEspecial" data-ng-options="(novaNecessidadeEspecial.nome) for novaNecessidadeEspecial in todasNecessidadesEspeciais">
-									<option value="" data-ng-show="false">Escolha uma necessidade especial ...</option>
-    							</select>
-							</div>
-						</div>
-					<div class="btn-group btn-group-justified">
-						<div class="btn-group">
-							<button type="button" class="btn btn-primary" data-ng-disabled="newNecessidadeEspecial==null" data-ng-click="postCandidato(newNecessidadeEspecial)">Adicionar e Salvar</button>
-						</div>
-					</div>
-						<br/>
+<script type="text/ng-template" id="experienciasDoCandidato.html">
+  <div class="modal-header">
+    <button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
+    <h4 ng-if="experiencia.id" class="modal-title">Atualizar experiência</h4>
+    <h4 ng-if="!experiencia.id" class="modal-title">Adicionar experiência</h4>
+  </div>
 
-					<div ng-show="msg.msg" class="alert alert-{{msg.type}} alert-dismissable">
-  						<button type="button" class="close"  ng-click="closeAlert()">&times;</button>
-  						<strong>{{msg.candidato.nome}}</strong> {{msg.msg}}		
-					</div>
-					
-					<div class="row">
-						<div class="col-12 col-sm-12 col-lg-12">
-							<table class="table table-hover">
-								<tr>
-									<td ><strong>Nome</strong></td>
-									<td ><strong>Descrição</strong></td>
-									<td>
-									</td>
-								</tr>
-								<tr data-ng-repeat="necessidadeEspecial in candidato.necessidadesEspeciais">
-									<td>{{necessidadeEspecial.nome}}</td>
-									<td>{{necessidadeEspecial.descricao}}</td>
-									<td>
-										<a data-ng-click="deleteNecessidadeEspecialDoCandidato($index)"> 
-										<span class="glyphicon glyphicon-trash"></span>
-										</a>
-									</td>
-								</tr>
-							</table>
-						</div>
-        			</div>
-				</div>
-    </script>
-		
-	<script type="text/ng-template" id="necessidadeEspecial.html">
-    				<div class="modal-header">
-						<button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
-            			<h4 class="modal-title">Necessidades Especiais</h4>
-        			</div>
-       			<div class="modal-body">
-					<div class="row">
-						<div class="col-6 col-sm-6 col-lg-6">
-							<div class="form-group">
-								<label class="control-label">Nome *</label>
-								<div class="controls">
-									<input type="text" class="form-control" placeholder="Insira o nome da necessidade especial ..." type="text" data-ng-model="necessidadeEspecial.nome">
-								</div>
-							</div>
-						</div>
-						<div class="col-6 col-sm-6 col-lg-6">
-							<div class="form-group">
-								<label class="control-label">Descrição</label>
-								<div class="controls">
-									<input type="text" class="form-control" placeholder="Insira a descrição da necessidade especial ..." type="text" data-ng-model="necessidadeEspecial.descricao">
-								</div>
-							</div>
-						</div>
+  <div class="modal-body">
+  	<form name="experienciaForm" ng-submit="save()" role="form">
+			<div class="form-group">
+	      <label class="control-label">Cargo<strong class="obrigatorio"> *</strong></label>
+        <div class="pull-right">
+          <a class="glyphicon glyphicon-plus" data-ng-click="openCargos('lg')"></a>
+        </div>
+	      <div ng-class="{'has-error': !experiencia.cargo.id}">
+	        <select class="form-control" data-ng-model="experiencia.cargo" data-ng-options="(cargo.nome) for cargo in cargos">
+	          <option value=""  data-ng-selected="experiencia.cargo.id">{{experiencia.cargo.nome}}</option>
+	        </select>
+	      </div>
+	    </div>
+	    <div class="form-group">
+        <label class="control-label">Empresa</label>
+        <div class="pull-right">
+          <a class="glyphicon glyphicon-plus" data-ng-click="close()" href="#/empresas"></a>
+        </div>
+        <select class="form-control" data-ng-model="experiencia.empresa" data-ng-options="(empresa.nome) for empresa in empresas">
+            <option value=""  data-ng-selected="experiencia.empresa.id">{{experiencia.empresa.nome}}</option>
+        </select>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label">Vínculo</label>
+	      <select class="form-control" data-ng-model="experiencia.vinculoEmpregaticio">
+	        <option value="Empregado">Empregado</option>
+	        <option value="Estagiário">Estágiário</option>
+	        <option value="Bolsista">Bolsista</option>
+	        <option value="Voluntário">Voluntário</option>
+	        <option value="Empresário">Empresário</option>
+	        <option value="Autônomo">Autônomo</option>
+	        <option value="">Outro ...</option>
+	      </select>
+	    </div>
+	    <div class="form-group">
+	    	<label class="control-label">Data de Início<strong class="obrigatorio"> *</strong></label>
+	      <div class="controls">
+	        <div class="input-group" ng-class="{'has-error': !experiencia.dataInicio}">
+	          <input  type="text" placeholder="Data de início ..." max-date="experiencia.dataTermino||today"
+	                  class="form-control" datepicker-popup="dd/MM/yyyy"
+	                  ng-model="experiencia.dataInicio" is-open="openedDataInicio"
+	                  show-button-bar="false" ng-required="true"/>
+	          <div class="input-group-btn">
+	            <button type="button" class="btn btn-default" ng-click="openDatePickerDataInicio($event)">
+                <i class="glyphicon glyphicon-calendar"></i>
+	            </button>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="form-group">
+	    	<label class="control-label">Data de Término</label>
+	      <div class="controls">
+	        <div class="input-group">
+	          <input  ng-disabled="!experiencia.dataInicio" min-date="experiencia.dataInicio" max-date="today"
+	                  placeholder="Data de término ..." class="form-control" datepicker-popup="dd/MM/yyyy"
+	                  ng-model="experiencia.dataTermino" is-open="openedDataTermino" type="text"
+	                  show-button-bar="false" ng-required="false"/>
+	          <div class="input-group-btn">
+	            <button type="button" class="btn btn-default" ng-click="openDatePickerDataTermino($event)">
+                <i class="glyphicon glyphicon-calendar"></i>
+	            </button>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+      <div class="form-group">
+        <label class="control-label">Atividades Desenvolvidas</label>
+        <div class="controls">
+          <textarea data-ng-model="experiencia.atividades"
+                    placeholder="Insira as atividades desenvolvidas ..."
+                    class="form-control" rows="4">
+          </textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Observações</label>
+        <div class="controls">
+            <input data-ng-model="experiencia.observacoes"
+                   placeholder="Insira observações da experiência ..."
+                   class="form-control" >
+        </div>
+      </div>
+      <div class="btn-toolbar">
+      	<a href="" class="btn btn-danger" ng-if="experiencia.id" ng-click="delete()"><span class="glyphicon glyphicon-trash"></span> Remover</a>
+	      <div class="pull-right">
+	      	<button class="btn btn-default" ng-click="close()" type="button">Cancelar</button>
+          <button class="btn btn-primary" data-ng-disabled="!experiencia.cargo.nome||!experiencia.dataInicio" type="submit">Salvar informações</button>
+	      </div>
+      </div>
+    </form>
+  </div>
+    
+</script>
+ 
+<script type="text/ng-template" id="cargos.html">
+	<div class="modal-header">
+		<button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Cargos</h4>
+	</div>
+	
+	<div class="modal-body">
 
-					<div class="col-12 col-sm-12 col-lg-12">
-						<div class="btn-group btn-group-justified">
-							<div class="btn-group">
-								<button type="button" class="btn btn-default" data-ng-click="getNecessidadeEspecial()">Consultar</button>
-							</div>
-							<div class="btn-group">
-								<button type="button" class="btn btn-primary" data-ng-disabled="!necessidadeEspecial.nome" data-ng-click="postNecessidadeEspecial()">Salvar</button>
-							</div>
-							<div class="btn-group">
-								<button type="button" class="btn btn-default" data-ng-click="limpar()">Limpar</button>
-							</div>
-						</div>
-						<br/>
-					</div>
-					
-					<div class="col-12 col-sm-12 col-lg-12">
-						<div ng-show="msg.msg" class="alert alert-{{msg.type}} alert-dismissable">
-  							<button type="button" class="close"  ng-click="closeAlert()">&times;</button>
-  							<strong>{{msg.necessidadeEspecial.nome}}</strong> {{msg.msg}}		
-						</div>
-					</div>
-					
-					
-					<div class="col-12 col-sm-12 col-lg-12">
-							<table class="table table-hover">
-								<tr>
-									<td>Nome</td>
-									<td>Descrição</td>
-									<td></td>
-								</tr>
-								<tr ng-click="editNecessidadeEspecial(necessidadeEspecial)" ng-repeat="necessidadeEspecial in necessidadesEspeciais">
-									<td>{{necessidadeEspecial.nome}}</td>
-									<td>{{necessidadeEspecial.descricao}}</td>
-									<td>
-										<a > 
-											<span data-ng-click="deleteNecessidadeEspecial(necessidadeEspecial.id)" class="glyphicon glyphicon-trash"></span>
-										</a>
-									</td>
-								</tr>
-							</table>
-        			</div>
+		<div class="form-group">
+			<label class="control-label">Cargo <span class="obrigatorio">*</span></label>
+			<div class="controls">
+				<div ng-class="{'has-error': !cargo.nome}">
+					<input type="text" class="form-control" placeholder="Insira o nome do cargo ..." type="text" data-ng-model="cargo.nome">
 				</div>
 			</div>
-    </script>
+		</div>
 	
-	<script type="text/ng-template" id="experienciasDoCandidato.html">
-        <div class="modal-header">
-            <button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
-            <h4 ng-if="experiencia.id" class="modal-title">Atualizar experiencia</h4>
-            <h4 ng-if="!experiencia.id" class="modal-title">Adicionar experiencia</h4>
-        </div>
+		<div class="form-group">
+			<label class="control-label">Descrição</label>
+			<div class="controls">
+				<input type="text" class="form-control" placeholder="Insira a descrição do cargo ..." type="text" data-ng-model="cargo.descricao">
+			</div>
+		</div>
 
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-lg-2">
-                    <label class="control-label">Cargo<strong class="obrigatorio"> *</strong></label>
-                        <span class="navbar-right">
-                            <a class="glyphicon glyphicon-refresh" data-ng-click="getCargos()"></a>
-                            <a class="glyphicon glyphicon-plus" data-ng-click="openCargos('lg')"></a>
-                        </span>
-                    <div ng-class="{'form-group ': experiencia.cargo.id, 'form-group has-error': !experiencia.cargo.id}">
-                        <select class="form-control" data-ng-model="experiencia.cargo" data-ng-options="(cargo.nome) for cargo in cargos">
-                            <option value=""  data-ng-selected="experiencia.cargo.id">{{experiencia.cargo.nome}}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-lg-2">
-                    <div class="form-group">
-                        <label class="control-label">Empresa</label>
-                            <span class="navbar-right">
-                                <a class="glyphicon glyphicon-refresh" data-ng-click="getEmpresas()"></a>
-                                <a class="glyphicon glyphicon-plus" data-ng-click="close()" href="#/empresas"></a>
-                            </span>
-                        <select class="form-control" data-ng-model="experiencia.empresa" data-ng-options="(empresa.nome) for empresa in empresas">
-                            <option value=""  data-ng-selected="experiencia.empresa.id">{{experiencia.empresa.nome}}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-lg-2">
-                    <div class="form-group">
-                        <label class="control-label">Vínculo</label>
-                        <select class="form-control" data-ng-model="experiencia.vinculoEmpregaticio">
-                            <option data-ng-show="experiencia.vinculoEmpregaticio!=null&&experiencia.vinculoEmpregaticio!=''"
-                                    value="" disabled selected>{{experiencia.vinculoEmpregaticio}}</option>
-                            <option value="Funcionário">Funcionário</option>
-                            <option value="Estágio">Estágio</option>
-                            <option value="Bolsista">Bolsista</option>
-                            <option value="Voluntário">Voluntário</option>
-                            <option value="">Outro ...</option>
-                            <!--<option value=""  data-ng-selected="experiencia.empresa.id">{{experiencia.empresa.nome}}</option>-->
-                        </select>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-lg-3">
-                    <label class="control-label">Data de Início<strong class="obrigatorio"> *</strong></label>
-                    <div ng-class="{'form-group ': experiencia.dataInicio, 'form-group has-error': !experiencia.dataInicio}">
-                        <div class="controls">
-                            <p class="input-group">
-                                <input  type="text" placeholder="Data de início ..." max-date="experiencia.dataTermino||today"
-                                        class="form-control" datepicker-popup="dd/MM/yyyy"
-                                        ng-model="experiencia.dataInicio" is-open="openedDataInicio"
-                                        show-button-bar="false" ng-required="true"/>
-                                <span class="input-group-btn">
-                                  <button type="button" class="btn btn-default" ng-click="openDatePickerDataInicio($event)">
-                                      <i class="glyphicon glyphicon-calendar"></i>
-                                  </button>
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-lg-3">
-                    <label class="control-label">Data de Término</label>
-                    <div class="form-group">
-                        <div class="controls">
-                            <p class="input-group">
-                                <input  ng-disabled="!experiencia.dataInicio" min-date="experiencia.dataInicio" max-date="today"
-                                        placeholder="Data de término ..." class="form-control" datepicker-popup="dd/MM/yyyy"
-                                        ng-model="experiencia.dataTermino" is-open="openedDataTermino" type="text"
-                                        show-button-bar="false" ng-required="true"/>
-                                <span class="input-group-btn">
-                                  <button type="button" class="btn btn-default" ng-click="openDatePickerDataTermino($event)">
-                                      <i class="glyphicon glyphicon-calendar"></i>
-                                  </button>
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-lg-12">
-                    <div class="form-group">
-                            <label class="control-label">Atividades Desenvolvidas</label>
-                        <div class="controls">
-                            <textarea data-ng-model="experiencia.atividades"
-                                      placeholder="Insira as atividades desenvolvidas ..."
-                                      class="form-control" rows="4">
-                            </textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-lg-12">
-                    <div class="form-group">
-                            <label class="control-label">Observações</label>
-                        <div class="controls">
-                            <input data-ng-model="experiencia.observacoes"
-                                   placeholder="Insira observações do candidato ..."
-                                   class="form-control" >
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-lg-12">
-                    <div class="pull-right">
-                        <a href="" class="btn btn-warning" ng-if="experiencia.id" ng-click="delete()"><span class="glyphicon glyphicon-trash"></span>Remover Experiência</a>
-                        <a href="" class="btn btn-primary" ng-if="experiencia.id"  data-ng-disabled="!experiencia.cargo.nome||!experiencia.dataInicio" data-ng-click="save()"><span class="glyphicon glyphicon-pencil"></span>Atualizar Experiência</a>
-                        <a href="" class="btn btn-primary" ng-if="!experiencia.id"  data-ng-disabled="!experiencia.cargo.nome||!experiencia.dataInicio" data-ng-click="save()"><span class="glyphicon glyphicon-plus"></span>Adicionar Experiência</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </script>
- 
- 	<script type="text/ng-template" id="cargo.html">
-    				<div class="modal-header">
-						<button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
-            			<h4 class="modal-title">Cargos</h4>
-        			</div>
-       				<div class="modal-body">
-					<div class="row">
-						<div class="col-6 col-sm-6 col-lg-6">
-							<div class="form-group">
-								<label class="control-label">Cargo *</label>
-								<div class="controls">
-									<input type="text" class="form-control" placeholder="Insira o nome do cargo ..." type="text" data-ng-model="cargo.nome">
-								</div>
-							</div>
-						</div>
-						<div class="col-6 col-sm-6 col-lg-6">
-							<div class="form-group">
-								<label class="control-label">Descrição</label>
-								<div class="controls">
-									<input type="text" class="form-control" placeholder="Insira a descrição do cargo ..." type="text" data-ng-model="cargo.descricao">
-								</div>
-							</div>
-						</div>
+		<div class="btn-group btn-group-justified">
+			<div class="btn-group">
+				<button type="button" class="btn btn-default" data-ng-click="getCargos()">Consultar</button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary" data-ng-disabled="!cargo.nome" data-ng-click="save()">Salvar</button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default" data-ng-click="clear()">Limpar</button>
+			</div>
+		</div>
+		
+		<br>
 
-					<div class="col-12 col-sm-12 col-lg-12">
-						<div class="btn-group btn-group-justified">
-							<div class="btn-group">
-								<button type="button" class="btn btn-default" data-ng-click="getCargo()">Consultar</button>
-							</div>
-							<div class="btn-group">
-								<button type="button" class="btn btn-primary" data-ng-disabled="!cargo.nome" data-ng-click="postCargo()">Salvar</button>
-							</div>
-							<div class="btn-group">
-								<button type="button" class="btn btn-default" data-ng-click="limpar()">Limpar</button>
-							</div>
-						</div>
-							<br/>					
-					</div>
-					
-					<div class="col-12 col-sm-12 col-lg-12">
-						<div ng-show="msg.msg" class="alert alert-{{msg.type}} alert-dismissable">
-  							<button type="button" class="close"  ng-click="closeAlert()">&times;</button>
-  							<strong>{{msg.cargo.nome}}</strong> {{msg.msg}}		
-						</div>
-					</div>
-					
-						<div class="col-12 col-sm-12 col-lg-12">
-							<table class="table table-hover">
-								<tr>
-									<td>Cargo</td>
-									<td>Descrição</td>
-									<td></td>
-								</tr>
-								<tr ng-click="editCargo(cargo)" ng-repeat="cargo in cargos">
-									<td>{{cargo.nome}}</td>
-									<td>{{cargo.descricao}}</td>
-									<td>
-										<a > 
-											<span data-ng-click="deleteCargo(cargo.id)" class="glyphicon glyphicon-trash"></span>
-										</a>
-									</td>
-								</tr>
-							</table>
-						</div>
-        			</div>
-				</div>
-    </script>
+		<table class="table table-hover">
+			<tr>
+				<td><strong>Cargo</strong></td>
+				<td><strong>Descrição</strong></td>
+			</tr>
+			<tr ng-click="edit(cargo)" ng-repeat="cargo in cargos">
+				<td>{{cargo.nome}}</td>
+				<td>{{cargo.descricao}}</td>
+			</tr>
+		</table>
+	</div>
+</script>
     
-    <script type="text/ng-template" id="candidatoCurso.html">
-    				<div class="modal-header">
-						<button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
-            			<h4 class="modal-title">Cursos do Candidato</h4>
-        			</div>
-				
-       			<div class="modal-body">
-					<div class="row">
-						<div class="col-12 col-sm-6 col-lg-6">
-							<div class="form-group">
-								<label class="control-label">Cursos</label>
-									<a class="glyphicon glyphicon-refresh" data-ng-click="getCurso()"></a>	
-									<a class="glyphicon glyphicon-plus" data-ng-click="openCurso('lg')"></a>
-									<span class="navbar-right">
-										<input type="radio" data-ng-model="cursoDoCandidato.situacaoDoCurso" data-ng-value="'concluido'" name="selected">&nbspConcluido
-										<input type="radio" data-ng-model="cursoDoCandidato.situacaoDoCurso" data-ng-value="'cursando'" name="selected">&nbspCursando
-										<input type="radio" data-ng-model="cursoDoCandidato.situacaoDoCurso" data-ng-value="'trancado'" name="selected">&nbspTrancado
-									</span>	
-								<select class="form-control" data-ng-model="cursoDoCandidato.curso" data-ng-options="(curso.nome+'/'+curso.categoria.nome) for curso in cursos">
-									<option value="" data-ng-selected="cursoDoCandidato.id">*{{cursoDoCandidato.curso.nome}}</option>
-    							</select>
-							</div>
-						</div>
-						<div class="col-12 col-sm-6 col-lg-6">
-							<div class="form-group">
-								<label class="control-label">Instituição de Ensino</label>
-									<a class="glyphicon glyphicon-refresh" data-ng-click="getEmpresa()"></a>	
-									<a class="glyphicon glyphicon-plus" data-ng-click="close()" href="#/empresas"></a>
-								<select class="form-control" data-ng-model="cursoDoCandidato.instituicaoDeEnsino" data-ng-options="(instituicaoDeEnsino.nome) for instituicaoDeEnsino in instituicoesDeEnsino">
-									<option value="" data-ng-selected="cursoDoCandidato.id">*{{cursoDoCandidato.instituicaoDeEnsino.nome}}</option>
-    							</select>
-							</div>
-						</div>
-						<div class="col-12 col-sm-12 col-lg-6" >
-							<div class="form-group">
-								<label class="control-label">Períodos Concluidos</label>
-									<input data-ng-show="cursoDoCandidato.situacaoDoCurso=='concluido'" data-ng-model="cursoDoCandidato.quantidadeDePeriodos" type="number" placeholder="Insira os períodos concluidos ..." class="form-control" disabled>
-									<input data-ng-show="cursoDoCandidato.situacaoDoCurso!='concluido'" data-ng-model="cursoDoCandidato.periodosConcluidos" type="number" placeholder="Insira os períodos concluidos ..." class="form-control">
-							</div>
-						</div>
-						<div class="col-12 col-sm-12 col-lg-4">
-							<div class="form-group">
-								<label class="control-label">Quantidade total de Períodos</label>
-								<div class="controls">
-									<input data-ng-model="cursoDoCandidato.quantidadeDePeriodos" type="number" placeholder="Insira a quantidade total de períodos ..." class="form-control">
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-12 col-lg-2">
-							<div class="form-group">
-								<label class="control-label">Regime</label>
-								<div class="controls">
-									<select class="form-control" data-ng-model="cursoDoCandidato.regime" >
-										<option data-ng-value="cursoDoCandidato.regime" data-ng-show="cursoDoCandidato.regime" selected>{{cursoDoCandidato.regime}}</option>										
-										<option data-ng-value="Anual">Diário</option>
-										<option data-ng-value="Anual">Semanal</option>
-										<option data-ng-value="Anual">Mensal</option>
-										<option data-ng-value="Anual">Bimestral</option>
-										<option data-ng-value="Anual">Trimestral</option>
-										<option data-ng-value="Anual">Semestral</option>
-										<option data-ng-value="Anual">Anual</option>
-										<option data-ng-value="Modular">Modular</option>
-										<option data-ng-value="Modular">Periódico</option>
-    								</select>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-12 col-lg-12">
-							<div class="form-group">
-									<label class="control-label">Informações Complementares</label>
-								<div class="controls">
-									<textarea data-ng-model="cursoDoCandidato.outrasInformacoes" placeholder="Insira informações complementares ..." class="form-control" rows="4"></textarea>
-								</div>
-							</div>
-						</div>
-						
-						
-					<div class="col-12 col-sm-12 col-lg-12">
-						<div class="btn-group btn-group-justified">
-							<div class="btn-group">
-								<button type="button" class="btn btn-default" data-ng-click="getCursoDoCandidato()">Consultar</button>
-							</div>
-							<div class="btn-group">
-								<button type="button" class="btn btn-primary" data-ng-disabled="!cursoDoCandidato.curso.nome||(!cursoDoCandidato.periodosConcluidos&&cursoDoCandidato.situacaoDoCurso!='concluido')||!cursoDoCandidato.situacaoDoCurso||!cursoDoCandidato.regime||!cursoDoCandidato.quantidadeDePeriodos" data-ng-click="postCursoDoCandidato()">Salvar</button>
-							</div>
-							<div class="btn-group">
-								<button type="button" class="btn btn-default" data-ng-click="limpar()">Limpar</button>
-							</div>
-						</div>
+<script type="text/ng-template" id="cursosDoCandidato.html">
+				<div class="modal-header">
+				<button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
+        			<h4 class="modal-title">Cursos do Candidato</h4>
+    			</div>
+		
+   			<div class="modal-body">
+			<div class="row">
+				<div class="col-12 col-sm-6 col-lg-6">
+					<div class="form-group">
+						<label class="control-label">Cursos</label>
+							<a class="glyphicon glyphicon-refresh" data-ng-click="getCurso()"></a>	
+							<a class="glyphicon glyphicon-plus" data-ng-click="openCurso('lg')"></a>
+							<span class="navbar-right">
+								<input type="radio" data-ng-model="cursoDoCandidato.situacaoDoCurso" data-ng-value="'concluido'" name="selected">&nbspConcluido
+								<input type="radio" data-ng-model="cursoDoCandidato.situacaoDoCurso" data-ng-value="'cursando'" name="selected">&nbspCursando
+								<input type="radio" data-ng-model="cursoDoCandidato.situacaoDoCurso" data-ng-value="'trancado'" name="selected">&nbspTrancado
+							</span>	
+						<select class="form-control" data-ng-model="cursoDoCandidato.curso" data-ng-options="(curso.nome+'/'+curso.categoria.nome) for curso in cursos">
+							<option value="" data-ng-selected="cursoDoCandidato.id">*{{cursoDoCandidato.curso.nome}}</option>
+							</select>
 					</div>
-							
-
-					<div class="col-12 col-sm-12 col-lg-12">
-						<br/>
-						<div data-ng-show="msg.msg" class="alert alert-{{msg.type}} alert-dismissable">
-  							<button type="button" class="close"  data-ng-click="closeAlert()">&times;</button>
-  							<strong>{{msg.candidatocursos.curso.nome}}</strong> {{msg.msg}}		
-						</div>
-					</div>
-					
-					
-						<div class="col-12 col-sm-12 col-lg-12">
-							<table class="table table-hover">
-								<tr>
-									<td><strong>Curso</strong></td>
-									<td><strong>Instituição de ensino</strong></td>
-									<td><strong>Status</strong></td>
-									<td><strong>Períodos concluidos</strong></td>
-									<td><strong>Regime</strong></td>
-									<td></td>
-								</tr>
-								<tr data-ng-repeat="cursoDoCandidato in cursosDoCandidato">
-									<td data-ng-click="editCursoDoCandidato(cursoDoCandidato)">{{cursoDoCandidato.curso.nome}}</td>
-									<td data-ng-click="editCursoDoCandidato(cursoDoCandidato)">{{cursoDoCandidato.instituicaoDeEnsino.nome}}</td>
-									<td data-ng-click="editCursoDoCandidato(cursoDoCandidato)"><span class="label label-success" data-ng-show="cursoDoCandidato.situacaoDoCurso=='concluido'">concluido</span><span class="label label-danger" data-ng-show="cursoDoCandidato.situacaoDoCurso=='trancado'">trancado</span><span class="label label-warning" data-ng-show="cursoDoCandidato.situacaoDoCurso=='cursando'">cursando</span></td>
-									<td data-ng-click="editCursoDoCandidato(cursoDoCandidato)">{{cursoDoCandidato.periodosConcluidos}}/{{cursoDoCandidato.quantidadeDePeriodos}}</td>
-									<td data-ng-click="editCursoDoCandidato(cursoDoCandidato)">{{cursoDoCandidato.regime}}</td>
-									<td>
-										<span data-ng-click="deleteCursoDoCandidato(cursoDoCandidato.id)" class="glyphicon glyphicon-trash"></span>
-									</td>
-								</tr>
-							</table>
-						</div>
-        			</div>
 				</div>
-    </script>
-    
-    <script type="text/ng-template" id="categoriaCurso.html">
-        	<div class="modal-header">
-						<button type="button" class="close" data-ng-click="cancel()" data-dismiss="modal">&times;</button>
-            			<h4 class="modal-title">Categorias de Cursos</h4>
-        			</div>
-       				<div class="modal-body">
-				<div class="row">
-						<div class="col-6 col-sm-6 col-lg-12">
-							<div class="form-group">
-								<label class="control-label">Categoria *</label>
-								<div class="controls">
-									<input type="text" class="form-control" placeholder="Insira a categoria ..." data-ng-model="categoria.nome">
-								</div>
-							</div>
+				<div class="col-12 col-sm-6 col-lg-6">
+					<div class="form-group">
+						<label class="control-label">Instituição de Ensino</label>
+							<a class="glyphicon glyphicon-refresh" data-ng-click="getEmpresa()"></a>	
+							<a class="glyphicon glyphicon-plus" data-ng-click="close()" href="#/empresas"></a>
+						<select class="form-control" data-ng-model="cursoDoCandidato.instituicaoDeEnsino" data-ng-options="(instituicaoDeEnsino.nome) for instituicaoDeEnsino in instituicoesDeEnsino">
+							<option value="" data-ng-selected="cursoDoCandidato.id">*{{cursoDoCandidato.instituicaoDeEnsino.nome}}</option>
+							</select>
+					</div>
+				</div>
+				<div class="col-12 col-sm-12 col-lg-6" >
+					<div class="form-group">
+						<label class="control-label">Períodos Concluidos</label>
+							<input data-ng-show="cursoDoCandidato.situacaoDoCurso=='concluido'" data-ng-model="cursoDoCandidato.quantidadeDePeriodos" type="number" placeholder="Insira os períodos concluidos ..." class="form-control" disabled>
+							<input data-ng-show="cursoDoCandidato.situacaoDoCurso!='concluido'" data-ng-model="cursoDoCandidato.periodosConcluidos" type="number" placeholder="Insira os períodos concluidos ..." class="form-control">
+					</div>
+				</div>
+				<div class="col-12 col-sm-12 col-lg-4">
+					<div class="form-group">
+						<label class="control-label">Quantidade total de Períodos</label>
+						<div class="controls">
+							<input data-ng-model="cursoDoCandidato.quantidadeDePeriodos" type="number" placeholder="Insira a quantidade total de períodos ..." class="form-control">
 						</div>
+					</div>
+				</div>
+				<div class="col-12 col-sm-12 col-lg-2">
+					<div class="form-group">
+						<label class="control-label">Regime</label>
+						<div class="controls">
+							<select class="form-control" data-ng-model="cursoDoCandidato.regime" >
+								<option data-ng-value="cursoDoCandidato.regime" data-ng-show="cursoDoCandidato.regime" selected>{{cursoDoCandidato.regime}}</option>										
+								<option data-ng-value="Anual">Diário</option>
+								<option data-ng-value="Anual">Semanal</option>
+								<option data-ng-value="Anual">Mensal</option>
+								<option data-ng-value="Anual">Bimestral</option>
+								<option data-ng-value="Anual">Trimestral</option>
+								<option data-ng-value="Anual">Semestral</option>
+								<option data-ng-value="Anual">Anual</option>
+								<option data-ng-value="Modular">Modular</option>
+								<option data-ng-value="Modular">Periódico</option>
+								</select>
+						</div>
+					</div>
+				</div>
 				<div class="col-12 col-sm-12 col-lg-12">
-					<div class="btn-group btn-group-justified">
-						<div class="btn-group">
-							<button type="button" class="btn btn-default" data-ng-click="getCategoria()">Consultar</button>
-						</div>
-						<div class="btn-group">
-							<button type="button" class="btn btn-primary" data-ng-disabled="!categoria.nome"data-ng-click="postCategoria()">Salvar</button>
-						</div>
-						<div class="btn-group">
-							<button type="button" class="btn btn-default" data-ng-click="limpar()">Limpar</button>
+					<div class="form-group">
+							<label class="control-label">Informações Complementares</label>
+						<div class="controls">
+							<textarea data-ng-model="cursoDoCandidato.outrasInformacoes" placeholder="Insira informações complementares ..." class="form-control" rows="4"></textarea>
 						</div>
 					</div>
-					<br/>
 				</div>
-					<div class="col-12 col-sm-12 col-lg-12">
-						<div ng-show="msg.msg" class="alert alert-{{msg.type}} alert-dismissable">
-  							<button type="button" class="close"  data-ng-click="closeAlert()">&times;</button>
-  							<strong>{{msg.categoria.nome}}</strong> {{msg.msg}}		
-						</div>
+				
+				
+			<div class="col-12 col-sm-12 col-lg-12">
+				<div class="btn-group btn-group-justified">
+					<div class="btn-group">
+						<button type="button" class="btn btn-default" data-ng-click="getCursoDoCandidato()">Consultar</button>
 					</div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-primary" data-ng-disabled="!cursoDoCandidato.curso.nome||(!cursoDoCandidato.periodosConcluidos&&cursoDoCandidato.situacaoDoCurso!='concluido')||!cursoDoCandidato.situacaoDoCurso||!cursoDoCandidato.regime||!cursoDoCandidato.quantidadeDePeriodos" data-ng-click="postCursoDoCandidato()">Salvar</button>
+					</div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-default" data-ng-click="limpar()">Limpar</button>
+					</div>
+				</div>
+			</div>
 					
-						<div class="col-12 col-sm-12 col-lg-12">
-							<table class="table table-hover">
-								<tr data-ng-repeat="categoria in categorias">
-									<td  data-ng-click="editCategoria(categoria)">{{categoria.nome}}</td>
-									<td>
-										<a data-ng-click="deleteCategoria(categoria.id)">
-										<span class="glyphicon glyphicon-trash"></span>
-										</a>
-									</td>
-								</tr>
-							</table>
-						</div>
-        			</div>
+
+			<div class="col-12 col-sm-12 col-lg-12">
+				<br/>
+				<div data-ng-show="msg.msg" class="alert alert-{{msg.type}} alert-dismissable">
+						<button type="button" class="close"  data-ng-click="closeAlert()">&times;</button>
+						<strong>{{msg.candidatocursos.curso.nome}}</strong> {{msg.msg}}		
 				</div>
-    </script>
+			</div>
+			
+			
+				<div class="col-12 col-sm-12 col-lg-12">
+					<table class="table table-hover">
+						<tr>
+							<td><strong>Curso</strong></td>
+							<td><strong>Instituição de ensino</strong></td>
+							<td><strong>Status</strong></td>
+							<td><strong>Períodos concluidos</strong></td>
+							<td><strong>Regime</strong></td>
+							<td></td>
+						</tr>
+						<tr data-ng-repeat="cursoDoCandidato in cursosDoCandidato">
+							<td data-ng-click="editCursoDoCandidato(cursoDoCandidato)">{{cursoDoCandidato.curso.nome}}</td>
+							<td data-ng-click="editCursoDoCandidato(cursoDoCandidato)">{{cursoDoCandidato.instituicaoDeEnsino.nome}}</td>
+							<td data-ng-click="editCursoDoCandidato(cursoDoCandidato)"><span class="label label-success" data-ng-show="cursoDoCandidato.situacaoDoCurso=='concluido'">concluido</span><span class="label label-danger" data-ng-show="cursoDoCandidato.situacaoDoCurso=='trancado'">trancado</span><span class="label label-warning" data-ng-show="cursoDoCandidato.situacaoDoCurso=='cursando'">cursando</span></td>
+							<td data-ng-click="editCursoDoCandidato(cursoDoCandidato)">{{cursoDoCandidato.periodosConcluidos}}/{{cursoDoCandidato.quantidadeDePeriodos}}</td>
+							<td data-ng-click="editCursoDoCandidato(cursoDoCandidato)">{{cursoDoCandidato.regime}}</td>
+							<td>
+								<span data-ng-click="deleteCursoDoCandidato(cursoDoCandidato.id)" class="glyphicon glyphicon-trash"></span>
+							</td>
+						</tr>
+					</table>
+				</div>
+    			</div>
+		</div>
+</script>
+    
+<script type="text/ng-template" id="categoriasDeCursos.html">
+	<div class="modal-header">
+		<button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Categorias de Cursos</h4>
+	</div>
 
-    <script type="text/ng-template" id="curso.html">
-    				<div class="modal-header">
-						<button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
-            			<h4 class="modal-title">Cursos</h4>
-        			</div>
-					<div class="row">
-       				<div class="modal-body">
-						<div class="col-6 col-sm-6 col-lg-6">
-							<div class="form-group">
-								<label class="control-label">Nome *</label>
-								<div class="controls">
-									<input type="text" class="form-control" placeholder="Insira o nome do curso ..." type="text" data-ng-model="curso.nome">
-								</div>
-							</div>
-						</div>
-						<div class="col-6 col-sm-6 col-lg-6">
-							<div class="form-group">
-								<label class="control-label">Categoria</label>
-								<a class="glyphicon glyphicon-refresh" data-ng-click="getCategoria()"></a>	
-								<a class="glyphicon glyphicon-plus" data-ng-click="openCategoria('sm')"></a>
-								<select class="form-control" data-ng-model="curso.categoria" data-ng-options="(categoria.nome) for categoria in categorias">
-									<option value="" data-ng-show="false">Escolha uma categoria ...</option>
-    							</select>
-							</div>
-						</div>
-						<div class="col-12 col-sm-12 col-lg-12">
-							<div class="form-group">
-								<label class="control-label">Descrição</label>
-								<div class="controls">
-									<textarea type="text" class="form-control" placeholder="Insira a descrição do curso ..." type="text" data-ng-model="curso.descricao" rows="5"></textarea>
-								</div>
-							</div>
-						</div>		
+	<div class="modal-body">
+		<div class="form-group">
+			<label class="control-label">Categoria <span class="obrigatorio">*</span></label>
+			<div class="controls">
+				<div ng-class="{'has-error': !categoria.nome}">
+					<input type="text" class="form-control" placeholder="Insira a categoria ..." data-ng-model="categoria.nome">
+				</div>
+			</div>
+		</div>
+		
+		<div class="btn-group btn-group-justified">
+			<div class="btn-group">
+				<button type="button" class="btn btn-default" data-ng-click="getCategoriasDeCursos()">Consultar</button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary" data-ng-disabled="!categoria.nome"data-ng-click="save()">Salvar</button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default" data-ng-click="clear()">Limpar</button>
+			</div>
+		</div>
 
-					<div class="col-12 col-sm-12 col-lg-12">									
-						<div class="btn-group btn-group-justified">
-							<div class="btn-group">
-								<button type="button" class="btn btn-default" data-ng-click="getCurso()">Consultar</button>
-							</div>
-							<div class="btn-group">
-								<button type="button" class="btn btn-primary" data-ng-disabled="!curso.nome||!curso.categoria" data-ng-click="postCurso()">Salvar</button>
-							</div>
-							<div class="btn-group">
-								<button type="button" class="btn btn-default" data-ng-click="limpar()">Limpar</button>
-							</div>
+		</br>
+
+		<table class="table table-hover">
+			<tr data-ng-repeat="categoria in categoriasDeCursos">
+				<td  data-ng-click="edit(categoria)">{{categoria.nome}}</td>
+			</tr>
+		</table>
+
+	</div>
+</script>
+
+<script type="text/ng-template" id="cursos.html">
+				<div class="modal-header">
+				<button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
+        			<h4 class="modal-title">Cursos</h4>
+    			</div>
+			<div class="row">
+   				<div class="modal-body">
+				<div class="col-6 col-sm-6 col-lg-6">
+					<div class="form-group">
+						<label class="control-label">Nome *</label>
+						<div class="controls">
+							<input type="text" class="form-control" placeholder="Insira o nome do curso ..." type="text" data-ng-model="curso.nome">
 						</div>
 					</div>
-					<div class="col-12 col-sm-12 col-lg-12">
-						<br/>	
-						<div ng-show="msg.msg" class="alert alert-{{msg.type}} alert-dismissable">
-  							<button type="button" class="close"  ng-click="closeAlert()">&times;</button>
-  							<strong>{{msg.curso.nome}}</strong> {{msg.msg}}		
-						</div>
-					
-					</div>
-						<div class="col-lg-12">
-							<table class="table table-hover">
-								<tr>
-									<td><strong>Nome</strong></td>
-									<td><strong>Categoria</strong></td>
-									<td></td>
-								</tr>
-								<tr ng-repeat="curso in cursos">
-									<td data-ng-click="editCurso(curso)">{{curso.nome}}</td>
-									<td data-ng-click="editCurso(curso)">{{curso.categoria.nome}}</td>
-									<td>
-										<span data-ng-click="deleteCurso(curso.id)" class="glyphicon glyphicon-trash"></span>
-									</td>
-								</tr>
-							</table>
-						</div>
-        			</div>
 				</div>
-    </script>
+				<div class="col-6 col-sm-6 col-lg-6">
+					<div class="form-group">
+						<label class="control-label">Categoria</label>
+						<a class="glyphicon glyphicon-refresh" data-ng-click="getCategoria()"></a>	
+						<a class="glyphicon glyphicon-plus" data-ng-click="openCategoria('sm')"></a>
+						<select class="form-control" data-ng-model="curso.categoria" data-ng-options="(categoria.nome) for categoria in categorias">
+							<option value="" data-ng-show="false">Escolha uma categoria ...</option>
+							</select>
+					</div>
+				</div>
+				<div class="col-12 col-sm-12 col-lg-12">
+					<div class="form-group">
+						<label class="control-label">Descrição</label>
+						<div class="controls">
+							<textarea type="text" class="form-control" placeholder="Insira a descrição do curso ..." type="text" data-ng-model="curso.descricao" rows="5"></textarea>
+						</div>
+					</div>
+				</div>		
+
+			<div class="col-12 col-sm-12 col-lg-12">									
+				<div class="btn-group btn-group-justified">
+					<div class="btn-group">
+						<button type="button" class="btn btn-default" data-ng-click="getCursos()">Consultar</button>
+					</div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-primary" data-ng-disabled="!curso.nome||!curso.categoria" data-ng-click="save()">Salvar</button>
+					</div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-default" data-ng-click="clear()">Limpar</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12">
+					<table class="table table-hover">
+						<tr>
+							<td><strong>Nome</strong></td>
+							<td><strong>Categoria</strong></td>
+							<td></td>
+						</tr>
+						<tr ng-repeat="curso in cursos">
+							<td data-ng-click="editCurso(curso)">{{curso.nome}}</td>
+							<td data-ng-click="editCurso(curso)">{{curso.categoria.nome}}</td>
+							<td>
+								<span data-ng-click="deleteCurso(curso.id)" class="glyphicon glyphicon-trash"></span>
+							</td>
+						</tr>
+					</table>
+				</div>
+    			</div>
+		</div>
+</script>
         
-    <script type="text/ng-template" id="contato.html">
-        			<div class="modal-header">
-						<button type="button" class="close" ng-click="cancel()" data-dismiss="modal">&times;</button>
-            			<h4 class="modal-title">Contatos</h4>
-        			</div>
-       				<div class="modal-body">
-						<div class="col-6 col-sm-6 col-lg-6">
-							<div class="form-group">
-								<label class="control-label">Contato *</label>
-								<div class="controls">
-									<input type="text" class="form-control" placeholder="Insira o contato ..." type="text" ng-model="contato.contactValue">
-								</div>
-							</div>
-						</div>
-						<div class="col-6 col-sm-6 col-lg-6">
-							<div class="form-group">
-								<label class="control-label">Observação</label>
-								<div class="controls">
-									<input type="text" class="form-control" placeholder="Insira a observação ..." type="text" data-ng-model="contato.observacao">
-								</div>
-							</div>
-						</div>
-
-					<div class="btn-group btn-group-justified">
-						<div class="btn-group">
-							<button type="button" class="btn btn-default" data-ng-click="getContato()">Consultar</button>
-						</div>
-						<div class="btn-group">
-							<button type="button" class="btn btn-primary" data-ng-disabled="(!contato.contactValue)" data-ng-click="postBairro()">Salvar</button>
-						</div>
-						<div class="btn-group">
-							<button type="button" class="btn btn-default" data-ng-click="limpar()">Limpar</button>
-						</div>
-					</div>
-					<br/>
-
-					<div ng-show="msg.msg" class="alert alert-{{msg.type}} alert-dismissable">
-  						<button type="button" class="close"  ng-click="closeAlert()">&times;</button>
-  						<strong>{{msg.contato.contactValue}}</strong> {{msg.msg}}		
-					</div>
-
-					<div class="row">
-						<div class="col-12 col-sm-12 col-lg-12">
-							<table class="table table-hover">
-								<tr>
-									<td><strong>Contato</strong></td>
-									<td><strong>Observação</strong></td>
-									<td></td>
-								</tr>
-								<tr ng-click="editContato(contato)" ng-repeat="contato in contatos">
-									<td>{{contato.contactValue}}</td>
-									<td>{{contato.observacao}}</td>
-									<td><a ng-click="deleteContato(contato.id)"> <span
-											class="glyphicon glyphicon-trash"></span>
-									</a></td>
-								</tr>
-							</table>
-						</div>
-        			</div>
-				</div>
-    </script>
+   
     
     <script type="text/ng-template" id="bairro.html">
         	<div class="modal-header">

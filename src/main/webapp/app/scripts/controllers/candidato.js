@@ -7,12 +7,12 @@ angular.module('iguassuApp')
   $scope.init = function(){
     if ($routeParams.id) {
       $rootScope.candidato = Candidato.get({id: $routeParams.id});
-      $rootScope.cursosDoCandidato = Candidato.getCursos({id: $routeParams.id});
-      $rootScope.experienciasDoCandidato = Candidato.getExperiencias({id: $routeParams.id});
+      $scope.cursosDoCandidato = Candidato.getCursos({id: $routeParams.id});
+      $scope.experienciasDoCandidato = Candidato.getExperiencias({id: $routeParams.id});
     }else{
       $rootScope.candidato = {};
-      $rootScope.cursosDoCandidato = {};
-      $rootScope.experienciasDoCandidato = {};
+      $scope.cursosDoCandidato = {};
+      $scope.experienciasDoCandidato = {};
     };
     if(!$scope.paises){
       $scope.getPaises();
@@ -38,7 +38,7 @@ angular.module('iguassuApp')
   };    
 
   $scope.openCursosDoCandidato = function(size) {
-    var modalInstance = $modal.open({
+    $modal.open({
       templateUrl : 'candidatoCurso.html',
       controller : 'CandidatoCursoCtrl',
       size : 'lg'
@@ -50,21 +50,23 @@ angular.module('iguassuApp')
   $scope.openExperiencia = function(experiencia) {
     $rootScope.getEmpresas();
     $rootScope.getCargos();
-    var modalInstance = $modal.open({
-          templateUrl : 'experienciasDoCandidato.html',
-          controller : 'CandidatoExperienciaCtrl',
-          size : 'lg',
-          resolve : {
-             bundle : function() {
-                return {
-                    experiencia : experiencia
-                }
+    $modal.open({
+        templateUrl : 'experienciasDoCandidato.html',
+        controller : 'CandidatoExperienciaCtrl',
+        size : 'md',
+        resolve : {
+         bundle : function() {
+            return {
+                experiencia : experiencia
             }
           }
-        }).result.then(function(/*experiencias*/) {
-          /*$scope.experienciasDoCandidato = experienciasDoCandidato;*/
-      });
-    };
+        }
+      }).result.then(function() {
+        $scope.experienciasDoCandidato = Candidato.getExperiencias({id: $routeParams.id});
+    }, function(){
+      $scope.experienciasDoCandidato = Candidato.getExperiencias({id: $routeParams.id});
+    });
+  };
 
   $scope.editCandidato = function(candidato){
     $document.scrollTopAnimated(0, 700);
@@ -85,63 +87,62 @@ angular.module('iguassuApp')
 
 
 
-}).controller('CandidatoExperienciaCtrl', function ($scope, $rootScope, $http, $modalInstance,  $modal, Candidato, toastr, bundle) {
-
+}).controller('CandidatoExperienciaCtrl', function ($scope, $rootScope, $modalInstance,  $modal, Candidato, toastr, bundle) {
 
   $scope.experiencia = bundle.experiencia;
 
   $scope.today = new Date();
 
   $scope.save = function(){
-      var msg = 'Expereiência cadastrada com sucesso';
-      if($scope.experiencia.id) {msg = 'Experiência atualizada com sucesso'; var b = true;}
+    var msg = 'Expereiência adicionada com sucesso';
+    if($scope.experiencia.id) {msg = 'Experiência atualizada com sucesso'; var b = true;}
 
-      $scope.experiencia.candidato = $rootScope.candidato;
-      console.log($scope.experiencia);
-      Candidato.saveExperiencia($scope.experiencia, function(data){
-         if(!b){
-              $scope.experienciasDoCandidato.push(data);
-         }
-         toastr.success(msg);
-         $scope.close();
-      }, function(error){
-         toastr.error(error, 'ERRO AO SALVAR EXPERIENCIA: ');
-      });
+    $scope.experiencia.candidato = $rootScope.candidato;
+    console.log($scope.experiencia);
+    Candidato.saveExperiencia($scope.experiencia, function(data){
+    if(!b){
+     $scope.experienciasDoCandidato.push(data);
+    }
+    toastr.success(msg);
+    $scope.close();
+    }, function(error){
+     toastr.error(error, 'ERRO AO SALVAR EXPERIENCIA: ');
+    });
   };
 
   $scope.delete = function(){
-      Candidato.deleteExperiencia({id:$scope.experiencia.id}, function(data){
-         $scope.experienciasDoCandidato.splice($scope.experienciasDoCandidato.indexOf($scope.experiencia), 1);
-         toastr.success('Experiência removida com sucesso');
-         $scope.close();
-      }, function(error){
-         toastr.error(error, 'ERRO AO REMOVER EXPERIENCIA: ');
-      });
+    Candidato.deleteExperiencia({id:$scope.experiencia.id}, function(data){
+     $scope.experienciasDoCandidato.splice($scope.experienciasDoCandidato.indexOf($scope.experiencia), 1);
+     toastr.success('Experiência removida com sucesso');
+     $scope.close();
+    }, function(error){
+     toastr.error(error, 'ERRO AO REMOVER EXPERIENCIA: ');
+    });
   };
 
   $scope.edit = function(experiencia){
-      $scope.experiencia = experiencia;
+    $scope.experiencia = experiencia;
   };
 
-  $scope.clear = function(experiencia){
-      $scope.experiencia = {};
+  $scope.clear = function(){
+    $scope.experiencia = {};
   };
 
   $scope.close = function() {
-      $modalInstance.close();
+    $modalInstance.close();
   };
 
   $scope.openDatePickerDataInicio = function($event) {
-      $event.preventDefault();
-      $event.stopPropagation();
-      $scope.openedDataInicio = !$scope.openedDataInicio;
-   };
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.openedDataInicio = !$scope.openedDataInicio;
+  };
 
-   $scope.openDatePickerDataTermino = function($event) {
-       $event.preventDefault();
-       $event.stopPropagation();
-       $scope.openedDataTermino = !$scope.openedDataTermino;
-   };
+  $scope.openDatePickerDataTermino = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    scope.openedDataTermino = !$scope.openedDataTermino;
+  };
 
 });
 

@@ -24,14 +24,14 @@ public class ControllerCategoria {
     ServiceCategoriaCurso serviceCategoriaCurso;
 
     // Paises
-    @RequestMapping(value = "/categoriacursos", method = RequestMethod.POST)
+    @RequestMapping(value = "/categoriascursos", method = RequestMethod.POST)
     public
     @ResponseBody
     Object salve(@RequestBody CategoriaCurso categoriaCurso) {
         return this.serviceCategoriaCurso.save(categoriaCurso);
     }
 
-    @RequestMapping(value = "/categoriacursos", method = RequestMethod.GET)
+    @RequestMapping(value = "/categoriascursos", method = RequestMethod.GET)
     public
     @ResponseBody
     Object find(
@@ -39,7 +39,7 @@ public class ControllerCategoria {
         return serviceCategoriaCurso.find(nome);
     }
 
-    @RequestMapping(value = "/categoriacursos/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/categoriascursos/{id}", method = RequestMethod.DELETE)
     public
     @ResponseBody
     void delete(@PathVariable Long id) {

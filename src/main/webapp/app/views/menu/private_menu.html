@@ -16,30 +16,19 @@
       <a class="dropdown-toggle" >
       <span >Outros</span><b class="caret"></b></a>
       <ul class="dropdown-menu">
-        <li><a data-ng-click="openCurso('lg')" >Cursos</a></li>
-        <li><a data-ng-click="openCategoria('sm')" >Categorias de Cursos</a></li>
-        <!--<li><a data-ng-click="openNecessidadeEspecial()">Necessidades Especiais</a></li>-->
-        <li><a data-ng-click="openCargo('lg')" >Cargos</a></li>
-        <li><a data-ng-click="openBairro('lg')">Bairros</a></li>
-        <li><a data-ng-click="openCidade()" >Cidades</a></li>
-        <li><a data-ng-click="openEstado()" >Estados</a></li>
-        <li><a data-ng-click="openPais('sm')" >Países</a></li>
+        <li><a data-ng-click="openCursos('lg')" >Cursos</a></li>
+        <li><a data-ng-click="openCategoriasCursos('sm')" >Categorias de Cursos</a></li>
+        <li><a data-ng-click="openCargos('lg')" >Cargos</a></li>
+        <li><a data-ng-click="openBairros('lg')">Bairros</a></li>
+        <li><a data-ng-click="openCidades()" >Cidades</a></li>
+        <li><a data-ng-click="openEstados()" >Estados</a></li>
+        <li><a data-ng-click="openPaises('sm')" >Países</a></li>
       </ul>
     </li>
   </ul>
 
-<ul class="nav navbar-nav navbar-right">
-  <li data-ng-class="{ active: isActive('/configuracoes')}"><a href="#/configuracoes">Configurações</a></li>
-  <li><a href="#/sair" id="sair" ><strong>Sair</strong></a></li>
-
-  <!--<li class="dropdown">-->
-    <!--<a class="dropdown-toggle" >-->
-      <!--<span class="glyphicon glyphicon-user">Opções</span><b class="caret"></b></a>-->
-    <!--<ul class="dropdown-menu">-->
-      <!--<li><a href="#/configuracoes" class="glyphicon glyphicon-cog">Configurações</a></li>-->
-      <!--<li class="divider"></li>-->
-      <!--<li><a href="#/sair" class="glyphicon glyphicon-off">Sair</a></li>-->
-    <!--</ul>-->
-  <!--</li>-->
-</ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li data-ng-class="{ active: isActive('/configuracoes')}"><a href="#/configuracoes">Configurações</a></li>
+    <li><a href="#/sair" id="sair" ><strong>Sair</strong></a></li>
+  </ul>
 </div>
