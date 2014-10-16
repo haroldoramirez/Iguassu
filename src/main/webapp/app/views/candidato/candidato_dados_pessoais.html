@@ -13,27 +13,24 @@
                 </div>
             </div>
             <div class="col-xs-9 col-9 col-sm-9 col-lg-6">
-                <!-- data-ng-class="{'col-xs-9 col-9 col-sm-9 col-lg-6':candidato.id, 'col-xs-9 col-9 col-sm-9 col-lg-9':!candidato.id}" -->
                 <div class="col-xs-3 col-3 col-sm-3 col-lg-3">
                     <label class="control-label">Código&nbsp</label>
                     <div class="form-group">
                         <div class="controls">
-                            <!--readonly disabled-->
                             <input data-ng-model="candidato.id" type="text" placeholder="Identificação" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-9 col-9 col-sm-9 col-lg-9">
                     <label class="control-label">Nome Completo <span class="obrigatorio">*</span> </label>
-                                <!--<span ng-class="{'obrigatorio': !candidato.genero}" class="navbar-right">-->
-								<span class="navbar-right">
-										<input type="radio" name="genero" ng-model="candidato.genero"
-                                                  value="MASCULINO">
-														&nbsp<strong>Masculino</strong>
-										<input type="radio" name="genero" ng-model="candidato.genero"
-                                                  value="FEMININO">
-														&nbsp<strong >Feminino&nbsp<span class="obrigatorio">*</span></strong>
-								</span>
+                        <span class="navbar-right">
+                            <input type="radio" name="genero" ng-model="candidato.genero"
+                                      value="MASCULINO">
+                                            &nbsp<strong>Masculino</strong>
+                            <input type="radio" name="genero" ng-model="candidato.genero"
+                                      value="FEMININO">
+                                            &nbsp<strong >Feminino&nbsp<span class="obrigatorio">*</span></strong>
+                        </span>
                     <div ng-class="{'form-group ': candidato.nome, 'form-group has-error': !candidato.nome}">
                         <div class="controls">
                             <input data-ng-model="candidato.nome" type="text" placeholder="Insira o nome do candidato (a) ..." class="form-control">
@@ -111,15 +108,11 @@
                                   </button>
                                 </span>
                             </p>
-                            <!--<input data-ng-model="candidato.dataNasc" type="date" placeholder="Insira a data de nascimento do candidato (a) ..." class="form-control">-->
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-2 col-2 col-sm-12 col-lg-6">
-                    <!--<span class="navbar-left"><input type="checkbox" name="pne" ng-model="pne"></span>-->
-                    <!--<label class="control-label">&nbspNecessidades Especiais&nbsp&nbsp<strong ng-if="pne" class="obrigatorio">*</strong></label>-->
                     <label class="control-label">&nbspNecessidades Especiais&nbsp&nbsp</label>
-                    <!--<div ng-class="{'form-group ': pne&&candidato.necessidadeEspecial, 'form-group has-error': pne&&!candidato.necessidadeEspecial}">-->
                     <div class="form-group">
                         <div class="controls">
                             <select class="form-control" data-ng-model="candidato.necessidadeEspecial">

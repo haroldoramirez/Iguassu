@@ -1,4 +1,4 @@
-<accordion-group is-open="panel.open5">
+<accordion-group is-open="panel.open5" xmlns="http://www.w3.org/1999/html">
     <accordion-heading>
         Experiência
         <i 	class="pull-right glyphicon"
@@ -6,26 +6,35 @@
         </i>
     </accordion-heading>
 
-    <div class="row row-offcanvas row-offcanvas-right" >
-        <div class="col-xs-12 col-sm-12">
-            <ul data-ng-show="experienciasDoCandidato.length<=0">
-                <li>
-                    <strong>Adicionar experiências</strong>
-                    <a class="glyphicon glyphicon-plus" data-ng-click="openExperienciasDoCandidato()"></a>
-                    <hr>
-                </li>
-            </ul>
-            <ul>
-                <li data-ng-repeat="experiencia in experienciasDoCandidato">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-12 col-sm-12 col-lg-12">
+            <div class="pull-right">
+                <a href="" class="btn btn-primary"
+                   data-ng-click="openExperiencia()">Adicionar Experiência
+                </a>
+            </div>
+            <h3>Experiências Profissionais</h3>
+            <!--<hr>-->
+        </div>
+        <div class="col-xs-12 col-12 col-sm-12 col-lg-12">
+            <div class="list-group">
+                <a data-ng-repeat="experiencia in experienciasDoCandidato" href="" ng-click="openExperiencia(experiencia)" class="list-group-item">
                     <strong>{{experiencia.cargo.nome}}</strong>
-                    ({{experiencia.cargo.descricao}},
-							<span class="label label-warning"
-                                  data-ng-show="!experiencia.dataTermino">atuando</span>)
-                    <a class="glyphicon glyphicon-plus" data-ng-click="openExperienciasDoCandidato()"></a>
+                    (<small>De</small> {{experiencia.dataInicio|date:'dd/MM/yyyy'}} <small>até</small> {{experiencia.dataTermino|date:'dd/MM/yyyy'}}
+                         <span class="label label-warning"
+                               data-ng-show="!experiencia.dataTermino">atuando</span>)
                     <ul>
+                        <li data-ng-if="experiencia.vinculoEmpregaticio">
+                            <strong>Vínculo:&nbsp</strong>
+                            {{experiencia.vinculoEmpregaticio}}
+                        </li>
+                        <li data-ng-if="experiencia.cargo.descricao">
+                            <strong>Descrição do cargo:&nbsp</strong>
+                            {{experiencia.cargo.descricao}}
+                        </li>
                         <li data-ng-show="experiencia.empresa">
-                            <strong>{{experiencia.empresa.nome}}</strong>
-                            ({{experiencia.dataInicio|date:'dd/MM/yyyy'}} - {{experiencia.dataTermino|date:'dd/MM/yyyy'}})
+                            <strong>Empresa:&nbsp</strong>
+                            {{experiencia.empresa.nome}}
                         </li>
                         <li data-ng-show="experiencia.atividades">
                             <strong>Atividades Desenvolvidas:&nbsp</strong>
@@ -36,9 +45,8 @@
                             {{experiencia.observacoes}}
                         </li>
                     </ul>
-                    <p>
-                </li>
-            </ul>
+                </a>
+            </div>
         </div>
     </div>
 

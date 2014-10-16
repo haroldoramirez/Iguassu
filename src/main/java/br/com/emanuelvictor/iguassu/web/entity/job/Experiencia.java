@@ -6,6 +6,8 @@ import javax.persistence.*;
 
 import br.com.emanuelvictor.iguassu.web.entity.Candidato;
 import br.com.emanuelvictor.iguassu.web.entity.Empresa;
+import br.com.emanuelvictor.iguassu.web.entity.NecessidadeEspecial;
+import br.com.emanuelvictor.iguassu.web.entity.VinculoEmpregaticio;
 import br.com.emanuelvictor.iguassu.web.entity.base.SpringData;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -40,6 +42,10 @@ public class Experiencia extends SpringData<Long> {
 	@Column(length = 200)
 	private String observacoes;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = true)
+    private VinculoEmpregaticio vinculoEmpregaticio;
+
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = true)
 	private Calendar dataInicio;
@@ -47,7 +53,15 @@ public class Experiencia extends SpringData<Long> {
 	@Column(nullable = true)
 	private Calendar dataTermino;
 
-	public Cargo getCargo() {
+    public VinculoEmpregaticio getVinculoEmpregaticio() {
+        return vinculoEmpregaticio;
+    }
+
+    public void setVinculoEmpregaticio(VinculoEmpregaticio vinculoEmpregaticio) {
+        this.vinculoEmpregaticio = vinculoEmpregaticio;
+    }
+
+    public Cargo getCargo() {
 		return cargo;
 	}
 
