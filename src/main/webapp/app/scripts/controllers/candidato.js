@@ -6,15 +6,9 @@ angular.module('iguassuApp')
 
    $scope.init = function(){
     if ($routeParams.id) {
-      Candidato.get({id: $routeParams.id}, function(data){
-        $rootScope.candidato = data;
-        Candidato.getCursos({id: $routeParams.id}, function(data){
-          $rootScope.cursosDoCandidato = data;
-        });
-        Candidato.getExperiencias({id: $routeParams.id}, function(data){
-          $rootScope.experienciasDoCandidato = data;
-        });
-      }); 
+      $rootScope.candidato = Candidato.get({id: $routeParams.id});
+      $rootScope.cursosDoCandidato = Candidato.getCursos({id: $routeParams.id});
+      $rootScope.experienciasDoCandidato = Candidato.getExperiencias({id: $routeParams.id});
     };
     $scope.getPaises();
     $scope.getCandidatos();

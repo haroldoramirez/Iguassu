@@ -127,6 +127,12 @@
 				
         <div class="modal-body" ng-init="init()">
             <div class="row">
+                <div class="col-12 col-sm-12 col-lg-12">
+                    <div class="pull-right">
+                        <a href="" class="btn btn-primary" ng-if="experiencia.id" ng-click="save()">Atualizar Experiência</a>
+                        <a href="" class="btn btn-primary" ng-if="!experiencia.id" ng-click="save()">Adicionar Experiência</a>
+                    </div>
+                </div>
                 <div class="col-12 col-sm-12 col-lg-3">
                     <label class="control-label">Cargos<strong class="obrigatorio"> *</strong></label>
                         <span class="navbar-right">
@@ -154,9 +160,10 @@
                     <div ng-class="{'form-group ': experiencia.dataInicio, 'form-group has-error': !experiencia.dataInicio}">
                         <div class="controls">
                             <p class="input-group">
-                                <input  type="text" placeholder="Data de início ..." class="form-control" datepicker-popup="dd/MM/yyyy"
+                                <input  type="text" placeholder="Data de início ..." max-date="experiencia.dataTermino||today"
+                                        class="form-control" datepicker-popup="dd/MM/yyyy"
                                         ng-model="experiencia.dataInicio" is-open="openedDataInicio"
-                                        show-button-bar="false" required/>
+                                        show-button-bar="false" ng-required="true"/>
                                 <span class="input-group-btn">
                                   <button type="button" class="btn btn-default" ng-click="openDatePickerDataInicio($event)">
                                       <i class="glyphicon glyphicon-calendar"></i>
@@ -168,13 +175,14 @@
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 col-lg-3">
-                    <div class="form-group">
                         <label class="control-label">Data de Término</label>
+                    <div class="form-group">
                         <div class="controls">
                             <p class="input-group">
-                                <input  type="text" min-date="experiencia.dataInicio" placeholder="Data de término ..." class="form-control" datepicker-popup="dd/MM/yyyy"
+                                <input  ng-disabled="!experiencia.dataInicio" type="text" min-date="experiencia.dataInicio" max-date="today"
+                                        placeholder="Data de término ..." class="form-control" datepicker-popup="dd/MM/yyyy"
                                         ng-model="experiencia.dataTermino" is-open="openedDataTermino"
-                                        show-button-bar="false" required/>
+                                        show-button-bar="false" ng-required="true"/>
                                 <span class="input-group-btn">
                                   <button type="button" class="btn btn-default" ng-click="openDatePickerDataTermino($event)">
                                       <i class="glyphicon glyphicon-calendar"></i>

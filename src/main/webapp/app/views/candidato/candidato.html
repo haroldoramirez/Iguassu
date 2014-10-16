@@ -8,12 +8,12 @@
 
     <accordion close-others="isOpen">
 
-      <div style="margin-bottom: 5px;" ng-include="'views/candidato/candidato_dados_pessoais.html'"></div>
+      <!--<div style="margin-bottom: 5px;" ng-include="'views/candidato/candidato_dados_pessoais.html'"></div>-->
       
       <div style="margin-bottom: 5px;" ng-include="candidato.id?'views/candidato/candidato_formacao.html':''"></div>
 
       <div style="margin-bottom: 5px;" ng-include="candidato.id?'views/candidato/candidato_experiencia.html':''"></div>
-      
+
       <div style="margin-bottom: 5px;" ng-include="'views/candidato/candidato_endereco.html'"></div>
 
     </accordion>
@@ -62,7 +62,7 @@
       <tr data-ng-repeat="candidato in candidatos">
         <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editCandidato(candidato)">{{candidato.nome}}</td>
         <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editCandidato(candidato)">{{candidato.sexo}}</td>
-        <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editCandidato(candidato)">{{candidato.dataNasc|date}}</td>
+        <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editCandidato(candidato)">{{candidato.dataNasc|date:'dd/MM/yyyy'}}</td>
         <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editCandidato(candidato)">{{candidato.estadoCivil}}</td>
         <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editCandidato(candidato)">{{candidato.endereco.bairro.nome}} / {{candidato.endereco.bairro.cidade.nome}} / {{candidato.endereco.bairro.cidade.estado.nome}} / {{candidato.endereco.bairro.cidade.estado.pais.nome}}</td>
         <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editCandidato(candidato)">{{candidato.situacao}}</td>

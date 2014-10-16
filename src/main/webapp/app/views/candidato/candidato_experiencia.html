@@ -25,7 +25,7 @@
                     <ul>
                         <li data-ng-show="experiencia.empresa">
                             <strong>{{experiencia.empresa.nome}}</strong>
-                            ({{experiencia.dataInicio|date}} - {{experiencia.dataTermino|date}})
+                            ({{experiencia.dataInicio|date:'dd/MM/yyyy'}} - {{experiencia.dataTermino|date:'dd/MM/yyyy'}})
                         </li>
                         <li data-ng-show="experiencia.atividades">
                             <strong>Atividades Desenvolvidas:&nbsp</strong>
