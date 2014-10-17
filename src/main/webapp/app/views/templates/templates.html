@@ -4,9 +4,9 @@
     <h4 ng-if="experiencia.id" class="modal-title">Atualizar experiência</h4>
     <h4 ng-if="!experiencia.id" class="modal-title">Adicionar experiência</h4>
   </div>
-
   <div class="modal-body">
   	<form name="experienciaForm" ng-submit="save()" role="form">
+			
 			<div class="form-group">
 	      <label class="control-label">Cargo<strong class="obrigatorio"> *</strong></label>
         <div class="pull-right">
@@ -23,8 +23,8 @@
         <div class="pull-right">
           <a class="glyphicon glyphicon-plus" data-ng-click="close()" href="#/empresas"></a>
         </div>
-        <select class="form-control" data-ng-model="experiencia.empresa" data-ng-options="(empresa.nome) for empresa in empresas">
-            <option value=""  data-ng-selected="experiencia.empresa.id">{{experiencia.empresa.nome}}</option>
+        <select class="form-control" data-ng-model="experiencia.empresa" data-ng-options="empresa as empresa.nome for empresa in empresas">
+          <option value="" >*{{experiencia.empresa.nome}}</option>
         </select>
 	    </div>
 	    <div class="form-group">
@@ -36,14 +36,15 @@
 	        <option value="Voluntário">Voluntário</option>
 	        <option value="Empresário">Empresário</option>
 	        <option value="Autônomo">Autônomo</option>
-	        <option value="">Outro ...</option>
+	        <option value="Outro">Outro</option>
+	        <option value=""></option>
 	      </select>
 	    </div>
 	    <div class="form-group">
-	    	<label class="control-label">Data de Início<strong class="obrigatorio"> *</strong></label>
-	      <div class="controls">
+	    	<div class="controls">
+	      <label class="control-label">Data de Início<strong class="obrigatorio"> *</strong></label>
 	        <div class="input-group" ng-class="{'has-error': !experiencia.dataInicio}">
-	          <input  type="text" placeholder="Data de início ..." max-date="experiencia.dataTermino||today"
+	          <input  type="text" placeholder="Data de início ..." max-date="experiencia.dataTermino"
 	                  class="form-control" datepicker-popup="dd/MM/yyyy"
 	                  ng-model="experiencia.dataInicio" is-open="openedDataInicio"
 	                  show-button-bar="false" ng-required="true"/>
@@ -59,7 +60,7 @@
 	    	<label class="control-label">Data de Término</label>
 	      <div class="controls">
 	        <div class="input-group">
-	          <input  ng-disabled="!experiencia.dataInicio" min-date="experiencia.dataInicio" max-date="today"
+	          <input  ng-disabled="!experiencia.dataInicio" min-date="experiencia.dataInicio" 
 	                  placeholder="Data de término ..." class="form-control" datepicker-popup="dd/MM/yyyy"
 	                  ng-model="experiencia.dataTermino" is-open="openedDataTermino" type="text"
 	                  show-button-bar="false" ng-required="false"/>
@@ -96,8 +97,7 @@
 	      </div>
       </div>
     </form>
-  </div>
-    
+  </div>   
 </script>
  
 <script type="text/ng-template" id="cargos.html">
@@ -107,8 +107,7 @@
 	</div>
 	
 	<div class="modal-body">
-
-		<div class="form-group">
+		<div class="form-group" >
 			<label class="control-label">Cargo <span class="obrigatorio">*</span></label>
 			<div class="controls">
 				<div ng-class="{'has-error': !cargo.nome}">
@@ -116,28 +115,25 @@
 				</div>
 			</div>
 		</div>
-	
 		<div class="form-group">
 			<label class="control-label">Descrição</label>
 			<div class="controls">
 				<input type="text" class="form-control" placeholder="Insira a descrição do cargo ..." type="text" data-ng-model="cargo.descricao">
 			</div>
 		</div>
-
-		<div class="btn-group btn-group-justified">
-			<div class="btn-group">
-				<button type="button" class="btn btn-default" data-ng-click="getCargos()">Consultar</button>
-			</div>
-			<div class="btn-group">
-				<button type="button" class="btn btn-primary" data-ng-disabled="!cargo.nome" data-ng-click="save()">Salvar</button>
-			</div>
-			<div class="btn-group">
-				<button type="button" class="btn btn-default" data-ng-click="clear()">Limpar</button>
+		<div class="form-group"><!--gambia-->
+			<div class="btn-group btn-group-justified">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default" data-ng-click="getCargos()">Consultar</button>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-primary" data-ng-disabled="!cargo.nome" data-ng-click="save()">Salvar</button>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default" data-ng-click="clear()">Limpar</button>
+				</div>
 			</div>
 		</div>
-		
-		<br>
-
 		<table class="table table-hover">
 			<tr>
 				<td><strong>Cargo</strong></td>
@@ -152,148 +148,132 @@
 </script>
     
 <script type="text/ng-template" id="cursosDoCandidato.html">
-				<div class="modal-header">
-				<button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
-        			<h4 class="modal-title">Cursos do Candidato</h4>
-    			</div>
-		
-   			<div class="modal-body">
-			<div class="row">
-				<div class="col-12 col-sm-6 col-lg-6">
-					<div class="form-group">
-						<label class="control-label">Cursos</label>
-							<a class="glyphicon glyphicon-refresh" data-ng-click="getCurso()"></a>	
-							<a class="glyphicon glyphicon-plus" data-ng-click="openCurso('lg')"></a>
-							<span class="navbar-right">
-								<input type="radio" data-ng-model="cursoDoCandidato.situacaoDoCurso" data-ng-value="'concluido'" name="selected">&nbspConcluido
-								<input type="radio" data-ng-model="cursoDoCandidato.situacaoDoCurso" data-ng-value="'cursando'" name="selected">&nbspCursando
-								<input type="radio" data-ng-model="cursoDoCandidato.situacaoDoCurso" data-ng-value="'trancado'" name="selected">&nbspTrancado
-							</span>	
-						<select class="form-control" data-ng-model="cursoDoCandidato.curso" data-ng-options="(curso.nome+'/'+curso.categoria.nome) for curso in cursos">
-							<option value="" data-ng-selected="cursoDoCandidato.id">*{{cursoDoCandidato.curso.nome}}</option>
-							</select>
-					</div>
-				</div>
-				<div class="col-12 col-sm-6 col-lg-6">
-					<div class="form-group">
-						<label class="control-label">Instituição de Ensino</label>
-							<a class="glyphicon glyphicon-refresh" data-ng-click="getEmpresa()"></a>	
-							<a class="glyphicon glyphicon-plus" data-ng-click="close()" href="#/empresas"></a>
-						<select class="form-control" data-ng-model="cursoDoCandidato.instituicaoDeEnsino" data-ng-options="(instituicaoDeEnsino.nome) for instituicaoDeEnsino in instituicoesDeEnsino">
-							<option value="" data-ng-selected="cursoDoCandidato.id">*{{cursoDoCandidato.instituicaoDeEnsino.nome}}</option>
-							</select>
-					</div>
-				</div>
-				<div class="col-12 col-sm-12 col-lg-6" >
-					<div class="form-group">
-						<label class="control-label">Períodos Concluidos</label>
-							<input data-ng-show="cursoDoCandidato.situacaoDoCurso=='concluido'" data-ng-model="cursoDoCandidato.quantidadeDePeriodos" type="number" placeholder="Insira os períodos concluidos ..." class="form-control" disabled>
-							<input data-ng-show="cursoDoCandidato.situacaoDoCurso!='concluido'" data-ng-model="cursoDoCandidato.periodosConcluidos" type="number" placeholder="Insira os períodos concluidos ..." class="form-control">
-					</div>
-				</div>
-				<div class="col-12 col-sm-12 col-lg-4">
-					<div class="form-group">
-						<label class="control-label">Quantidade total de Períodos</label>
-						<div class="controls">
-							<input data-ng-model="cursoDoCandidato.quantidadeDePeriodos" type="number" placeholder="Insira a quantidade total de períodos ..." class="form-control">
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-sm-12 col-lg-2">
-					<div class="form-group">
-						<label class="control-label">Regime</label>
-						<div class="controls">
-							<select class="form-control" data-ng-model="cursoDoCandidato.regime" >
-								<option data-ng-value="cursoDoCandidato.regime" data-ng-show="cursoDoCandidato.regime" selected>{{cursoDoCandidato.regime}}</option>										
-								<option data-ng-value="Anual">Diário</option>
-								<option data-ng-value="Anual">Semanal</option>
-								<option data-ng-value="Anual">Mensal</option>
-								<option data-ng-value="Anual">Bimestral</option>
-								<option data-ng-value="Anual">Trimestral</option>
-								<option data-ng-value="Anual">Semestral</option>
-								<option data-ng-value="Anual">Anual</option>
-								<option data-ng-value="Modular">Modular</option>
-								<option data-ng-value="Modular">Periódico</option>
-								</select>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-sm-12 col-lg-12">
-					<div class="form-group">
-							<label class="control-label">Informações Complementares</label>
-						<div class="controls">
-							<textarea data-ng-model="cursoDoCandidato.outrasInformacoes" placeholder="Insira informações complementares ..." class="form-control" rows="4"></textarea>
-						</div>
-					</div>
-				</div>
-				
-				
-			<div class="col-12 col-sm-12 col-lg-12">
-				<div class="btn-group btn-group-justified">
-					<div class="btn-group">
-						<button type="button" class="btn btn-default" data-ng-click="getCursoDoCandidato()">Consultar</button>
-					</div>
-					<div class="btn-group">
-						<button type="button" class="btn btn-primary" data-ng-disabled="!cursoDoCandidato.curso.nome||(!cursoDoCandidato.periodosConcluidos&&cursoDoCandidato.situacaoDoCurso!='concluido')||!cursoDoCandidato.situacaoDoCurso||!cursoDoCandidato.regime||!cursoDoCandidato.quantidadeDePeriodos" data-ng-click="postCursoDoCandidato()">Salvar</button>
-					</div>
-					<div class="btn-group">
-						<button type="button" class="btn btn-default" data-ng-click="limpar()">Limpar</button>
-					</div>
-				</div>
-			</div>
-					
-
-			<div class="col-12 col-sm-12 col-lg-12">
-				<br/>
-				<div data-ng-show="msg.msg" class="alert alert-{{msg.type}} alert-dismissable">
-						<button type="button" class="close"  data-ng-click="closeAlert()">&times;</button>
-						<strong>{{msg.candidatocursos.curso.nome}}</strong> {{msg.msg}}		
-				</div>
-			</div>
-			
-			
-				<div class="col-12 col-sm-12 col-lg-12">
-					<table class="table table-hover">
-						<tr>
-							<td><strong>Curso</strong></td>
-							<td><strong>Instituição de ensino</strong></td>
-							<td><strong>Status</strong></td>
-							<td><strong>Períodos concluidos</strong></td>
-							<td><strong>Regime</strong></td>
-							<td></td>
-						</tr>
-						<tr data-ng-repeat="cursoDoCandidato in cursosDoCandidato">
-							<td data-ng-click="editCursoDoCandidato(cursoDoCandidato)">{{cursoDoCandidato.curso.nome}}</td>
-							<td data-ng-click="editCursoDoCandidato(cursoDoCandidato)">{{cursoDoCandidato.instituicaoDeEnsino.nome}}</td>
-							<td data-ng-click="editCursoDoCandidato(cursoDoCandidato)"><span class="label label-success" data-ng-show="cursoDoCandidato.situacaoDoCurso=='concluido'">concluido</span><span class="label label-danger" data-ng-show="cursoDoCandidato.situacaoDoCurso=='trancado'">trancado</span><span class="label label-warning" data-ng-show="cursoDoCandidato.situacaoDoCurso=='cursando'">cursando</span></td>
-							<td data-ng-click="editCursoDoCandidato(cursoDoCandidato)">{{cursoDoCandidato.periodosConcluidos}}/{{cursoDoCandidato.quantidadeDePeriodos}}</td>
-							<td data-ng-click="editCursoDoCandidato(cursoDoCandidato)">{{cursoDoCandidato.regime}}</td>
-							<td>
-								<span data-ng-click="deleteCursoDoCandidato(cursoDoCandidato.id)" class="glyphicon glyphicon-trash"></span>
-							</td>
-						</tr>
-					</table>
-				</div>
-    			</div>
-		</div>
-</script>
-    
-<script type="text/ng-template" id="categoriasDeCursos.html">
 	<div class="modal-header">
 		<button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
-			<h4 class="modal-title">Categorias de Cursos</h4>
+		<h4 class="modal-title">Cursos do candidato</h4>
 	</div>
 
 	<div class="modal-body">
-		<div class="form-group">
-			<label class="control-label">Categoria <span class="obrigatorio">*</span></label>
-			<div class="controls">
-				<div ng-class="{'has-error': !categoria.nome}">
-					<input type="text" class="form-control" placeholder="Insira a categoria ..." data-ng-model="categoria.nome">
+		<form name="experienciaForm" ng-submit="save()" role="form">
+			
+			<div class="form-group">
+				<label class="control-label">Curso</label><span class="obrigatorio"> *</span>
+					<div class="pull-right">
+						<input 	type="radio" 
+										ng-change="handlerPeriodos()" 
+										data-ng-model="candidatoCurso.situacaoDoCurso" data-ng-value="'concluido'" name="selected">&nbsp<strong>Concluído</strong>
+						<input 	type="radio" 
+										data-ng-model="candidatoCurso.situacaoDoCurso" data-ng-value="'cursando'" name="selected">&nbsp<strong>Cursando</strong>
+						<input 	type="radio" 
+										data-ng-model="candidatoCurso.situacaoDoCurso" data-ng-value="'trancado'" name="selected">&nbsp<strong>Trancado</strong>
+						<span class="obrigatorio"> *</span>
+						<a class="glyphicon glyphicon-plus" data-ng-click="openCursos()"></a>
+					</div>
+				<div ng-class="{'has-error': !candidatoCurso.curso.id}">
+					<select class="form-control" 
+									data-ng-model="candidatoCurso.curso" 
+									data-ng-options="(curso.nome+' / '+curso.categoriaCurso.nome) for curso in cursos">
+						<option value="" data-ng-selected="candidatoCurso.id">*{{candidatoCurso.curso.nome}}</option>
+					</select>
 				</div>
 			</div>
-		</div>
+
+			<div class="form-group">
+				<label class="control-label">Instituição de Ensino</label>
+					<div class="pull-right">
+						<a class="glyphicon glyphicon-plus" data-ng-click="close()" href="#/empresas"></a>
+					</div>	
+				<select class="form-control" data-ng-model="candidatoCurso.instituicaoDeEnsino" 
+								data-ng-options="(empresa.nome) for empresa in empresas">
+					<option value="" data-ng-selected="candidatoCurso.id">*{{candidatoCurso.instituicaoDeEnsino.nome}}</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label">Quantidade total de Períodos</label><span class="obrigatorio"> *</span>
+				<div ng-class="{'has-error': !candidatoCurso.quantidadeDePeriodos}">
+					<div class="controls">
+						<input ng-change="handlerPeriodos()" 	data-ng-model="candidatoCurso.quantidadeDePeriodos" 
+										type="number" placeholder="Insira a quantidade total de períodos ..." 
+										class="form-control">
+					</div>
+				</div>
+			</div>
+
+			<div ng-if="candidatoCurso.quantidadeDePeriodos&&candidatoCurso.situacaoDoCurso!=='concluido'" class="form-group">
+				<label class="control-label">Períodos Concluidos</label><span class="obrigatorio"> *</span>
+				<div class="obrigatorio">
+					<i ng-if="candidatoCurso.periodosConcluidos>candidatoCurso.quantidadeDePeriodos">Quantidade de períodos concluídos maior que a quantidade todal de períodos</i>
+				</div>
+					<div ng-class="{'has-error': !candidatoCurso.periodosConcluidos||candidatoCurso.periodosConcluidos>candidatoCurso.quantidadeDePeriodos}">
+						<input 	data-ng-disabled="candidatoCurso.situacaoDoCurso=='concluido'" 
+										data-ng-model="candidatoCurso.periodosConcluidos" type="number" 
+										placeholder="Insira os períodos concluidos ..." class="form-control" >
+					</div>
+			</div>
 		
+			<div class="form-group">
+				<label class="control-label">Regime</label><span class="obrigatorio"> *</span>
+				<div ng-class="{'has-error': !candidatoCurso.regime}">
+					<div class="controls">
+						<select class="form-control" data-ng-model="candidatoCurso.regime" >								
+							<option value="Diario">Diário</option>
+							<option value="Semanal">Semanal</option>
+							<option value="Mensal">Mensal</option>
+							<option value="Bimestral">Bimestral</option>
+							<option value="Trimestral">Trimestral</option>
+							<option value="Semestral">Semestral</option>
+							<option value="Anual">Anual</option>
+							<option value="Modular">Modular</option>
+							<option value="Periodico">Periódico</option>
+						</select>
+					</div>
+				</div>
+			</div>
+				
+			<div class="form-group">
+				<label class="control-label">Informações Complementares</label>
+				<div class="controls">
+					<textarea data-ng-model="candidatoCurso.outrasInformacoes" 
+										placeholder="Insira informações complementares ..." 
+										class="form-control" rows="4">
+					</textarea>
+				</div>
+			</div>
+		
+			<div class="btn-toolbar">
+      		<a href="" class="btn btn-danger" ng-if="candidatoCurso.id" ng-click="delete()"><span class="glyphicon glyphicon-trash"></span> Remover</a>
+	      <div class="pull-right">
+	      	<button class="btn btn-default" ng-click="close()" type="button">Cancelar</button>
+          <button class="btn btn-primary" 
+          				data-ng-disabled="!candidatoCurso.curso.nome||(!candidatoCurso.periodosConcluidos&&candidatoCurso.situacaoDoCurso!='concluido')||(candidatoCurso.periodosConcluidos>candidatoCurso.quantidadeDePeriodos)||!candidatoCurso.situacaoDoCurso||!candidatoCurso.regime||!candidatoCurso.quantidadeDePeriodos" type="submit">Salvar informações
+          </button>
+	      </div>
+      </div>
+		
+		</form>
+	</div>
+
+	
+</script>
+    
+<script type="text/ng-template" id="categoriasDeCursos.html">
+<div class="modal-header">
+	<button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title">Categorias de Cursos</h4>
+</div>
+
+<div class="modal-body">
+	<div class="form-group">
+		<label class="control-label">Categoria <span class="obrigatorio">*</span></label>
+		<div class="controls">
+			<div ng-class="{'has-error': !categoria.nome}">
+				<input type="text" class="form-control" placeholder="Insira a categoria ..." data-ng-model="categoria.nome">
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group"><!--gambia-->
 		<div class="btn-group btn-group-justified">
 			<div class="btn-group">
 				<button type="button" class="btn btn-default" data-ng-click="getCategoriasDeCursos()">Consultar</button>
@@ -305,83 +285,75 @@
 				<button type="button" class="btn btn-default" data-ng-click="clear()">Limpar</button>
 			</div>
 		</div>
-
-		</br>
-
-		<table class="table table-hover">
-			<tr data-ng-repeat="categoria in categoriasDeCursos">
-				<td  data-ng-click="edit(categoria)">{{categoria.nome}}</td>
-			</tr>
-		</table>
-
 	</div>
+
+	<table class="table table-hover">
+		<tr data-ng-repeat="categoria in categoriasDeCursos">
+			<td  data-ng-click="edit(categoria)">{{categoria.nome}}</td>
+		</tr>
+	</table>
+
+</div>
 </script>
 
 <script type="text/ng-template" id="cursos.html">
-				<div class="modal-header">
-				<button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
-        			<h4 class="modal-title">Cursos</h4>
-    			</div>
-			<div class="row">
-   				<div class="modal-body">
-				<div class="col-6 col-sm-6 col-lg-6">
-					<div class="form-group">
-						<label class="control-label">Nome *</label>
-						<div class="controls">
-							<input type="text" class="form-control" placeholder="Insira o nome do curso ..." type="text" data-ng-model="curso.nome">
-						</div>
-					</div>
-				</div>
-				<div class="col-6 col-sm-6 col-lg-6">
-					<div class="form-group">
-						<label class="control-label">Categoria</label>
-						<a class="glyphicon glyphicon-refresh" data-ng-click="getCategoria()"></a>	
-						<a class="glyphicon glyphicon-plus" data-ng-click="openCategoria('sm')"></a>
-						<select class="form-control" data-ng-model="curso.categoria" data-ng-options="(categoria.nome) for categoria in categorias">
-							<option value="" data-ng-show="false">Escolha uma categoria ...</option>
-							</select>
-					</div>
-				</div>
-				<div class="col-12 col-sm-12 col-lg-12">
-					<div class="form-group">
-						<label class="control-label">Descrição</label>
-						<div class="controls">
-							<textarea type="text" class="form-control" placeholder="Insira a descrição do curso ..." type="text" data-ng-model="curso.descricao" rows="5"></textarea>
-						</div>
-					</div>
-				</div>		
-
-			<div class="col-12 col-sm-12 col-lg-12">									
-				<div class="btn-group btn-group-justified">
-					<div class="btn-group">
-						<button type="button" class="btn btn-default" data-ng-click="getCursos()">Consultar</button>
-					</div>
-					<div class="btn-group">
-						<button type="button" class="btn btn-primary" data-ng-disabled="!curso.nome||!curso.categoria" data-ng-click="save()">Salvar</button>
-					</div>
-					<div class="btn-group">
-						<button type="button" class="btn btn-default" data-ng-click="clear()">Limpar</button>
-					</div>
+	<div class="modal-header">
+		<button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title">Cursos</h4>
+	</div>
+	<div class="modal-body">
+		<div class="form-group">
+			<label class="control-label">Nome <span class="obrigatorio">*</span></label>
+			<div ng-class="{'has-error':!curso.nome}">
+				<div class="controls">
+					<input type="text" class="form-control" placeholder="Insira o nome do curso ..." type="text" data-ng-model="curso.nome">
 				</div>
 			</div>
-			<div class="col-lg-12">
-					<table class="table table-hover">
-						<tr>
-							<td><strong>Nome</strong></td>
-							<td><strong>Categoria</strong></td>
-							<td></td>
-						</tr>
-						<tr ng-repeat="curso in cursos">
-							<td data-ng-click="editCurso(curso)">{{curso.nome}}</td>
-							<td data-ng-click="editCurso(curso)">{{curso.categoria.nome}}</td>
-							<td>
-								<span data-ng-click="deleteCurso(curso.id)" class="glyphicon glyphicon-trash"></span>
-							</td>
-						</tr>
-					</table>
-				</div>
-    			</div>
 		</div>
+		<div class="form-group">
+			<label class="control-label">Categoria <span class="obrigatorio">*</span></label>
+			<div class="pull-right">
+				<a class="glyphicon glyphicon-plus" data-ng-click="openCategoriasCursos()"></a>
+			</div>
+			<div ng-class="{'has-error':!curso.categoriaCurso.id}">	
+				<select class="form-control" data-ng-model="curso.categoriaCurso" data-ng-options="(categoriaCurso.nome) for categoriaCurso in categoriasDeCursos">
+					<option value="" disabled>{{curso.categoriaCurso.nome}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label">Descrição</label>
+			<div class="controls">
+				<textarea type="text" class="form-control" 
+									placeholder="Insira a descrição do curso ..." 
+									data-ng-model="curso.descricao" rows="5">
+				</textarea>
+			</div>
+		</div>
+		<div class="form-group"><!--gambia-->	
+			<div class="btn-group btn-group-justified">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default" data-ng-click="getCursos()">Consultar</button>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-primary" data-ng-disabled="!curso.nome||!curso.categoriaCurso.id" data-ng-click="save()">Salvar</button>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default" data-ng-click="clear()">Limpar</button>
+				</div>
+			</div>
+		</div>
+		<table class="table table-hover">
+			<tr>
+				<td><strong>Nome</strong></td>
+				<td><strong>Categoria</strong></td>	
+			</tr>
+			<tr data-ng-click="edit(curso)" ng-repeat="curso in cursos">
+				<td>{{curso.nome}}</td>
+				<td>{{curso.categoriaCurso.nome}}</td>
+			</tr>
+		</table>
+	</div>
 </script>
         
    

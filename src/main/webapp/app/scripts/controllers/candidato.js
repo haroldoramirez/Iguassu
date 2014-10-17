@@ -37,19 +37,42 @@ angular.module('iguassuApp')
     });
   };    
 
-  $scope.openCursosDoCandidato = function(size) {
+  $scope.openCurso = function(candidatoCurso) {
+    
+    if (!$scope.empresas) {
+      $scope.getEmpresas();  
+    };
+    if (!$scope.cursos) {
+      $scope.getCursos();  
+    };
+
     $modal.open({
-      templateUrl : 'candidatoCurso.html',
+      templateUrl : 'cursosDoCandidato.html',
       controller : 'CandidatoCursoCtrl',
-      size : 'lg'
-    }).result.then(function(/*cursos*/) {
-      /*$scope.cursos = cursos;*/
+      size : 'md',
+      resolve : {
+       bundle : function() {
+          return {
+              candidatoCurso : candidatoCurso
+          }
+        }
+      }
+    }).result.then(function() {
+        $scope.cursosDoCandidato = Candidato.getCursos({id: $routeParams.id});
+      }, function(){
+        $scope.cursosDoCandidato = Candidato.getCursos({id: $routeParams.id});
     });
   };
 
   $scope.openExperiencia = function(experiencia) {
-    $rootScope.getEmpresas();
-    $rootScope.getCargos();
+    
+    if (!$scope.empresas) {
+      $scope.getEmpresas();  
+    };
+    if (!$scope.cargos) {
+      $scope.getCargos();  
+    };
+
     $modal.open({
         templateUrl : 'experienciasDoCandidato.html',
         controller : 'CandidatoExperienciaCtrl',
@@ -63,8 +86,8 @@ angular.module('iguassuApp')
         }
       }).result.then(function() {
         $scope.experienciasDoCandidato = Candidato.getExperiencias({id: $routeParams.id});
-    }, function(){
-      $scope.experienciasDoCandidato = Candidato.getExperiencias({id: $routeParams.id});
+      }, function(){
+        $scope.experienciasDoCandidato = Candidato.getExperiencias({id: $routeParams.id});
     });
   };
 
@@ -98,30 +121,24 @@ angular.module('iguassuApp')
     if($scope.experiencia.id) {msg = 'Experiência atualizada com sucesso'; var b = true;}
 
     $scope.experiencia.candidato = $rootScope.candidato;
-    console.log($scope.experiencia);
+
+    console.log($rootScope.candidato);
+
     Candidato.saveExperiencia($scope.experiencia, function(data){
-    if(!b){
-     $scope.experienciasDoCandidato.push(data);
-    }
-    toastr.success(msg);
-    $scope.close();
+      toastr.success(msg);
+      $scope.close();
     }, function(error){
-     toastr.error(error, 'ERRO AO SALVAR EXPERIENCIA: ');
+      toastr.error('Erro ao salvar experiência');
     });
   };
 
   $scope.delete = function(){
     Candidato.deleteExperiencia({id:$scope.experiencia.id}, function(data){
-     $scope.experienciasDoCandidato.splice($scope.experienciasDoCandidato.indexOf($scope.experiencia), 1);
      toastr.success('Experiência removida com sucesso');
      $scope.close();
     }, function(error){
-     toastr.error(error, 'ERRO AO REMOVER EXPERIENCIA: ');
+     toastr.error('Erro ao remover experiência');
     });
-  };
-
-  $scope.edit = function(experiencia){
-    $scope.experiencia = experiencia;
   };
 
   $scope.clear = function(){
@@ -141,7 +158,52 @@ angular.module('iguassuApp')
   $scope.openDatePickerDataTermino = function($event) {
     $event.preventDefault();
     $event.stopPropagation();
-    scope.openedDataTermino = !$scope.openedDataTermino;
+    $scope.openedDataTermino = !$scope.openedDataTermino;
+  };
+
+}).controller('CandidatoCursoCtrl', function ($scope, $rootScope, $modalInstance,  $modal, Candidato, toastr, bundle) {
+
+  $scope.candidatoCurso = bundle.candidatoCurso;
+
+  $scope.save = function(){
+    var msg = 'Expereiência adicionada com sucesso';
+    if($scope.candidatoCurso.id) {msg = 'Experiência atualizada com sucesso';}
+
+    $scope.candidatoCurso.candidato = $scope.candidato;
+    
+    Candidato.saveCurso($scope.candidatoCurso, function(data){
+      toastr.success(msg);
+      $scope.close();
+    }, function(error){
+      toastr.error('Erro ao salvar curso do candidato');
+    });
+  };
+
+  $scope.delete = function(){
+    Candidato.deleteCurso({id:$scope.candidatoCurso.id}, function(data){
+     toastr.success('Curso do candidato removido com sucesso');
+     $scope.close();
+    }, function(error){
+     toastr.error('Erro ao remover curso do candidato');
+    });
+  };
+
+  $scope.handlerPeriodos = function(){
+    $scope.candidatoCurso.periodosConcluidos = $scope.candidatoCurso.quantidadeDePeriodos;
+    if ($scope.candidatoCurso.situacaoDoCurso=='concluido') {
+      $scope.candidatoCurso.periodosConcluidos = $scope.candidatoCurso.quantidadeDePeriodos;
+    }else{
+      $scope.candidatoCurso.periodosConcluidos = null;
+    };
+    console.log($scope.candidatoCurso.periodosConcluidos);
+  };
+
+  $scope.clear = function(){
+    $scope.candidatoCurso = {};
+  };
+
+  $scope.close = function() {
+    $modalInstance.close();
   };
 
 });

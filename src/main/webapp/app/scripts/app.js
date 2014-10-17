@@ -134,7 +134,7 @@ angular
   $rootScope.candidato = {};
 
   $rootScope.getCandidatos = function(){
-      $rootScope.candidatos = Candidato.getAll();
+    $rootScope.candidatos = Candidato.getAll();
   };
 
   $rootScope.getPaises = function(){
@@ -178,7 +178,7 @@ angular
       $rootScope.getCursos();
     };
     if (!$rootScope.categoriasDeCursos) {
-      $rootScope.getCategoriasCursos();
+      $rootScope.getCategoriasDeCursos();
     };
     $modal.open({
       templateUrl : 'cursos.html',
@@ -198,7 +198,7 @@ angular
     $modal.open({
       templateUrl : 'categoriasDeCursos.html',
       controller : 'CategoriaCursoCtrl',
-      size : 'md'
+      size : 'sm'
     }).result.then(function() {
       $rootScope.getCategoriasDeCursos();  
     }, function(){

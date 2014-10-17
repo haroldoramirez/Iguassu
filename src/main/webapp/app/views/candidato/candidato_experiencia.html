@@ -6,17 +6,13 @@
         </i>
     </accordion-heading>
 
-    <div class="row row-offcanvas row-offcanvas-right">
-        <div class="col-xs-12 col-12 col-sm-12 col-lg-12">
             <div class="pull-right">
                 <a href="" class="btn btn-primary"
                    data-ng-click="openExperiencia()">Adicionar Experiência
                 </a>
             </div>
             <h3>Experiências Profissionais</h3>
-            <!--<hr>-->
-        </div>
-        <div class="col-xs-12 col-12 col-sm-12 col-lg-12">
+            <hr>
             <div class="list-group">
                 <a data-ng-repeat="experiencia in experienciasDoCandidato" href="" ng-click="openExperiencia(experiencia)" class="list-group-item">
                     <strong>{{experiencia.cargo.nome}}</strong>
@@ -46,8 +42,6 @@
                         </li>
                     </ul>
                 </a>
-            </div>
-        </div>
     </div>
 
 </accordion-group>

@@ -22,7 +22,7 @@ angular.module('iguassuApp')
      	toastr.success(msg);
      	$scope.clear();
     }, function(error){
-    	toastr.error(error, 'ERRO AO SALVAR EXPERIENCIA: ');
+    	toastr.error('Erro ao salvar categoria de curso');
     	$scope.clear();
     });
   };

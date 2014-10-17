@@ -12,16 +12,14 @@ angular.module('iguassuApp')
   	
 	$scope.save = function(){
     var msg = 'Cargo cadastrado com sucesso';
-    if($scope.cargo.id) {msg = 'Cargo atualizado com sucesso'; var b = true;}
+    if($scope.cargo.id) {msg = 'Cargo atualizado com sucesso';}
     
     Cargo.save($scope.cargo, function(data){
-     	if(!b){
-        $scope.cargos.push(data);
-     	}
+      $scope.getCargos();
      	toastr.success(msg);
      	$scope.clear();
     }, function(error){
-    	toastr.error(error, 'ERRO AO SALVAR EXPERIENCIA: ');
+    	toastr.error('Erro ao salvar cargo');
     	$scope.clear();
     });
   };

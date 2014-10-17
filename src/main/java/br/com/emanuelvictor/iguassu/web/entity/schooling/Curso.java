@@ -1,12 +1,13 @@
 package br.com.emanuelvictor.iguassu.web.entity.schooling;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import br.com.emanuelvictor.iguassu.web.entity.base.SpringData;
 
 @Entity
+@Table(uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"nome" , "CategoriaCurso_id"})
+})
 public class Curso extends SpringData<Long> {
 
 	// Esse é o CRUD de curso, cada curso se enquadra em uma cateogria, se é
@@ -16,7 +17,7 @@ public class Curso extends SpringData<Long> {
 	private static final long serialVersionUID = 2783191947729894654L;
 
 	// Nome
-	@Column(nullable = false, length = 50, unique = true)
+	@Column(nullable = false, length = 50)
 	private String nome;
 
 	@ManyToOne(optional = false)

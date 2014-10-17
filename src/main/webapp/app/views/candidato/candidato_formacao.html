@@ -1,53 +1,49 @@
 <accordion-group is-open="panel.open2">
 
-    <accordion-heading>Formação
-        <i 	class="pull-right glyphicon"
-              data-ng-class="{'glyphicon-chevron-down': panel.open2, 'glyphicon-chevron-right': !panel.open2}">
-        </i>
-    </accordion-heading>
+  <accordion-heading>Formação
+      <i 	class="pull-right glyphicon"
+            data-ng-class="{'glyphicon-chevron-down': panel.open2, 'glyphicon-chevron-right': !panel.open2}">
+      </i>
+  </accordion-heading>
 
-    <div class="row row-offcanvas row-offcanvas-right">
-            <div class="col-xs-12 col-12 col-sm-12 col-lg-12">
-                <div class="pull-right">
-                    <a href="" class="btn btn-primary"
-                       data-ng-click="openCurso()">Adicionar Curso
-                    </a>
-                </div>
-                <h3>Cursos e Formação</h3>
-                <!--<hr>-->
-            </div>
-            <div class="col-xs-12 col-12 col-sm-12 col-lg-12">
-                <div class="list-group">
-                    <a class="list-group-item" data-ng-repeat="cursoDoCandidato in cursosDoCandidato">
-                        <strong>{{cursoDoCandidato.curso.nome}}</strong>({{cursoDoCandidato.curso.categoriaCurso.nome}},
-                        <span class="label label-success" data-ng-show="cursoDoCandidato.situacaoDoCurso=='concluido'">concluido</span>
-                        <span class="label label-danger" data-ng-show="cursoDoCandidato.situacaoDoCurso=='trancado'">trancado</span>
-                        <span class="label label-warning" data-ng-show="cursoDoCandidato.situacaoDoCurso=='cursando'">cursando</span>)
-                        <!--<a class="glyphicon glyphicon-plus" data-ng-click="openCursosDoCandidato()"></a>-->
-                        <ul>
-                            <li data-ng-if="cursoDoCandidato.instituicaoDeEnsino.nome">
-                                <strong>Instituição de Ensino:&nbsp</strong>{{cursoDoCandidato.instituicaoDeEnsino.nome}}
-                            </li>
-                            <li data-ng-if="cursoDoCandidato.situacaoDoCurso=='trancado'">
-                                <strong>Concluídos {{cursoDoCandidato.periodosConcluidos}}</strong> períodos
-                            </li>
-                            <li data-ng-if="cursoDoCandidato.situacaoDoCurso=='cursando'">
-                                <strong>Cursando o {{cursoDoCandidato.periodosConcluidos+1}}</strong>° período
-                                <small data-ng-show="cursoDoCandidato.regime">(Regime {{cursoDoCandidato.regime}})</small>
-                            </li>
-                            <li>
-                                <strong>Quantidade de períodos: {{cursoDoCandidato.quantidadeDePeriodos}}</strong>
-                            </li>
-                            <li data-ng-if="cursoDoCandidato.curso.descricao">
-                                <strong>Descrição do curso: </strong>{{cursoDoCandidato.curso.descricao}}
-                            </li>
-                            <li data-ng-if="cursoDoCandidato.outrasInformacoes">
-                                <strong>Informações complementares: </strong>{{cursoDoCandidato.outrasInformacoes}}
-                            </li>
-                        </ul>
-                    </a>
-                </div>
-            </div>
+    <div class="pull-right">
+      <a  href="" class="btn btn-primary" 
+          data-ng-click="openCurso()">Adicionar Curso
+      </a>
+    </div>
+
+    <h3>Cursos e Formação</h3>
+    <hr>
+
+    <div class="list-group">
+      <a href="" ng-click="openCurso(cursoDoCandidato)" class="list-group-item" data-ng-repeat="cursoDoCandidato in cursosDoCandidato">
+        <strong>{{cursoDoCandidato.curso.nome}}</strong>({{cursoDoCandidato.curso.categoriaCurso.nome}},
+        <span class="label label-success" data-ng-show="cursoDoCandidato.situacaoDoCurso=='concluido'">concluido</span>
+        <span class="label label-danger" data-ng-show="cursoDoCandidato.situacaoDoCurso=='trancado'">trancado</span>
+        <span class="label label-warning" data-ng-show="cursoDoCandidato.situacaoDoCurso=='cursando'">cursando</span>)
+        <!--<a class="glyphicon glyphicon-plus" data-ng-click="openCursosDoCandidato()"></a>-->
+        <ul>
+          <li data-ng-if="cursoDoCandidato.instituicaoDeEnsino.nome">
+            <strong>Instituição de Ensino:&nbsp</strong>{{cursoDoCandidato.instituicaoDeEnsino.nome}}
+          </li>
+          <li data-ng-if="cursoDoCandidato.situacaoDoCurso=='trancado'">
+            <strong>Concluídos {{cursoDoCandidato.periodosConcluidos}}</strong> períodos
+          </li>
+          <li data-ng-if="cursoDoCandidato.situacaoDoCurso=='cursando'">
+            <strong>Cursando o {{cursoDoCandidato.periodosConcluidos+1}}</strong>° período
+            <small data-ng-show="cursoDoCandidato.regime">(Regime {{cursoDoCandidato.regime}})</small>
+          </li>
+          <li>
+            <strong>Quantidade de períodos: {{cursoDoCandidato.quantidadeDePeriodos}}</strong>
+          </li>
+          <li data-ng-if="cursoDoCandidato.curso.descricao">
+            <strong>Descrição do curso: </strong>{{cursoDoCandidato.curso.descricao}}
+          </li>
+          <li data-ng-if="cursoDoCandidato.outrasInformacoes">
+            <strong>Informações complementares: </strong>{{cursoDoCandidato.outrasInformacoes}}
+          </li>
+        </ul>
+      </a>
     </div>
 
 </accordion-group> 

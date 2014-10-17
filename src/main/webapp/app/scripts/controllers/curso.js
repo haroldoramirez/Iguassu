@@ -12,16 +12,14 @@ angular.module('iguassuApp')
   	
   $scope.save = function(){
     var msg = 'Curso cadastrado com sucesso';
-    if($scope.curso.id) {msg = 'Curso atualizado com sucesso'; var b = true;}
+    if($scope.curso.id) {msg = 'Curso atualizado com sucesso';}
     
     Curso.save($scope.curso, function(data){
-     	if(!b){
-        $scope.cursos.push(data);
-     	}
+     	$scope.getCursos();
      	toastr.success(msg);
      	$scope.clear();
     }, function(error){
-    	toastr.error(error, 'ERRO AO SALVAR EXPERIENCIA: ');
+    	toastr.error('Erro ao salvar curso');
     	$scope.clear();
     });
   };

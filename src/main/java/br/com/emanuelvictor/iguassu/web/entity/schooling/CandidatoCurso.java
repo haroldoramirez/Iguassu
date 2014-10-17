@@ -19,10 +19,12 @@ public class CandidatoCurso extends SpringData<Long> {
 
 	@Column(length = 500)
 	private String outrasInformacoes;
-	@NotNull(message = "Você deve inserir quantos períodos o candidato já cursou")
+
+    @NotNull(message = "Você deve inserir quantos períodos o candidato já cursou")
 	@Column(nullable = false)
 	private Integer periodosConcluidos;
-	@NotNull(message = "Você deve inserir um regime")
+
+    @NotNull(message = "Você deve inserir um regime")
 	@Column(nullable = false, length = 30)
 	private String regime;
 
