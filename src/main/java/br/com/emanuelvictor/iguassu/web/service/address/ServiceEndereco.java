@@ -4,6 +4,8 @@ import br.com.emanuelvictor.iguassu.web.entity.address.Bairro;
 import br.com.emanuelvictor.iguassu.web.entity.address.Cidade;
 import br.com.emanuelvictor.iguassu.web.entity.address.Estado;
 import br.com.emanuelvictor.iguassu.web.entity.address.Pais;
+import br.com.emanuelvictor.iguassu.web.entity.base.BaseEntity;
+import br.com.emanuelvictor.iguassu.web.repository.DAOBaseEntity;
 import br.com.emanuelvictor.iguassu.web.repository.address.DAOBairro;
 import br.com.emanuelvictor.iguassu.web.repository.address.DAOCidade;
 import br.com.emanuelvictor.iguassu.web.repository.address.DAOEstado;
@@ -20,6 +22,13 @@ public class ServiceEndereco {
 
 	@Autowired
 	DAOPais daoPais;
+
+    @Autowired
+    DAOBaseEntity daoBaseEntity;
+
+    public BaseEntity findCPF(String cep) {
+        return daoBaseEntity.find(cep);
+    }
 
 	public Pais save(Pais pais)  {
 		return daoPais.save(pais);

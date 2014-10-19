@@ -9,11 +9,11 @@
  */
 angular.module('iguassuApp')
   .controller('EstadoCtrl', function ($scope, $modalInstance, toastr, bundle, Estado) {
-    $scope.pais = bundle.pais;
-    $scope.estado = bundle.estado;
+    $scope.endereco.pais = bundle.pais;
+    $scope.endereco.estado = bundle.estado;
 
 	  $scope.edit = function(estado){
-			$scope.estado = estado;
+			$scope.endereco.estado = estado;
 	  };
 
 	  $scope.close = function() {
@@ -21,9 +21,10 @@ angular.module('iguassuApp')
 	  };
 
 	  $scope.delete = function(){
-	    Estado.delete({id:$scope.estado.id}, function(data){
-	    	$scope.getEstados($scope.pais.id);
-	     	toastr.success('Estado removido com sucesso');
+	    Estado.delete({id:$scope.endereco.estado.id}, function(data){
+	    	$scope.getEstados($scope.endereco.pais.id);
+	    	toastr.success('Estado removido com sucesso');
+	    	$scope.endereco.estado = null;
 	     	$scope.close();
 	    }, function(error){
 	     	toastr.error('Erro ao remover estado');
@@ -32,13 +33,14 @@ angular.module('iguassuApp')
 
 		$scope.save = function(){
 	    var msg = 'cadastrado com sucesso';
-	    if($scope.estado.id){
+	    if($scope.endereco.estado.id){
 	      msg = 'atualizado com sucesso';
 	    }
-	    $scope.estado.pais = $scope.pais;
-	    Estado.save($scope.estado, function(data){
-	      $scope.getEstados($scope.pais.id);
-	      toastr.success(msg,$scope.estado.nome);
+	    $scope.endereco.estado.pais = $scope.endereco.pais;
+	    Estado.save($scope.endereco.estado, function(data){
+	      $scope.getEstados($scope.endereco.pais.id);
+	      toastr.success(msg,$scope.endereco.estado.nome);
+	      $scope.endereco.estado = null;
 	      $scope.close();
 	    }, function(data){
 	    	toastr.error('Não foi possível salvar essas informações');

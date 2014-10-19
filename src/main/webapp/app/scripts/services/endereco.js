@@ -30,5 +30,6 @@ angular.module('iguassuApp')
   function($resource, BaseUrl){
     return $resource(BaseUrl + '/bairros/:id', {}, {
       getAllByCidade: {method: 'GET', params:{}, url: BaseUrl + '/bairros/cidade/:idCidade', isArray: true},
+      getByCEP: {method: 'GET', params:{}, url: BaseUrl + '/paises', isArray: true},
     });
   }]);

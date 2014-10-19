@@ -129,9 +129,11 @@ angular
        $httpProvider.responseInterceptors.push(interceptor);
  })*/
 
-.run(function($rootScope, $modal, Curso, Empresa, Cargo, Pais, Estado, Cidade, Bairro, Candidato){
+.run(function($rootScope, $modal, Curso, Empresa, Cargo, Pais, Estado, Cidade, Bairro, Candidato, CategoriasCursos){
 
   $rootScope.candidato = {};
+
+  $rootScope.endereco = {};
 
   $rootScope.getCandidatos = function(){
     $rootScope.candidatos = Candidato.getAll();
@@ -175,15 +177,26 @@ angular
     }
   };
 
+  if(!$rootScope.paises){
+    $rootScope.getPaises();
+  };
 
-  $rootScope.openBairros = function() {
+  $rootScope.openBairro = function(cidade, bairro) {
     if (!$rootScope.bairros) {
       $rootScope.getBairros();
     };
     $modal.open({
       templateUrl : 'bairros.html',
       controller : 'BairroCtrl',
-      size : 'md'
+      size : 'md',
+      resolve : {
+        bundle : function(){
+          return {
+            cidade : cidade,
+            bairro : bairro
+          }
+        }
+      }
     }).result.then(function() {
       $rootScope.getBairros();  
     }, function(){
@@ -191,7 +204,7 @@ angular
     });
   };
 
-  $rootScope.openCidades = function(estado,cidade) {
+  $rootScope.openCidade = function(estado,cidade) {
     if (!$rootScope.cidades) {
       $rootScope.getCidades();
     };
@@ -208,16 +221,13 @@ angular
         }
       }
     }).result.then(function(cidade) {
-      cidade = cidade;
       $rootScope.getCidades();  
     }, function(cidade){
-      cidade = cidade;
       $rootScope.getCidades();
     });
   };
 
   $rootScope.openEstado = function(pais,estado) {
-    console.log(pais.nome);
     if (!$rootScope.estados) {
       $rootScope.getEstados();
     };
@@ -241,8 +251,9 @@ angular
   };
 
   $rootScope.openPais = function(pais) {
-    if (!$rootScope.estados) {
-      $rootScope.getEstados();
+    console.log(pais);
+    if (!$rootScope.paises) {
+      $rootScope.getPaises();
     };
     $modal.open({
       templateUrl : 'paises.html',
@@ -263,9 +274,8 @@ angular
   };
 
   $rootScope.openCargos = function() {
-    if (!$rootScope.cargos) {
-      $rootScope.getCargos();
-    };
+    $rootScope.getCargos();
+    $rootScope.getEmpresas();
     $modal.open({
       templateUrl : 'cargos.html',
       controller : 'CargoCtrl',

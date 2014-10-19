@@ -11,6 +11,7 @@ import br.com.emanuelvictor.iguassu.web.entity.job.vacancy.Vaga;
 import br.com.emanuelvictor.iguassu.web.entity.schooling.CandidatoCurso;
 import br.com.emanuelvictor.iguassu.web.entity.schooling.CategoriaCurso;
 import br.com.emanuelvictor.iguassu.web.entity.schooling.Curso;
+import br.com.emanuelvictor.iguassu.web.repository.DAOBaseEntity;
 import br.com.emanuelvictor.iguassu.web.service.ServiceCandidato;
 import br.com.emanuelvictor.iguassu.web.service.ServiceEmpresa;
 import br.com.emanuelvictor.iguassu.web.service.ServiceEncaminhamento;
@@ -53,12 +54,8 @@ public class NovosTestes {
     @Autowired
     ServiceCategoriaCurso serviceCategoriaCurso;
 
-//    @Autowired
-//    serviceCandidato serviceCandidato;
-
-//    @Autowired
-//    serviceCandidato serviceCandidato;
-
+    @Autowired
+    DAOBaseEntity daoBaseEntity;
     @Autowired
     ServiceCargo serviceCargo;
 
@@ -68,6 +65,13 @@ public class NovosTestes {
     @Autowired
     ServiceEmpresa serviceEmpresa;
 
+
+    @Test
+    @Rollback(false)
+    @Transactional
+    public void saveBaseEntityCEP() {
+//        daoBaseEntity.find("85862590");
+    }
 
     @Test
     @Rollback(false)

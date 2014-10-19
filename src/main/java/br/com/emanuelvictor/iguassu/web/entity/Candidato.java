@@ -23,7 +23,6 @@ public class Candidato extends Pessoa {
 	@Column(nullable = false)
 	private Calendar dataNasc;
 
-
     @Column(length = 20)
     protected String telefoneResidencial;
 
@@ -35,15 +34,6 @@ public class Candidato extends Pessoa {
 
     @Column(length = 50)
     protected String email;
-
-//    @JsonManagedReference
-
-//    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "candidato")
-//    private List<Experiencia> experiencias;
-//
-////    @JsonManagedReference
-//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "candidato")
-//    private List<CandidatoCurso> cursos;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = true)
@@ -57,8 +47,15 @@ public class Candidato extends Pessoa {
 	@Column(nullable = false)
 	private SituacaoDoCandidato situacao;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private EstadoCivil estadoCivil;
+
     @ManyToOne(optional = true, cascade = CascadeType.REFRESH)
 	private Pais nacionalidade;
+
+    @Column(nullable = true, length = 200)
+    private String observacoes;
 
     public String getTelefoneResidencial() {
         return telefoneResidencial;
@@ -91,12 +88,6 @@ public class Candidato extends Pessoa {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    @Column(nullable = true, length = 30)
-	private String estadoCivil;
-
-	@Column(nullable = true, length = 200)
-	private String observacoes;
 
 	public String getPathFoto() {
 		return pathFoto;
@@ -162,15 +153,15 @@ public class Candidato extends Pessoa {
         this.necessidadeEspecial = necessidadeEspecial;
     }
 
-    public String getEstadoCivil() {
-		return estadoCivil;
-	}
+    public EstadoCivil getEstadoCivil() {
+        return estadoCivil;
+    }
 
-	public void setEstadoCivil(String estadoCivil) {
-		this.estadoCivil = estadoCivil;
-	}
+    public void setEstadoCivil(EstadoCivil estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
 
-	public String getObservacoes() {
+    public String getObservacoes() {
 		return observacoes;
 	}
 

@@ -65,9 +65,11 @@
         <div class="col-md-3" >    
           <div class="form-group">
             <label class="control-label">Necessidades Especiais</label>
+            <div class="pull-right">
+              <a class="glyphicon glyphicon-remove" ng-if="candidato.necessidadeEspecial" data-ng-click="candidato.necessidadeEspecial=null"></a>
+            </div>
             <div class="controls">
               <select class="form-control" data-ng-model="candidato.necessidadeEspecial">
-                <option value="">Nenhuma</option>
                 <option value="AUDITIVA">Auditiva</option>
                 <option value="VISUAL">Visual</option>
                 <option value="FISICA">Física</option>
@@ -107,8 +109,11 @@
               <select class="form-control" data-ng-model="candidato.estadoCivil">
                 <option data-ng-show="candidato.estadoCivil!=null&&candidato.estadoCivil!=''"
                         value="" disabled selected>{{candidato.estadoCivil}}</option>
-                <option data-ng-value="Solteiro">Solteiro</option>
-                <option data-ng-value="Casado">Casado</option>
+                <option data-ng-value="SOLTEIRO">Solteiro</option>
+                <option data-ng-value="CASADO">Casado</option>
+                <option data-ng-value="SEPARADO">Separado</option>
+                <option data-ng-value="DIVORCIOADO">Divorciado</option>
+                <option data-ng-value="VIUVO">Viúvo</option>
               </select>
             </div>
           </div>

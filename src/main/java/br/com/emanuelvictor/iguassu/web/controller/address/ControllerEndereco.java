@@ -4,6 +4,7 @@ import br.com.emanuelvictor.iguassu.web.entity.address.Bairro;
 import br.com.emanuelvictor.iguassu.web.entity.address.Cidade;
 import br.com.emanuelvictor.iguassu.web.entity.address.Estado;
 import br.com.emanuelvictor.iguassu.web.entity.address.Pais;
+import br.com.emanuelvictor.iguassu.web.entity.base.BaseEntity;
 import br.com.emanuelvictor.iguassu.web.service.address.ServiceEndereco;
 import br.com.emanuelvictor.iguassu.web.util.Converter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,14 @@ public class ControllerEndereco {
 
     @Autowired
     ServiceEndereco serviceEndereco;
+
+    @RequestMapping(value = "/endereco/{cep}", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    BaseEntity findByCEP(@PathVariable String cep) {
+        return serviceEndereco.findCPF(cep);
+    }
+
 
     // Paises
     @RequestMapping(value = "/paises", method = RequestMethod.POST)
@@ -132,6 +141,8 @@ public class ControllerEndereco {
     Bairro findBairroByIdBairro(@PathVariable Long id) {
         return serviceEndereco.findBairroById(id);
     }
+
+
 
     @RequestMapping(value = "/bairros/cidade/{idCidade}", method = RequestMethod.GET)
     public

@@ -7,6 +7,5 @@ import br.com.emanuelvictor.iguassu.web.entity.base.SpringData;
 
 
 public enum NecessidadeEspecial {
-
-AUDITIVA, FISICA, VISUAL, MENTAL, OUTRO
+    AUDITIVA, FISICA, VISUAL, MENTAL, OUTRO
 }

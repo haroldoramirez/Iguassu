@@ -3,20 +3,35 @@
 angular.module('iguassuApp')
   .controller('CandidatoCtrl', function ($rootScope, $log, $modal, $scope, $routeParams, $document, $location, Candidato, Pais, toastr) {
 
-
+  
   $scope.init = function(){
     if ($routeParams.id) {
-      $rootScope.candidato = Candidato.get({id: $routeParams.id});
+      // Fazer o embadable no backend
+      $rootScope.candidato = Candidato.get({id: $routeParams.id}, function(candidato){
+        $scope.endereco.rua = candidato.rua;
+        $scope.endereco.numero = candidato.numero;
+        $scope.endereco.cep = candidato.cep;
+        $scope.endereco.complemento = candidato.complemento;
+        if (candidato.bairro!==null) {
+          $scope.endereco.bairro = candidato.bairro;
+          $scope.endereco.cidade = candidato.bairro.cidade;
+          $scope.endereco.estado = candidato.bairro.cidade.estado;
+          $scope.endereco.pais = candidato.bairro.cidade.estado.pais;
+          $scope.getEstados($scope.endereco.pais.id);
+          $scope.getCidades($scope.endereco.estado.id);
+          $scope.getBairros($scope.endereco.cidade.id);  
+        }else{
+          $scope.endereco.bairro = null;
+          $scope.endereco.cidade = null;
+          $scope.endereco.estado = null;
+          $scope.endereco.pais = null;
+        };
+      });
       $scope.cursosDoCandidato = Candidato.getCursos({id: $routeParams.id});
       $scope.experienciasDoCandidato = Candidato.getExperiencias({id: $routeParams.id});
     }else{
-      $rootScope.candidato = {};
-      $scope.cursosDoCandidato = {};
-      $scope.experienciasDoCandidato = {};
+      $scope.clear();
     };
-    if(!$scope.paises){
-      $scope.getPaises();
-    }
     if(!$scope.candidatos){
       $scope.getCandidatos();
     }
@@ -24,6 +39,15 @@ angular.module('iguassuApp')
 
 
   $scope.save = function(){
+    if (!$scope.candidato.necessidadeEspecial) {
+      $scope.candidato.necessidadeEspecial = null;
+    };
+    $scope.candidato.rua = $scope.endereco.rua;
+    $scope.candidato.numero = $scope.endereco.numero;
+    $scope.candidato.cep = $scope.endereco.cep;
+    $scope.candidato.complemento = $scope.endereco.complemento;
+    $scope.candidato.bairro = $scope.endereco.bairro;
+    
     var msg = 'cadastrado com sucesso';
     if($scope.candidato.id){
       msg = 'atualizado com sucesso';
@@ -34,8 +58,11 @@ angular.module('iguassuApp')
       $scope.getCandidatos();
       toastr.success(msg,$scope.candidato.nome);
       $document.scrollTopAnimated(0, 700);
+      $scope.init();
     });
   };    
+
+
 
   $scope.openCurso = function(candidatoCurso) {
     
@@ -97,8 +124,11 @@ angular.module('iguassuApp')
   }
 
   $scope.clear = function(){
+    $rootScope.endereco = {};
     $document.scrollTopAnimated(0, 700);
     $rootScope.candidato = {};
+    $scope.cursosDoCandidato = {};
+    $scope.experienciasDoCandidato = {};
     $location.path('/candidatos');
   }
 
@@ -107,8 +137,6 @@ angular.module('iguassuApp')
     $event.stopPropagation();
     $scope.opened = !$scope.opened;
   };
-
-
 
 }).controller('CandidatoExperienciaCtrl', function ($scope, $rootScope, $modalInstance,  $modal, Candidato, toastr, bundle) {
 

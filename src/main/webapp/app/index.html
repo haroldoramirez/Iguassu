@@ -5,45 +5,35 @@
     <title>Iguassu Agência de Empregos</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <link rel="icon" type="image/jpg" href="favicon.jpg" />
-      <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
+    <link rel="icon" type="image/jpg" href="favicon.jpg"/>
+
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- endbuild -->
-      <link href="./bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
-      <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="./bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link href="styles/animateview.css" rel="stylesheet" />
-    <!-- <link href="styles/animation.css" rel="stylesheet" /> -->
     <link href="styles/menu.css" rel="stylesheet" />
-    <!-- endbuild -->
 
     <!-- ***** PORQUIÇE ***** -->
     <div ng-include="'views/templates/templates.html'"></div>
   </head>
 
-<body class="container">
-  <div data-ng-controller="MenuCtrl" class="navbar navbar-default navbar-fixed-top" data-role="navigation">
-      <div class="container">
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
-              <a class="navbar-brand" href="#/">Agência Iguassu</a>
-          </div>
-          <!-- <div class="slide-animate-container">
-            <div class="slide-animate" ng-include="jsession?'views/menu.html':'views/private_menu.html'"></div>
-          </div> -->
-          <div  ng-include="jsession?'views/menu/menu.html':'views/menu/private_menu.html'"></div>
-      </div>
-  </div>
+  <body class="container">
+    <div data-ng-controller="MenuCtrl" class="navbar navbar-default navbar-fixed-top" data-role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
+                <a class="navbar-brand" href="#/">Agência Iguassu</a>
+            </div>
+            <div  ng-include="jsession?'views/menu/menu.html':'views/menu/private_menu.html'"></div>
+        </div>
+    </div>
 
-  <div animated-view></div>
-
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
+    <div animated-view></div>
+  
+    <script>
        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -53,15 +43,7 @@
        ga('send', 'pageview');
     </script>
 
-    <!-- build:js(.) scripts/oldieshim.js -->
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.js"></script>
-    <![endif]-->
-    <!-- endbuild -->
-
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
+  
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js"></script>
@@ -87,37 +69,34 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-scroll/angular-scroll.min.js"></script>
     <script src="bower_components/angular-toastr/dist/angular-toastr.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/bairro.js"></script>
-        <script src="scripts/controllers/candidatocurso.js"></script>
-        <script src="scripts/controllers/cargo.js"></script>
-        <script src="scripts/controllers/categoriacurso.js"></script>
-        <script src="scripts/controllers/cidade.js"></script>
-        <script src="scripts/controllers/curso.js"></script>
-        <script src="scripts/controllers/empresa.js"></script>
-        <script src="scripts/controllers/encaminhamento.js"></script>
-        <script src="scripts/controllers/estado.js"></script>
-        <script src="scripts/controllers/lancamento.js"></script>
-        <script src="scripts/controllers/menu.js"></script>
-        <script src="scripts/controllers/pais.js"></script>
-        <script src="scripts/controllers/vaga.js"></script>
-        <script src="scripts/controllers/candidato.js"></script>
-        <script src="scripts/directives/animatedview.js"></script>
-        <script src="scripts/directives/inputdate.js"></script>
-        <script src="scripts/services/baseurl.js"></script>
-        <script src="scripts/services/candidato.js"></script>
-        <script src="scripts/services/empresa.js"></script>
-        <script src="scripts/services/vaga.js"></script>
-        <script src="scripts/services/encaminhamento.js"></script>
-        <script src="scripts/services/endereco.js"></script>
-        <script src="scripts/services/cargo.js"></script>
-        <script src="scripts/services/curso.js"></script>
-        <!-- endbuild -->
-</body>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/bairro.js"></script>
+    <script src="scripts/controllers/candidatocurso.js"></script>
+    <script src="scripts/controllers/cargo.js"></script>
+    <script src="scripts/controllers/categoriacurso.js"></script>
+    <script src="scripts/controllers/cidade.js"></script>
+    <script src="scripts/controllers/curso.js"></script>
+    <script src="scripts/controllers/empresa.js"></script>
+    <script src="scripts/controllers/encaminhamento.js"></script>
+    <script src="scripts/controllers/estado.js"></script>
+    <script src="scripts/controllers/lancamento.js"></script>
+    <script src="scripts/controllers/menu.js"></script>
+    <script src="scripts/controllers/pais.js"></script>
+    <script src="scripts/controllers/vaga.js"></script>
+    <script src="scripts/controllers/candidato.js"></script>
+    <script src="scripts/directives/animatedview.js"></script>
+    <script src="scripts/directives/inputdate.js"></script>
+    <script src="scripts/services/baseurl.js"></script>
+    <script src="scripts/services/candidato.js"></script>
+    <script src="scripts/services/empresa.js"></script>
+    <script src="scripts/services/vaga.js"></script>
+    <script src="scripts/services/encaminhamento.js"></script>
+    <script src="scripts/services/endereco.js"></script>
+    <script src="scripts/services/cargo.js"></script>
+    <script src="scripts/services/curso.js"></script>
+
+  </body>
 </html>
