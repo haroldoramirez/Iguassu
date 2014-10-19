@@ -8,23 +8,11 @@ angular.module('iguassuApp')
     if ($routeParams.id) {
       // Fazer o embadable no backend
       $rootScope.candidato = Candidato.get({id: $routeParams.id}, function(candidato){
-        $scope.endereco.rua = candidato.rua;
-        $scope.endereco.numero = candidato.numero;
-        $scope.endereco.cep = candidato.cep;
-        $scope.endereco.complemento = candidato.complemento;
+        $scope.endereco = candidato.endereco;
         if (candidato.bairro!==null) {
-          $scope.endereco.bairro = candidato.bairro;
-          $scope.endereco.cidade = candidato.bairro.cidade;
-          $scope.endereco.estado = candidato.bairro.cidade.estado;
-          $scope.endereco.pais = candidato.bairro.cidade.estado.pais;
-          $scope.getEstados($scope.endereco.pais.id);
-          $scope.getCidades($scope.endereco.estado.id);
-          $scope.getBairros($scope.endereco.cidade.id);  
-        }else{
-          $scope.endereco.bairro = null;
-          $scope.endereco.cidade = null;
-          $scope.endereco.estado = null;
-          $scope.endereco.pais = null;
+          $scope.getEstados($scope.endereco.bairro.cidade.estado.pais.id);
+          $scope.getCidades($scope.endereco.bairro.cidade.estado.id);
+          $scope.getBairros($scope.endereco.bairro.cidade.id);  
         };
       });
       $scope.cursosDoCandidato = Candidato.getCursos({id: $routeParams.id});
@@ -39,15 +27,7 @@ angular.module('iguassuApp')
 
 
   $scope.save = function(){
-    if (!$scope.candidato.necessidadeEspecial) {
-      $scope.candidato.necessidadeEspecial = null;
-    };
-    $scope.candidato.rua = $scope.endereco.rua;
-    $scope.candidato.numero = $scope.endereco.numero;
-    $scope.candidato.cep = $scope.endereco.cep;
-    $scope.candidato.complemento = $scope.endereco.complemento;
-    $scope.candidato.bairro = $scope.endereco.bairro;
-    
+    $scope.candidato.endereco = $scope.endereco;
     var msg = 'cadastrado com sucesso';
     if($scope.candidato.id){
       msg = 'atualizado com sucesso';
@@ -212,7 +192,8 @@ angular.module('iguassuApp')
      toastr.success('Curso do candidato removido com sucesso');
      $scope.close();
     }, function(error){
-     toastr.error('Erro ao remover curso do candidato');
+      console.log(error);
+      toastr.error(error, 'Erro ao remover curso do candidato');
     });
   };
 

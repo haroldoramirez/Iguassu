@@ -11,7 +11,6 @@ import br.com.emanuelvictor.iguassu.web.entity.job.vacancy.Vaga;
 import br.com.emanuelvictor.iguassu.web.entity.schooling.CandidatoCurso;
 import br.com.emanuelvictor.iguassu.web.entity.schooling.CategoriaCurso;
 import br.com.emanuelvictor.iguassu.web.entity.schooling.Curso;
-import br.com.emanuelvictor.iguassu.web.repository.DAOBaseEntity;
 import br.com.emanuelvictor.iguassu.web.service.ServiceCandidato;
 import br.com.emanuelvictor.iguassu.web.service.ServiceEmpresa;
 import br.com.emanuelvictor.iguassu.web.service.ServiceEncaminhamento;
@@ -55,8 +54,6 @@ public class NovosTestes {
     ServiceCategoriaCurso serviceCategoriaCurso;
 
     @Autowired
-    DAOBaseEntity daoBaseEntity;
-    @Autowired
     ServiceCargo serviceCargo;
 
     @Autowired
@@ -65,13 +62,6 @@ public class NovosTestes {
     @Autowired
     ServiceEmpresa serviceEmpresa;
 
-
-    @Test
-    @Rollback(false)
-    @Transactional
-    public void saveBaseEntityCEP() {
-//        daoBaseEntity.find("85862590");
-    }
 
     @Test
     @Rollback(false)
@@ -99,13 +89,13 @@ public class NovosTestes {
 
         Empresa udc = new Empresa();
         udc.setCnpj("33123123");
-        udc.setBairro(bairro);
+//        udc.setBairro(bairro);
         udc.setNome("UDC");
         udc = serviceEmpresa.save(udc);
 
         Empresa escolaMunicipalJoaoDaCostaViana = new Empresa();
         escolaMunicipalJoaoDaCostaViana.setCnpj("3312123123");
-        escolaMunicipalJoaoDaCostaViana.setBairro(bairro);
+//        escolaMunicipalJoaoDaCostaViana.setBairro(bairro);
         escolaMunicipalJoaoDaCostaViana
                 .setNome("Escola Municipal João da Costa Viana");
         escolaMunicipalJoaoDaCostaViana = serviceEmpresa
@@ -113,7 +103,7 @@ public class NovosTestes {
 
         Empresa escolaEstadualArnaldoBusatto = new Empresa();
         escolaEstadualArnaldoBusatto.setCnpj("3312543523");
-        escolaEstadualArnaldoBusatto.setBairro(bairro);
+//        escolaEstadualArnaldoBusatto.setBairro(bairro);
         escolaEstadualArnaldoBusatto
                 .setNome("Escola Estado Dr. Arnaldo busato");
         escolaEstadualArnaldoBusatto = serviceEmpresa
@@ -121,7 +111,7 @@ public class NovosTestes {
 
         Empresa technosInformatica = new Empresa();
         technosInformatica.setCnpj("312323123");
-        technosInformatica.setBairro(bairro);
+//        technosInformatica.setBairro(bairro);
         technosInformatica.setNome("Technos Informática");
         technosInformatica = serviceEmpresa.save(technosInformatica);
 
@@ -130,7 +120,7 @@ public class NovosTestes {
         sarah.setGenero(Genero.FEMININO);
         sarah.setDataNasc(Calendar.getInstance());
         sarah.setSituacao(SituacaoDoCandidato.BLOQUEADO);
-        sarah.setBairro(bairro);
+//        sarah.setBairro(bairro);
         sarah.setNacionalidade(pais);
         sarah = serviceCandidato.save(sarah);
 
@@ -139,7 +129,7 @@ public class NovosTestes {
         emanuel.setGenero(Genero.MASCULINO);
         emanuel.setDataNasc(Calendar.getInstance());
         emanuel.setSituacao(SituacaoDoCandidato.BLOQUEADO);
-        emanuel.setBairro(bairro);
+//        emanuel.setBairro(bairro);
         emanuel.setNacionalidade(pais);
         emanuel = serviceCandidato.save(emanuel);
 
@@ -148,7 +138,7 @@ public class NovosTestes {
         mayara.setGenero(Genero.FEMININO);
         mayara.setDataNasc(Calendar.getInstance());
         mayara.setSituacao(SituacaoDoCandidato.BLOQUEADO);
-        mayara.setBairro(bairro);
+//        mayara.setBairro(bairro);
         mayara.setNacionalidade(pais);
         mayara = serviceCandidato.save(mayara);
 
@@ -157,7 +147,7 @@ public class NovosTestes {
         anderson.setGenero(Genero.MASCULINO);
         anderson.setDataNasc(Calendar.getInstance());
         anderson.setSituacao(SituacaoDoCandidato.BLOQUEADO);
-        anderson.setBairro(bairro);
+//        anderson.setBairro(bairro);
         anderson.setNacionalidade(pais);
         anderson = serviceCandidato.save(anderson);
 
@@ -525,7 +515,7 @@ public class NovosTestes {
         analistaDeSistemasUDC.setObservacoes("Deve ser homem, deve ter boa referência, deve estar preparado a sofrer pressão e blá blá bla blá");
         analistaDeSistemasUDC.setPreferenciaSexoMasculino("masculino");
         analistaDeSistemasUDC.setSalario(7000.00);
-        analistaDeSistemasUDC.setBairro(bairro);
+//        analistaDeSistemasUDC.setBairro(bairro);
         analistaDeSistemasUDC = serviceVaga.save(analistaDeSistemasUDC);
 
         Vaga pedagogoArnaldoBusatto = new Vaga();
@@ -535,7 +525,7 @@ public class NovosTestes {
         pedagogoArnaldoBusatto.setIdadeInicialDoCandidato(30);
         pedagogoArnaldoBusatto.setIdadeFinalDoCandidato(40);
         pedagogoArnaldoBusatto.setObservacoes("deve ter disponibilidade em várias horários e blá blá blá");
-        pedagogoArnaldoBusatto.setBairro(bairro);
+//        pedagogoArnaldoBusatto.setBairro(bairro);
         pedagogoArnaldoBusatto.setPreferenciaSexoMasculino("feminino");
         pedagogoArnaldoBusatto.setSalario(4000.00);
         pedagogoArnaldoBusatto = serviceVaga.save(pedagogoArnaldoBusatto);

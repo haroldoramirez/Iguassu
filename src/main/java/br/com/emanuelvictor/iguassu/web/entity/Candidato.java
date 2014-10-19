@@ -48,7 +48,7 @@ public class Candidato extends Pessoa {
 	private SituacaoDoCandidato situacao;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(nullable = true)
     private EstadoCivil estadoCivil;
 
     @ManyToOne(optional = true, cascade = CascadeType.REFRESH)

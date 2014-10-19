@@ -18,14 +18,6 @@ public class ControllerEndereco {
     @Autowired
     ServiceEndereco serviceEndereco;
 
-    @RequestMapping(value = "/endereco/{cep}", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    BaseEntity findByCEP(@PathVariable String cep) {
-        return serviceEndereco.findCPF(cep);
-    }
-
-
     // Paises
     @RequestMapping(value = "/paises", method = RequestMethod.POST)
     public
