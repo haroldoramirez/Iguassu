@@ -8,23 +8,22 @@
  * Controller of the iguassuApp
  */
 angular.module('iguassuApp')
-  .controller('BairroCtrl', function ($scope, $modalInstance, bundle, Bairro, toastr) {
-  	$scope.endereco.bairro = bundle.bairro;
-  	$scope.endereco.cidade = bundle.cidade;
-     	
-    $scope.edit = function(bairro){
-			$scope.endereco.bairro = bairro;
+  .controller('BairroCtrl', function ($scope, $modalInstance, Bairro, toastr) {
+  	
+		$scope.close = function() {
+	    $modalInstance.close();
 	  };
 
-	  $scope.close = function() {
-	    $modalInstance.close($scope.endereco.bairro);
+	  $scope.cancel = function() {
+	    $modalInstance.dismiss();
 	  };
 
 	  $scope.delete = function(){
 	    Bairro.delete({id:$scope.endereco.bairro.id}, function(data){
-	    	$scope.getBairros($scope.endereco.cidade.id);
+	    	$scope.getBairros($scope.endereco.bairro.cidade.id);
 	    	toastr.success('Bairro removido com sucesso');
-	    	$scope.endereco.bairro = null;
+	    	$scope.endereco.bairro.nome = null;
+	     	$scope.endereco.bairro.id = null;
 	     	$scope.close();
 	    }, function(error){
 	     	toastr.error('Erro ao remover bairro');
@@ -36,11 +35,11 @@ angular.module('iguassuApp')
 	    if($scope.endereco.bairro.id){
 	      msg = 'atualizado com sucesso';
 	    }
-	    $scope.endereco.bairro.cidade = $scope.endereco.cidade;
 	    Bairro.save($scope.endereco.bairro, function(data){
-	    	$scope.getBairros($scope.endereco.cidade.id);
-	      toastr.success(msg,$scope.endereco.bairro.nome);
-	      $scope.endereco.bairro = null;
+	    	$scope.getBairros(data.cidade.id);
+	      toastr.success(msg,data.nome);
+	      $scope.endereco.bairro.nome = data.nome;
+	      $scope.endereco.bairro.id = data.id;
 	      $scope.close();
 	    }, function(data){
 	    	toastr.error('Não foi possível salvar essas informações');

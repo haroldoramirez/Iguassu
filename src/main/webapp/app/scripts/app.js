@@ -133,7 +133,17 @@ angular
 
   $rootScope.candidato = {};
 
-  $rootScope.endereco = {};
+  $rootScope.endereco = {
+    bairro : {
+      cidade : {
+        estado : {
+          pais : {
+
+          }
+        }
+      }
+    }
+  };
 
   $rootScope.getCandidatos = function(){
     $rootScope.candidatos = Candidato.getAll();
@@ -182,9 +192,8 @@ angular
   };
 
   $rootScope.openBairro = function(cidade, bairro) {
-    if (!$rootScope.bairros) {
-      $rootScope.getBairros();
-    };
+    var oldNome = $rootScope.endereco.bairro.nome;
+    var oldId = $rootScope.endereco.bairro.id;
     $modal.open({
       templateUrl : 'bairros.html',
       controller : 'BairroCtrl',
@@ -198,16 +207,15 @@ angular
         }
       }
     }).result.then(function() {
-      $rootScope.getBairros();  
+      $rootScope.getBairros(cidade.id);
     }, function(){
-      $rootScope.getBairros();
+      $rootScope.endereco.bairro.nome = oldNome;
+      $rootScope.endereco.bairro.id = oldId;
+      $rootScope.getBairros(cidade.id);
     });
   };
 
   $rootScope.openCidade = function(estado,cidade) {
-    if (!$rootScope.cidades) {
-      $rootScope.getCidades();
-    };
     $modal.open({
       templateUrl : 'cidades.html',
       controller : 'CidadeCtrl',
@@ -221,16 +229,13 @@ angular
         }
       }
     }).result.then(function(cidade) {
-      $rootScope.getCidades();  
+      $rootScope.getCidades(estado.id);  
     }, function(cidade){
-      $rootScope.getCidades();
+      $rootScope.getCidades(estado.id);
     });
   };
 
   $rootScope.openEstado = function(pais,estado) {
-    if (!$rootScope.estados) {
-      $rootScope.getEstados();
-    };
     $modal.open({
       templateUrl : 'estados.html',
       controller : 'EstadoCtrl',
@@ -244,17 +249,13 @@ angular
         }
       }
     }).result.then(function() {
-      $rootScope.getEstados();  
+      $rootScope.getEstados(pais.id);  
     }, function(){
-      $rootScope.getEstados();
+      $rootScope.getEstados(pais.id);
     });
   };
 
   $rootScope.openPais = function(pais) {
-    console.log(pais);
-    if (!$rootScope.paises) {
-      $rootScope.getPaises();
-    };
     $modal.open({
       templateUrl : 'paises.html',
       controller : 'PaisCtrl',
@@ -267,8 +268,10 @@ angular
         }
       }
     }).result.then(function() {
+      $rootScope.endereco.bairro.cidade.estado.pais = null;
       $rootScope.getPaises();  
     }, function(){
+      $rootScope.endereco.bairro.cidade.estado.pais = null;
       $rootScope.getPaises();
     });
   };

@@ -9,13 +9,7 @@
  */
 angular.module('iguassuApp')
   .controller('EstadoCtrl', function ($scope, $modalInstance, toastr, bundle, Estado) {
-    $scope.endereco.pais = bundle.pais;
-    $scope.endereco.estado = bundle.estado;
-
-	  $scope.edit = function(estado){
-			$scope.endereco.estado = estado;
-	  };
-
+   
 	  $scope.close = function() {
 	    $modalInstance.close();
 	  };

@@ -6,13 +6,25 @@ angular.module('iguassuApp')
   
   $scope.init = function(){
     if ($routeParams.id) {
-      // Fazer o embadable no backend
-      $rootScope.candidato = Candidato.get({id: $routeParams.id}, function(candidato){
-        $scope.endereco = candidato.endereco;
-        if (candidato.bairro!==null) {
-          $scope.getEstados($scope.endereco.bairro.cidade.estado.pais.id);
-          $scope.getCidades($scope.endereco.bairro.cidade.estado.id);
-          $scope.getBairros($scope.endereco.bairro.cidade.id);  
+      $scope.candidato = Candidato.get({id: $routeParams.id}, function(data){
+        console.log(data);
+        $scope.endereco.complemento = data.endereco.complemento;
+        $scope.endereco.cep = data.endereco.cep;
+        $scope.endereco.rua = data.endereco.rua;
+        $scope.endereco.numero = data.endereco.numero;
+        if (data.endereco.bairro) {
+          $scope.endereco.cidade = data.endereco.bairro.cidade;
+          $scope.endereco.estado = data.endereco.bairro.cidade.estado;
+          $scope.endereco.pais = data.endereco.bairro.cidade.estado.pais;
+          $scope.endereco.bairro = data.endereco.bairro;
+          $scope.getEstados($scope.endereco.pais.id);
+          $scope.getCidades($scope.endereco.estado.id);
+          $scope.getBairros($scope.endereco.cidade.id);  
+        }else{
+          $scope.endereco.cidade = null;
+          $scope.endereco.estado = null;
+          $scope.endereco.pais = null;
+          $scope.endereco.bairro = null;
         };
       });
       $scope.cursosDoCandidato = Candidato.getCursos({id: $routeParams.id});
@@ -27,7 +39,9 @@ angular.module('iguassuApp')
 
 
   $scope.save = function(){
+    console.log($scope.endereco);
     $scope.candidato.endereco = $scope.endereco;
+    $scope.candidato.endereco.bairro = $scope.endereco.bairro;
     var msg = 'cadastrado com sucesso';
     if($scope.candidato.id){
       msg = 'atualizado com sucesso';
