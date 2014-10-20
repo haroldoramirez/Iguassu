@@ -17,12 +17,14 @@
       <div style="margin-bottom: 5px;" ng-include="'views/endereco/endereco.html'"></div>
 
     </accordion>
-              
-      <p>Pais: nome: {{endereco.bairro.cidade.estado.pais.nome}} id: {{endereco.bairro.cidade.estado.pais.id}}</p>
-        <p>Estado: nome: {{endereco.bairro.cidade.estado.nome}} id: {{endereco.bairro.cidade.estado.id}} sigla: {{endereco.bairro.cidade.estado.sigla}}</p>
-        <p>Cidade: nome: {{endereco.bairro.cidade.nome}} id: {{endereco.bairro.cidade.id}}</p>
-        <p>Bairro: nome: {{endereco.bairro.nome}} id: {{endereco.bairro.id}}</p>
-
+      <!-- <p>Rua: {{endereco.rua}}</p>
+      <p>Complemento: {{endereco.complemento}}</p>
+      <p>Número: {{endereco.numero}}</p>
+      <p>Cep: {{endereco.cep}}</p>
+      <p>Pais: nome: {{endereco.nome}} id: {{endereco.pais.id}}</p>
+      <p>Estado: nome: {{endereco.estado.nome}} id: {{endereco.estado.id}} sigla: {{endereco.estado.sigla}}</p>
+      <p>Cidade: nome: {{endereco.cidade.nome}} id: {{endereco.cidade.id}}</p>
+      <p>Bairro: nome: {{endereco.bairro.nome}} id: {{endereco.bairro.id}}</p>-->
     <div class="btn-group btn-group-justified">
       <div class="btn-group">
         <button type="button" 
@@ -50,8 +52,6 @@
               
     <br/>
 
-    <div ng-include="'views/progress.html'"></div>
-        
     <table class="table table-hover">
       <tr>
         <th>Nome</th>

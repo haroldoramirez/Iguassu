@@ -1,31 +1,15 @@
 'use strict';
 
 angular.module('iguassuApp')
-  .controller('CandidatoCtrl', function ($rootScope, $log, $modal, $scope, $routeParams, $document, $location, Candidato, Pais, toastr) {
+  .controller('CandidatoCtrl', function ($rootScope, $log, $modal, $scope, $routeParams, $document, $location, Candidato, Pais, toastr, createAddress) {
 
   
   $scope.init = function(){
     if ($routeParams.id) {
-      $scope.candidato = Candidato.get({id: $routeParams.id}, function(data){
-        console.log(data);
-        $scope.endereco.complemento = data.endereco.complemento;
-        $scope.endereco.cep = data.endereco.cep;
-        $scope.endereco.rua = data.endereco.rua;
-        $scope.endereco.numero = data.endereco.numero;
-        if (data.endereco.bairro) {
-          $scope.endereco.cidade = data.endereco.bairro.cidade;
-          $scope.endereco.estado = data.endereco.bairro.cidade.estado;
-          $scope.endereco.pais = data.endereco.bairro.cidade.estado.pais;
-          $scope.endereco.bairro = data.endereco.bairro;
-          $scope.getEstados($scope.endereco.pais.id);
-          $scope.getCidades($scope.endereco.estado.id);
-          $scope.getBairros($scope.endereco.cidade.id);  
-        }else{
-          $scope.endereco.cidade = null;
-          $scope.endereco.estado = null;
-          $scope.endereco.pais = null;
-          $scope.endereco.bairro = null;
-        };
+      Candidato.get({id: $routeParams.id}, function(data){
+        $scope.candidato = data;
+        $scope.endereco = createAddress.desformateEndereco(data.endereco);
+        console.log($scope.endereco);
       });
       $scope.cursosDoCandidato = Candidato.getCursos({id: $routeParams.id});
       $scope.experienciasDoCandidato = Candidato.getExperiencias({id: $routeParams.id});
@@ -41,7 +25,7 @@ angular.module('iguassuApp')
   $scope.save = function(){
     console.log($scope.endereco);
     $scope.candidato.endereco = $scope.endereco;
-    $scope.candidato.endereco.bairro = $scope.endereco.bairro;
+    // $scope.candidato.endereco.bairro = $scope.endereco.bairro;
     var msg = 'cadastrado com sucesso';
     if($scope.candidato.id){
       msg = 'atualizado com sucesso';

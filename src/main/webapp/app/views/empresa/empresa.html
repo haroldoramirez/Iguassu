@@ -10,12 +10,11 @@
 
         <div style="margin-bottom: 5px;" ng-include="'views/empresa/empresa_dados.html'"></div>
 
-        <div style="margin-bottom: 5px;" ng-include="'views/empresa/empresa_endereco.html'"></div>
+        <div style="margin-bottom: 5px;" ng-include="'views/endereco/endereco.html'"></div>
 
     </accordion>
 
-    <!-- Menu da consultar -->
-    <div class="col-xs-12 col-sm-12">
+
         <div class="btn-group btn-group-justified">
             <div class="btn-group">
                 <button type="button"
@@ -35,7 +34,7 @@
             <div class="btn-group">
                 <button type="button"
                         class="btn btn-default"
-                        data-ng-click="limpar()">
+                        data-ng-click="empresa={}">
                     <span class="glyphicon glyphicon-file">&nbspLimpar</span>
                 </button>
             </div>
@@ -43,16 +42,11 @@
 
         <br/>
 
-        <div ng-include="'views/progress.html'"></div>
-
         <table class="table table-hover">
             <tr>
                 <th>Nome</th>
                 <th>CNPJ</th>
-                <th>Rua</th>
-                <th>Número</th>
-                <th>Bairro</th>
-                <th></th>
+                <th>Endereço</th>
             </tr>
             <tr data-ng-repeat="empresa in empresas">
                 <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; editEmpresa(empresa)" >{{empresa.nome}}</td>
@@ -61,18 +55,6 @@
                 <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; editEmpresa(empresa)">{{empresa.endereco.numero}}</td>
                 <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; editEmpresa(empresa)" data-ng-show="empresa.endereco.bairro.id">{{empresa.endereco.bairro.nome}} / {{empresa.endereco.bairro.cidade.nome}} / {{empresa.endereco.bairro.cidade.estado.nome}} / {{empresa.endereco.bairro.cidade.estado.pais.nome}}</td>
                 <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; editEmpresa(empresa)" data-ng-hide="empresa.endereco.bairro.id"></td>
-                <!-- 		 <td data-ng-show="view==1||!view">{{empresa.bairro.nome}} / {{empresa.bairro.cidade.nome}} / {{empresa.bairro.cidade.estado.nome}} / {{empresa.bairro.cidade.estado.pais.nome}}</td> -->
-                <!-- 				<td data-ng-show="view==2">{{empresa.bairro.cidade.nome}} / {{empresa.bairro.cidade.estado.nome}} / {{empresa.bairro.cidade.estado.pais.nome}}</td> -->
-                <!-- 				<td data-ng-show="view==3">{{empresa.bairro.cidade.estado.nome}} / {{empresa.bairro.cidade.estado.pais.nome}}</td> -->
-                <!-- 				<td data-ng-show="view==4">{{empresa.bairro.cidade.estado.pais.nome}}</td> -->
-                <td>
-                    <!-- 					<a data-ng-click="editCargo(cargo)">  -->
-                    <span class="glyphicon glyphicon-print"></span>
-                    <!-- 					</a>  -->
-                    <!-- 					<a data-ng-click="deleteEmpresa(empresa.id);msg.progress=true;"> -->
-                    <span data-ng-click="deleteEmpresa(empresa.id);msg.progress=true;" class="glyphicon glyphicon-trash"></span>
-                    <!-- 					</a> -->
-                </td>
             </tr>
         </table>
     </div>

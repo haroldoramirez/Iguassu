@@ -24,7 +24,8 @@ angular.module('iguassuApp')
    open3 : null,
    open4 : null,
    open5 : null,
-   open6 : null
+   open6 : null,
+   endereco : null
  };
 
 });

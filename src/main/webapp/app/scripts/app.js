@@ -133,6 +133,7 @@ angular
 
   $rootScope.candidato = {};
 
+  $rootScope.endereco = {};
   
   $rootScope.getCandidatos = function(){
     $rootScope.candidatos = Candidato.getAll();
