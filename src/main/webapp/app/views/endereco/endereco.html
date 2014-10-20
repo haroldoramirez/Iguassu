@@ -1,9 +1,9 @@
-<accordion-group is-open="panel.open4" xmlns="http://www.w3.org/1999/html">
+<accordion-group is-open="panel.open4" data-ng-controller="EnderecoCtrl" xmlns="http://www.w3.org/1999/html">
 
     <accordion-heading >
         Endereço <i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open4, 'glyphicon-chevron-right': !panel.open4}"></i>
     </accordion-heading>
-
+    		
         <div class="col-xs-10 col-6 col-sm-6 col-lg-6">
           <div class="form-group">
             <label class="control-label">Rua</label>
@@ -68,8 +68,7 @@
             <a class="glyphicon glyphicon-plus" data-ng-click="openPais()"></a>
           </div>
           <select class="form-control" data-ng-model="endereco.bairro.cidade.estado.pais" 
-                  ng-change="getEstados(endereco.bairro.cidade.estado.pais.id);
-                  endereco.bairro.cidade.estado.id=null;endereco.bairro.cidade.estado.nome=null;endereco.bairro.cidade.estado.sigla=null"
+                  ng-change="loadEstados(endereco.bairro.cidade.estado.pais)"
                   data-ng-options="(pais.nome) for pais in paises">
             <option value="" disabled data-ng-selected="endereco.bairro.cidade.estado.pais.id">
               {{endereco.bairro.cidade.estado.pais.nome}}
@@ -88,7 +87,7 @@
           </div>
           <select ng-disabled="!endereco.bairro.cidade.estado.pais.id" class="form-control" 
                   data-ng-model="endereco.bairro.cidade.estado"
-                  ng-change="getCidades(endereco.bairro.cidade.estado.id);endereco.bairro.cidade.id=null;endereco.bairro.cidade.nome=null;" 
+                  ng-change="loadCidades(endereco.bairro.cidade.estado)" 
                   data-ng-options="(estado.nome +' / '+ estado.sigla) for estado in estados">
             <option value="" disabled data-ng-selected="endereco.bairro.cidade.estado.id">
               {{endereco.bairro.cidade.estado.nome}} / {{endereco.bairro.cidade.estado.sigla}}
@@ -106,7 +105,7 @@
           </div>
           <select ng-disabled="!endereco.bairro.cidade.estado.id" class="form-control" 
                   data-ng-model="endereco.bairro.cidade" 
-                  ng-change="getBairros(endereco.bairro.cidade.id);endereco.bairro.id=null;endereco.bairro.nome=null;" 
+                  ng-change="loadBairros(endereco.bairro.cidade)" 
                   data-ng-options="(cidade.nome) for cidade in cidades">
             <option value="" disabled data-ng-selected="endereco.bairro.cidade.id">
               {{endereco.bairro.cidade.nome}}
@@ -139,7 +138,7 @@
 </accordion-group>
 
 
-<script type="text/ng-template" id="bairros.html">
+<script type="text/ng-template" id="bairro.html">
 	<div class="modal-header">
 		<button type="button" class="close" ng-click="cancel()" data-dismiss="modal">&times;</button>
 			<h4 class="modal-title">Bairros</h4>
@@ -149,23 +148,24 @@
 			<div class="form-group">
 				<label class="control-label">Cidade</label>
 				<div class="controls">
-					<input disabled type="text" class="form-control" placeholder="Insira a cidade ..." type="text" ng-model="endereco.cidade.nome">
+					<input disabled type="text" class="form-control" placeholder="Insira a cidade ..." type="text" ng-model="cidade.nome">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label">Bairro <span class="obrigatorio">*</span></label>
-				<div ng-class="{'has-error':!endereco.bairro.nome}">
+				<div ng-class="{'has-error':!bairro.nome}">
 					<div class="controls">
-						<input type="text" class="form-control" placeholder="Insira o bairro ..." type="text" ng-model="endereco.bairro.nome">
+						<input type="text" class="form-control" placeholder="Insira o bairro ..." type="text" ng-model="bairro.nome">
 					</div>
 				</div>
 			</div>
 			<div class="btn-toolbar">
-	  		<a href="" class="btn btn-danger" ng-if="endereco.bairro.id" 
-	  					ng-click="delete()"><span class="glyphicon glyphicon-trash"></span> Remover</a>
+	  		<a href="" class="btn btn-danger" ng-if="bairro.id" 
+	  					ng-click="delete()"><span class="glyphicon glyphicon-trash"></span> Remover
+				</a>
 	      <div class="pull-right">
 	      	<button class="btn btn-default" ng-click="cancel()" type="button">Cancelar</button>
-	        <button class="btn btn-primary" data-ng-disabled="!endereco.bairro.nome" type="submit">Salvar informações
+	        <button class="btn btn-primary" data-ng-disabled="!bairro.nome" type="submit">Salvar informações
 	        </button>
 	      </div>
 	    </div>
@@ -173,9 +173,9 @@
 	</div>
 </script>
     
-<script type="text/ng-template" id="cidades.html">
+<script type="text/ng-template" id="cidade.html">
 	<div class="modal-header">
-		<button type="button" class="close" ng-click="close()" data-dismiss="modal">&times;</button>
+		<button type="button" class="close" ng-click="cancel()" data-dismiss="modal">&times;</button>
 		<h4 class="modal-title">Cidades</h4>
 	</div>
 	<div class="modal-body">
@@ -186,24 +186,25 @@
 					<input 	type="text" 
 									disabled class="form-control" 
 									placeholder="Insira o estado ..." 
-									type="text" ng-model="endereco.estado.nome">
+									ng-model="estado.nome">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label">Cidade <span class="obrigatorio">*</span></label>
-				<div ng-class="{'has-error':!endereco.cidade.nome}">
+				<div ng-class="{'has-error':!cidade.nome}">
 					<div class="controls">
-						<input type="text" class="form-control" placeholder="Insira a cidade ..." type="text" ng-model="endereco.cidade.nome">
+						<input type="text" class="form-control" placeholder="Insira a cidade ..." type="text" ng-model="cidade.nome">
 					</div>
 				</div>
 			</div>
 
 			<div class="btn-toolbar">
-	  		<a href="" class="btn btn-danger" ng-if="endereco.cidade.id" 
-	  					ng-click="delete()"><span class="glyphicon glyphicon-trash"></span> Remover</a>
+	  		<a href="" class="btn btn-danger" ng-if="cidade.id" ng-click="delete()">
+	  			<span class="glyphicon glyphicon-trash"></span> Remover
+	  		</a>
 	      <div class="pull-right">
-	      	<button class="btn btn-default" ng-click="close()" type="button">Cancelar</button>
-	        <button class="btn btn-primary" data-ng-disabled="!endereco.cidade.nome" type="submit">Salvar informações
+	      	<button class="btn btn-default" ng-click="cancel()" type="button">Cancelar</button>
+	        <button class="btn btn-primary" data-ng-disabled="!cidade.nome" type="submit">Salvar informações
 	        </button>
 	      </div>
 	    </div>
@@ -212,9 +213,9 @@
 
 </script>
     
-<script type="text/ng-template" id="estados.html">
+<script type="text/ng-template" id="estado.html">
 	<div class="modal-header">
-		<button type="button" class="close" ng-click="close()" data-dismiss="modal">&times;</button>
+		<button type="button" class="close" ng-click="cancel()" data-dismiss="modal">&times;</button>
 			<h4 class="modal-title">Estados</h4>
 	</div>
 	<div class="modal-body">
@@ -224,34 +225,36 @@
 				<div class="form-group">
 					<label class="control-label">Pais</label>
 					<div class="controls">
-						<input disabled type="text" class="form-control" placeholder="Insira o estado ..." type="text" ng-model="endereco.pais.nome">
+						<input disabled type="text" class="form-control" placeholder="Insira o estado ..." type="text" ng-model="pais.nome">
 					</div>
 				</div>
 			
 				<div class="form-group">
 					<label class="control-label">Estado <span class="obrigatorio">*</span></label>
-					<div ng-class="{'has-error':!endereco.estado.nome}">
+					<div ng-class="{'has-error':!estado.nome}">
 					  <input  type="text" class="form-control" 
 	          				placeholder="Insira o nome do estado ..." 
-	          				type="text" ng-model="endereco.estado.nome">
+	          				ng-model="estado.nome">
 		      </div>
 				</div>
 
 				<div class="form-group">
 					<label class="control-label">Sigla <span class="obrigatorio">*</span></label>
-					<div ng-class="{'has-error':!endereco.estado.sigla}">
+					<div ng-class="{'has-error':!estado.sigla}">
 						<div class="controls">
-							<input type="text" class="form-control" placeholder="Insira a sigla do estado ..." type="text" ng-model="endereco.estado.sigla">
+							<input 	type="text" class="form-control" 
+											placeholder="Insira a sigla do estado ..." 
+										 	ng-model="estado.sigla">
 						</div>
 					</div>
 				</div>
 
 				<div class="btn-toolbar">
-		  		<a href="" class="btn btn-danger" ng-if="endereco.estado.id" 
+		  		<a href="" class="btn btn-danger" ng-if="estado.id" 
 		  					ng-click="delete()"><span class="glyphicon glyphicon-trash"></span> Remover</a>
 		      <div class="pull-right">
-		      	<button class="btn btn-default" ng-click="close()" type="button">Cancelar</button>
-		        <button class="btn btn-primary" data-ng-disabled="!endereco.estado.nome||!endereco.estado.sigla" type="submit">Salvar informações
+		      	<button class="btn btn-default" ng-click="cancel()" type="button">Cancelar</button>
+		        <button class="btn btn-primary" data-ng-disabled="!estado.nome||!estado.sigla" type="submit">Salvar informações
 		        </button>
 		      </div>
 		    </div>
@@ -261,26 +264,26 @@
 	</div>
 </script>
 	
-<script type="text/ng-template" id="paises.html">
+<script type="text/ng-template" id="pais.html">
 	<div class="modal-header">
-		<button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
+		<button type="button" class="close" data-ng-click="cancel()" data-dismiss="modal">&times;</button>
 		<h4 class="modal-title">Paises</h4>
 	</div>
 	<div class="modal-body">
 		<form name="paisForm" ng-submit="save()" role="form">
 			<div class="form-group">
 				<label class="control-label">País <span class="obrigatorio">*</span></label>
-				<div ng-class="{'has-error':!endereco.pais.nome}">
+				<div ng-class="{'has-error':!pais.nome}">
 					<div class="controls">
-						<input type="text" class="form-control" placeholder="Insira o país ..." data-ng-model="endereco.pais.nome">
+						<input type="text" class="form-control" placeholder="Insira o país ..." data-ng-model="pais.nome">
 					</div>
 				</div>
 			</div>
 			<div class="btn-toolbar">
-    		<a href="" class="btn btn-danger" ng-if="endereco.pais.id" ng-click="delete()"><span class="glyphicon glyphicon-trash"></span> Remover</a>
+    		<a href="" class="btn btn-danger" ng-if="pais.id" ng-click="delete()"><span class="glyphicon glyphicon-trash"></span> Remover</a>
 	      <div class="pull-right">
-	      	<button class="btn btn-default" ng-click="close()" type="button">Cancelar</button>
-          <button class="btn btn-primary" data-ng-disabled="!endereco.pais.nome" type="submit">Salvar informações
+	      	<button class="btn btn-default" ng-click="cancel()" type="button">Cancelar</button>
+          <button class="btn btn-primary" data-ng-disabled="!pais.nome" type="submit">Salvar informações
           </button>
 	      </div>
       </div>

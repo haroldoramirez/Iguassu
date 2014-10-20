@@ -133,18 +133,7 @@ angular
 
   $rootScope.candidato = {};
 
-  $rootScope.endereco = {
-    bairro : {
-      cidade : {
-        estado : {
-          pais : {
-
-          }
-        }
-      }
-    }
-  };
-
+  
   $rootScope.getCandidatos = function(){
     $rootScope.candidatos = Candidato.getAll();
   };
@@ -170,112 +159,21 @@ angular
   };
 
   $rootScope.getEstados = function(idPais){
-    if (idPais)   {
-      $rootScope.estados = Estado.getAllByPais({idPais:idPais});
-    };
+    $rootScope.estados = Estado.getAllByPais({idPais:idPais});
   };
 
   $rootScope.getCidades = function(idEstado){
-    if (idEstado) { 
-      $rootScope.cidades = Cidade.getAllByEstado({idEstado:idEstado});
-    }
+    $rootScope.cidades = Cidade.getAllByEstado({idEstado:idEstado});
   };
 
   $rootScope.getBairros = function(idCidade){
-    if (idCidade) { 
-      $rootScope.bairros = Bairro.getAllByCidade({idCidade:idCidade});
-    }
+    $rootScope.bairros = Bairro.getAllByCidade({idCidade:idCidade});
   };
 
   if(!$rootScope.paises){
     $rootScope.getPaises();
   };
-
-  $rootScope.openBairro = function(cidade, bairro) {
-    var oldNome = $rootScope.endereco.bairro.nome;
-    var oldId = $rootScope.endereco.bairro.id;
-    $modal.open({
-      templateUrl : 'bairros.html',
-      controller : 'BairroCtrl',
-      size : 'md',
-      resolve : {
-        bundle : function(){
-          return {
-            cidade : cidade,
-            bairro : bairro
-          }
-        }
-      }
-    }).result.then(function() {
-      $rootScope.getBairros(cidade.id);
-    }, function(){
-      $rootScope.endereco.bairro.nome = oldNome;
-      $rootScope.endereco.bairro.id = oldId;
-      $rootScope.getBairros(cidade.id);
-    });
-  };
-
-  $rootScope.openCidade = function(estado,cidade) {
-    $modal.open({
-      templateUrl : 'cidades.html',
-      controller : 'CidadeCtrl',
-      size : 'md',
-      resolve : {
-        bundle : function(){
-          return {
-            estado : estado,
-            cidade : cidade
-          }
-        }
-      }
-    }).result.then(function(cidade) {
-      $rootScope.getCidades(estado.id);  
-    }, function(cidade){
-      $rootScope.getCidades(estado.id);
-    });
-  };
-
-  $rootScope.openEstado = function(pais,estado) {
-    $modal.open({
-      templateUrl : 'estados.html',
-      controller : 'EstadoCtrl',
-      size : 'md',
-      resolve : {
-        bundle : function(){
-          return {
-            pais : pais,
-            estado : estado
-          }
-        }
-      }
-    }).result.then(function() {
-      $rootScope.getEstados(pais.id);  
-    }, function(){
-      $rootScope.getEstados(pais.id);
-    });
-  };
-
-  $rootScope.openPais = function(pais) {
-    $modal.open({
-      templateUrl : 'paises.html',
-      controller : 'PaisCtrl',
-      size : 'md',
-      resolve : {
-        bundle : function(){
-          return {
-            pais : pais
-          }
-        }
-      }
-    }).result.then(function() {
-      $rootScope.endereco.bairro.cidade.estado.pais = null;
-      $rootScope.getPaises();  
-    }, function(){
-      $rootScope.endereco.bairro.cidade.estado.pais = null;
-      $rootScope.getPaises();
-    });
-  };
-
+  
   $rootScope.openCargos = function() {
     $rootScope.getCargos();
     $rootScope.getEmpresas();
@@ -291,9 +189,7 @@ angular
   };
 
   $rootScope.openCursos = function() {
-    if (!$rootScope.cursos) {
-      $rootScope.getCursos();
-    };
+    $rootScope.getCursos();
     if (!$rootScope.categoriasDeCursos) {
       $rootScope.getCategoriasDeCursos();
     };
@@ -309,9 +205,7 @@ angular
   };
 
   $rootScope.openCategoriasCursos = function() {
-    if (!$rootScope.categoriasDeCursos) {
-      $rootScope.getCategoriasDeCursos();
-    };
+    $rootScope.getCategoriasDeCursos();
     $modal.open({
       templateUrl : 'categoriasDeCursos.html',
       controller : 'CategoriaCursoCtrl',
