@@ -1,47 +1,62 @@
 <accordion-group is-open="panel.open1" >
-    <accordion-heading>
-        Dados da vaga <i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open1, 'glyphicon-chevron-right': !panel.open1}"></i>
-    </accordion-heading>
-    <div class="row row-offcanvas row-offcanvas-right">
-        <div class="col-xs-12 col-sm-12">
-            <div class="col-6 col-sm-6 col-lg-3">
-                <div class="form-group">
-                    <label class="control-label">Cargos</label>
-                    <a class="glyphicon glyphicon-refresh" data-ng-click="getCargos()"></a>
-                    <a class="glyphicon glyphicon-plus" data-ng-click="openCargo('lg')"></a>
-                    <div class="controls">
-                        <select class="form-control" data-ng-model="vaga.cargo" data-ng-options="(cargo.nome) for cargo in cargos">
-                            <option value="" data-ng-selected="vaga.id">{{vaga.cargo.nome}}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Empresas</label>
-                    <a class="glyphicon glyphicon-refresh" data-ng-click="getEmpresas()"></a>
-                    <a class="glyphicon glyphicon-plus" href="#empresas"></a>
-                    <div class="controls">
-                        <select class="form-control" data-ng-model="vaga.empresa" data-ng-options="(empresa.nome) for empresa in empresas">
-                            <option value="" data-ng-selected="empresa.id">{{vaga.empresa.nome}}</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-6 col-lg-6">
-                <div class="form-group">
-                    <label class="control-label">Observações</label>
-                    <div class="controls">
-                        <textarea class="form-control" data-ng-model="vaga.observacoes" rows="5" placeholder="Insira aqui as observações da vaga"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-6 col-lg-3">
-                <div class="form-group">
-                    <label class="control-label">Salário</label>
-                    <div class="controls">
-                        <input class="form-control" type="number" data-ng-model="vaga.salario" placeholder="Insira aqui as observações da vaga">
-                    </div>
-                </div>
-            </div>
+  <accordion-heading>
+      Dados da vaga <i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open1, 'glyphicon-chevron-right': !panel.open1}"></i>
+  </accordion-heading>
+    <div class="col-6 col-sm-6 col-lg-3">
+      <div class="form-group">
+        <label class="control-label">Situação </label>
+        <div class="controls">
+          <input  class="form-control" disabled type="text" 
+                  data-ng-model="vaga.situacao" 
+                  placeholder="Situação da vaga">
         </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Cargo <span class="obrigatorio">*</span></label>
+        <div class="pull-right">
+          <a class="glyphicon glyphicon-plus" data-ng-click="openCargos()"></a>
+        </div>
+        <div ng-class="{'has-error':!vaga.cargo.id}">
+          <select class="form-control" data-ng-model="vaga.cargo" 
+                  data-ng-options="(cargo.nome) for cargo in cargos">
+              <option value="" data-ng-selected="vaga.id">{{vaga.cargo.nome}}</option>
+          </select>
+        </div>
+      </div>
     </div>
+    <div class="col-6 col-sm-6 col-lg-3">
+      <div class="form-group">
+        <label class="control-label">Salário</label>
+        <div class="controls">
+          <input  class="form-control" type="number" data-ng-model="vaga.salario" 
+                  placeholder="Insira aqui as observações da vaga">
+        </div>
+      </div>        
+      <div class="form-group">
+        <label class="control-label">Empresa</label>
+        <div class="pull-right">
+          <a  class="glyphicon glyphicon-remove" 
+              ng-if="vaga.empresa.id" ng-click="vaga.empresa=null">
+          </a>
+          <a class="glyphicon glyphicon-plus" href="#empresas"></a>
+        </div>
+        <div class="controls">
+          <select  class="form-control" data-ng-model="vaga.empresa" 
+                   data-ng-options="(empresa.nome) for empresa in empresas">
+            <option value="" data-ng-selected="empresa.id">{{vaga.empresa.nome}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-sm-6 col-lg-6">
+      <div class="form-group">
+        <label class="control-label">Observações</label>
+        <div class="controls">
+          <textarea class="form-control" data-ng-model="vaga.observacoes" rows="5" 
+                    placeholder="Insira aqui as observações da vaga">
+          </textarea>
+        </div>
+      </div>
+    </div>
+        
 </accordion-group>

@@ -23,17 +23,17 @@ public class ControllerEncaminhamento {
 	ServiceEncaminhamento serviceEncaminhamento;
 
 	@RequestMapping(value = "/encaminhamentos", method = RequestMethod.POST)
-	public @ResponseBody Object salve(@RequestBody Encaminhamento encaminhamento) {
+	public @ResponseBody Encaminhamento salve(@RequestBody Encaminhamento encaminhamento) {
 		return this.serviceEncaminhamento.save(encaminhamento);
 	}
 
-	@RequestMapping(value = "/encaminhamentos/{id}", method = RequestMethod.DELETE)
-	public @ResponseBody Object delete(@PathVariable Long id) {
+	@RequestMapping(value = "/encaminhamentos/{id}", method = RequestMethod.GET)
+	public @ResponseBody Encaminhamento delete(@PathVariable Long id) {
         return serviceEncaminhamento.find(id);
 	}
 
 	@RequestMapping(value = "/encaminhamentos", method = RequestMethod.GET)
-	public @ResponseBody Object find() {
+        public @ResponseBody Object find() {
                 return serviceEncaminhamento.find();
 	}
 

@@ -14,18 +14,6 @@ public class Empresa extends Pessoa {
 	@Column(length = 20, unique = true, nullable = true)
 	private String cnpj;
 
-	public String getCnpj() {
-		return cnpj;
-	}
-
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
-
-
-    @Column(length = 20)
-    protected String telefoneResidencial;
-
     @Column(length = 20)
     protected String telefoneComercial;
 
@@ -34,5 +22,38 @@ public class Empresa extends Pessoa {
 
     @Column(length = 50)
     protected String email;
+
+    public String getTelefoneComercial() {
+        return telefoneComercial;
+    }
+
+    public void setTelefoneComercial(String telefoneComercial) {
+        this.telefoneComercial = telefoneComercial;
+    }
+
+    public String getTelefoneCelular() {
+        return telefoneCelular;
+    }
+
+    public void setTelefoneCelular(String telefoneCelular) {
+        this.telefoneCelular = telefoneCelular;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCnpj() {
+		return cnpj;
+	}
+
+    public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
 
 }

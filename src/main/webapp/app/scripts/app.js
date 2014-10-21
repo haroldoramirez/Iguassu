@@ -44,10 +44,10 @@ angular
      controller : 'EncaminhamentoCtrl',
      templateUrl : './views/encaminhamento/encaminhamento.html'
    }).when('/encaminhamentos/:id', {
-          controller : 'EncaminhamentoCtrl',
-          templateUrl : './views/encaminhamento/encaminhamento.html'
+      controller : 'EncaminhamentoCtrl',
+      templateUrl : './views/encaminhamento/encaminhamento.html'
    }).when('/login', {
-     controller : '',
+     controller : 'LoginCtrl',
      templateUrl : './views/login.html'
    }).when('/configuracoes', {
      controller : '',
@@ -129,7 +129,7 @@ angular
        $httpProvider.responseInterceptors.push(interceptor);
  })*/
 
-.run(function($rootScope, $modal, Curso, Empresa, Cargo, Pais, Estado, Cidade, Bairro, Candidato, CategoriasCursos){
+.run(function($rootScope, $modal, Curso, Empresa, Cargo, Pais, Estado, Cidade, Bairro, Vaga, Candidato, CategoriasCursos, Encaminhamento){
 
   $rootScope.candidato = {};
 
@@ -137,6 +137,10 @@ angular
   
   $rootScope.getCandidatos = function(){
     $rootScope.candidatos = Candidato.getAll();
+  };
+
+  $rootScope.getEncaminhamentos = function(){
+    $rootScope.encaminhamentos = Encaminhamento.getAll();
   };
 
   $rootScope.getEmpresas = function(){
@@ -169,6 +173,10 @@ angular
 
   $rootScope.getBairros = function(idCidade){
     $rootScope.bairros = Bairro.getAllByCidade({idCidade:idCidade});
+  };
+
+  $rootScope.getVagas = function(){
+    $rootScope.vagas = Vaga.getAll();
   };
 
   if(!$rootScope.paises){

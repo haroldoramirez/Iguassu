@@ -1,20 +1,10 @@
-<div class="btn-toolbar">
+<div class="btn-toolbar" ng-controller="FerramentasCtrl">
   <p class="pull-right">
-    <button data-ng-click="clear()" class="btn btn-default btn-sm"
-            type="button"
-            title="Novo candidato (a)">
-      <span class="glyphicon glyphicon-file"></span>
-    </button>
     <button ng-if="candidato.id" class="btn btn-default btn-sm"
             data-ng-click="encaminhar()"
             type="button" title="Clique para encaminhar o candidato'"
             data-ng-show="candidato.id">
       <span class="glyphicon glyphicon-send"></span>
-    </button>
-    <button class="btn btn-default btn-sm"
-            data-ng-click="isCollapsed = !isCollapsed"
-            type="button" title="Opções de filtro">
-      <span class="glyphicon glyphicon-filter"></span>
     </button>
     <button class="btn btn-primary btn-sm"
             onclick="window.print(); return false;"
@@ -23,13 +13,23 @@
       <span class="glyphicon glyphicon-print"></span>
     </button>
     <button class="btn btn-default btn-sm"
-            data-ng-click="panel.open1 = false; panel.open2 = false; panel.open3 = false; panel.open4 = false; panel.open5 = false; panel.open6 = false;"
+            data-ng-click="isCollapsed = !isCollapsed"
+            type="button" title="Opções de filtro">
+      <span class="glyphicon glyphicon-filter"></span>
+    </button>
+    <button data-ng-click="clear()" class="btn btn-default btn-sm"
+            type="button"
+            title="Limpar">
+      <span class="glyphicon glyphicon-file"></span>
+    </button>
+    <button class="btn btn-default btn-sm"
+            data-ng-click="closeAll()"
             type="button"
             title="Clique para fechar todos os paineis">
       <span class="glyphicon glyphicon-minus"></span>
     </button>
     <button class="btn btn-default btn-sm"
-            data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; panel.endereco = true;"
+            data-ng-click="openAll()"
             type="button" title="Clique para abrir todos os paineis">
       <span class="glyphicon glyphicon-plus"></span>
     </button>

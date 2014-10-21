@@ -8,6 +8,9 @@
  * Service in the iguassuApp.
  */
 angular.module('iguassuApp')
-  .service('Encaminhamento', function Encaminhamento() {
-    // AngularJS will instantiate a singleton by calling "new" on this function
-  });
+  .service('Encaminhamento', ['$resource', 'BaseUrl',
+    function($resource, BaseUrl){
+     return $resource(BaseUrl + '/encaminhamentos/:id', {}, {
+      getAll: {method: 'GET', url: BaseUrl + '/encaminhamentos/', isArray: true}
+    });
+  }]);

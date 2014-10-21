@@ -23,13 +23,13 @@
 
         <!--<security:intercept-url pattern="/services/**" access="isAuthenticated()"/>-->
 
+        <!--always-use-default-target="false"-->
         <!--default-target-url="http://localhost:9000/#/candidatos"-->
         <security:form-login login-processing-url="/autenticacao"
                              username-parameter="login"
                              password-parameter="senha"
-                             default-target-url="http://localhost:9000/#/candidatos"
-                           />
-        <!--always-use-default-target="false"/-->
+                             authentication-failure-url="http://localhost:8080/Iguassu/app/#/login"
+                             default-target-url="http://localhost:8080/Iguassu/app/#/"/>
         <security:logout logout-url="/logout" logout-success-url="/"/>
     </security:http>
 

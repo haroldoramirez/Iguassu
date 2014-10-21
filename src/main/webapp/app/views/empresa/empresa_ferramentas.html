@@ -1,17 +1,17 @@
-<div class="btn-toolbar">
+<div class="btn-toolbar" ng-controller="FerramentasCtrl">
   <p class="pull-right">
-    <button data-ng-click="empresa={}" class="btn btn-default btn-sm"
+    <button data-ng-click="clear()" class="btn btn-default btn-sm"
             type="button"
-            title="Nova empresa (a)">
+            title="Limpar">
       <span class="glyphicon glyphicon-file"></span>
     </button>
     <button class="btn btn-default btn-sm"
-            data-ng-click="panel.open1 = false; panel.open2 = false; panel.open3 = false"
+            data-ng-click="closeAll()"
             title="Clique para fechar todos os paineis">
         <span class="glyphicon glyphicon-minus"></span>
     </button>
     <button class="btn btn-default btn-sm"
-            data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.endereco = true;"
+            data-ng-click="openAll()"
             title="Clique para abrir todos os paineis">
         <span class="glyphicon glyphicon-plus"></span>
     </button>

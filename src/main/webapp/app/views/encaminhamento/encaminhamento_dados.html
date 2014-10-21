@@ -1,0 +1,60 @@
+<accordion-group is-open="panel.open1" > 
+			<accordion-heading>
+				Dados do Encaminhamento <i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open1, 'glyphicon-chevron-right': !panel.open1}"></i>
+			</accordion-heading>
+			
+					<div class="col-6 col-sm-6 col-lg-3">
+						<div class="form-group">
+							<label class="control-label">Situacao </label>
+							<div class="controls">
+								<input  class="form-control" disabled type="text" 
+			                  data-ng-model="encaminhamento.situacao" 
+			                  placeholder="Situação do encaminhamento">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Data </label>
+							<div class="controls">
+								<input  type="text" disabled class="form-control" datepicker-popup="dd/MM/yyyy"
+                        ng-model="encaminhamento.dataDeCadastro" required/>
+							</div>
+						</div>
+					</div>
+					<div class="col-6 col-sm-6 col-lg-3">
+						<div class="form-group">
+							<label class="control-label">Candidato <span class="obrigatorio">*</span></label>
+							<div class="pull-right">
+								<a class="glyphicon glyphicon-plus" href="#candidatos"></a>
+							</div>
+							<div ng-class="{'has-error':!encaminhamento.candidato.id}">
+								<select class="form-control" data-ng-model="encaminhamento.candidato" 
+												data-ng-options="(candidato.nome) for candidato in candidatos">
+									<option value="" data-ng-selected="encaminhamento.id">{{encaminhamento.candidato.nome}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Vaga <span class="obrigatorio">*</span></label>
+							<div class="pull-right">
+									<a class="glyphicon glyphicon-plus" href="#vagas"></a>
+							</div>
+							<div ng-class="{'has-error':!encaminhamento.vaga.id}">
+								<select class="form-control" data-ng-model="encaminhamento.vaga" 
+												data-ng-options="(vaga.cargo.nome) for vaga in vagas">
+									<option value="" data-ng-selected="vaga.id">{{encaminhamento.vaga.cargo.nome}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-6 col-sm-6 col-lg-6">
+						<div class="form-group">
+							<label class="control-label">Observações</label>
+							<div class="controls">
+								<textarea class="form-control" data-ng-model="encaminhamento.observacoes" 
+													rows="5" placeholder="Insira aqui as observações da encaminhamento">
+								</textarea>
+							</div>
+						</div>
+					</div>
+			
+		</accordion-group>

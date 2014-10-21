@@ -31,41 +31,12 @@ public class Vaga extends BaseEntity {
 	@Column(length = 100)
 	private String observacoes;
 
-	@Column(length = 50)
+	@Column(length = 50, nullable = false)
 	private String situacao;
 
 	@Column(nullable = true, length = 100)
 	private Double salario;
 
-	// Preferencias do candidato
-
-	@Column(length = 50)
-	private String preferenciaSexoMasculino;
-
-	@Column(length = 50)
-	private Integer idadeInicialDoCandidato;
-
-	@Column(length = 50)
-	private Integer idadeFinalDoCandidato;
-
-	@Column(length = 50)
-	private String estadoCivil;
-
-	// TODO deve ter o handles de necessidades especiais, cadastrar quais
-	// necessidades especiais ele quer na query
-
-
-    @Column(length = 20)
-    protected String telefoneResidencial;
-
-    @Column(length = 20)
-    protected String telefoneComercial;
-
-    @Column(length = 20)
-    protected String telefoneCelular;
-
-    @Column(length = 50)
-    protected String email;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
@@ -109,38 +80,6 @@ public class Vaga extends BaseEntity {
 
 	public void setSalario(Double salario) {
 		this.salario = salario;
-	}
-
-	public String getPreferenciaSexoMasculino() {
-		return preferenciaSexoMasculino;
-	}
-
-	public void setPreferenciaSexoMasculino(String preferenciaSexoMasculino) {
-		this.preferenciaSexoMasculino = preferenciaSexoMasculino;
-	}
-
-	public Integer getIdadeInicialDoCandidato() {
-		return idadeInicialDoCandidato;
-	}
-
-	public void setIdadeInicialDoCandidato(Integer idadeInicialDoCandidato) {
-		this.idadeInicialDoCandidato = idadeInicialDoCandidato;
-	}
-
-	public Integer getIdadeFinalDoCandidato() {
-		return idadeFinalDoCandidato;
-	}
-
-	public void setIdadeFinalDoCandidato(Integer idadeFinalDoCandidato) {
-		this.idadeFinalDoCandidato = idadeFinalDoCandidato;
-	}
-
-	public String getEstadoCivil() {
-		return estadoCivil;
-	}
-
-	public void setEstadoCivil(String estadoCivil) {
-		this.estadoCivil = estadoCivil;
 	}
 
 	public Calendar getDataDeCadastro() {

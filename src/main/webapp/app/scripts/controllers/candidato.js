@@ -9,23 +9,21 @@ angular.module('iguassuApp')
       Candidato.get({id: $routeParams.id}, function(data){
         $scope.candidato = data;
         $scope.endereco = createAddress.desformateEndereco(data.endereco);
-        console.log($scope.endereco);
       });
       $scope.cursosDoCandidato = Candidato.getCursos({id: $routeParams.id});
       $scope.experienciasDoCandidato = Candidato.getExperiencias({id: $routeParams.id});
+      $rootScope.openAll();
     }else{
       $scope.clear();
     };
     if(!$scope.candidatos){
       $scope.getCandidatos();
-    }
+    };
   };
 
 
   $scope.save = function(){
-    console.log($scope.endereco);
     $scope.candidato.endereco = $scope.endereco;
-    // $scope.candidato.endereco.bairro = $scope.endereco.bairro;
     var msg = 'cadastrado com sucesso';
     if($scope.candidato.id){
       msg = 'atualizado com sucesso';
@@ -58,7 +56,8 @@ angular.module('iguassuApp')
       resolve : {
        bundle : function() {
           return {
-              candidatoCurso : candidatoCurso
+              candidatoCurso : candidatoCurso,
+              candidato : $scope.candidato
           }
         }
       }
@@ -85,7 +84,8 @@ angular.module('iguassuApp')
         resolve : {
          bundle : function() {
             return {
-                experiencia : experiencia
+                experiencia : experiencia,
+                candidato : $scope.candidato
             }
           }
         }
@@ -107,7 +107,9 @@ angular.module('iguassuApp')
     $rootScope.candidato = {};
     $scope.cursosDoCandidato = {};
     $scope.experienciasDoCandidato = {};
-    $location.path('/candidatos');
+    if ($routeParams.id) {
+      $location.path('/candidatos');
+    }
   }
 
   $scope.openDatePicker = function($event) {
@@ -116,9 +118,10 @@ angular.module('iguassuApp')
     $scope.opened = !$scope.opened;
   };
 
-}).controller('CandidatoExperienciaCtrl', function ($scope, $rootScope, $modalInstance,  $modal, Candidato, toastr, bundle) {
+}).controller('CandidatoExperienciaCtrl', function ($scope, $modalInstance,  $modal, Candidato, toastr, bundle) {
 
   $scope.experiencia = bundle.experiencia;
+  $scope.candidato = bundle.candidato;
 
   $scope.today = new Date();
 
@@ -126,9 +129,7 @@ angular.module('iguassuApp')
     var msg = 'Expereiência adicionada com sucesso';
     if($scope.experiencia.id) {msg = 'Experiência atualizada com sucesso'; var b = true;}
 
-    $scope.experiencia.candidato = $rootScope.candidato;
-
-    console.log($rootScope.candidato);
+    $scope.experiencia.candidato = $scope.candidato;
 
     Candidato.saveExperiencia($scope.experiencia, function(data){
       toastr.success(msg);
@@ -167,9 +168,10 @@ angular.module('iguassuApp')
     $scope.openedDataTermino = !$scope.openedDataTermino;
   };
 
-}).controller('CandidatoCursoCtrl', function ($scope, $rootScope, $modalInstance,  $modal, Candidato, toastr, bundle) {
+}).controller('CandidatoCursoCtrl', function ($scope, $modalInstance,  $modal, Candidato, toastr, bundle) {
 
   $scope.candidatoCurso = bundle.candidatoCurso;
+  $scope.candidato = bundle.candidato;
 
   $scope.save = function(){
     var msg = 'Expereiência adicionada com sucesso';

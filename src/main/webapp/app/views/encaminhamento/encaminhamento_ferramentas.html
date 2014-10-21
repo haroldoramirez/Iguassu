@@ -1,0 +1,27 @@
+<div class="btn-toolbar" ng-controller="FerramentasCtrl">
+  <p class="pull-right">
+			<button class="btn btn-primary btn-sm" 
+							onclick="window.print(); return false;" 
+							type="button" title="Clique para Imprimir ou pressione as teclas 'Ctrl + P'">
+							<span class="glyphicon glyphicon-print"></span>
+			</button>
+			<button class="btn btn-default btn-sm" 
+							data-ng-click="isCollapsed = !isCollapsed" 
+							type="button" title="Opções de filtro">
+							<span class="glyphicon glyphicon-filter"></span>
+			</button>
+			<button data-ng-click="encaminhamento={}" class="btn btn-default btn-sm"
+	            type="button"
+	            title="Limpar">
+	      <span class="glyphicon glyphicon-file"></span>
+	    </button>
+			<button class="btn btn-default btn-sm" data-ng-click="closeAll()" 
+							type="button" title="Clique para fechar todos os paineis">
+							<span class="glyphicon glyphicon-minus"></span>
+			</button>
+			<button class="btn btn-default btn-sm" data-ng-click="openAll()" 
+							type="button" title="Clique para abrir todos os paineis">
+							<span class="glyphicon glyphicon-plus"></span>
+				</button>
+		</p>
+</div>

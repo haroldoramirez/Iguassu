@@ -1,31 +1,24 @@
-<p class="navbar-right">
-    <input type="checkbox" data-ng-model="isOpen" > Exibir somente um painel por vêz
-    <button class="btn btn-default btn-sm"
-            data-ng-click="editVaga(vaga)"
-            type="button" title="Clique para atualizar"
-            data-ng-show="vaga.id">
-        <span class="glyphicon glyphicon-refresh"></span>
-    </button>
-    <button class="btn btn-primary btn-sm"
-            onclick="window.print(); return false;"
-            type="button" title="Clique para Imprimir ou pressione as teclas 'Ctrl + P'">
-        <span class="glyphicon glyphicon-print"></span>
-    </button>
-    <button class="btn btn-default btn-sm"
-            data-ng-click="isCollapsed = !isCollapsed"
-            type="button" title="Opções de filtro">
-        <span class="glyphicon glyphicon-filter"></span>
-    </button>
-    <button class="btn btn-default btn-sm"
-            data-ng-click="panel.open1 = false; panel.open2 = false;"
-            type="button"
-            title="Clique para fechar todos os paineis">
-        <span class="glyphicon glyphicon-minus"></span>
-    </button>
-    <button class="btn btn-default btn-sm"
-            data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true;panel.endereco = true;"
-            type="button"
-            title="Clique para abrir todos os paineis">
-        <span class="glyphicon glyphicon-plus"></span>
-    </button>
+<p class="navbar-right" ng-controller="FerramentasCtrl">
+  <button class="btn btn-default btn-sm"
+          data-ng-click="isCollapsed = !isCollapsed"
+          type="button" title="Opções de filtro">
+    <span class="glyphicon glyphicon-filter"></span>
+  </button>
+  <button data-ng-click="clear()" class="btn btn-default btn-sm"
+          type="button"
+          title="Limpar">
+    <span class="glyphicon glyphicon-file"></span>
+  </button>
+  <button class="btn btn-default btn-sm"
+          data-ng-click="closeAll()"
+          type="button"
+          title="Clique para fechar todos os paineis">
+    <span class="glyphicon glyphicon-minus"></span>
+  </button>
+  <button class="btn btn-default btn-sm"
+          data-ng-click="openAll()"
+          type="button"
+          title="Clique para abrir todos os paineis">
+    <span class="glyphicon glyphicon-plus"></span>
+  </button>
 </p>

@@ -1,4 +1,4 @@
-<div class="view"  ng-init="init()">
+<div class="view" ng-init="init()">
     <!-- data-ng-controller="EmpresaCtrl" -->
     <div class="page-header">
         <h1>Empresas</h1>
@@ -34,7 +34,7 @@
             <div class="btn-group">
                 <button type="button"
                         class="btn btn-default"
-                        data-ng-click="empresa={}">
+                        data-ng-click="clear()">
                     <span class="glyphicon glyphicon-file">&nbspLimpar</span>
                 </button>
             </div>
@@ -48,13 +48,10 @@
                 <th>CNPJ</th>
                 <th>Endereço</th>
             </tr>
-            <tr data-ng-repeat="empresa in empresas">
-                <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; editEmpresa(empresa)" >{{empresa.nome}}</td>
-                <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; editEmpresa(empresa)">{{empresa.cnpj}}</td>
-                <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; editEmpresa(empresa)">{{empresa.endereco.rua}}</td>
-                <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; editEmpresa(empresa)">{{empresa.endereco.numero}}</td>
-                <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; editEmpresa(empresa)" data-ng-show="empresa.endereco.bairro.id">{{empresa.endereco.bairro.nome}} / {{empresa.endereco.bairro.cidade.nome}} / {{empresa.endereco.bairro.cidade.estado.nome}} / {{empresa.endereco.bairro.cidade.estado.pais.nome}}</td>
-                <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; editEmpresa(empresa)" data-ng-hide="empresa.endereco.bairro.id"></td>
+            <tr data-ng-click="edit(empresa);" data-ng-repeat="empresa in empresas">
+                <td>{{empresa.nome}}</td>
+                <td>{{empresa.cnpj}}</td>
+                <td >{{empresa.endereco.bairro.nome}} / {{empresa.endereco.bairro.cidade.nome}} / {{empresa.endereco.bairro.cidade.estado.nome}} / {{empresa.endereco.bairro.cidade.estado.pais.nome}}</td>
             </tr>
         </table>
     </div>

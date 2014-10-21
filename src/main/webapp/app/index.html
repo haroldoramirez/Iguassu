@@ -1,6 +1,5 @@
 
 
-
 <!doctype html>
 <html ng-app="iguassuApp" class="no-js">
   <head>
@@ -24,17 +23,24 @@
   </head>
 
   <body class="container">
-    <div data-ng-controller="MenuCtrl" class="navbar navbar-default navbar-fixed-top" data-role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
-                <a class="navbar-brand" href="#/">Agência Iguassu</a>
-            </div>
-            <div  ng-include="jsession?'views/menu/menu.html':'views/menu/private_menu.html'"></div>
+    <div data-ng-controller="MenuCtrl" class="navbar navbar-default navbar-fixed-top" data-role="navigation" ng-init="init()">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
+          <a class="navbar-brand" href="#/">Agência Iguassu</a>
         </div>
+        <div  ng-include="!JSESSION?'views/menu/menu.html':'views/menu/private_menu.html'"></div>
+      </div>
     </div>
 
     <div animated-view></div>
+
+    <!-- <div id="footer">
+      <div class="container">
+          <p class="text-muted credit">Sistema Iguassu Agência de Empregos 
+            <small>por </small><a href="http://www.emanuelvictor.com.br">Emanuel Victor</a>.</p>
+      </div>
+    </div> -->
   
     <script>
        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -101,7 +107,9 @@
     <script src="scripts/services/endereco.js"></script>
     <script src="scripts/services/cargo.js"></script>
     <script src="scripts/services/curso.js"></script>
-
-<script src="scripts/services/createaddress.js"></script>
+    <script src="scripts/controllers/ferramentas.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/services/createaddress.js"></script>
+    <script src="scripts/services/autenticacao.js"></script>
   </body>
 </html>
