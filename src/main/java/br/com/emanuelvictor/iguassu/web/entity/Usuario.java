@@ -25,7 +25,7 @@ public class Usuario extends Pessoa implements UserDetails, CredentialsContainer
     @Column(length = 30)
     private String login;
 
-    @Column
+    @Column( length = 100000 )
     private String senha;
 
     @Column(length = 50)

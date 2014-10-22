@@ -58,25 +58,25 @@ angular
    }).otherwise({
      redirectTo : '/'
    });
- angular.extend(toastrConfig, {
-  allowHtml: true,
-  closeButton: true,
-  closeHtml: '<button>&times;</button>',
-  containerId: 'toast-container',
-  extendedTimeOut: 5000,
-  iconClasses: {
-    error: 'toast-error',
-    info: 'toast-info',
-    success: 'toast-success',
-    warning: 'toast-warning'
-  },
-  messageClass: 'toast-message',
-  positionClass: 'toast-top-right',
-  tapToDismiss: true,
-  timeOut: 5000,
-  titleClass: 'toast-title',
-  toastClass: 'toast'
-});
+     angular.extend(toastrConfig, {
+      allowHtml: true,
+      closeButton: true,
+      closeHtml: '<button>&times;</button>',
+      containerId: 'toast-container',
+      extendedTimeOut: 5000,
+      iconClasses: {
+        error: 'toast-error',
+        info: 'toast-info',
+        success: 'toast-success',
+        warning: 'toast-warning'
+      },
+      messageClass: 'toast-message',
+      positionClass: 'toast-top-right',
+      tapToDismiss: true,
+      timeOut: 5000,
+      titleClass: 'toast-title',
+      toastClass: 'toast'
+    });
  }).config(function($httpProvider){
 
      var interceptor = function ($rootScope, $q, $location) {
@@ -92,7 +92,7 @@ angular
                var method = config.method;
                var url = config.url;
                if (status === 403) {
-                 $location.path("/login");
+                 $location.path('/login');
                } else{
                  //skip others
                }

@@ -4,7 +4,7 @@
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" type="text/javascript"></script>
     <style type="text/css">
       body {
-        padding-top: 40px;
+        padding-top: 180px;
         padding-bottom: 40px;
         background-color: #eee;
       }
@@ -46,19 +46,15 @@
     </style>
   </head>
   <body>
-    <div class="view">
 
-      <form class="form-signin" method="post" action="Iguassu/autenticacao" 
+    <div class="view">
+      <form class="form-signin" method="post" action="Iguassu/autenticacao"
             enctype="application/x-www-form-urlencoded">
         <h2 class="form-signin-heading">Por favor efetue login</h2>
-        <input name="login" type="text" class="form-control" placeholder="Endereço de email">
-        <input name="senha" type="password" class="form-control" placeholder="Senha">
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Lembrar-me
-        </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+        <input name="login" ng-model="login" type="text" class="form-control" placeholder="Endereço de email">
+        <input name="senha" ng-model="senha" type="password" class="form-control" placeholder="Senha">
+        <button class="btn btn-lg btn-primary btn-block" data-ng-disabled="!login||!senha" type="submit">Entrar</button>
       </form>
-
     </div> 
 
   </body>

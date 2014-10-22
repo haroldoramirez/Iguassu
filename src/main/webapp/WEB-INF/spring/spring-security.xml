@@ -5,45 +5,47 @@
        xmlns:beans="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
-    <beans:bean id="servicesForbiddenEntryPoint"
-                class="org.springframework.security.web.authentication.Http403ForbiddenEntryPoint">
 
-    </beans:bean>
-    <security:http
-            realm="Protected API"
-            use-expressions="true"
-            entry-point-ref="servicesForbiddenEntryPoint">
+<beans:bean id="servicesForbiddenEntryPoint" class="org.springframework.security.web.authentication.Http403ForbiddenEntryPoint">
 
-		<security:intercept-url pattern="/autenticacao" access="permitAll"/>
-		<security:intercept-url pattern="/app/**" access="permitAll"/>
-		<security:intercept-url pattern="/bower_components/**" access="permitAll"/>
-        <security:intercept-url pattern="/**" access="isAuthenticated()"/>
-        <!--<security:intercept-url pattern="/services/authenticate/**" access="isAuthenticated()"/>-->
+</beans:bean>
+<security:http
+        realm="Protected API"
+        use-expressions="true"
+        entry-point-ref="servicesForbiddenEntryPoint">
 
-        <!--<security:intercept-url method="GET" pattern="/services/users/**" access="isAuthenticated()"/>-->
-        <!--<security:intercept-url method="POST" pattern="/services/users/**" access="isAuthenticated()"/>-->
-        <!--<security:intercept-url pattern="/services/users/**" access="hasRole('ROLE_ADMINISTRADOR')"/>-->
+    <security:intercept-url pattern="/autenticacao" access="permitAll"/>
+    <security:intercept-url pattern="/app/**" access="permitAll"/>
+    <security:intercept-url pattern="/bower_components/**" access="permitAll"/>
+    <security:intercept-url pattern="/**" access="isAuthenticated()"/>
+    <!--<security:intercept-url pattern="/services/authenticate/**" access="isAuthenticated()"/>-->
 
-        <!--<security:intercept-url pattern="/services/**" access="isAuthenticated()"/>-->
+    <!--<security:intercept-url method="GET" pattern="/services/users/**" access="isAuthenticated()"/>-->
+    <!--<security:intercept-url method="POST" pattern="/services/users/**" access="isAuthenticated()"/>-->
+    <security:intercept-url pattern="/usuarios/**" access="hasRole('ROLE_ADMINISTRADOR')"/>
+    <security:intercept-url pattern="/lancamentos/**" access="hasRole('ROLE_ADMINISTRADOR')"/>
 
-        <!--always-use-default-target="false"-->
-        <!--default-target-url="http://localhost:9000/#/candidatos"-->
-        <security:form-login login-processing-url="/autenticacao"
-                             username-parameter="login"
-                             password-parameter="senha"
-                             authentication-failure-url="/app/#/login"
-                             default-target-url="/app/#/"/>
-        <security:logout logout-url="/logout" logout-success-url="/"/>
-    </security:http>
+    <!--<security:intercept-url pattern="/services/**" access="isAuthenticated()"/>-->
 
-    <beans:bean id="passwordEncoder"
-                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
-    </beans:bean>
+    <!--always-use-default-target="false"-->
+    <!--default-target-url="http://localhost:9000/#/candidatos"-->
+    <security:form-login login-processing-url="/autenticacao"
+                         username-parameter="login"
+                         password-parameter="senha"
+                         authentication-failure-url="/app/#/login"
 
-    <security:authentication-manager>
-        <security:authentication-provider user-service-ref="serviceUsuario">
-            <security:password-encoder ref="passwordEncoder"></security:password-encoder>
-        </security:authentication-provider>
-    </security:authentication-manager>
+                         default-target-url="/app/#/"/>
+    <security:logout logout-url="/logout" logout-success-url="/"/>
+</security:http>
+
+<beans:bean id="passwordEncoder"
+            class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+</beans:bean>
+
+<security:authentication-manager>
+    <security:authentication-provider user-service-ref="serviceUsuario">
+        <security:password-encoder ref="passwordEncoder"></security:password-encoder>
+    </security:authentication-provider>
+</security:authentication-manager>
 
 </beans>
