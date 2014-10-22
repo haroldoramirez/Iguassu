@@ -6,14 +6,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
-<beans:bean id="servicesForbiddenEntryPoint" class="org.springframework.security.web.authentication.Http403ForbiddenEntryPoint">
+<beans:bean id="servicesForbiddenEntryPoint" class="org.springframework.security.web.authentication.Http403ForbiddenEntryPoint"></beans:bean>
 
-</beans:bean>
 <security:http
         realm="Protected API"
         use-expressions="true"
         entry-point-ref="servicesForbiddenEntryPoint">
 
+    <security:intercept-url pattern="/paises" access="permitAll"/>
     <security:intercept-url pattern="/autenticacao" access="permitAll"/>
     <security:intercept-url pattern="/app/**" access="permitAll"/>
     <security:intercept-url pattern="/bower_components/**" access="permitAll"/>
@@ -32,10 +32,10 @@
     <security:form-login login-processing-url="/autenticacao"
                          username-parameter="login"
                          password-parameter="senha"
-                         authentication-failure-url="/app/#/login"
-
-                         default-target-url="/app/#/"/>
-    <security:logout logout-url="/logout" logout-success-url="/"/>
+                         authentication-failure-url="/app/#/login?error"
+                         always-use-default-target="true"
+                         default-target-url="/app/#/?success"/>
+    <security:logout logout-url="/logout" logout-success-url="/app/#/"/>
 </security:http>
 
 <beans:bean id="passwordEncoder"

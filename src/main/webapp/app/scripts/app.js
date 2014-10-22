@@ -53,7 +53,7 @@ angular
      controller : '',
      templateUrl : './views/configuracoes.html'
    }).when('/', {
-     controller : '',
+     controller : 'HomeCtrl',
      templateUrl : './views/home.html'
    }).otherwise({
      redirectTo : '/'
@@ -78,36 +78,32 @@ angular
       toastClass: 'toast'
     });
  }).config(function($httpProvider){
+  
+  var interceptor = function ($rootScope, $q, $location) {
+    function success(response) {
+      return response;
+    };
+    function error(response) {
+      var status = response.status;
+      var config = response.config;
+      var method = config.method;
+      var url = config.url;
+      if (status === 403) {
+        $location.path('/login');
+      } else{
+        //skip others
+      }
+       return $q.reject(response);
+    };
+    return function (promise) {
+      return promise.then(success, error);
+    };
+   };
+   $httpProvider.responseInterceptors.push(interceptor);
 
-     var interceptor = function ($rootScope, $q, $location) {
-
-           function success(response) {
-               return response;
-           };
-
-           function error(response) {
-
-               var status = response.status;
-               var config = response.config;
-               var method = config.method;
-               var url = config.url;
-               if (status === 403) {
-                 $location.path('/login');
-               } else{
-                 //skip others
-               }
-
-               return $q.reject(response);
-           };
-
-           return function (promise) {
-               return promise.then(success, error);
-           };
-       };
-       $httpProvider.responseInterceptors.push(interceptor);
- })
-
-.run(function($rootScope, $modal, Curso, Empresa, Cargo, Pais, Estado, Cidade, Bairro, Vaga, Candidato, CategoriasCursos, Encaminhamento){
+ }).run(function($rootScope, $modal, Curso, Empresa, Cargo, Pais, Estado, Cidade, Bairro, Vaga, Candidato, CategoriasCursos, Encaminhamento){
+  
+  $rootScope.usuario = null;
 
   $rootScope.candidato = {};
 

@@ -7,7 +7,7 @@ import org.apache.commons.lang.builder.ToStringStyle;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import java.io.Serializable;
-@JsonIgnoreProperties({"new"})
+@JsonIgnoreProperties({"new", "password"})
 public abstract class SpringData<id extends Serializable> extends AbstractPersistable<id> implements Serializable {
 
 	private static final long serialVersionUID = -8175815837393391240L;

@@ -17,8 +17,7 @@
 						http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <context:component-scan base-package="br.com.emanuelvictor">
-	    <context:exclude-filter expression="org.springframework.stereotype.Controller"
-	        type="annotation"/>
+	    <context:exclude-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
 	</context:component-scan>
 
     <jpa:repositories base-package="br.com.emanuelvictor.iguassu.web.repository"/>

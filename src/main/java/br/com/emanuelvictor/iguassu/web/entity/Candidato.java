@@ -23,18 +23,6 @@ public class Candidato extends Pessoa {
 	@Column(nullable = false)
 	private Calendar dataNasc;
 
-    @Column(length = 20)
-    protected String telefoneResidencial;
-
-    @Column(length = 20)
-    protected String telefoneComercial;
-
-    @Column(length = 20)
-    protected String telefoneCelular;
-
-    @Column(length = 50)
-    protected String email;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = true)
     private NecessidadeEspecial necessidadeEspecial;
@@ -56,38 +44,6 @@ public class Candidato extends Pessoa {
 
     @Column(nullable = true, length = 200)
     private String observacoes;
-
-    public String getTelefoneResidencial() {
-        return telefoneResidencial;
-    }
-
-    public void setTelefoneResidencial(String telefoneResidencial) {
-        this.telefoneResidencial = telefoneResidencial;
-    }
-
-    public String getTelefoneComercial() {
-        return telefoneComercial;
-    }
-
-    public void setTelefoneComercial(String telefoneComercial) {
-        this.telefoneComercial = telefoneComercial;
-    }
-
-    public String getTelefoneCelular() {
-        return telefoneCelular;
-    }
-
-    public void setTelefoneCelular(String telefoneCelular) {
-        this.telefoneCelular = telefoneCelular;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
 	public String getPathFoto() {
 		return pathFoto;

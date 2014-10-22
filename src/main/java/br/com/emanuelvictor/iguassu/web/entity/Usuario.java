@@ -19,13 +19,14 @@ public class Usuario extends Pessoa implements UserDetails, CredentialsContainer
     private static final long serialVersionUID = 1121147605946406759L;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, unique = true, length = 30)
+    @Column(nullable = false, length = 30)
     private Perfil perfil;
 
-    @Column(length = 30)
+    @Column(length = 50, unique = true)
     private String login;
 
-    @Column( length = 100000 )
+    @Column(length = 100000)
+    @JsonIgnore(value = true)
     private String senha;
 
     @Column(length = 50)
@@ -74,6 +75,15 @@ public class Usuario extends Pessoa implements UserDetails, CredentialsContainer
         this.respostaSecreta = respostaSecreta;
     }
 
+    @Override
+    public String getPassword() {
+        return this.getSenha();
+    }
+
+    @Override
+    public String getUsername() {
+        return this.getLogin();
+    }
 
     @JsonIgnore
     public boolean isAdministrador() {
@@ -86,7 +96,7 @@ public class Usuario extends Pessoa implements UserDetails, CredentialsContainer
     }
 
 
-    //ALTENTICAÇÃO
+    //AUTENTICAÇÃO
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + this.getPerfil());
@@ -95,15 +105,9 @@ public class Usuario extends Pessoa implements UserDetails, CredentialsContainer
         return authorities;
     }
 
-    @Override
-    public String getPassword() {
-        return this.getSenha();
-    }
 
-    @Override
-    public String getUsername() {
-        return this.getLogin();
-    }
+
+
 
     @Override
     public boolean isAccountNonExpired() {

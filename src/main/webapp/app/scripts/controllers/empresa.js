@@ -20,9 +20,7 @@ angular.module('iguassuApp')
     }else{
       $scope.clear(); 
     };
-    if(!$scope.empresas){
-      $scope.getEmpresas();
-    };
+    $scope.getEmpresas();
    };
 
   $scope.save = function(){

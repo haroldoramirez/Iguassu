@@ -12,7 +12,7 @@
 	</appender>
 	
 	<logger name="br.com.emanuelvictor" level="DEBUG">
-		<appender-ref ref="file" />
+		<appender-ref ref="console" />
 	</logger>
 
 	<root level="INFO">

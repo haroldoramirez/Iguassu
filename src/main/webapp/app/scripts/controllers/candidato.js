@@ -16,9 +16,7 @@ angular.module('iguassuApp')
     }else{
       $scope.clear();
     };
-    if(!$scope.candidatos){
-      $scope.getCandidatos();
-    };
+    $scope.getCandidatos();
   };
 
 

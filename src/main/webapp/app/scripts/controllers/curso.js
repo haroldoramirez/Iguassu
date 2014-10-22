@@ -8,7 +8,7 @@
  * Controller of the iguassuApp
  */
 angular.module('iguassuApp')
-  .controller('CursoCtrl', function ($scope, $modalInstance, Curso, toastr) {
+  .controller('CursoCtrl', function ($scope, $modalInstance, Curso, toastr, Usuario) {
   	
   $scope.save = function(){
     var msg = 'Curso cadastrado com sucesso';
