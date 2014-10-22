@@ -77,7 +77,7 @@ angular
   titleClass: 'toast-title',
   toastClass: 'toast'
 });
- })/*.config(function($httpProvider){
+ }).config(function($httpProvider){
 
      var interceptor = function ($rootScope, $q, $location) {
 
@@ -93,31 +93,9 @@ angular
                var url = config.url;
                if (status === 403) {
                  $location.path("/login");
-               } else{};
-
-
-
-               if (status == 401) {
-             delete $rootScope.user;
-                 if($location.path() != '/login') {
-                   $rootScope.redirectUrl = angular.copy($location.url());
-                 }
-                 $rootScope.redirectStatus = 401;
-                 $location.url('/login');
-               } else if (status == 403) {
-                 $location.url('/403');
-               } else if (status == 500) {
-                 $location.url('/500');
-               } else if (status == 503) {
-                 if($location.path() != '/503') {
-                   $rootScope.redirectUrl = angular.copy($location.url());
-                 }
-                 $location.url('/503');
                } else{
                  //skip others
                }
-
-
 
                return $q.reject(response);
            };
@@ -127,7 +105,7 @@ angular
            };
        };
        $httpProvider.responseInterceptors.push(interceptor);
- })*/
+ })
 
 .run(function($rootScope, $modal, Curso, Empresa, Cargo, Pais, Estado, Cidade, Bairro, Vaga, Candidato, CategoriasCursos, Encaminhamento){
 

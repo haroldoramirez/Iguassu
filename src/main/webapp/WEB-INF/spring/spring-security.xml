@@ -14,7 +14,10 @@
             use-expressions="true"
             entry-point-ref="servicesForbiddenEntryPoint">
 
-        <!--<security:intercept-url pattern="/candidatos/**" access="isAuthenticated()"/>-->
+		<security:intercept-url pattern="/autenticacao" access="permitAll"/>
+		<security:intercept-url pattern="/app/**" access="permitAll"/>
+		<security:intercept-url pattern="/bower_components/**" access="permitAll"/>
+        <security:intercept-url pattern="/**" access="isAuthenticated()"/>
         <!--<security:intercept-url pattern="/services/authenticate/**" access="isAuthenticated()"/>-->
 
         <!--<security:intercept-url method="GET" pattern="/services/users/**" access="isAuthenticated()"/>-->
@@ -28,17 +31,13 @@
         <security:form-login login-processing-url="/autenticacao"
                              username-parameter="login"
                              password-parameter="senha"
-                             authentication-failure-url="http://localhost:8080/Iguassu/app/#/login"
-                             default-target-url="http://localhost:8080/Iguassu/app/#/"/>
+                             authentication-failure-url="/app/#/login"
+                             default-target-url="/app/#/"/>
         <security:logout logout-url="/logout" logout-success-url="/"/>
     </security:http>
 
     <beans:bean id="passwordEncoder"
                 class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
-    </beans:bean>
-
-    <beans:bean id="serviceUsuario"
-                class="br.com.emanuelvictor.iguassu.web.service.ServiceUsuario">
     </beans:bean>
 
     <security:authentication-manager>

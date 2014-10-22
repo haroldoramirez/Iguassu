@@ -13,83 +13,71 @@ import java.util.List;
 @Controller
 public class ControllerCandidato {
 
-    @Autowired
-    ServiceCandidato serviceCandidato;
+	@Autowired
+	ServiceCandidato serviceCandidato;
 
+	@RequestMapping(value = "/candidatos", method = RequestMethod.POST)
+	public @ResponseBody
+	Candidato save(@RequestBody Candidato candidato) {
+		return this.serviceCandidato.save(candidato);
+	}
 
-    @RequestMapping(value = "/candidatos", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    Candidato save(@RequestBody Candidato candidato) {
-        return this.serviceCandidato.save(candidato);
-    }
+	@RequestMapping(value = "/candidatos/{id}", method = RequestMethod.POST)
+	public @ResponseBody
+	Candidato update(/* @PathVariable Long id, */@RequestBody Candidato candidato) {
+		return this.serviceCandidato.save(candidato);
+	}
 
-    @RequestMapping(value = "/candidatos/{id}", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    Candidato update(/*@PathVariable Long id,*/ @RequestBody Candidato candidato) {
-        return this.serviceCandidato.save(candidato);
-    }
+	@RequestMapping(value = "/candidatos/{id}", method = RequestMethod.GET)
+	public @ResponseBody
+	Candidato find(@PathVariable Long id) {
+		return serviceCandidato.find(id);
+	}
 
-    @RequestMapping(value = "/candidatos/{id}", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    Candidato find(@PathVariable Long id) {
-        return serviceCandidato.find(id);
-    }
+	@RequestMapping(value = "/candidatos", method = RequestMethod.GET)
+	public @ResponseBody
+	List<Candidato> find() {
+		return serviceCandidato.find();
+	}
 
-    @RequestMapping(value = "/candidatos", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    List<Candidato> find() {
-        return serviceCandidato.find();
-    }
+	// ---- experiencias
 
-//    ---- experiencias
+	@RequestMapping(value = "/candidatos/experiencias", method = RequestMethod.POST)
+	public @ResponseBody
+	Experiencia save(@RequestBody Experiencia experiencia) {
+		return this.serviceCandidato.save(experiencia);
+	}
 
-    @RequestMapping(value = "/candidatos/experiencias", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    Experiencia save(@RequestBody Experiencia experiencia) {
-        return this.serviceCandidato.save(experiencia);
-    }
+	@RequestMapping(value = "/candidatos/{id}/experiencias", method = RequestMethod.GET)
+	public @ResponseBody
+	List<Experiencia> findExperiencias(@PathVariable Long id) {
+		return serviceCandidato.findExperiencias(id);
+	}
 
-    @RequestMapping(value = "/candidatos/{id}/experiencias", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    List<Experiencia> findExperiencias(@PathVariable Long id) {
-        return serviceCandidato.findExperiencias(id);
-    }
+	@RequestMapping(value = "/candidatos/experiencias/{id}", method = RequestMethod.DELETE)
+	public @ResponseBody
+	void deleteExperiencia(@PathVariable Long id) {
+		serviceCandidato.deleteExperiencia(id);
+	}
 
-    @RequestMapping(value = "/candidatos/experiencias/{id}", method = RequestMethod.DELETE)
-    public
-    @ResponseBody
-    void deleteExperiencia(@PathVariable Long id) {
-        serviceCandidato.deleteExperiencia(id);
-    }
+	// ---- curso
 
-    //    ---- curso
+	@RequestMapping(value = "/candidatos/cursos", method = RequestMethod.POST)
+	public @ResponseBody
+	Object save(@RequestBody CandidatoCurso candidatoCurso) {
+		return this.serviceCandidato.save(candidatoCurso);
+	}
 
-    @RequestMapping(value = "/candidatos/cursos", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    Object save(@RequestBody CandidatoCurso candidatoCurso) {
-        return this.serviceCandidato.save(candidatoCurso);
-    }
+	@RequestMapping(value = "/candidatos/{id}/cursos", method = RequestMethod.GET)
+	public @ResponseBody
+	List<CandidatoCurso> findCursos(@PathVariable Long id) {
+		return serviceCandidato.findCursos(id);
+	}
 
-    @RequestMapping(value = "/candidatos/{id}/cursos", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    List<CandidatoCurso> findCursos(@PathVariable Long id) {
-        return serviceCandidato.findCursos(id);
-    }
-
-    @RequestMapping(value = "/candidatos/cursos/{id}", method = RequestMethod.DELETE)
-    public
-    @ResponseBody
-    void deleteCurso(@PathVariable Long id) {
-        serviceCandidato.deleteCurso(id);
-    }
-
+	@RequestMapping(value = "/candidatos/cursos/{id}", method = RequestMethod.DELETE)
+	public @ResponseBody
+	void deleteCurso(@PathVariable Long id) {
+		serviceCandidato.deleteCurso(id);
+	}
 
 }
