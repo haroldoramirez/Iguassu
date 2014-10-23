@@ -27,8 +27,10 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
           <a class="navbar-brand" href="#/">Agência Iguassu</a>
         </div>
-        <div ng-include="!usuario?'views/menu/menu.html'?'ASD'"></div>
-        <div ng-include="!usuario.perfil==='ATENDENTE'?'views/menu/atendente_menu.html':'views/menu/administrador_menu.html'"></div>
+        <div ng-include="!usuario.perfil?'views/menu/public_menu.html':
+         usuario.perfil==='ATENDENTE'?'views/menu/atendente_menu.html':
+        usuario.perfil==='ADMINISTRADOR'?'views/menu/administrador_menu.html':'views/menu/gerente_menu.html'"></div>
+        <!-- <div ng-include=""></div> -->
       </div>
     </div>
 
@@ -73,9 +75,7 @@
     <script src="bower_components/angular-toastr/dist/angular-toastr.js"></script>
 
     <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/bairro.js"></script>
-    <script src="scripts/controllers/candidatocurso.js"></script>
     <script src="scripts/controllers/cargo.js"></script>
     <script src="scripts/controllers/categoriacurso.js"></script>
     <script src="scripts/controllers/cidade.js"></script>
@@ -83,7 +83,6 @@
     <script src="scripts/controllers/empresa.js"></script>
     <script src="scripts/controllers/encaminhamento.js"></script>
     <script src="scripts/controllers/estado.js"></script>
-    <script src="scripts/controllers/lancamento.js"></script>
     <script src="scripts/controllers/menu.js"></script>
     <script src="scripts/controllers/pais.js"></script>
     <script src="scripts/controllers/vaga.js"></script>
@@ -99,12 +98,13 @@
     <script src="scripts/services/endereco.js"></script>
     <script src="scripts/services/cargo.js"></script>
     <script src="scripts/services/curso.js"></script>
-    <script src="scripts/controllers/ferramentas.js"></script>
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/services/createaddress.js"></script>
     <script src="scripts/services/autenticacao.js"></script>
     <script src="scripts/controllers/home.js"></script>
     <script src="scripts/services/usuario.js"></script>
     <script src="scripts/controllers/usuario.js"></script>
+    <script src="scripts/controllers/financeiro.js"></script>
+    <script src="scripts/controllers/configuracoes.js"></script>
   </body>
 </html>

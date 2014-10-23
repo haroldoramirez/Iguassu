@@ -28,6 +28,7 @@ public class ServiceUsuario implements UserDetailsService {
 //    PasswordEncoder passwordEncoder;
 
 	public Usuario save(Usuario usuario) {
+        System.out.println(usuario.getSenha());
         usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
 		return daoUsuario.save(usuario);
 	}
@@ -47,6 +48,22 @@ public class ServiceUsuario implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+//        Usuario usuario1 = new Usuario();
+//        usuario1.setSenha(new BCryptPasswordEncoder().encode("teste"));
+//        usuario1.setNome("Fernando");
+//        usuario1.setLogin("Fernando");
+//        usuario1.setPerfil(Perfil.GERENTE);
+//
+//        daoUsuario.save(usuario1);
+//
+//        Usuario usuario2 = new Usuario();
+//        usuario2.setNome("Emanuel");
+//        usuario2.setSenha(new BCryptPasswordEncoder().encode("teste"));
+//        usuario2.setLogin("Emanuel");
+//        usuario2.setPerfil(Perfil.ATENDENTE);
+//
+//        return daoUsuario.save(usuario2);
+
         Usuario user = daoUsuario.findByLogin(login);
         if (user == null || user.getId() == null || user.getId() == 0){
             throw new UsernameNotFoundException("Tentativa de login sem sucesso, nome de usuário: " + login + " - Nome de usuário não encontrado");
@@ -57,7 +74,11 @@ public class ServiceUsuario implements UserDetailsService {
     public Usuario getCurrentUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null)
-            return (Usuario) auth.getPrincipal();
+            try{
+                return (Usuario) auth.getPrincipal();
+            }catch (Exception e){
+                return null;
+            }
         else
             return null;
     }

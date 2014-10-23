@@ -1,0 +1,41 @@
+<div class="view" ng-init="init()">
+
+  <div class="pull-right">
+    <a href="" class="btn btn-primary"
+       data-ng-click="openExperiencia()">Adicionar Lançamentos
+    </a>
+  </div>
+    <h1>Lançamentos</h1>
+    <hr>
+    <div class="list-group">
+      <a data-ng-repeat="experiencia in experienciasDoCandidato" href="" ng-click="openExperiencia(experiencia)" class="list-group-item">
+        <strong>{{experiencia.cargo.nome}}</strong>
+        (<small>De</small> {{experiencia.dataInicio|date:'dd/MM/yyyy'}} <small>até</small> {{experiencia.dataTermino|date:'dd/MM/yyyy'}}
+           <span class="label label-warning"
+                   data-ng-show="!experiencia.dataTermino">atuando</span>)
+        <ul>
+          <li data-ng-if="experiencia.vinculoEmpregaticio">
+            <strong>Vínculo:&nbsp</strong>
+            {{experiencia.vinculoEmpregaticio}}
+          </li>
+          <li data-ng-if="experiencia.cargo.descricao">
+            <strong>Descrição do cargo:&nbsp</strong>
+            {{experiencia.cargo.descricao}}
+          </li>
+          <li data-ng-show="experiencia.empresa">
+            <strong>Empresa:&nbsp</strong>
+            {{experiencia.empresa.nome}}
+          </li>
+          <li data-ng-show="experiencia.atividades">
+            <strong>Atividades Desenvolvidas:&nbsp</strong>
+            {{experiencia.atividades}}
+          </li>
+          <li data-ng-show="experiencia.observacoes">
+            <strong>Observações:&nbsp</strong>
+            {{experiencia.observacoes}}
+          </li>
+        </ul>
+      </a>
+    </div>
+
+</div>

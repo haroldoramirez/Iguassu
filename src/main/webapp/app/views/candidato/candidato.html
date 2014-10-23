@@ -16,14 +16,7 @@
       <div style="margin-bottom: 5px;" ng-include="'views/endereco/endereco.html'"></div>
 
     </accordion>
-      <!-- <p>Rua: {{endereco.rua}}</p>
-      <p>Complemento: {{endereco.complemento}}</p>
-      <p>Número: {{endereco.numero}}</p>
-      <p>Cep: {{endereco.cep}}</p>
-      <p>Pais: nome: {{endereco.nome}} id: {{endereco.pais.id}}</p>
-      <p>Estado: nome: {{endereco.estado.nome}} id: {{endereco.estado.id}} sigla: {{endereco.estado.sigla}}</p>
-      <p>Cidade: nome: {{endereco.cidade.nome}} id: {{endereco.cidade.id}}</p>
-      <p>Bairro: nome: {{endereco.bairro.nome}} id: {{endereco.bairro.id}}</p>-->
+
     <div class="btn-group btn-group-justified">
       <div class="btn-group">
         <button type="button" 
@@ -36,7 +29,7 @@
         <button type="button" 
                 class="btn btn-primary" 
                 data-ng-click="save()"
-                data-ng-disabled="candidato.nome==null||candidato.nome==''||candidato.genero==null||candidato.genero==''||candidato.dataNasc==null||candidato.dataNasc==''||(pne==true&&!candidato.necessidadeEspecial)">
+                data-ng-disabled="candidato.nome==null||candidato.nome==''||candidato.genero==null||candidato.genero==''||candidato.dataNasc==null||candidato.dataNasc==''">
                 <span class="glyphicon glyphicon-save">&nbspSalvar</span>
         </button>
       </div>
@@ -62,12 +55,12 @@
         <!--<th></th>-->
       </tr>
       <tr data-ng-repeat="candidato in candidatos">
-        <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editCandidato(candidato)">{{candidato.nome}}</td>
-        <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editCandidato(candidato)">{{candidato.sexo}}</td>
-        <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editCandidato(candidato)">{{candidato.dataNasc|date:'dd/MM/yyyy'}}</td>
-        <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editCandidato(candidato)">{{candidato.estadoCivil}}</td>
-        <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editCandidato(candidato)">{{candidato.endereco.bairro.nome}} / {{candidato.endereco.bairro.cidade.nome}} / {{candidato.endereco.bairro.cidade.estado.nome}} / {{candidato.endereco.bairro.cidade.estado.pais.nome}}</td>
-        <td data-ng-click="isOpen = false; panel.open1 = true; panel.open2 = true; panel.open3 = true; panel.open4 = true; panel.open5 = true; panel.open6 = true; editCandidato(candidato)">{{candidato.situacao}}</td>
+        <td data-ng-click="edit(candidato)">{{candidato.nome}}</td>
+        <td data-ng-click="edit(candidato)">{{candidato.sexo}}</td>
+        <td data-ng-click="edit(candidato)">{{candidato.dataNasc|date:'dd/MM/yyyy'}}</td>
+        <td data-ng-click="edit(candidato)">{{candidato.estadoCivil}}</td>
+        <td data-ng-click="edit(candidato)">{{candidato.endereco.bairro.nome}} / {{candidato.endereco.bairro.cidade.nome}} / {{candidato.endereco.bairro.cidade.estado.nome}} / {{candidato.endereco.bairro.cidade.estado.pais.nome}}</td>
+        <td data-ng-click="edit(candidato)">{{candidato.situacao}}</td>
         <!--<td>-->
           <!--<span class="glyphicon glyphicon-print"></span>-->
           <!--<span data-ng-click="deleteCandidato(candidato.id)" class="glyphicon glyphicon-trash"></span>-->

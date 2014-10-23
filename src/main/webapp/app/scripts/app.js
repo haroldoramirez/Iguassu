@@ -29,14 +29,14 @@ angular
      controller : 'CandidatoCtrl',
      templateUrl : './views/candidato/candidato.html'
    }).when('/empresas', {
-          controller : 'EmpresaCtrl',
-          templateUrl : './views/empresa/empresa.html'
+      controller : 'EmpresaCtrl',
+      templateUrl : './views/empresa/empresa.html'
    }).when('/empresas/:id', {
      controller : 'EmpresaCtrl',
      templateUrl : './views/empresa/empresa.html'
    }).when('/vagas', {
-          controller : 'VagaCtrl',
-          templateUrl : './views/vaga/vaga.html'
+      controller : 'VagaCtrl',
+      templateUrl : './views/vaga/vaga.html'
    }).when('/vagas/:id', {
      controller : 'VagaCtrl',
      templateUrl : './views/vaga/vaga.html'
@@ -50,8 +50,14 @@ angular
      controller : 'LoginCtrl',
      templateUrl : './views/login.html'
    }).when('/configuracoes', {
-     controller : '',
+     controller : 'ConfiguracoesCtrl',
      templateUrl : './views/configuracoes.html'
+   }).when('/usuarios', {
+     controller : 'UsuarioCtrl',
+     templateUrl : './views/usuario/usuario.html'
+   }).when('/financeiro', {
+     controller : 'FinanceiroCtrl',
+     templateUrl : './views/financeiro/financeiro.html'
    }).when('/', {
      controller : 'HomeCtrl',
      templateUrl : './views/home.html'
@@ -101,9 +107,9 @@ angular
    };
    $httpProvider.responseInterceptors.push(interceptor);
 
- }).run(function($rootScope, $modal, Curso, Empresa, Cargo, Pais, Estado, Cidade, Bairro, Vaga, Candidato, CategoriasCursos, Encaminhamento){
+ }).run(function($rootScope, $modal, $location, Usuario, Curso, Empresa, Cargo, Pais, Estado, Cidade, Bairro, Vaga, Candidato, CategoriasCursos, Encaminhamento){
   
-  $rootScope.usuario = null;
+  $rootScope.usuario = Usuario.getCurrent();
 
   $rootScope.candidato = {};
 
@@ -115,7 +121,7 @@ angular
 
   $rootScope.getEncaminhamentos = function(){
     $rootScope.encaminhamentos = Encaminhamento.getAll();
-  };
+  };                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 
   $rootScope.getEmpresas = function(){
     $rootScope.empresas = Empresa.getAll();
@@ -151,6 +157,11 @@ angular
 
   $rootScope.getVagas = function(){
     $rootScope.vagas = Vaga.getAll();
+  };
+
+  $rootScope.sair = function(){
+    $rootScope.usuario = {};
+    $location.path("/");
   };
 
   if(!$rootScope.paises){

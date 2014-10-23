@@ -94,7 +94,7 @@ angular.module('iguassuApp')
     });
   };
 
-  $scope.editCandidato = function(candidato){
+  $scope.edit = function(candidato){
     $document.scrollTopAnimated(0, 700);
     $location.path('/candidatos/'+candidato.id);
   }

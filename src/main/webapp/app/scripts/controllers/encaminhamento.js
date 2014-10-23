@@ -20,9 +20,7 @@ angular.module('iguassuApp')
 	    }else{
 	      $scope.clear(); 
 	    };
-	    if(!$scope.encaminhamento){
-	      $scope.getEncaminhamentos();
-	    };
+	    $scope.getEncaminhamentos();
 	    $scope.getCandidatos();
 	    $scope.getVagas();
 	  };

@@ -12,45 +12,43 @@
 
 	</accordion>
 
-		<div class="btn-group btn-group-justified">
-			<div class="btn-group">
-				<button type="button" class="btn btn-default" 
-								data-ng-click="getEncaminhamentos()">
-								<span class="glyphicon glyphicon-search">&nbspConsultar</span>
-				</button>
-			</div>
-			<div class="btn-group">
-				<button type="button" class="btn btn-primary" 
-								data-ng-disabled="!encaminhamento.vaga.id||!encaminhamento.candidato.id" 
-								data-ng-click="save()">
-								<span class="glyphicon glyphicon-save">&nbspSalvar</span>
-				</button>
-			</div>
-			<div class="btn-group">
-				<button type="button" class="btn btn-default" data-ng-click="clear()">
-					<span class="glyphicon glyphicon-file">&nbspLimpar</span>
-				</button>
-			</div>
+	<div class="btn-group btn-group-justified">
+		<div class="btn-group">
+			<button type="button" class="btn btn-default" 
+							data-ng-click="getEncaminhamentos()">
+							<span class="glyphicon glyphicon-search">&nbspConsultar</span>
+			</button>
 		</div>
-
-		<br/>
-		
-		<table class="table table-hover">
-			<tr>
-				<th>Cargo</th>
-				<th>Empresa</th>
-				<th>Candidato</th>
-				<th>Salário</th>
-				<th>Situação</th>
-			</tr>
-			<tr data-ng-click="edit(encaminhamento);" data-ng-repeat="encaminhamento in encaminhamentos">
-				<td>{{encaminhamento.vaga.cargo.nome}}</td>
-				<td>{{encaminhamento.vaga.empresa.nome}}</td>
-				<td>{{encaminhamento.candidato.nome}}</td>
-				<td>{{encaminhamento.vaga.salario}}</td>
-				<td>{{encaminhamento.situacao}}</td>
-			</tr>
-		</table>
+		<div class="btn-group">
+			<button type="button" class="btn btn-primary" 
+							data-ng-disabled="!encaminhamento.vaga.id||!encaminhamento.candidato.id" 
+							data-ng-click="save()">
+							<span class="glyphicon glyphicon-save">&nbspSalvar</span>
+			</button>
+		</div>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default" data-ng-click="clear()">
+				<span class="glyphicon glyphicon-file">&nbspLimpar</span>
+			</button>
+		</div>
 	</div>
 
+	<br/>
+	
+	<table class="table table-hover">
+		<tr>
+			<th>Cargo</th>
+			<th>Empresa</th>
+			<th>Candidato</th>
+			<th>Salário</th>
+			<th>Situação</th>
+		</tr>
+		<tr data-ng-click="edit(encaminhamento);" data-ng-repeat="encaminhamento in encaminhamentos">
+			<td>{{encaminhamento.vaga.cargo.nome}}</td>
+			<td>{{encaminhamento.vaga.empresa.nome}}</td>
+			<td>{{encaminhamento.candidato.nome}}</td>
+			<td>{{encaminhamento.vaga.salario}}</td>
+			<td>{{encaminhamento.situacao}}</td>
+		</tr>
+	</table>
 </div>

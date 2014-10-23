@@ -1,6 +1,7 @@
 package br.com.emanuelvictor.iguassu.web.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.security.core.CredentialsContainer;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -25,15 +26,18 @@ public class Usuario extends Pessoa implements UserDetails, CredentialsContainer
     @Column(length = 50, unique = true)
     private String login;
 
-    @Column(length = 100000)
-    @JsonIgnore(value = true)
+    @Column(nullable = false, length = 100000)
     private String senha;
 
-    @Column(length = 50)
-    private String perguntaSecreta;
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
+    }
 
-    @Column(length = 50)
-    private String respostaSecreta;
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 
     public Perfil getPerfil() {
         return perfil;
@@ -59,42 +63,39 @@ public class Usuario extends Pessoa implements UserDetails, CredentialsContainer
         this.senha = senha;
     }
 
-    public String getPerguntaSecreta() {
-        return perguntaSecreta;
-    }
 
-    public void setPerguntaSecreta(String perguntaSecreta) {
-        this.perguntaSecreta = perguntaSecreta;
-    }
-
-    public String getRespostaSecreta() {
-        return respostaSecreta;
-    }
-
-    public void setRespostaSecreta(String respostaSecreta) {
-        this.respostaSecreta = respostaSecreta;
-    }
-
-    @Override
+    @JsonIgnore
     public String getPassword() {
-        return this.getSenha();
+        return senha;
+    }
+
+    @JsonProperty
+    public void setPassword(String password) {
+        this.senha = password;
+    }
+
+    @JsonIgnore
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @JsonIgnore
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @JsonIgnore
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    public void eraseCredentials() {
     }
 
     @Override
     public String getUsername() {
         return this.getLogin();
     }
-
-    @JsonIgnore
-    public boolean isAdministrador() {
-        return getPerfil().equals(Perfil.ADMINISTRADOR);
-    }
-
-    @JsonIgnore
-    public boolean isAtendente() {
-        return getPerfil().equals(Perfil.ATENDENTE);
-    }
-
 
     //AUTENTICAÇÃO
     @Override
@@ -104,35 +105,7 @@ public class Usuario extends Pessoa implements UserDetails, CredentialsContainer
         authorities.add(authority);
         return authorities;
     }
-
-
-
-
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
-
-    @Override
-    public void eraseCredentials() {
-
-    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 
     @Override
     public boolean equals(Object o) {

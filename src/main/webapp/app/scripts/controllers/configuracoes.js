@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name iguassuApp.controller:LancamentoCtrl
+ * @name iguassuApp.controller:ConfiguracoesCtrl
  * @description
- * # LancamentoCtrl
+ * # ConfiguracoesCtrl
  * Controller of the iguassuApp
  */
 angular.module('iguassuApp')
-  .controller('LancamentoCtrl', function ($scope) {
+  .controller('ConfiguracoesCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
