@@ -69,7 +69,7 @@ angular.module('iguassuApp')
                 switch (animationType) {
                     case 'fadeOut':
                         $(element.children()).animate({
-                            //opacity: 0.0, 
+                            // opacity: 2.0, 
                         }, defaults.duration, function () {
                             animateEnterView('slideLeft');
                         });

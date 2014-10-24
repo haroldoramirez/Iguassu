@@ -27,6 +27,7 @@ public class ControllerUsuario {
     Object save(@PathVariable Long id, @RequestBody Usuario usuario) {
         if (this.serviceUsuario.getCurrentUser().getId() == id){
             usuario.setId(id);
+            usuario.setPerfil(this.serviceUsuario.find(id).getPerfil());
             return this.serviceUsuario.save(usuario);
         }else{
             throw new NaoPermitidoExcpetion();
