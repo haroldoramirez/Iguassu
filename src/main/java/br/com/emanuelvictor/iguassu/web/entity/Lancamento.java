@@ -8,19 +8,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.com.emanuelvictor.iguassu.web.entity.base.Pessoa;
 import br.com.emanuelvictor.iguassu.web.entity.base.SpringData;
 
 @Entity
 public class Lancamento extends SpringData<Long> {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -2120199211795566673L;
-	@Column(nullable = false, length = 100)
+
+    @Column(nullable = false, length = 100)
 	private String descricao;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Calendar dataDePagamento;
 
 	@Column(nullable = false)
@@ -37,9 +37,17 @@ public class Lancamento extends SpringData<Long> {
 	private Boolean entrada = false;
 
 	@ManyToOne(optional = true)
-	private Pessoa baseEntity;
+	private Pessoa pessoa;
 
-	public String getDescricao() {
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
+    public String getDescricao() {
 		return descricao;
 	}
 
@@ -85,14 +93,6 @@ public class Lancamento extends SpringData<Long> {
 
 	public void setEntrada(Boolean entrada) {
 		this.entrada = entrada;
-	}
-
-	public Pessoa getBaseEntity() {
-		return baseEntity;
-	}
-
-	public void setBaseEntity(Pessoa baseEntity) {
-		this.baseEntity = baseEntity;
 	}
 
 	

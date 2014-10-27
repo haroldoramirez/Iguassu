@@ -11,6 +11,7 @@ angular.module('iguassuApp')
   .service('Usuario',['$resource', 'BaseUrl',
     function($resource, BaseUrl){
 	    return $resource(BaseUrl + '/usuarios/:id', {}, {
-	      getCurrent: {method: 'GET', url: BaseUrl + '/usuarios/current', isArray: false}
+	      getCurrent: {method: 'GET', url: BaseUrl + '/usuarios/current', isArray: false},
+	      update: {method: 'PUT', url: BaseUrl + '/usuarios/:id', isArray: false}
 	    });
 	  }]);

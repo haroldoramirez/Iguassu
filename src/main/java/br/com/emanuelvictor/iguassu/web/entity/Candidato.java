@@ -1,35 +1,24 @@
 package br.com.emanuelvictor.iguassu.web.entity;
 
 import java.util.Calendar;
-import java.util.List;
 
 import javax.persistence.*;
 
 import br.com.emanuelvictor.iguassu.web.entity.address.Pais;
-import br.com.emanuelvictor.iguassu.web.entity.job.Experiencia;
-import br.com.emanuelvictor.iguassu.web.entity.schooling.CandidatoCurso;
+import br.com.emanuelvictor.iguassu.web.entity.base.Pessoa;
+import br.com.emanuelvictor.iguassu.web.entity.base.PessoaFisica;
 
 @Entity
-public class Candidato extends Pessoa {
+public class Candidato extends PessoaFisica {
 
 	private static final long serialVersionUID = 699441248742650338L;
 	private String pathFoto;
-	// @CPF
-	@Column(length = 15, unique = true, nullable = true)
-	private String cpf;
-	@Column(length = 30)
-	private String rg;
-	@Temporal(TemporalType.DATE)
-	@Column(nullable = false)
-	private Calendar dataNasc;
+
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = true)
     private NecessidadeEspecial necessidadeEspecial;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Genero genero;
 
     @Enumerated(EnumType.STRING)
 	@Column(nullable = false)
@@ -53,37 +42,6 @@ public class Candidato extends Pessoa {
 		this.pathFoto = pathFoto;
 	}
 
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getRg() {
-		return rg;
-	}
-
-	public void setRg(String rg) {
-		this.rg = rg;
-	}
-
-	public Calendar getDataNasc() {
-		return dataNasc;
-	}
-
-	public void setDataNasc(Calendar dataNasc) {
-		this.dataNasc = dataNasc;
-	}
-
-    public Genero getGenero() {
-        return genero;
-    }
-
-    public void setGenero(Genero genero) {
-        this.genero = genero;
-    }
 
     public SituacaoDoCandidato getSituacao() {
         return situacao;

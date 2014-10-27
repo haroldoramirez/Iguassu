@@ -1,6 +1,6 @@
 package br.com.emanuelvictor.iguassu.web.service;
 
-import br.com.emanuelvictor.iguassu.web.entity.Pessoa;
+import br.com.emanuelvictor.iguassu.web.entity.base.Pessoa;
 import br.com.emanuelvictor.iguassu.web.entity.job.vacancy.Vaga;
 import br.com.emanuelvictor.iguassu.web.repository.DAOCandidato;
 import br.com.emanuelvictor.iguassu.web.repository.DAOEncaminhamento;

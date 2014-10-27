@@ -1,27 +1,20 @@
 package br.com.emanuelvictor.iguassu.web.entity;
 
+import br.com.emanuelvictor.iguassu.web.entity.base.Pessoa;
+import br.com.emanuelvictor.iguassu.web.entity.base.PessoaJuridica;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-public class Empresa extends Pessoa {
+public class Empresa extends PessoaJuridica {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6267143079274386878L;
 
-	@Column(length = 20, unique = true, nullable = true)
-	private String cnpj;
 
-
-    public String getCnpj() {
-		return cnpj;
-	}
-
-    public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
 
 
 }

@@ -19,16 +19,21 @@ public class ControllerUsuario {
 	@RequestMapping(value = "/usuarios", method = RequestMethod.POST)
 	public @ResponseBody
     Usuario save(@RequestBody Usuario usuario) {
-        return this.serviceUsuario.save(usuario);
+        usuario = this.serviceUsuario.save(usuario);
+        usuario.setSenha(null);
+        return usuario;
 	}
 
     @RequestMapping(value = "/usuarios/{id}", method = RequestMethod.PUT)
-    public @ResponseBody
-    Object save(@PathVariable Long id, @RequestBody Usuario usuario) {
+    public @ResponseBody Object save(@PathVariable Long id, @RequestBody Usuario usuario) {
+        System.out.println(usuario.toString());
         if (this.serviceUsuario.getCurrentUser().getId() == id){
             usuario.setId(id);
+            usuario.setFilial(this.serviceUsuario.getCurrentUser().getFilial());
             usuario.setPerfil(this.serviceUsuario.find(id).getPerfil());
-            return this.serviceUsuario.save(usuario);
+            usuario = this.serviceUsuario.save(usuario);
+            usuario.setSenha(null);
+            return usuario;
         }else{
             throw new NaoPermitidoExcpetion();
         }
@@ -41,7 +46,9 @@ public class ControllerUsuario {
 
 	@RequestMapping(value = "/usuarios/{id}", method = RequestMethod.GET)
 	public @ResponseBody Usuario find(@PathVariable Long id) {
-		return this.serviceUsuario.find(id);
+        Usuario usuario = this.serviceUsuario.find(id);
+        usuario.setSenha(null);
+        return usuario;
 	}
 
     @RequestMapping(value = "/usuarios/{id}", method = RequestMethod.DELETE)
@@ -53,6 +60,7 @@ public class ControllerUsuario {
     public @ResponseBody Object getCurrentUser() {
         Usuario usuario = this.serviceUsuario.getCurrentUser();
         if (usuario == null) throw new NaoLogadoException();
+        usuario.setSenha(null);
         return usuario;
     }
 

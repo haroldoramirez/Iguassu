@@ -1,4 +1,4 @@
-package br.com.emanuelvictor.iguassu.web.entity;
+package br.com.emanuelvictor.iguassu.web.entity.base;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,22 +19,11 @@ public class Pessoa extends BaseEntity {
     @Column(length = 20)
     protected String telefoneComercial;
 
-    @Column(length = 20)
-    protected String telefoneCelular;
-
     @Column(length = 50)
     protected String email;
 
 	@Column(nullable = false, length = 100)
 	protected String nome;
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 
     public String getTelefoneResidencial() {
         return telefoneResidencial;
@@ -52,19 +41,19 @@ public class Pessoa extends BaseEntity {
         this.telefoneComercial = telefoneComercial;
     }
 
-    public String getTelefoneCelular() {
-        return telefoneCelular;
-    }
-
-    public void setTelefoneCelular(String telefoneCelular) {
-        this.telefoneCelular = telefoneCelular;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

@@ -49,7 +49,7 @@ public class ServiceUsuario implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 //        Usuario usuario1 = new Usuario();
-//        usuario1.setSenha(new BCryptPasswordEncoder().encode("teste"));
+//        usuario1.setSenha(new BCryptPasswordEncoder().encode("123456"));
 //        usuario1.setNome("Fernando");
 //        usuario1.setLogin("Fernando");
 //        usuario1.setPerfil(Perfil.GERENTE);
@@ -58,11 +58,19 @@ public class ServiceUsuario implements UserDetailsService {
 //
 //        Usuario usuario2 = new Usuario();
 //        usuario2.setNome("Emanuel");
-//        usuario2.setSenha(new BCryptPasswordEncoder().encode("teste"));
+//        usuario2.setSenha(new BCryptPasswordEncoder().encode("123456"));
 //        usuario2.setLogin("Emanuel");
 //        usuario2.setPerfil(Perfil.ATENDENTE);
 //
-//        return daoUsuario.save(usuario2);
+//        daoUsuario.save(usuario2);
+//
+//        Usuario usuario3 = new Usuario();
+//        usuario3.setNome("Eliandro");
+//        usuario3.setSenha(new BCryptPasswordEncoder().encode("123456"));
+//        usuario3.setLogin("Eliandro");
+//        usuario3.setPerfil(Perfil.ADMINISTRADOR);
+//
+//        return daoUsuario.save(usuario3);
 
         Usuario user = daoUsuario.findByLogin(login);
         if (user == null || user.getId() == null || user.getId() == 0){
@@ -75,7 +83,9 @@ public class ServiceUsuario implements UserDetailsService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null)
             try{
-                return (Usuario) auth.getPrincipal();
+                Usuario usuario = (Usuario) auth.getPrincipal();
+                usuario.setPassword(null);
+                return usuario;
             }catch (Exception e){
                 return null;
             }

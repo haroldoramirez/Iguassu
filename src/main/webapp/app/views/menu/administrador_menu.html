@@ -4,9 +4,8 @@
     <li data-ng-class="{ active: isActive('/empresas')}"><a href="#/empresas">Empresas</a></li>
     <li data-ng-class="{ active: isActive('/vagas')}"><a href="#/vagas">Vagas</a></li>
     <li data-ng-class="{ active: isActive('/encaminhamentos')}"><a href="#/encaminhamentos">Encaminhamentos</a></li>
-    <li data-ng-class="{ active: isActive('/financeiro')}"><a href="#/financeiro">Financeiro</a></li>
     <li class="dropdown">
-       <a class="dropdown-toggle" >
+       <a class="dropdown-toggle" href="">
             <span >Relatórios</span><b class="caret"></b></a>
         <ul class="dropdown-menu">
            <li><a data-ng-click="openCurso('lg')" >Relatório 1</a></li>
@@ -14,7 +13,7 @@
         </ul>
     </li>
     <li class="dropdown">
-      <a class="dropdown-toggle" >
+      <a class="dropdown-toggle" href="">
       <span >Outros</span><b class="caret"></b></a>
       <ul class="dropdown-menu">
         <li><a data-ng-click="openCursos()" >Cursos</a></li>
@@ -25,7 +24,25 @@
   </ul>
 
   <ul class="nav navbar-nav navbar-right">
-    <li data-ng-class="{ active: isActive('/configuracoes')}"><a href="#/configuracoes">Configurações</a></li>
-    <li><a href="/Iguassu/logout" ng-click="usuario=null" id="sair" ><strong>Sair</strong></a></li>
+    <li data-ng-class="{ active: isActive('/financeiro')}"><a href="#/financeiro">Financeiro</a></li>
+    <li href="" class="dropdown">
+      <a href="" class="dropdown-toggle">
+      <!-- <b class="caret"></b><span class="glyphicon glyphicon-user">{{usuario.login}}</span>  -->
+      <b class="caret"></b><span> <i>{{usuario.login}}</i></span> 
+      </a>
+      <ul class="dropdown-menu">
+        <li >
+          <a href="#/configuracoes">
+            <strong class="glyphicon glyphicon-cog">Configuracoes</strong>
+          </a>
+        </li>
+        <li>
+          <a href="/Iguassu/logout" ng-click="usuario=null">
+            <strong id="sair" class="glyphicon glyphicon-off"><i>Sair</i></strong>
+          </a>
+        </li>
+      </ul>
+    </li>
   </ul>
+  
 </div>

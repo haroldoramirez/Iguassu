@@ -1,5 +1,7 @@
 package br.com.emanuelvictor.iguassu.web.entity;
 
+import br.com.emanuelvictor.iguassu.web.entity.base.Pessoa;
+import br.com.emanuelvictor.iguassu.web.entity.base.PessoaFisica;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.security.core.CredentialsContainer;
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
-public class Usuario extends Pessoa implements UserDetails, CredentialsContainer {
+public class Usuario extends PessoaFisica implements UserDetails, CredentialsContainer {
 
     private static final long serialVersionUID = 1121147605946406759L;
 
@@ -23,11 +25,14 @@ public class Usuario extends Pessoa implements UserDetails, CredentialsContainer
     @Column(nullable = false, length = 30)
     private Perfil perfil;
 
-    @Column(length = 50, unique = true)
+    @Column(length = 50, unique = true, nullable = false)
     private String login;
 
     @Column(nullable = false, length = 100000)
     private String senha;
+
+    @Column
+    private String filial;
 
     @Override
     public void setId(Long id) {
@@ -62,7 +67,6 @@ public class Usuario extends Pessoa implements UserDetails, CredentialsContainer
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
 
     @JsonIgnore
     public String getPassword() {
@@ -127,5 +131,11 @@ public class Usuario extends Pessoa implements UserDetails, CredentialsContainer
         return result;
     }
 
+    public String getFilial() {
+        return filial;
+    }
 
+    public void setFilial(String filial) {
+        this.filial = filial;
+    }
 }
