@@ -10,6 +10,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import br.com.emanuelvictor.iguassu.web.entity.Empresa;
+import br.com.emanuelvictor.iguassu.web.entity.SituacaoVaga;
 import br.com.emanuelvictor.iguassu.web.entity.base.BaseEntity;
 import br.com.emanuelvictor.iguassu.web.entity.job.Cargo;
 
@@ -32,11 +33,10 @@ public class Vaga extends BaseEntity {
 	private String observacoes;
 
 	@Column(length = 50, nullable = false)
-	private String situacao;
+	private SituacaoVaga situacao;
 
 	@Column(nullable = true, length = 100)
 	private Double salario;
-
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
@@ -66,15 +66,15 @@ public class Vaga extends BaseEntity {
 		this.observacoes = observacoes;
 	}
 
-	public String getSituacao() {
-		return situacao;
-	}
+    public SituacaoVaga getSituacao() {
+        return situacao;
+    }
 
-	public void setSituacao(String situacao) {
-		this.situacao = situacao;
-	}
+    public void setSituacao(SituacaoVaga situacao) {
+        this.situacao = situacao;
+    }
 
-	public Double getSalario() {
+    public Double getSalario() {
 		return salario;
 	}
 

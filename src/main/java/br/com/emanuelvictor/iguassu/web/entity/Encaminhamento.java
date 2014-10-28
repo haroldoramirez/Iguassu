@@ -25,7 +25,7 @@ public class Encaminhamento extends SpringData<Long> {
 	private Candidato candidato;
 
 	@Column(length = 100, nullable = false)
-	private String situacao;
+	private SituacaoEncaminhamento situacao;
 
 	@Column(length = 100)
 	private String observacoes;
@@ -50,15 +50,15 @@ public class Encaminhamento extends SpringData<Long> {
 		this.candidato = candidato;
 	}
 
-	public String getSituacao() {
-		return situacao;
-	}
+    public SituacaoEncaminhamento getSituacao() {
+        return situacao;
+    }
 
-	public void setSituacao(String situacao) {
-		this.situacao = situacao;
-	}
+    public void setSituacao(SituacaoEncaminhamento situacao) {
+        this.situacao = situacao;
+    }
 
-	public String getObservacoes() {
+    public String getObservacoes() {
 		return observacoes;
 	}
 

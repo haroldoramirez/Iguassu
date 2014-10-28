@@ -1,17 +1,21 @@
 package br.com.emanuelvictor.iguassu.web.entity.base;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 
 import br.com.emanuelvictor.iguassu.web.entity.base.BaseEntity;
+
+import java.util.Calendar;
 
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 public class Pessoa extends BaseEntity {
 
 	private static final long serialVersionUID = 6598446511490737297L;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
+    protected Calendar dataDeCadastro = Calendar.getInstance();
+
 
     @Column(length = 20)
     protected String telefoneResidencial;
@@ -55,5 +59,13 @@ public class Pessoa extends BaseEntity {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Calendar getDataDeCadastro() {
+        return dataDeCadastro;
+    }
+
+    public void setDataDeCadastro(Calendar dataDeCadastro) {
+        this.dataDeCadastro = dataDeCadastro;
     }
 }

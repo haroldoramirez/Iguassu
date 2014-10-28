@@ -12,7 +12,7 @@ angular.module('iguassuApp')
     
 		$scope.init = function(){
 			Usuario.get({id:$rootScope.usuario.id}, function(data){
-				$rootScope.usuario;
+				$rootScope.usuario = data;
 			});
 		};
 

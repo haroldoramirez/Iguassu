@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sun.misc.Perf;
 
 import java.util.List;
 
@@ -70,11 +71,22 @@ public class ServiceUsuario implements UserDetailsService {
 //        usuario3.setLogin("Eliandro");
 //        usuario3.setPerfil(Perfil.ADMINISTRADOR);
 //
-//        return daoUsuario.save(usuario3);
-
+//        daoUsuario.save(usuario3);
+//
+//        Usuario usuario4 = new Usuario();
+//        usuario4.setNome("Fransisca");
+//        usuario4.setSenha(new BCryptPasswordEncoder().encode("123456"));
+//        usuario4.setLogin("Fransisca");
+//        usuario4.setPerfil(Perfil.BLOQUEADO);
+//
+//        return daoUsuario.save(usuario4);
+//
         Usuario user = daoUsuario.findByLogin(login);
         if (user == null || user.getId() == null || user.getId() == 0){
             throw new UsernameNotFoundException("Tentativa de login sem sucesso, nome de usuário: " + login + " - Nome de usuário não encontrado");
+        }
+        if (user.getPerfil() == Perfil.BLOQUEADO){
+            throw new UsernameNotFoundException("Usuário BLOQUEADO");
         }
         return user;
     }

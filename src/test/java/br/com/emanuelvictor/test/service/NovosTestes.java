@@ -119,7 +119,7 @@ public class NovosTestes {
         sarah.setNome("Sarah de Oliveira Fonseca ");
         sarah.setGenero(Genero.FEMININO);
         sarah.setDataNasc(Calendar.getInstance());
-        sarah.setSituacao(SituacaoDoCandidato.BLOQUEADO);
+        sarah.setSituacao(SituacaoCandidato.BLOQUEADO);
 //        sarah.setBairro(bairro);
         sarah.setNacionalidade(pais);
         sarah = serviceCandidato.save(sarah);
@@ -128,7 +128,7 @@ public class NovosTestes {
         emanuel.setNome("Emanuel Victor de Oliveira Fonseca ");
         emanuel.setGenero(Genero.MASCULINO);
         emanuel.setDataNasc(Calendar.getInstance());
-        emanuel.setSituacao(SituacaoDoCandidato.BLOQUEADO);
+        emanuel.setSituacao(SituacaoCandidato.BLOQUEADO);
 //        emanuel.setBairro(bairro);
         emanuel.setNacionalidade(pais);
         emanuel = serviceCandidato.save(emanuel);
@@ -137,7 +137,7 @@ public class NovosTestes {
         mayara.setNome("Mayara Regina Borges ");
         mayara.setGenero(Genero.FEMININO);
         mayara.setDataNasc(Calendar.getInstance());
-        mayara.setSituacao(SituacaoDoCandidato.BLOQUEADO);
+        mayara.setSituacao(SituacaoCandidato.BLOQUEADO);
 //        mayara.setBairro(bairro);
         mayara.setNacionalidade(pais);
         mayara = serviceCandidato.save(mayara);
@@ -146,7 +146,7 @@ public class NovosTestes {
         anderson.setNome("Anderson Coutinho ");
         anderson.setGenero(Genero.MASCULINO);
         anderson.setDataNasc(Calendar.getInstance());
-        anderson.setSituacao(SituacaoDoCandidato.BLOQUEADO);
+        anderson.setSituacao(SituacaoCandidato.BLOQUEADO);
 //        anderson.setBairro(bairro);
         anderson.setNacionalidade(pais);
         anderson = serviceCandidato.save(anderson);

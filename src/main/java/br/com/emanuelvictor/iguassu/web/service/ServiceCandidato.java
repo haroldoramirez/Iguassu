@@ -1,7 +1,9 @@
 package br.com.emanuelvictor.iguassu.web.service;
 
 import br.com.emanuelvictor.iguassu.web.entity.Candidato;
-import br.com.emanuelvictor.iguassu.web.entity.SituacaoDoCandidato;
+import br.com.emanuelvictor.iguassu.web.entity.Lancamento;
+import br.com.emanuelvictor.iguassu.web.entity.SituacaoCandidato;
+import br.com.emanuelvictor.iguassu.web.entity.TipoLancamento;
 import br.com.emanuelvictor.iguassu.web.entity.job.Experiencia;
 import br.com.emanuelvictor.iguassu.web.entity.schooling.CandidatoCurso;
 import br.com.emanuelvictor.iguassu.web.repository.DAOCandidato;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Calendar;
 import java.util.List;
 
 @Service
@@ -31,11 +34,45 @@ public class ServiceCandidato {
     DAOLancamento daoLancamento;
 
 
+
     public Candidato save(Candidato candidato) {
-        if (candidato.getSituacao() == null) {
-            candidato.setSituacao(SituacaoDoCandidato.BLOQUEADO);
+        if (candidato.getId() == null) {
+            candidato.setSituacao(SituacaoCandidato.BLOQUEADO);
+            Lancamento lancamento = new Lancamento();
+            lancamento.setValor(50.00);
+            lancamento.setDataDeVencimento(Calendar.getInstance());
+            lancamento.setTipoLancamento(TipoLancamento.ENTRADA);
+            lancamento.setDescricao("Cadastro de candidato");
+            candidato = daoCandidato.save(candidato);
+            lancamento.setPessoa(candidato);
+            this.daoLancamento.save(lancamento);
+            return candidato;
+        }else if (candidato.getSituacao()== SituacaoCandidato.DISPONIVEL){
+            Lancamento lancamento = this.daoLancamento.getByIdPessoa(candidato.getId());
+            if (lancamento!=null){
+                lancamento.setDataDePagamento(Calendar.getInstance());
+                this.daoLancamento.save(lancamento);
+            }
+            return daoCandidato.save(candidato);
+        }else{
+            candidato.setSituacao(this.daoCandidato.findOne(candidato.getId()).getSituacao());
+            return this.daoCandidato.save(candidato);
+            // NÃO VAI SER AQUI, VAI SER NO ENCAMINHAMENTO
+
+//            Lancamento lancamento = new Lancamento();
+//            lancamento.setValor(50.00);
+//
+//            Calendar calendar = Calendar.getInstance();
+//            calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) + 30);
+//            lancamento.setDataDeVencimento(calendar);
+//            lancamento.setTipoLancamento(TipoLancamento.ENTRADA);
+//            lancamento.setDescricao("Encaminhamento de candidato");
+//            candidato = daoCandidato.save(candidato);
+//            lancamento.setPessoa(candidato);
+//            this.daoLancamento.save(lancamento);
+//            return candidato;
         }
-        return daoCandidato.save(candidato);
+
     }
 
     public List<Candidato> find() {

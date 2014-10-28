@@ -2,37 +2,29 @@
 
   <div class="pull-right">
     <a href="" class="btn btn-primary"
-       data-ng-click="openExperiencia()">Adicionar Lançamentos
+       data-ng-click="openUsuario()">Adicionar Usuario
     </a>
   </div>
     <h1>Usuários</h1>
     <hr>
     <div class="list-group">
-      <a data-ng-repeat="experiencia in experienciasDoCandidato" href="" ng-click="openExperiencia(experiencia)" class="list-group-item">
-        <strong>{{experiencia.cargo.nome}}</strong>
-        (<small>De</small> {{experiencia.dataInicio|date:'dd/MM/yyyy'}} <small>até</small> {{experiencia.dataTermino|date:'dd/MM/yyyy'}}
-           <span class="label label-warning"
-                   data-ng-show="!experiencia.dataTermino">atuando</span>)
-        <ul>
-          <li data-ng-if="experiencia.vinculoEmpregaticio">
-            <strong>Vínculo:&nbsp</strong>
-            {{experiencia.vinculoEmpregaticio}}
+      <a data-ng-repeat="usuario in usuarios" href="" ng-click="openUsuario(usuario)" class="list-group-item">
+        <strong>Nome: </strong>{{usuario.nome}}, <strong>Login: </strong>{{usuario.login}},
+        <small>Cadastrado em {{usuario.dataDeCadastro|date:'dd/MM/yyyy'}}</small>
+        <div class="pull-right">
+          <span class="label label-danger" data-ng-if="usuario.perfil==='BLOQUEADO'">Bloqueado</span>
+          <span class="label label-success" data-ng-if="usuario.perfil==='GERENTE'">Gerente</span>
+          <span class="label label-primary" data-ng-if="usuario.perfil==='ADMINISTRADOR'">Administrador</span>
+          <span class="label label-info" data-ng-if="usuario.perfil==='ATENDENTE'">Atendente</span>
+        </div>
+        <ul>  
+          <li data-ng-show="usuario.dataNasc">
+            <strong>Data de nascimento:&nbsp</strong>
+            {{usuario.dataNasc|date:'dd/MM/yyyy'}}
           </li>
-          <li data-ng-if="experiencia.cargo.descricao">
-            <strong>Descrição do cargo:&nbsp</strong>
-            {{experiencia.cargo.descricao}}
-          </li>
-          <li data-ng-show="experiencia.empresa">
-            <strong>Empresa:&nbsp</strong>
-            {{experiencia.empresa.nome}}
-          </li>
-          <li data-ng-show="experiencia.atividades">
-            <strong>Atividades Desenvolvidas:&nbsp</strong>
-            {{experiencia.atividades}}
-          </li>
-          <li data-ng-show="experiencia.observacoes">
-            <strong>Observações:&nbsp</strong>
-            {{experiencia.observacoes}}
+          <li data-ng-show="usuario.email">
+            <strong>Email:&nbsp</strong>
+            {{usuario.email}}
           </li>
         </ul>
       </a>

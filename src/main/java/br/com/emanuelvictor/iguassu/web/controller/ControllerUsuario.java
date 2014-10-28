@@ -1,5 +1,6 @@
 package br.com.emanuelvictor.iguassu.web.controller;
 
+import br.com.emanuelvictor.iguassu.web.entity.Perfil;
 import br.com.emanuelvictor.iguassu.web.entity.Usuario;
 import br.com.emanuelvictor.iguassu.web.service.ServiceUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +27,14 @@ public class ControllerUsuario {
 
     @RequestMapping(value = "/usuarios/{id}", method = RequestMethod.PUT)
     public @ResponseBody Object save(@PathVariable Long id, @RequestBody Usuario usuario) {
-        System.out.println(usuario.toString());
-        if (this.serviceUsuario.getCurrentUser().getId() == id){
-            usuario.setId(id);
-            usuario.setFilial(this.serviceUsuario.getCurrentUser().getFilial());
-            usuario.setPerfil(this.serviceUsuario.find(id).getPerfil());
+        if ((this.serviceUsuario.getCurrentUser().getId() == id)||(this.serviceUsuario.getCurrentUser().getPerfil()== Perfil.GERENTE)){
+            if (usuario.getSenha()==null||usuario.getSenha().trim()==""){
+                usuario.setSenha(this.serviceUsuario.find(id).getSenha());
+            }
+            if (this.serviceUsuario.getCurrentUser().getPerfil()!= Perfil.GERENTE){
+                usuario.setFilial(this.serviceUsuario.getCurrentUser().getFilial());
+                usuario.setPerfil(this.serviceUsuario.find(id).getPerfil());
+            }
             usuario = this.serviceUsuario.save(usuario);
             usuario.setSenha(null);
             return usuario;
@@ -41,7 +45,11 @@ public class ControllerUsuario {
 
     @RequestMapping(value = "/usuarios", method = RequestMethod.GET)
     public @ResponseBody List<Usuario> find() {
-        return this.serviceUsuario.find();
+        List<Usuario> usuarios = this.serviceUsuario.find();
+        for (int i = 0; i < usuarios.size(); i++) {
+            usuarios.get(i).setSenha(null);
+        }
+        return usuarios;
     }
 
 	@RequestMapping(value = "/usuarios/{id}", method = RequestMethod.GET)

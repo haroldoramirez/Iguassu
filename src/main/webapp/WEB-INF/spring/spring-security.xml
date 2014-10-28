@@ -14,10 +14,12 @@
             entry-point-ref="servicesForbiddenEntryPoint">
 
 
-        <security:intercept-url pattern="/paises" access="permitAll"/>
+        <security:intercept-url pattern="/paises" method="GET" access="permitAll"/>
         <security:intercept-url pattern="/autenticacao" access="permitAll"/>
         <security:intercept-url pattern="/app/**" access="permitAll"/>
         <security:intercept-url pattern="/bower_components/**" access="permitAll"/>
+
+        <!--deveria ser isAUtenticated-->
         <security:intercept-url pattern="/usuarios/current" access="permitAll"/>
 
         <security:intercept-url pattern="/lancamentos/**" access="hasRole('ROLE_ADMINISTRADOR')"/>

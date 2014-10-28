@@ -28,13 +28,10 @@ public class Lancamento extends SpringData<Long> {
 	private Calendar dataDeVencimento;
 
 	@Column(nullable = false)
-	private Boolean pago = false;
-
-	@Column(nullable = false)
-	private Float valor;
+	private Double valor;
 	
 	@Column(nullable = false)
-	private Boolean entrada = false;
+	private TipoLancamento tipoLancamento = TipoLancamento.ENTRADA;
 
 	@ManyToOne(optional = true)
 	private Pessoa pessoa;
@@ -71,29 +68,19 @@ public class Lancamento extends SpringData<Long> {
 		this.dataDeVencimento = dataDeVencimento;
 	}
 
-	public Boolean getPago() {
-		return pago;
-	}
+    public Double getValor() {
+        return valor;
+    }
 
-	public void setPago(Boolean pago) {
-		this.pago = pago;
-	}
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
 
-	public Float getValor() {
-		return valor;
-	}
+    public TipoLancamento getTipoLancamento() {
+        return tipoLancamento;
+    }
 
-	public void setValor(Float valor) {
-		this.valor = valor;
-	}
-
-	public Boolean getEntrada() {
-		return entrada;
-	}
-
-	public void setEntrada(Boolean entrada) {
-		this.entrada = entrada;
-	}
-
-	
+    public void setTipoLancamento(TipoLancamento tipoLancamento) {
+        this.tipoLancamento = tipoLancamento;
+    }
 }

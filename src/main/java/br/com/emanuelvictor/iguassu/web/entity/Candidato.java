@@ -1,11 +1,8 @@
 package br.com.emanuelvictor.iguassu.web.entity;
 
-import java.util.Calendar;
-
 import javax.persistence.*;
 
 import br.com.emanuelvictor.iguassu.web.entity.address.Pais;
-import br.com.emanuelvictor.iguassu.web.entity.base.Pessoa;
 import br.com.emanuelvictor.iguassu.web.entity.base.PessoaFisica;
 
 @Entity
@@ -14,15 +11,13 @@ public class Candidato extends PessoaFisica {
 	private static final long serialVersionUID = 699441248742650338L;
 	private String pathFoto;
 
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = true)
     private NecessidadeEspecial necessidadeEspecial;
 
-
     @Enumerated(EnumType.STRING)
 	@Column(nullable = false)
-	private SituacaoDoCandidato situacao;
+	private SituacaoCandidato situacao;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = true)
@@ -43,11 +38,11 @@ public class Candidato extends PessoaFisica {
 	}
 
 
-    public SituacaoDoCandidato getSituacao() {
+    public SituacaoCandidato getSituacao() {
         return situacao;
     }
 
-    public void setSituacao(SituacaoDoCandidato situacao) {
+    public void setSituacao(SituacaoCandidato situacao) {
         this.situacao = situacao;
     }
 
