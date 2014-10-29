@@ -10,11 +10,20 @@
 angular.module('iguassuApp')
   .controller('EncaminhamentoCtrl', function ($scope, $rootScope, $routeParams, $location, $document, Encaminhamento, Vaga, Candidato, toastr) {
     
+    $scope.oldStatus = null;
+
+
+    $scope.lancamento = null;
     
     $scope.init = function(){
 	    if ($routeParams.id) {
 	      Encaminhamento.get({id: $routeParams.id}, function(data){
+	      	if(data.situacao==='SUCESSO'){
+	      		//pegar o lancamento
+	      	};
+	      	$scope.oldStatus = data.situacao;
 	        $scope.encaminhamento = data;
+	        $scope.valor = $scope.encaminhamento.vaga.salario / 3;
 	      });
 	      $rootScope.openAll();
 	    }else{
@@ -32,8 +41,10 @@ angular.module('iguassuApp')
 	    }
 	    console.log($scope.encaminhamento);
 	    Encaminhamento.save($scope.encaminhamento, function(data){
+	    	if ($scope.lancamento.id) {
+	    		
+	    	};
 	      $scope.encaminhamento = data;
-	      console.log(data);
 	      $location.path('/encaminhamentos/'+$scope.encaminhamento.id);
 	      $scope.getEncaminhamentos();
 	      toastr.success(msg,$scope.encaminhamento.nome);

@@ -34,7 +34,8 @@ public class Encaminhamento extends SpringData<Long> {
 	@Column(nullable = false)
 	private Calendar dataDeCadastro = Calendar.getInstance();
 
-	public Vaga getVaga() {
+
+    public Vaga getVaga() {
 		return vaga;
 	}
 

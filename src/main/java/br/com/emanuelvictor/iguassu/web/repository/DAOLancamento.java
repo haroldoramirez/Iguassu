@@ -7,12 +7,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.emanuelvictor.iguassu.web.entity.Lancamento;
 
+import java.util.LinkedList;
+import java.util.List;
+
 @Transactional
 public interface DAOLancamento extends JpaRepository<Lancamento, Long> {
 
 	@Transactional(readOnly = true)
     @Query("select l from Lancamento l where l.pessoa.id = :id")
-	public Lancamento getByIdPessoa(@Param("id") Long id);
+	public LinkedList<Lancamento> getByIdPessoa(@Param("id") Long id);
 //
 //	@Transactional(readOnly = true)
 //	@Query("select e from Empresa e where e.nome like %?1%")

@@ -91,8 +91,9 @@
 
           <div class="form-group">
             <label class="control-label">Nacionalidade</label>
-            <a class="glyphicon glyphicon-refresh" data-ng-click="getPaises()"></a>
-            <a class="glyphicon glyphicon-plus" data-ng-click="openPaises('sm')"></a>
+            <div class="pull-right">
+              <a class="glyphicon glyphicon-plus" data-ng-click="openPais('sm')"></a>
+            </div>
             <div class="controls">
               <select class="form-control" data-ng-model="candidato.nacionalidade" data-ng-options="(pais.nome) for pais in paises">
                 <option value="" disabled data-ng-selected="candidato.nacionalidade.id">{{candidato.nacionalidade.nome}}</option>

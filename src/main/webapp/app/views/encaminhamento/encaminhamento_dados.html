@@ -6,15 +6,14 @@
 					<div class="col-6 col-sm-6 col-lg-3">
 						<div class="form-group">
 							<label class="control-label">Situacao </label>
-							<div ng-class="{'has-error':!encaminhamento.situacao}">	
-								<div class="controls">
-									<select class="form-control" data-ng-model="encaminhamento.situacao" >
+								<div class="controls" >
+									<select class="form-control" data-ng-model="encaminhamento.situacao" 
+									ng-disabled="oldStatus==='SUCESSO'||oldStatus==='FALHA'">
 										<option value="ANDAMENTO">Em andamento</option>
-		                <option value="SUCESSO">Sucesso</option>
-		                <option value="FALHA">Falha</option>
+		                <option ng-if="encaminhamento.id" value="SUCESSO">Sucesso</option>
+		                <option ng-if="encaminhamento.id" value="FALHA">Falha</option>
 									</select>
 								</div>
-							</div>	
 						</div>
 						<div class="form-group">
 							<label class="control-label">Data </label>
@@ -26,7 +25,11 @@
 					</div>
 					<div class="col-6 col-sm-6 col-lg-3">
 						<div class="form-group">
-							<label class="control-label">Candidato <span class="obrigatorio">*</span></label>
+							<label class="control-label">Candidato 
+								<span class="obrigatorio"> 
+									<i ng-if="encaminhamento.candidato.situacao==='BLOQUEADO'">Candidato bloqueado</i>
+								*</span>
+							</label>
 							<div class="pull-right">
 								<a class="glyphicon glyphicon-plus" href="#candidatos"></a>
 							</div>
@@ -38,7 +41,11 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label">Vaga <span class="obrigatorio">*</span></label>
+							<label class="control-label">Vaga 
+								<span class="obrigatorio"> 
+									<i ng-if="encaminhamento.vaga.situacao==='OCUPADA'">Vaga ocupada</i>
+								*</span>
+							</label>
 							<div class="pull-right">
 									<a class="glyphicon glyphicon-plus" href="#vagas"></a>
 							</div>
@@ -49,8 +56,28 @@
 								</select>
 							</div>
 						</div>
+						
 					</div>
-					<div class="col-6 col-sm-6 col-lg-6">
+					<div class="col-3 col-sm-3 col-lg-3">
+					<div class="form-group">
+						<label class="control-label">Valor </label>
+							<div class="controls">
+								<input	disabled type="number" class="form-control" 
+												data-ng-model="lancamento.valor" 
+												placeholder="Valor do encaminhamento (30% do primeiro salário da vaga)"/>
+							</div>
+						</div>
+						<div class="form-group">
+						<label class="control-label">Data de pagamento </label>
+							<div class="controls">
+								<select ng-disabled="!lancamento.id" class="form-control" data-ng-model="pago">
+										<option value="SIM">Sim</option>
+		                <option value="NAO">Não</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-3 col-sm-3 col-lg-3">
 						<div class="form-group">
 							<label class="control-label">Observações</label>
 							<div class="controls">

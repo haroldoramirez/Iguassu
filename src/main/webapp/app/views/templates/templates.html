@@ -494,3 +494,158 @@
   </form>
 </div>
 </script>
+
+
+<script type="text/ng-template" id="lancamento.html">
+	<div class="modal-header">
+		<button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title">Usuario</h4>
+	</div>
+	<div class="modal-body"> 
+		<form ng-submit="save()">
+      
+      <div class="row">
+	      	      
+				<div class="col-md-12">     	
+	        <div class="form-group">
+	          <label class="control-label">Nome <span class="obrigatorio">*</span> </label>
+	            <span class="navbar-right">
+	              <input type="radio" name="genero" ng-model="usuario.genero"
+	                        value="MASCULINO">
+	                              &nbsp<strong>Masculino</strong>
+	              <input type="radio" name="genero" ng-model="usuario.genero"
+	                        value="FEMININO">
+	                              &nbsp<strong >Feminino&nbsp</strong>
+	            </span>
+	          <div ng-class="{'form-group has-error': !usuario.nome}">
+	            <div class="controls">
+	              <input data-ng-model="usuario.nome" type="text" placeholder="Insira o nome do usuário (a) ..." class="form-control">
+	            </div>
+	          </div>
+	        </div>
+        </div>
+
+	      <div class="col-md-4">
+	        <div class="form-group">
+	          <label class="control-label">Filial</label>
+	          <div class="controls">
+	            <input data-ng-model="usuario.filial" type="text" placeholder="Insira a filial onde o usuário (a) trabalha .." class="form-control">
+	          </div>
+	        </div>
+
+	        <div class="form-group">
+	          <label class="control-label">RG</label>
+	          <div class="controls">
+	            <input data-ng-model="usuario.rg" type="text" placeholder="Insira o RG do usuário (a) ..." class="form-control">
+	          </div>
+	        </div>
+	        
+	        <div class="form-group">
+	          <label class="control-label">CPF</label>
+	          <div class="controls">
+	            <input data-ng-model="usuario.cpf" type="text" ui-mask="999.999.999-99" class="form-control">
+	          </div>
+	        </div>
+
+	        <div class="form-group">
+	          <label class="control-label">Data de nascimento</label>
+	          <div class="controls">
+	            <p class="input-group">
+	              <input  type="text" class="form-control" datepicker-popup="dd/MM/yyyy"
+	                      ng-model="usuario.dataNasc" is-open="opened"
+	                      show-button-bar="false"/>
+	              <span class="input-group-btn">
+	                <button type="button" class="btn btn-default" ng-click="openDatePicker($event)">
+	                  <i class="glyphicon glyphicon-calendar"></i>
+	                </button>
+	              </span>
+	            </p>
+	          </div>
+	        </div>
+	      </div>
+
+		    <div class="col-md-4" >
+		      <div class="form-group">
+		        <label class="control-label">Telefone residencial</label>
+		        <div class="controls">
+		          <input data-ng-model="usuario.telefoneResidencial" type="text" class="form-control" ui-mask="(99) 9999-9999">
+		        </div>
+		      </div> 
+		      <div class="form-group">
+		        <label class="control-label">Telefone comercial</label>
+		        <div class="controls">
+		          <input data-ng-model="usuario.telefoneComercial" type="text" ui-mask="(99) 9999-9999" class="form-control">
+		        </div>
+		      </div>
+		      <div class="form-group">
+		        <label class="control-label">Telefone celular</label>
+		        <div class="controls">
+		          <input data-ng-model="usuario.telefoneCelular" ui-mask="(99) 9999-9999" type="text" class="form-control">
+		        </div>
+		      </div>
+		      <div class="form-group">
+		        <label class="control-label">Email</label>
+		        <div class="controls">
+		          <input data-ng-model="usuario.email" type="text"  placeholder="exemplo@exemlo.com" class="form-control">
+		        </div>
+		      </div>
+		    </div>
+
+		    <div class="col-md-4" >
+		      <div class="form-group">
+		        <label class="control-label">Login <span class="obrigatorio">*</span></label>
+		        <div ng-class="{'form-group has-error': !usuario.login}">
+		          <div class="controls">
+		            <input data-ng-model="usuario.login" type="text" class="form-control" placeholder="Insira o login do usuário (a) ...">
+		          </div>
+		        </div>
+		      </div> 
+		      <div class="form-group">
+		        <label class="control-label">Senha <span class="obrigatorio">*</span></label>
+		        <div ng-class="{'form-group has-error': !validaSenha()&&!usuario.id}">
+		          <div class="controls">
+		            <input data-ng-model="usuario.senha" type="password" class="form-control" placeholder="Insira a senha do usuário (a) ...">
+		          </div>
+		        </div>
+		      </div>
+		      <div class="form-group">
+		        <label class="control-label">Confirmação de senha <span class="obrigatorio">*</span></label>
+		        <div ng-class="{'form-group has-error': confirmacaoSenha!==usuario.senha&&usuario.senha}">
+		          <div class="controls">
+		            <input data-ng-model="confirmacaoSenha" type="password" class="form-control" placeholder="Confirme a senha do usuário (a) ...">
+		          </div>
+		        </div>
+		      </div>
+		      <div class="form-group">
+		        <label class="control-label">Perfil <span class="obrigatorio">*</span></label>
+		        <div ng-class="{'form-group has-error': !usuario.perfil}">
+			        <div class="controls">
+			          <select class="form-control" data-ng-model="usuario.perfil">
+			            <option value="ATENDENTE">Atendente</option>
+			            <option value="ADMINISTRADOR">Administrador</option>
+			            <option value="GERENTE">Gerente</option>
+			            <option value="BLOQUEADO">Bloqueado</option>
+			          </select>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="col-md-12">
+			    <div class="btn-toolbar">
+	      		<a href="" class="btn btn-danger" ng-if="usuario.id&&!validaRemove()" ng-click="delete()">
+	      			<span class="glyphicon glyphicon-trash"></span> Remover
+      			</a>
+			      <div class="pull-right">
+			      	<button class="btn btn-default" ng-click="close()" type="button">Cancelar</button>
+			          <button class="btn btn-primary" 
+			                  data-ng-disabled="(usuario.senha&&confirmacaoSenha!==usuario.senha)||(!usuario.id&&!usuario.senha)||!usuario.nome||!usuario.login||!usuario.perfil" 
+			                  type="submit">Salvar informações
+			          </button>
+		        </div>
+		      </div>
+	      </div>
+			    
+    </div>   		      
+  </form>
+</div>
+</script>

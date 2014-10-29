@@ -2,39 +2,42 @@
 
   <div class="pull-right">
     <a href="" class="btn btn-primary"
-       data-ng-click="openExperiencia()">Adicionar Lançamento
+       data-ng-click="openLancamento()">Adicionar Lançamento
     </a>
   </div>
     <h1>Lançamentos</h1>
     <hr>
     <div class="list-group">
-      <a data-ng-repeat="experiencia in experienciasDoCandidato" href="" ng-click="openExperiencia(experiencia)" class="list-group-item">
-        <strong>{{experiencia.cargo.nome}}</strong>
-        (<small>De</small> {{experiencia.dataInicio|date:'dd/MM/yyyy'}} <small>até</small> {{experiencia.dataTermino|date:'dd/MM/yyyy'}}
+      <a data-ng-repeat="lancamento in lancamentos" href="" ng-click="openLancamento(lancamento)" class="list-group-item">
+        <strong>Valor: {{lancamento.valor}}</strong>
+        <strong>Pessoa: {{lancamento.pessoa.nome}}</strong>
+        <strong>Encaminhamento: {{lancamento.encaminhamento.vaga.cargo.descricao}}</strong>
+        <strong>Descricao: {{lancamento.descricao}}</strong>
+        <!-- (<small>De</small> {{lancamento.dataInicio|date:'dd/MM/yyyy'}} <small>até</small> {{lancamento.dataTermino|date:'dd/MM/yyyy'}}
            <span class="label label-warning"
-                   data-ng-show="!experiencia.dataTermino">atuando</span>)
-        <ul>
-          <li data-ng-if="experiencia.vinculoEmpregaticio">
+                   data-ng-show="!lancamento.dataTermino">atuando</span>) -->
+        <!-- <ul>
+          <li data-ng-if="lancamento.vinculoEmpregaticio">
             <strong>Vínculo:&nbsp</strong>
-            {{experiencia.vinculoEmpregaticio}}
+            {{lancamento.vinculoEmpregaticio}}
           </li>
-          <li data-ng-if="experiencia.cargo.descricao">
+          <li data-ng-if="lancamento.cargo.descricao">
             <strong>Descrição do cargo:&nbsp</strong>
-            {{experiencia.cargo.descricao}}
+            {{lancamento.cargo.descricao}}
           </li>
-          <li data-ng-show="experiencia.empresa">
+          <li data-ng-show="lancamento.empresa">
             <strong>Empresa:&nbsp</strong>
-            {{experiencia.empresa.nome}}
+            {{lancamento.empresa.nome}}
           </li>
-          <li data-ng-show="experiencia.atividades">
+          <li data-ng-show="lancamento.atividades">
             <strong>Atividades Desenvolvidas:&nbsp</strong>
-            {{experiencia.atividades}}
+            {{lancamento.atividades}}
           </li>
-          <li data-ng-show="experiencia.observacoes">
+          <li data-ng-show="lancamento.observacoes">
             <strong>Observações:&nbsp</strong>
-            {{experiencia.observacoes}}
+            {{lancamento.observacoes}}
           </li>
-        </ul>
+        </ul> -->
       </a>
     </div>
 

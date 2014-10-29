@@ -39,7 +39,7 @@ public class ServiceCandidato {
         if (candidato.getId() == null) {
             candidato.setSituacao(SituacaoCandidato.BLOQUEADO);
             Lancamento lancamento = new Lancamento();
-            lancamento.setValor(50.00);
+            lancamento.setValor(30.00);
             lancamento.setDataDeVencimento(Calendar.getInstance());
             lancamento.setTipoLancamento(TipoLancamento.ENTRADA);
             lancamento.setDescricao("Cadastro de candidato");
@@ -48,7 +48,7 @@ public class ServiceCandidato {
             this.daoLancamento.save(lancamento);
             return candidato;
         }else if (candidato.getSituacao()== SituacaoCandidato.DISPONIVEL){
-            Lancamento lancamento = this.daoLancamento.getByIdPessoa(candidato.getId());
+            Lancamento lancamento = this.daoLancamento.getByIdPessoa(candidato.getId()).getLast();
             if (lancamento!=null){
                 lancamento.setDataDePagamento(Calendar.getInstance());
                 this.daoLancamento.save(lancamento);
