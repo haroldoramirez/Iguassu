@@ -13,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sun.misc.Perf;
+
 
 import java.util.List;
 
@@ -28,11 +28,29 @@ public class ServiceUsuario implements UserDetailsService {
 //    @Autowired
 //    PasswordEncoder passwordEncoder;
 
-	public Usuario save(Usuario usuario) {
-        System.out.println(usuario.getSenha());
-        usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
-		return daoUsuario.save(usuario);
+	public Usuario save(Usuario usuario, Long id) {
+        System.out.println("Senha nova " + usuario.getSenha());
+        System.out.println("Senha antiga " + this.daoUsuario.findOne(id).getSenha());
+        if (usuario.getSenha()==null||usuario.getSenha().trim()==""||usuario.getSenha()==""){
+            System.out.println("Senha esta null ");
+            usuario.setSenha(this.find(id).getSenha());
+        }else{
+            usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
+        }
+        if (this.getCurrentUser().getPerfil()!= Perfil.GERENTE){
+            usuario.setFilial(this.getCurrentUser().getFilial());
+            usuario.setPerfil(this.find(id).getPerfil());
+        }
+        usuario = this.daoUsuario.save(usuario);
+        System.out.println("Senha que ficou " + this.daoUsuario.findOne(id).getSenha());
+        return usuario;
 	}
+
+    public Usuario save(Usuario usuario) {
+        usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
+        usuario = this.daoUsuario.save(usuario);
+        return usuario;
+    }
 
 	public void delete(Long id) {
 		daoUsuario.delete(id);
@@ -80,7 +98,7 @@ public class ServiceUsuario implements UserDetailsService {
 //        usuario4.setPerfil(Perfil.BLOQUEADO);
 //
 //        return daoUsuario.save(usuario4);
-//
+
         Usuario user = daoUsuario.findByLogin(login);
         if (user == null || user.getId() == null || user.getId() == 0){
             throw new UsernameNotFoundException("Tentativa de login sem sucesso, nome de usuário: " + login + " - Nome de usuário não encontrado");

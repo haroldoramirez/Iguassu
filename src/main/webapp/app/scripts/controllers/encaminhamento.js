@@ -33,6 +33,7 @@ angular.module('iguassuApp')
 	    console.log($scope.encaminhamento);
 	    Encaminhamento.save($scope.encaminhamento, function(data){
 	      $scope.encaminhamento = data;
+	      console.log(data);
 	      $location.path('/encaminhamentos/'+$scope.encaminhamento.id);
 	      $scope.getEncaminhamentos();
 	      toastr.success(msg,$scope.encaminhamento.nome);

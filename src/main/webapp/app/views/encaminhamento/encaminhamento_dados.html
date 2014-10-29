@@ -6,16 +6,20 @@
 					<div class="col-6 col-sm-6 col-lg-3">
 						<div class="form-group">
 							<label class="control-label">Situacao </label>
-							<div class="controls">
-								<input  class="form-control" disabled type="text" 
-			                  data-ng-model="encaminhamento.situacao" 
-			                  placeholder="Situação do encaminhamento">
-							</div>
+							<div ng-class="{'has-error':!encaminhamento.situacao}">	
+								<div class="controls">
+									<select class="form-control" data-ng-model="encaminhamento.situacao" >
+										<option value="ANDAMENTO">Em andamento</option>
+		                <option value="SUCESSO">Sucesso</option>
+		                <option value="FALHA">Falha</option>
+									</select>
+								</div>
+							</div>	
 						</div>
 						<div class="form-group">
 							<label class="control-label">Data </label>
 							<div class="controls">
-								<input  type="text" disabled class="form-control" datepicker-popup="dd/MM/yyyy"
+								<input  type="text" class="form-control" disabled datepicker-popup="dd/MM/yyyy"
                         ng-model="encaminhamento.dataDeCadastro" required/>
 							</div>
 						</div>

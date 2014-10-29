@@ -1,5 +1,6 @@
 package br.com.emanuelvictor.iguassu.web.service.job.vacancy;
 
+import br.com.emanuelvictor.iguassu.web.entity.SituacaoVaga;
 import br.com.emanuelvictor.iguassu.web.entity.job.vacancy.Vaga;
 import br.com.emanuelvictor.iguassu.web.repository.job.vacancy.DAOVaga;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +29,9 @@ public class ServiceVaga {
 			vaga.setEmpresa(null);
 		}
 		
-		if (vaga.getDataDeCadastro() == null) {
-			vaga.setDataDeCadastro(Calendar.getInstance());
-		}
+
 		if (vaga.getSituacao() == null) {
-			vaga.setSituacao("disponível");
+			vaga.setSituacao(SituacaoVaga.DISPONIVEL);
 		}
 		return daoVaga.save(vaga);
 	}

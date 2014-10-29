@@ -27,15 +27,9 @@ public class ControllerUsuario {
 
     @RequestMapping(value = "/usuarios/{id}", method = RequestMethod.PUT)
     public @ResponseBody Object save(@PathVariable Long id, @RequestBody Usuario usuario) {
+
         if ((this.serviceUsuario.getCurrentUser().getId() == id)||(this.serviceUsuario.getCurrentUser().getPerfil()== Perfil.GERENTE)){
-            if (usuario.getSenha()==null||usuario.getSenha().trim()==""){
-                usuario.setSenha(this.serviceUsuario.find(id).getSenha());
-            }
-            if (this.serviceUsuario.getCurrentUser().getPerfil()!= Perfil.GERENTE){
-                usuario.setFilial(this.serviceUsuario.getCurrentUser().getFilial());
-                usuario.setPerfil(this.serviceUsuario.find(id).getPerfil());
-            }
-            usuario = this.serviceUsuario.save(usuario);
+            usuario = this.serviceUsuario.save(usuario, id);
             usuario.setSenha(null);
             return usuario;
         }else{

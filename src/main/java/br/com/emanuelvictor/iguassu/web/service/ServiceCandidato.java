@@ -57,20 +57,6 @@ public class ServiceCandidato {
         }else{
             candidato.setSituacao(this.daoCandidato.findOne(candidato.getId()).getSituacao());
             return this.daoCandidato.save(candidato);
-            // NÃO VAI SER AQUI, VAI SER NO ENCAMINHAMENTO
-
-//            Lancamento lancamento = new Lancamento();
-//            lancamento.setValor(50.00);
-//
-//            Calendar calendar = Calendar.getInstance();
-//            calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) + 30);
-//            lancamento.setDataDeVencimento(calendar);
-//            lancamento.setTipoLancamento(TipoLancamento.ENTRADA);
-//            lancamento.setDescricao("Encaminhamento de candidato");
-//            candidato = daoCandidato.save(candidato);
-//            lancamento.setPessoa(candidato);
-//            this.daoLancamento.save(lancamento);
-//            return candidato;
         }
 
     }
