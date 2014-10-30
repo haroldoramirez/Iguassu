@@ -13,11 +13,13 @@
     <link href="./bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
     <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="styles/animateview.css" rel="stylesheet" />
+    <!-- <link href="styles/animateview.css" rel="stylesheet" /> -->
     <link href="styles/menu.css" rel="stylesheet" />
 
-    <!-- ***** PORQUIÇE ***** -->
+    
     <div ng-include="'views/templates/templates.html'"></div>
+
+
   </head>
 
   <body class="container">
@@ -34,7 +36,7 @@
       </div>
     </div>
 
-    <div animated-view></div>
+    <div ng-view=""></div>
 
     
     <script>

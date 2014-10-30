@@ -19,7 +19,11 @@ public class Lancamento extends SpringData<Long> {
 
     @Column(nullable = false, length = 100)
 	private String descricao;
-	
+
+    @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Calendar dataDeCadastro = Calendar.getInstance();
+
 	@Temporal(TemporalType.DATE)
 	private Calendar dataDePagamento;
 
@@ -38,6 +42,14 @@ public class Lancamento extends SpringData<Long> {
 
     @ManyToOne(optional = false)
     private Usuario usuario;
+
+    public Calendar getDataDeCadastro() {
+        return dataDeCadastro;
+    }
+
+    public void setDataDeCadastro(Calendar dataDeCadastro) {
+        this.dataDeCadastro = dataDeCadastro;
+    }
 
     public Usuario getUsuario() {
         return usuario;

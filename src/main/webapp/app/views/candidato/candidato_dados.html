@@ -51,14 +51,14 @@
 
           <div class="form-group">
             <label class="control-label">Data de nascimento<span class="obrigatorio">*</span></label>
-            <div ng-class="{'form-group has-error': !candidato.dataNasc}">
+            <div class="form-group" ng-class="{'has-error': !candidato.dataNasc}">
               <div class="controls">
                 <p class="input-group">
                   <input  type="text" class="form-control" datepicker-popup="dd/MM/yyyy"
                           ng-model="candidato.dataNasc" is-open="opened"
-                          show-button-bar="false" required/>
+                          show-button-bar="false" ng-required="true" />
                   <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="openDatePicker($event)">
+                    <button type="button" class="btn btn-default"  ng-click="openDatePicker($event)">
                       <i class="glyphicon glyphicon-calendar"></i>
                     </button>
                   </span>
@@ -89,7 +89,7 @@
             <div class="controls">
               <select class="form-control" data-ng-model="candidato.situacao">
                 <option value="DISPONIVEL">Disponível</option>
-                <option value="BLOQUEADO">Bloqueado</option>
+                <option disabled value="BLOQUEADO">Bloqueado</option>
                 <option disabled value="EMPREGADO">Empregado (a)</option>
               </select>
             </div>

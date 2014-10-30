@@ -42,7 +42,7 @@
 							<div ng-class="{'has-error':!encaminhamento.candidato.id}">
 								<select class="form-control" data-ng-model="encaminhamento.candidato" 
 												data-ng-options="(candidato.nome) for candidato in candidatos">
-									<option value="" data-ng-selected="encaminhamento.id">{{encaminhamento.candidato.nome}}</option>
+									<option value="" disabled data-ng-selected="encaminhamento.id">{{encaminhamento.candidato.nome}}</option>
 								</select>
 							</div>
 						</div>
@@ -50,6 +50,7 @@
 							<label class="control-label">Vaga 
 								<span class="obrigatorio"> 
 									<i ng-if="encaminhamento.vaga.situacao==='OCUPADA'">Vaga ocupada</i>
+									<i ng-if="encaminhamento.vaga.situacao==='CANCELADA'">Vaga cancelada</i>
 								*</span>
 							</label>
 							<div class="pull-right">
@@ -57,8 +58,8 @@
 							</div>
 							<div ng-class="{'has-error':!encaminhamento.vaga.id}">
 								<select class="form-control" data-ng-model="encaminhamento.vaga" 
-												data-ng-options="(vaga.cargo.nome) for vaga in vagas">
-									<option value="" data-ng-selected="vaga.id">{{encaminhamento.vaga.cargo.nome}}</option>
+												data-ng-options="(vaga.cargo.nome +' / '+ vaga.id) for vaga in vagas">
+									<option value="" disabled data-ng-selected="vaga.id">{{encaminhamento.vaga.cargo.nome}} / {{encaminhamento.vaga.id}}</option>
 								</select>
 							</div>
 						</div>
@@ -72,7 +73,7 @@
 					</div>
 					<div class="col-3 col-sm-3 col-lg-3">
 						<div class="form-group">
-							<label class="control-label">Valor </label>
+							<label class="control-label">Valor (RS$)</label>
 								<div class="controls">
 									<input	disabled type="number" class="form-control" 
 													data-ng-model="encaminhamento.lancamento.valor" 

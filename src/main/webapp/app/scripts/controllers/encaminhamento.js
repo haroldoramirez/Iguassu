@@ -34,6 +34,11 @@ angular.module('iguassuApp')
 	      msg = 'Encaminhamento atualizado com sucesso';
 	    }
 	    $scope.encaminhamento.usuario = null;
+	    if ($scope.encaminhamento.lancamento) {
+		    if ($scope.encaminhamento.lancamento.usuario) {
+					$scope.encaminhamento.lancamento.usuario = null;
+		    };
+	    };
 	    console.log($scope.encaminhamento);
 	    Encaminhamento.save($scope.encaminhamento, function(data){
 	    	$scope.encaminhamento = data;

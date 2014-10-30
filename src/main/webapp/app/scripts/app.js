@@ -167,6 +167,9 @@ angular
   if(!$rootScope.paises){
     $rootScope.getPaises();
   };
+
+  
+  $rootScope.today = new Date();
   
   $rootScope.openCargos = function() {
     $rootScope.getCargos();

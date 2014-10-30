@@ -22,8 +22,8 @@
         <!--deveria ser isAUtenticated-->
         <security:intercept-url pattern="/usuarios/current" access="permitAll"/>
 
-        <security:intercept-url pattern="/lancamentos/**" access="hasRole('ROLE_ADMINISTRADOR')"/>
-        <security:intercept-url pattern="/lancamentos/**" access="hasRole('ROLE_GERENTE')"/>
+        <security:intercept-url pattern="/lancamentos/**" access="hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_GERENTE')"/>
+        <!--<security:intercept-url pattern="/lancamentos/**" access="hasRole('ROLE_GERENTE')"/>-->
 
         <security:intercept-url pattern="/usuarios" method="PUT" access="isAuthenticated()"/>
         <security:intercept-url pattern="/usuarios" method="DELETE" access="hasRole('ROLE_GERENTE')"/>

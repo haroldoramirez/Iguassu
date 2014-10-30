@@ -9,10 +9,22 @@
  */
 angular.module('iguassuApp')
   .controller('FinanceiroCtrl', function ($scope, Financeiro, $modal) {
+    
     $scope.init = function(){
     	Financeiro.getAll(function(data){
 				$scope.lancamentos = data;
 			});
+    };
+
+    $scope.class = function(lancamento){
+    	if ($scope.today>lancamento.dataDeVencimento&&!lancamento.dataDeVencimento) {
+    		return 'label-danger';
+    	};
+    	if (!lancamento.dataDePagamento) {
+    		return 'label-warning';
+    	}else{
+    		return 'label-success';
+    	};
     };
     
 		$scope.openLancamento = function(lancamento) {

@@ -32,6 +32,9 @@ public class ControllerEncaminhamento {
 	@RequestMapping(value = "/encaminhamentos", method = RequestMethod.POST)
 	public @ResponseBody Encaminhamento save(@RequestBody Encaminhamento encaminhamento) {
         encaminhamento.setUsuario(serviceUsuario.getCurrentUser());
+        if (encaminhamento.getLancamento()!=null){
+            encaminhamento.getLancamento().setUsuario(serviceUsuario.getCurrentUser());
+        }
 		return this.serviceEncaminhamento.save(encaminhamento);
 	}
 

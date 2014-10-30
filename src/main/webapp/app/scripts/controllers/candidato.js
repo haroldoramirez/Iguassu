@@ -111,8 +111,9 @@ angular.module('iguassuApp')
   }
 
   $scope.openDatePicker = function($event) {
+    
     $event.preventDefault();
-    $event.stopPropagation();
+    $event.stopPropagation();   
     $scope.opened = !$scope.opened;
   };
 
