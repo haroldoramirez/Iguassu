@@ -96,7 +96,7 @@ public class ServiceUsuario implements UserDetailsService {
 //        usuario4.setSenha(new BCryptPasswordEncoder().encode("123456"));
 //        usuario4.setLogin("Fransisca");
 //        usuario4.setPerfil(Perfil.BLOQUEADO);
-
+//
 //        return daoUsuario.save(usuario4);
 
         Usuario user = daoUsuario.findByLogin(login);

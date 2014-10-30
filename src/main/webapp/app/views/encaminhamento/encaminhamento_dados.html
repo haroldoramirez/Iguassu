@@ -4,6 +4,12 @@
 			</accordion-heading>
 			
 					<div class="col-6 col-sm-6 col-lg-3">
+					<div class="form-group">
+			      <label class="control-label">Código </label>
+			      <div class="controls">
+			        <input data-ng-model="encaminhamento.id" type="number" class="form-control">
+			      </div>
+			    </div>
 						<div class="form-group">
 							<label class="control-label">Situacao </label>
 								<div class="controls" >
@@ -16,10 +22,10 @@
 								</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label">Data </label>
+							<label class="control-label">Data do encaminhamento</label>
 							<div class="controls">
 								<input  type="text" class="form-control" disabled datepicker-popup="dd/MM/yyyy"
-                        ng-model="encaminhamento.dataDeCadastro" required/>
+                        ng-model="encaminhamento.dataDeCadastro"/>
 							</div>
 						</div>
 					</div>
@@ -56,25 +62,37 @@
 								</select>
 							</div>
 						</div>
+						<div class="form-group">
+							<label class="control-label">Ultima alteração</label>
+							<div class="controls">
+				        <input data-ng-model="encaminhamento.usuario.nome" type="text" disabled class="form-control">
+				      </div>
+						</div>
 						
 					</div>
 					<div class="col-3 col-sm-3 col-lg-3">
-					<div class="form-group">
-						<label class="control-label">Valor </label>
-							<div class="controls">
-								<input	disabled type="number" class="form-control" 
-												data-ng-model="lancamento.valor" 
-												placeholder="Valor do encaminhamento (30% do primeiro salário da vaga)"/>
-							</div>
-						</div>
 						<div class="form-group">
+							<label class="control-label">Valor </label>
+								<div class="controls">
+									<input	disabled type="number" class="form-control" 
+													data-ng-model="encaminhamento.lancamento.valor" 
+													placeholder="Valor do encaminhamento (30% do primeiro salário da vaga)"/>
+								</div>
+						</div>
+						<div class="form-group" ng-if="encaminhamento.lancamento.id">
 						<label class="control-label">Data de pagamento </label>
-							<div class="controls">
-								<select ng-disabled="!lancamento.id" class="form-control" data-ng-model="pago">
-										<option value="SIM">Sim</option>
-		                <option value="NAO">Não</option>
-								</select>
-							</div>
+							<div class="controls" >
+                <p class="input-group" >
+                  <input  type="text" class="form-control" datepicker-popup="dd/MM/yyyy"
+                          ng-model="encaminhamento.lancamento.dataDePagamento" is-open="opened"
+                          show-button-bar="false"/>
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="openDatePicker($event)">
+                      <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                  </span>
+                </p>
+              </div>
 						</div>
 					</div>
 					<div class="col-3 col-sm-3 col-lg-3">

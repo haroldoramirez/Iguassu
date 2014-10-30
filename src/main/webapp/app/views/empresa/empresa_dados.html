@@ -2,7 +2,13 @@
   <accordion-heading>
       Dados da Empresa<i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open1, 'glyphicon-chevron-right': !panel.open1}"></i>
   </accordion-heading>
-  <div class="col-6 col-sm-6 col-lg-6">
+  <div class="col-3 col-sm-3 col-lg-3">
+    <div class="form-group">
+      <label class="control-label">Código </label>
+      <div class="controls">
+        <input data-ng-model="empresa.id" type="number" class="form-control">
+      </div>
+    </div>
     <div class="form-group">
       <label class="control-label">Nome <span class="obrigatorio">*</span></label>
       <div class="controls">

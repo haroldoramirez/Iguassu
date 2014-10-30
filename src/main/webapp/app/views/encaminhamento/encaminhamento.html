@@ -21,7 +21,7 @@
 		</div>
 		<div class="btn-group">
 			<button type="button" class="btn btn-primary" 
-							data-ng-disabled="!encaminhamento.vaga.id||!encaminhamento.candidato.id||encaminhamento.vaga.situacao==='OCUPADA'||encaminhamento.candidato.situacao==='BLOQUEADO'" 
+							data-ng-disabled="!encaminhamento.vaga.id||!encaminhamento.candidato.id||(encaminhamento.vaga.situacao==='OCUPADA'&&!encaminhamento.id)||encaminhamento.candidato.situacao==='BLOQUEADO'" 
 							data-ng-click="save()">
 				<span class="glyphicon glyphicon-save">&nbspSalvar</span>
 			</button>

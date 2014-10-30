@@ -36,15 +36,15 @@ public class Lancamento extends SpringData<Long> {
 	@ManyToOne(optional = true)
 	private Pessoa pessoa;
 
-    @ManyToOne(optional = true)
-    private Encaminhamento encaminhamento;
+    @ManyToOne(optional = false)
+    private Usuario usuario;
 
-    public Encaminhamento getEncaminhamento() {
-        return encaminhamento;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setEncaminhamento(Encaminhamento encaminhamento) {
-        this.encaminhamento = encaminhamento;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Pessoa getPessoa() {

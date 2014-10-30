@@ -13,6 +13,12 @@
       <!-- documentos -->
         <div class="col-md-3">
           <div class="form-group">
+            <label class="control-label">Código </label>
+            <div class="controls">
+              <input data-ng-model="candidato.id" type="number" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
             <label class="control-label">Nome <span class="obrigatorio">*</span> </label>
               <span class="navbar-right">
                 <input type="radio" name="genero" ng-model="candidato.genero"
@@ -84,7 +90,7 @@
               <select class="form-control" data-ng-model="candidato.situacao">
                 <option value="DISPONIVEL">Disponível</option>
                 <option value="BLOQUEADO">Bloqueado</option>
-                <option value="EMPREGADO">Empregado (a)</option>
+                <option disabled value="EMPREGADO">Empregado (a)</option>
               </select>
             </div>
           </div>

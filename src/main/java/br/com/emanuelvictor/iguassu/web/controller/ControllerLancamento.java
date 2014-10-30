@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import br.com.emanuelvictor.iguassu.web.service.ServiceUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,13 +19,19 @@ import br.com.emanuelvictor.iguassu.web.service.ServiceLancamento;
 //TODO
 @Controller
 public class ControllerLancamento {
+
+    @Autowired
+    ServiceUsuario serviceUsuario;
+
 	@Autowired
 	ServiceLancamento serviceLancamento;
 
 	@RequestMapping(value = "/lancamentos", method = RequestMethod.POST)
 	public @ResponseBody Object salve(@RequestBody Lancamento lancamento) {
+        lancamento.setUsuario(serviceUsuario.getCurrentUser());
 		return serviceLancamento.save(lancamento);
 	}
+
 
 	@RequestMapping(value = "/lancamentos/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody void delete(@PathVariable Long id) {

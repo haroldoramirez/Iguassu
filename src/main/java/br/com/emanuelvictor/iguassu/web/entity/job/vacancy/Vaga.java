@@ -35,7 +35,7 @@ public class Vaga extends BaseEntity {
 	@Column(length = 50, nullable = false)
 	private SituacaoVaga situacao;
 
-	@Column(nullable = true, length = 100)
+	@Column(nullable = false, length = 100)
 	private Double salario;
 
 	@Temporal(TemporalType.TIMESTAMP)

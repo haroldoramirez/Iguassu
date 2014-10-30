@@ -4,6 +4,12 @@
   </accordion-heading>
     <div class="col-6 col-sm-6 col-lg-3">
       <div class="form-group">
+        <label class="control-label">Código </label>
+        <div class="controls">
+          <input data-ng-model="vaga.id" type="number" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
         <label class="control-label">Situação </label>
         <div class="controls">
           <input  class="form-control" disabled type="text" 
@@ -27,10 +33,12 @@
     <div class="col-6 col-sm-6 col-lg-3">
       <div class="form-group">
         <label class="control-label">Salário</label>
-        <div class="controls">
-          <input  class="form-control" type="number" data-ng-model="vaga.salario" 
-                  placeholder="Insira aqui as observações da vaga">
-        </div>
+        <div ng-class="{'has-error':!vaga.salario}">
+          <div class="controls">
+            <input  class="form-control" type="number" data-ng-model="vaga.salario" 
+                    placeholder="Insira aqui as observações da vaga">
+          </div>
+          </div> 
       </div>        
       <div class="form-group">
         <label class="control-label">Empresa</label>

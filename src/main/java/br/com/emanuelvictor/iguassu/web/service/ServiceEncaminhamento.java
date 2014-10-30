@@ -39,32 +39,37 @@ public class ServiceEncaminhamento {
 			encaminhamento.setSituacao(SituacaoEncaminhamento.ANDAMENTO);
             return daoEncaminhamento.save(encaminhamento);
 		}else if (encaminhamento.getSituacao() == SituacaoEncaminhamento.SUCESSO){
-            // Deve gerar conta a receber para daqui 6 meses, com base em 30 por cento do salário que o candidato irá receber
+
+            // Atualiza o status do candidato para 'EMPREGADO'
             Candidato candidato = encaminhamento.getCandidato();
             candidato.setSituacao(SituacaoCandidato.EMPREGADO);
             candidato = this.daoCandidato.save(candidato);
+
+            // Atualiza o status da vaga para 'OCUPADA'
             Vaga vaga = encaminhamento.getVaga();
             vaga.setSituacao(SituacaoVaga.OCUPADA);
             vaga = this.daoVaga.save(vaga);
 
-            Lancamento lancamento = new Lancamento();
-            lancamento.setValor(vaga.getSalario()/3);
-
+            // Deve gerar conta a receber para daqui 1 mes, com base em 30 por cento do salário que o candidato irá receber
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) + 30);
+            Lancamento lancamento = new Lancamento();
+            if (encaminhamento.getLancamento()!=null){
+                lancamento =encaminhamento.getLancamento();
+            }
+            lancamento.setValor(vaga.getSalario()/3);
             lancamento.setDataDeVencimento(calendar);
-
-            encaminhamento = daoEncaminhamento.save(encaminhamento);
-
             lancamento.setTipoLancamento(TipoLancamento.ENTRADA);
             lancamento.setDescricao("Encaminhamento do candidato " + candidato.getNome() + " para a vaga de código " + vaga.getId());
             lancamento.setPessoa(candidato);
-            lancamento.setEncaminhamento(encaminhamento);
+            lancamento.setUsuario(encaminhamento.getUsuario());
 
-            this.daoLancamento.save(lancamento);
+            lancamento = this.daoLancamento.save(lancamento);
 
-            return encaminhamento;
-        }else {// Handler de falha
+            //SETA O LANÇAMENTO NO ENCAMINHAMENTO
+            encaminhamento.setLancamento(lancamento);
+            return daoEncaminhamento.save(encaminhamento);
+        }else {// Handler de falha "SE O ENCAMINHAMENTO É CADASTRADO COMO FALHA, NÃO LANÇA LANÇAMENTO E NEM FAZ NADA, SÓ FICA COMO FALHA"
             return daoEncaminhamento.save(encaminhamento);
         }
 	}

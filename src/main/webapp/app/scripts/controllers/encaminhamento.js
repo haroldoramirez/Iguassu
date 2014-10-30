@@ -12,15 +12,9 @@ angular.module('iguassuApp')
     
     $scope.oldStatus = null;
 
-
-    $scope.lancamento = null;
-    
     $scope.init = function(){
 	    if ($routeParams.id) {
 	      Encaminhamento.get({id: $routeParams.id}, function(data){
-	      	if(data.situacao==='SUCESSO'){
-	      		//pegar o lancamento
-	      	};
 	      	$scope.oldStatus = data.situacao;
 	        $scope.encaminhamento = data;
 	        $scope.valor = $scope.encaminhamento.vaga.salario / 3;
@@ -39,17 +33,17 @@ angular.module('iguassuApp')
 	    if($scope.encaminhamento.id){
 	      msg = 'Encaminhamento atualizado com sucesso';
 	    }
+	    $scope.encaminhamento.usuario = null;
 	    console.log($scope.encaminhamento);
 	    Encaminhamento.save($scope.encaminhamento, function(data){
-	    	if ($scope.lancamento.id) {
-	    		
-	    	};
-	      $scope.encaminhamento = data;
+	    	$scope.encaminhamento = data;
 	      $location.path('/encaminhamentos/'+$scope.encaminhamento.id);
 	      $scope.getEncaminhamentos();
 	      toastr.success(msg,$scope.encaminhamento.nome);
 	      $document.scrollTopAnimated(0, 700);
 	      $scope.init();
+	    }, function(){
+	    	toastr.error('Verifique se ' + $scope.encaminhamento.candidato.nome + ' já foi encaminhado (a) para essa vaga','Erro ao efetuar encaminhamento');
 	    });
 	  };    
 
@@ -57,6 +51,12 @@ angular.module('iguassuApp')
 	    $document.scrollTopAnimated(0, 700);
 	    $location.path('/encaminhamentos/'+encaminhamento.id);
 	  }
+
+	  $scope.openDatePicker = function($event) {
+	    $event.preventDefault();
+	    $event.stopPropagation();
+	    $scope.opened = !$scope.opened;
+	  };
 
 	  $scope.clear = function(){
 	    $scope.encaminhamento = {};

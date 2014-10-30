@@ -6,7 +6,7 @@
             data-ng-show="candidato.id">
       <span class="glyphicon glyphicon-send"></span>
     </button>
-    <button class="btn btn-primary btn-sm"
+    <button ng-if="candidato.id" class="btn btn-primary btn-sm"
             onclick="window.print(); return false;"
             type="button"
             title="Clique para Imprimir ou pressione as teclas 'Ctrl + P'">

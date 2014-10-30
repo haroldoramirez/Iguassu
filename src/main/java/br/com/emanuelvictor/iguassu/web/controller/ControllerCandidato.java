@@ -1,9 +1,11 @@
 package br.com.emanuelvictor.iguassu.web.controller;
 
 import br.com.emanuelvictor.iguassu.web.entity.Candidato;
+import br.com.emanuelvictor.iguassu.web.entity.Lancamento;
 import br.com.emanuelvictor.iguassu.web.entity.job.Experiencia;
 import br.com.emanuelvictor.iguassu.web.entity.schooling.CandidatoCurso;
 import br.com.emanuelvictor.iguassu.web.service.ServiceCandidato;
+import br.com.emanuelvictor.iguassu.web.service.ServiceUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,20 +15,27 @@ import java.util.List;
 @Controller
 public class ControllerCandidato {
 
+    @Autowired
+    ServiceUsuario serviceUsuario;
+
 	@Autowired
 	ServiceCandidato serviceCandidato;
 
 	@RequestMapping(value = "/candidatos", method = RequestMethod.POST)
 	public @ResponseBody
 	Candidato save(@RequestBody Candidato candidato) {
-		return this.serviceCandidato.save(candidato);
+        Lancamento lancamento = new Lancamento();
+        lancamento.setUsuario(this.serviceUsuario.getCurrentUser());
+		return this.serviceCandidato.save(candidato, lancamento);
 	}
 
-	@RequestMapping(value = "/candidatos/{id}", method = RequestMethod.POST)
-	public @ResponseBody
-	Candidato update(/* @PathVariable Long id, */@RequestBody Candidato candidato) {
-		return this.serviceCandidato.save(candidato);
-	}
+//	@RequestMapping(value = "/candidatos/{id}", method = RequestMethod.PUT)
+//	public @ResponseBody
+//	Candidato update(/* @PathVariable Long id, */@RequestBody Candidato candidato) {
+//        Lancamento lancamento = new Lancamento();
+//        lancamento.setUsuario(this.serviceUsuario.getCurrentUser());
+//		return this.serviceCandidato.save(candidato, lancamento);
+//	}
 
 	@RequestMapping(value = "/candidatos/{id}", method = RequestMethod.GET)
 	public @ResponseBody

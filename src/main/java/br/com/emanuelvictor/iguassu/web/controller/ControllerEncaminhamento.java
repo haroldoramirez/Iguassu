@@ -7,6 +7,7 @@ import java.util.List;
 
 import br.com.emanuelvictor.iguassu.web.entity.Lancamento;
 import br.com.emanuelvictor.iguassu.web.service.ServiceLancamento;
+import br.com.emanuelvictor.iguassu.web.service.ServiceUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,11 +22,16 @@ import br.com.emanuelvictor.iguassu.web.service.ServiceEncaminhamento;
 //TODO
 @Controller
 public class ControllerEncaminhamento {
+
+    @Autowired
+    ServiceUsuario serviceUsuario;
+
 	@Autowired
 	ServiceEncaminhamento serviceEncaminhamento;
 
 	@RequestMapping(value = "/encaminhamentos", method = RequestMethod.POST)
 	public @ResponseBody Encaminhamento save(@RequestBody Encaminhamento encaminhamento) {
+        encaminhamento.setUsuario(serviceUsuario.getCurrentUser());
 		return this.serviceEncaminhamento.save(encaminhamento);
 	}
 
@@ -38,16 +44,6 @@ public class ControllerEncaminhamento {
 	public @ResponseBody Encaminhamento find(@PathVariable Long id) {
         return serviceEncaminhamento.find(id);
 	}
-
-    @RequestMapping(value = "/encaminhamentos/{id}/lancamento", method = RequestMethod.POST)
-    public @ResponseBody Lancamento pagarLancamentoEncaminhamento(@RequestBody Encaminhamento encaminhamento) {
-        return serviceEncaminhamento.pagarLancamentoEncaminhamento(encaminhamento);
-    }
-
-    @RequestMapping(value = "/encaminhamentos/{id}/lancamento", method = RequestMethod.GET)
-    public @ResponseBody Lancamento getLancamentoEncaminhamento(@RequestBody Encaminhamento encaminhamento) {
-        return serviceEncaminhamento.findLancamentoEncaminhamento(encaminhamento);
-    }
 
 
 

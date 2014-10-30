@@ -15,8 +15,9 @@ public class ServiceLancamento {
 	@Autowired
 	DAOLancamento daoLancamento;
 
+
 	public Lancamento save(Lancamento lancamento) {
-		return daoLancamento.save(lancamento);
+        return daoLancamento.save(lancamento);
 	}
 
 	public void delete(Long id) {
