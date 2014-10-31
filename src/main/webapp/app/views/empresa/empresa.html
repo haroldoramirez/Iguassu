@@ -19,7 +19,7 @@
             <div class="btn-group">
                 <button type="button"
                         class="btn btn-default"
-                        data-ng-click="getEmpresa();">
+                        data-ng-click="search();">
                     <span class="glyphicon glyphicon-search">&nbspConsultar</span>
                 </button>
             </div>
@@ -40,8 +40,10 @@
             </div>
         </div>
 
-        <br/>
+        </br>
 
+      
+        
         <table class="table table-hover">
             <tr>
                 <th>Nome</th>
@@ -54,4 +56,10 @@
                 <td >{{empresa.endereco.bairro.nome}} / {{empresa.endereco.bairro.cidade.nome}} / {{empresa.endereco.bairro.cidade.estado.nome}} / {{empresa.endereco.bairro.cidade.estado.pais.nome}}</td>
             </tr>
         </table>
+        <nav>
+          <ul class="pager">
+            <li class="previous"><a ng-click="older()" href="" >&larr; Anterior</a></li>
+            <li class="next"><a ng-click="next()" href="">Próximo &rarr;</a></li>
+          </ul>
+        </nav>
     </div>

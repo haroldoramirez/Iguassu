@@ -10,16 +10,16 @@
  */
 angular
   .module('iguassuApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'ui.utils',
-    'toastr',
-    'duScroll',
-    'ui.bootstrap'
+          'ngAnimate',
+          'ngCookies',
+          'ngResource',
+          'ngRoute',
+          'ngSanitize',
+          'ngTouch',
+          'ui.utils',
+          'toastr',
+          'duScroll',
+          'ui.bootstrap',
  ]).config(function($routeProvider,toastrConfig) {
    $routeProvider
      .when('/candidatos', {
@@ -124,7 +124,7 @@ angular
   };                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 
   $rootScope.getEmpresas = function(){
-    $rootScope.empresas = Empresa.getAll();
+    $rootScope.empresas = Empresa.query();
   };
 
   $rootScope.getCargos = function(){

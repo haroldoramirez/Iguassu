@@ -2,6 +2,7 @@ package br.com.emanuelvictor.iguassu.web.service;
 
 
 import br.com.emanuelvictor.iguassu.web.entity.Empresa;
+import br.com.emanuelvictor.iguassu.web.entity.address.Endereco;
 import br.com.emanuelvictor.iguassu.web.repository.DAOEmpresa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 @Service
@@ -36,16 +38,23 @@ public class ServiceEmpresa {
 		return daoEmpresa.findOne(id);
 	}
 
-	public List<Empresa> find(String nome, String cnpj, String rua,
-			String numero, String cep, String complemento, Long idBairro,
-			Long idCidade, Long idEstado, Long idPais) {
-		if ((idBairro == null) && (idCidade == null) && (idEstado == null)
-				&& (idPais == null)) {
-			return daoEmpresa.find(nome, cnpj, rua, numero, cep, complemento, new PageRequest(0, 10, Sort.Direction.ASC, "nome"));
-		}
-		return daoEmpresa.find(nome, cnpj, rua, numero, cep, complemento,
-				idBairro, idCidade, idEstado, idPais);
+	public List<Empresa> find(Empresa empresa,
+                              Long idBairro, Long idCidade,
+                              Long idEstado, Long idPais,
+                              PageRequest pageRequest) {
 
+
+        if (idBairro==null && idCidade==null && idEstado==null && idPais==null){
+            return daoEmpresa.find(empresa.getNome(),empresa.getCnpj(),
+                    empresa.getEndereco().getRua(), empresa.getEndereco().getNumero(),
+                    empresa.getEndereco().getCep(), empresa.getEndereco().getComplemento(),
+                    pageRequest);
+        }
+
+		return daoEmpresa.find(empresa.getNome(), empresa.getCnpj(),
+                    empresa.getEndereco().getRua(), empresa.getEndereco().getNumero(),
+                    empresa.getEndereco().getCep(), empresa.getEndereco().getComplemento(),
+                    idBairro, idCidade, idEstado, idPais, pageRequest);
 	}
 
 }

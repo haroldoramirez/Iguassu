@@ -15,6 +15,4 @@ public class Empresa extends PessoaJuridica {
 	private static final long serialVersionUID = -6267143079274386878L;
 
 
-
-
 }

@@ -9,23 +9,23 @@
  */
 angular.module('iguassuApp')
   .factory('createAddress', function () {
-
     return {
-      formateEndereco: function (endereco) {
-        console.log('formatando endereço');
-        var enderecoResult = {};
-          if (endereco) {
-            enderecoResult = {
-              bairro : {
-                cidade : {
-                  estado : {
-                    pais : {
-
-                    }
-                  }
+      formateEndereco: function (endereco) {    
+        var enderecoResult = {
+          bairro : {
+            id : null,
+            cidade : {
+              id : null,
+              estado : {
+                id : null,
+                pais : {
+                  id : null,
                 }
               }
             }
+          }
+        };
+          if (endereco) {
            if (endereco.rua) enderecoResult.rua = endereco.rua;
            if (endereco.complemento) enderecoResult.complemento = endereco.complemento;
            if (endereco.numero) enderecoResult.numero = endereco.numero;
@@ -38,8 +38,20 @@ angular.module('iguassuApp')
         return enderecoResult;
       },
       desformateEndereco: function (endereco) {
-        var enderecoResult = {};
-        console.log('desformatando endereço');
+        var enderecoResult = {
+                        bairro : {
+                          id : null
+                        },
+                        cidade : {
+                          id : null
+                        },
+                        estado : {
+                          id : null
+                        },
+                        pais : {
+                          id : null
+                        }
+                      }
         if (endereco) {
           if (endereco.rua) enderecoResult.rua = endereco.rua;
           if (endereco.complemento) enderecoResult.complemento = endereco.complemento;

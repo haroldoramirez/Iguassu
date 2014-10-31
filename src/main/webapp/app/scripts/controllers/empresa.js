@@ -10,6 +10,9 @@
 angular.module('iguassuApp')
   .controller('EmpresaCtrl', function ($scope, $rootScope, $routeParams, $location, Empresa, $document, toastr, createAddress) {
 
+    var inicio = 0;
+    var fim = 10;
+
    $scope.init = function(){
     if ($routeParams.id) {
       Empresa.get({id: $routeParams.id}, function(data){
@@ -19,12 +22,16 @@ angular.module('iguassuApp')
       $rootScope.openAll();
     }else{
       $scope.clear(); 
+      $scope.endereco = createAddress.desformateEndereco(null);
     };
     $scope.getEmpresas();
    };
 
   $scope.save = function(){
     $scope.empresa.endereco = $scope.endereco;
+    if ($scope.empresa.endereco.bairro.id===null) {
+      $scope.empresa.endereco.bairro = null;
+    }
     var msg = 'cadastrada com sucesso';
     if($scope.empresa.id){
       msg = 'atualizada com sucesso';
@@ -40,13 +47,44 @@ angular.module('iguassuApp')
     });
   };    
 
+  $scope.search = function(){
+    if ($scope.empresa.id) {
+      Empresa.get({id: $scope.empresa.id}, function(data){
+        $scope.empresas = [];
+        $scope.empresas[0] = data;
+      });
+    }else if ($routeParams.id){
+      Empresa.get({id: $routeParams.id}, function(data){
+        $scope.empresas = [];
+        $scope.empresas[0] = data;
+      });
+    }else {
+      Empresa.query({nome: $scope.empresa.nome, CNPJ: $scope.empresa.cnpj, inicio: inicio, fim:fim}, function(data){
+        $scope.empresas = data;
+      });
+    };
+  };
+
+
   $scope.edit = function(empresa){
     $document.scrollTopAnimated(0, 700);
     $location.path('/empresas/'+empresa.id);
   }
 
+  $scope.next = function(){
+    // inicio = inicio + 10;
+    fim = fim + 10;
+    Empresa.query({nome: $scope.empresa.nome, CNPJ: $scope.empresa.cnpj, inicio: inicio, fim:fim}, function(data){
+      $scope.empresas = data;
+    });
+  }
+
+  $scope.older = function(){
+
+  }
+
   $scope.clear = function(){
-    $rootScope.endereco = {};
+    $scope.endereco = createAddress.desformateEndereco(null);
     $scope.empresa = {};
     $document.scrollTopAnimated(0, 700);
     if ($routeParams.id) {
