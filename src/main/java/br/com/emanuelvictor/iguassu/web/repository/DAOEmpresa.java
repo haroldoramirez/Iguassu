@@ -2,6 +2,7 @@ package br.com.emanuelvictor.iguassu.web.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,7 +18,7 @@ public interface DAOEmpresa extends JpaRepository<Empresa, Long> {
 	public List<Empresa> find(@Param("nome") String nome,
 			@Param("cnpj") String cnpj, @Param("rua") String rua,
 			@Param("numero") String numero, @Param("cep") String cep,
-			@Param("complemento") String complemento);
+			@Param("complemento") String complemento, Pageable pageable);
 
 	@Transactional(readOnly = true)
 	@Query("select e from Empresa e WHERE ((e.nome LIKE %:nome% or :nome is null) and (e.cnpj LIKE %:cnpj% or :cnpj is null) and (e.endereco.rua LIKE %:rua% or :rua is null) and (e.endereco.numero LIKE %:numero% or :numero is null) and (e.endereco.cep LIKE %:cep% or :cep is null) and (e.endereco.complemento LIKE %:complemento% or :complemento is null) and (e.endereco.bairro.id =:bairro_id or :bairro_id is null) and (e.endereco.bairro.cidade.id =:cidade_id or :cidade_id is null) and (e.endereco.bairro.cidade.estado.id =:estado_id or :estado_id is null) and (e.endereco.bairro.cidade.estado.pais.id =:pais_id or :pais_id is null))")
