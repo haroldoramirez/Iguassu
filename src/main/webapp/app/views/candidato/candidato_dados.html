@@ -3,11 +3,17 @@
         Dados Pessoais <i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open1, 'glyphicon-chevron-right': !panel.open1}"></i>
     </accordion-heading>
     <div class="row">
-      <div class="col-md-3">
-          <div class="form-group">
-              <a class="thumbnail">
-                <img src="./images/sarah.jpg" alt="Foto">
+      <div ng-if="candidato.id" class="col-md-3">
+          <div class="thumbnail">
+              <a href="" data-ng-click="goToPhoto()" class="thumbnail">
+                <img src="{{candidato.pathFoto}}">
               </a>
+            <input type="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+            <button ng-click="uploadFile()" class="btn btn-primary">Enviar</button>
+            <!-- <form ng-submit="pushPhoto()" name="uploadForm" enctype="multipart/form-data">
+              <input type="file" name="file" id="file" file-model="fileToUpload">
+              <input name="somethingINeed" type="submit" class="btn btn-primary" value="Enviar">
+            </form> -->
           </div>
       </div>
       <!-- documentos -->

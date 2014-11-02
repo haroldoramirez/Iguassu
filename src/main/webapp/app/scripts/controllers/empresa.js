@@ -10,40 +10,32 @@
 angular.module('iguassuApp')
   .controller('EmpresaCtrl', function ($scope, $rootScope, $routeParams, $location, Empresa, $document, toastr, createAddress) {
 
-    var inicio = 0;
-    var fim = 10;
+ $scope.empresa = {};
+
+$scope.endereco = {};
+
+  $scope.pagina = 0;
+
+  $scope.order = 'dataDeCadastro';
 
    $scope.init = function(){
     if ($routeParams.id) {
       Empresa.get({id: $routeParams.id}, function(data){
         $scope.empresa = data;
         $scope.endereco = createAddress.desformateEndereco(data.endereco);
-      });
-      $rootScope.openAll();
-    }else{
-      $scope.clear(); 
-      $scope.endereco = createAddress.desformateEndereco(null);
-    };
+        console.log($scope.endereco);
+        $rootScope.openAll();
+      });      
+    }
     $scope.getEmpresas();
    };
 
   $scope.save = function(){
-    $scope.empresa.endereco = $scope.endereco;
-    if ($scope.empresa.endereco.bairro.id===null) {
-      $scope.empresa.endereco.bairro = null;
-    }
-    var msg = 'cadastrada com sucesso';
-    if($scope.empresa.id){
-      msg = 'atualizada com sucesso';
-    }
+    $scope.empresa.endereco = createAddress.formateEndereco($scope.endereco);
     console.log($scope.empresa);
     Empresa.save($scope.empresa, function(data){
-      $scope.empresa = data;
-      $location.path('/empresas/'+$scope.empresa.id);
-      $scope.getEmpresas();
-      toastr.success(msg,$scope.empresa.nome);
-      $document.scrollTopAnimated(0, 700);
-      $scope.init();
+      toastr.success("Salvo com sucesso");
+      $scope.clear();
     });
   };    
 
@@ -59,7 +51,8 @@ angular.module('iguassuApp')
         $scope.empresas[0] = data;
       });
     }else {
-      Empresa.query({nome: $scope.empresa.nome, CNPJ: $scope.empresa.cnpj, inicio: inicio, fim:fim}, function(data){
+      Empresa.query({nome: $scope.empresa.nome, CNPJ: $scope.empresa.cnpj, 
+                     order: $scope.order, pagina: $scope.pagina, paginas:20}, function(data){
         $scope.empresas = data;
       });
     };
@@ -67,30 +60,42 @@ angular.module('iguassuApp')
 
 
   $scope.edit = function(empresa){
-    $document.scrollTopAnimated(0, 700);
     $location.path('/empresas/'+empresa.id);
   }
 
   $scope.next = function(){
-    // inicio = inicio + 10;
-    fim = fim + 10;
-    Empresa.query({nome: $scope.empresa.nome, CNPJ: $scope.empresa.cnpj, inicio: inicio, fim:fim}, function(data){
-      $scope.empresas = data;
+    $scope.pagina = $scope.pagina + 1;
+    Empresa.query({nome: $scope.empresa.nome, CNPJ: $scope.empresa.cnpj, 
+      order: $scope.order, pagina: $scope.pagina, paginas:20}, function(data){
+      if (data.length===0) {
+        $scope.pagina = $scope.pagina - 1;
+      }else{
+        $scope.empresas = data;
+      };
     });
   }
 
   $scope.older = function(){
-
+    $scope.pagina = $scope.pagina - 1;
+    Empresa.query({nome: $scope.empresa.nome, CNPJ: $scope.empresa.cnpj, 
+      order: $scope.order, pagina: $scope.pagina, paginas:20}, function(data){
+      $scope.empresas = data;
+    });
   }
 
   $scope.clear = function(){
-    $scope.endereco = createAddress.desformateEndereco(null);
+    // $scope.endereco.pais = null;
+    // $scope.endereco.estado = null;
+    // $scope.endereco.cidade = null;
+    // $scope.endereco.bairro = null;
+    // $scope.endereco = null;
+$scope.endereco = {};
+    $scope.getPaises();
     $scope.empresa = {};
-    $document.scrollTopAnimated(0, 700);
+    // $scope.empresa.id = null;
     if ($routeParams.id) {
       $location.path('/empresas');
     };
   }
-
 
 });

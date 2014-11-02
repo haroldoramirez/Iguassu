@@ -8,7 +8,7 @@
  * Factory in the iguassuApp.
  */
 angular.module('iguassuApp')
-  .factory('createAddress', function () {
+  .service('createAddress', function () {
     return {
       formateEndereco: function (endereco) {    
         var enderecoResult = {
@@ -35,23 +35,19 @@ angular.module('iguassuApp')
            if (endereco.estado) enderecoResult.bairro.cidade.estado = endereco.estado;
            if (endereco.pais) enderecoResult.bairro.cidade.estado.pais = endereco.pais; 
           };
-        return enderecoResult;
+          if (enderecoResult.bairro.id===null){
+            return null
+          } else{
+            return enderecoResult;  
+          }
       },
       desformateEndereco: function (endereco) {
         var enderecoResult = {
-                        bairro : {
-                          id : null
-                        },
-                        cidade : {
-                          id : null
-                        },
-                        estado : {
-                          id : null
-                        },
-                        pais : {
-                          id : null
-                        }
-                      }
+                        bairro : null,
+                        cidade : null,
+                        estado : null,
+                        pais : null
+                      };
         if (endereco) {
           if (endereco.rua) enderecoResult.rua = endereco.rua;
           if (endereco.complemento) enderecoResult.complemento = endereco.complemento;
@@ -70,7 +66,12 @@ angular.module('iguassuApp')
             }  
           }
         };
-        return enderecoResult;
+        if (enderecoResult.bairro.id===null){
+          return null
+        } else{
+          return enderecoResult;  
+        }
       }
     };
   });
+

@@ -14,6 +14,8 @@
         <org.springsecurity-version>3.2.5.RELEASE</org.springsecurity-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.7.6</org.slf4j-version>
+        <commons-fileupload.version>1.2.1</commons-fileupload.version>
+        <commons-io.version>1.4</commons-io.version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -97,6 +99,18 @@
  			<artifactId>jackson-databind</artifactId>
             <version>2.4.3</version>
  		</dependency>
+
+
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${commons-fileupload.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
 
 <!-- 		<dependency> -->
 <!-- 			<groupId>com.fasterxml.jackson.core</groupId> -->

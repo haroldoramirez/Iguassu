@@ -20,6 +20,7 @@ angular
           'toastr',
           'duScroll',
           'ui.bootstrap',
+          'angularFileUpload',
  ]).config(function($routeProvider,toastrConfig) {
    $routeProvider
      .when('/candidatos', {
@@ -28,6 +29,9 @@ angular
    }).when('/candidatos/:id', {
      controller : 'CandidatoCtrl',
      templateUrl : './views/candidato/candidato.html'
+   }).when('/candidatos/:id/foto', {
+     controller : 'FotoCtrl',
+     templateUrl : './views/candidato/foto.html'
    }).when('/empresas', {
       controller : 'EmpresaCtrl',
       templateUrl : './views/empresa/empresa.html'

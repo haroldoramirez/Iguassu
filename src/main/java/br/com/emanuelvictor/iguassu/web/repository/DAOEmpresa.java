@@ -13,6 +13,10 @@ import br.com.emanuelvictor.iguassu.web.entity.Empresa;
 @Transactional
 public interface DAOEmpresa extends JpaRepository<Empresa, Long> {
 
+    @Transactional(readOnly = true)
+    @Query("select e from Empresa e")
+    public List<Empresa> find(Pageable pageable);
+
 	@Transactional(readOnly = true)
 	@Query("select e from Empresa e WHERE ((e.nome LIKE %:nome% or :nome is null) and (e.cnpj LIKE %:cnpj% or :cnpj is null) and (e.endereco.rua LIKE %:rua% or :rua is null) and (e.endereco.numero LIKE %:numero% or :numero is null) and (e.endereco.cep LIKE %:cep% or :cep is null) and (e.endereco.complemento LIKE %:complemento% or :complemento is null))")
 	public List<Empresa> find(@Param("nome") String nome,

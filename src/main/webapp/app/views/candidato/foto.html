@@ -1,0 +1,13 @@
+<!-- <form action="candidatos/foto" method="post" enctype="multipart/form-data">
+	 <p>
+			 <label for="file">Arquivo para fazer upload</label>
+			 <input type="file" name="file" />
+			 <input type="submit" name="submit" value="Upload" />
+	</p>
+</form> -->
+
+<form method="POST" action="candidatos/foto" enctype="multipart/form-data">
+  Escolher o arquivo <input type="file" name="file">
+  <input type="hidden" name="name" ng-model="id" ng-value="id">
+  <input type="submit" value="Enviar"> Enviar
+</form>

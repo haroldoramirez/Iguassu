@@ -1,5 +1,6 @@
 package br.com.emanuelvictor.iguassu.web.controller;
 
+import java.awt.print.Pageable;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -30,17 +31,12 @@ public class ControllerEmpresa {
 
 	@RequestMapping(value = "/empresas", method = RequestMethod.POST)
 	public @ResponseBody Object salve(@RequestBody Empresa empresa) {
-		
-
-		 return this.serviceEmpresa.save(empresa);
-
-	}
+		return this.serviceEmpresa.save(empresa);
+    }
 
 	@RequestMapping(value = "/empresas/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody void delete(@PathVariable Long id) {
-
 			serviceEmpresa.delete(id);
-
 	}
 
 	@RequestMapping(value = "/empresas/{id}", method = RequestMethod.GET)
@@ -48,7 +44,12 @@ public class ControllerEmpresa {
 		return serviceEmpresa.find(id);
 	}
 
-	@RequestMapping(value = "/empresas/{inicio}/{fim}", method = RequestMethod.GET)
+    @RequestMapping(value = "/empresas", method = RequestMethod.GET)
+    public @ResponseBody Object find() {
+        return serviceEmpresa.find(new PageRequest(0, 30, Sort.Direction.DESC, "dataDeCadastro"));
+    }
+
+	@RequestMapping(value = "/empresas/{inicio}/{fim}/{order}", method = RequestMethod.GET)
 	public @ResponseBody Object find(@RequestParam(required = false) String nome,
                                      @RequestParam(required = false) String CNPJ,
                                      @RequestParam(required = false) String rua,
@@ -59,7 +60,7 @@ public class ControllerEmpresa {
                                      @RequestParam(required = false) Long idCidade,
                                      @RequestParam(required = false) Long idEstado,
                                      @RequestParam(required = false) Long idPais,
-                                     @PathVariable Integer inicio, @PathVariable Integer fim) {
+                                     @PathVariable Integer inicio, @PathVariable Integer fim, @PathVariable String order) {
 
 		complemento = Converter.enconding(complemento);
 		nome = Converter.enconding(nome);
@@ -74,7 +75,8 @@ public class ControllerEmpresa {
         empresa.getEndereco().setComplemento(complemento);
         empresa.getEndereco().setRua(rua);
 
-		return serviceEmpresa.find(empresa, idBairro, idCidade, idEstado, idPais, new PageRequest(inicio, fim, Sort.Direction.ASC, "nome"));
+    return serviceEmpresa.find(empresa, idBairro, idCidade, idEstado, idPais, new PageRequest(inicio, fim, Sort.Direction.ASC, order));
+
 
 	}
 

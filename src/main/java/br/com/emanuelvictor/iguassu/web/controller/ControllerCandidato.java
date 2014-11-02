@@ -9,7 +9,15 @@ import br.com.emanuelvictor.iguassu.web.service.ServiceUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.nio.file.FileSystems;
+import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -29,13 +37,54 @@ public class ControllerCandidato {
 		return this.serviceCandidato.save(candidato, lancamento);
 	}
 
-//	@RequestMapping(value = "/candidatos/{id}", method = RequestMethod.PUT)
-//	public @ResponseBody
-//	Candidato update(/* @PathVariable Long id, */@RequestBody Candidato candidato) {
-//        Lancamento lancamento = new Lancamento();
-//        lancamento.setUsuario(this.serviceUsuario.getCurrentUser());
-//		return this.serviceCandidato.save(candidato, lancamento);
-//	}
+    @RequestMapping(value = "/app/candidatos/foto/{id}", method = RequestMethod.POST)
+    public String upload(@PathVariable Long id, MultipartHttpServletRequest request) {
+        System.out.print("fasd");
+
+        Iterator<String> itr=request.getFileNames();
+
+        MultipartFile multiPartFile=request.getFile(itr.next());
+//        try{
+//            multiPartFile = (MultipartFile) file;
+//        }catch (Exception e){
+//            e.printStackTrace();
+//            return null;
+//        }
+
+        if (!multiPartFile.isEmpty()) {
+            try {
+                byte[] bytes = multiPartFile.getBytes();
+
+                // Creating the directory to store file
+                String rootPath = "/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/images"/*System.getProperty("catalina.base")*/;
+                System.out.println(" path " + rootPath);
+                File dir = new File(rootPath + File.separator + "candidatos");
+                if (!dir.exists())
+                    dir.mkdirs();
+
+                // Create the file on server
+                File serverFile = new File(dir.getAbsolutePath()
+                        + File.separator + id);
+                BufferedOutputStream stream = new BufferedOutputStream(
+                        new FileOutputStream(serverFile));
+                stream.write(bytes);
+                stream.close();
+
+                System.out.print("Server File Location="
+                        + serverFile.getAbsolutePath());
+                return "redirect:#/candidatos";
+//                return "You successfully uploaded file=" + name;
+            } catch (Exception e) {
+                return "You failed to upload " + id + " => " + e.getMessage();
+            }
+        } else {
+            return "redirect:#/candidatos";
+//            return "You failed to upload " + name
+//                    + " because the file was empty.";
+        }
+//        return "redirect:#/candidatos";
+    }
+
 
 	@RequestMapping(value = "/candidatos/{id}", method = RequestMethod.GET)
 	public @ResponseBody

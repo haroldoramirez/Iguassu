@@ -65,6 +65,10 @@ public class ServiceCandidato {
 
     }
 
+    public Candidato save(Candidato candidato) {
+            return this.daoCandidato.save(candidato);
+    }
+
     public List<Candidato> find() {
         return daoCandidato.findAll();
     }

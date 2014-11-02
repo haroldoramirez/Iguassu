@@ -20,6 +20,8 @@
         <context:include-filter expression="org.springframework.stereotype.Service" type="annotation"/>
 	</context:component-scan>
 
+    <!--<resources mapping="/app/candidatos/foto" location="/foto" />-->
+    <resources mapping="/app/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/images/candidatos/**" location="/app/images/candidatos/" />
     <resources mapping="/app/bower_components/**" location="/bower_components/" />
     <resources mapping="/app/**" location="/app/" />
 

@@ -38,6 +38,10 @@ public class ServiceEmpresa {
 		return daoEmpresa.findOne(id);
 	}
 
+    public List<Empresa> find(PageRequest pageRequest) {
+        return daoEmpresa.find(pageRequest);
+    }
+
 	public List<Empresa> find(Empresa empresa,
                               Long idBairro, Long idCidade,
                               Long idEstado, Long idPais,

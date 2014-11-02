@@ -1,13 +1,62 @@
 'use strict';
 
-angular.module('iguassuApp')
-  .controller('CandidatoCtrl', function ($rootScope, $log, $modal, $scope, $routeParams, $document, $location, Candidato, Pais, toastr, createAddress) {
+angular.module('iguassuApp').directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+            
+            element.bind('change', function(){
+                scope.$apply(function(){
+                    modelSetter(scope, element[0].files);
+                });
+            });
+        }
+    };
+}]).service('fileUpload', ['$http', function ($http) {
+    this.uploadFileToUrl = function(file,  uploadUrl){
+        var fd = new FormData();
+        fd.append('file', file);
+        $http.post(uploadUrl, {file:file}, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type':'multipart/form-data'}
+        })
+        .success(function(){
+        })
+        .error(function(){
+        });
+    }
+}]).controller('CandidatoCtrl', function ($rootScope, $log, $http, $modal, $scope, $routeParams, $document, $location, Candidato, Pais, toastr, createAddress, fileUpload) {
 
+  $scope.myFile = {};
+
+//   var formData=new FormData();
+// formData.append("file",file.files[0]);
+
+
+  $scope.uploadFile = function(files){
+
+    var file = files[0];
+    console.log('file is ' + file);
+    var uploadUrl = 'candidatos/foto/'+$scope.candidato.id;
+
+    $http.post(uploadUrl, files, {
+        transformRequest: angular.identity,
+        headers: {'Content-Type':'multipart/form-data'}
+    }).success(function(){
+
+    }).error(function(){
+
+    });
+    // fileUpload.uploadFileToUrl(file, uploadUrl);
+  };
   
   $scope.init = function(){
     if ($routeParams.id) {
       Candidato.get({id: $routeParams.id}, function(data){
         $scope.candidato = data;
+        $scope.candidato.pathFoto = 'home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/images/candidatos/36';
         $scope.endereco = createAddress.desformateEndereco(data.endereco);
       });
       $scope.cursosDoCandidato = Candidato.getCursos({id: $routeParams.id});
@@ -19,7 +68,10 @@ angular.module('iguassuApp')
     $scope.getCandidatos();
   };
 
-
+  $scope.goToPhoto = function(){
+    $location.path('/candidatos/' + $scope.candidato.id + '/foto');
+  };
+  
   $scope.save = function(){
     $scope.candidato.endereco = $scope.endereco;
     var msg = 'cadastrado com sucesso';
@@ -34,9 +86,7 @@ angular.module('iguassuApp')
       $document.scrollTopAnimated(0, 700);
       $scope.init();
     });
-  };    
-
-
+  };
 
   $scope.openCurso = function(candidatoCurso) {
     
