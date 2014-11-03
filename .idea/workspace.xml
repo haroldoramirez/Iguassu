@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8fd9cdac-4d76-402e-87e5-7ce55a584879" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/images/candidatos/36" afterPath="$PROJECT_DIR$/src/main/webapp/app/images/candidatos/36" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/images/candidatos/72" afterPath="$PROJECT_DIR$/src/main/webapp/app/images/candidatos/72" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Candidato.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Candidato.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerCandidato.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerCandidato.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceCandidato.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceCandidato.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/app.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/candidato/candidato.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/candidato/candidato.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/controllers/candidato.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/controllers/candidato.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/candidato/candidato_dados.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/candidato/candidato_dados.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/candidato/candidato_ferramentas.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/candidato/candidato_ferramentas.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/services/createaddress.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/services/createaddress.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/empresa/empresa.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/empresa/empresa.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/controllers/empresa.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/controllers/empresa.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/encaminhamento/encaminhamento.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/encaminhamento/encaminhamento.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/candidato/foto.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/candidato/foto.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/controllers/foto.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/controllers/foto.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/index.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/vaga/vaga.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/vaga/vaga.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="8fd9cdac-4d76-402e-87e5-7ce55a584879" name="Default" comment="" />
     <ignored path="Iguassu.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
