@@ -1,22 +1,16 @@
 package br.com.emanuelvictor.iguassu.web.controller;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-
-import br.com.emanuelvictor.iguassu.web.service.ServiceUsuario;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import br.com.emanuelvictor.iguassu.web.entity.Lancamento;
 import br.com.emanuelvictor.iguassu.web.service.ServiceLancamento;
-//TODO
+import br.com.emanuelvictor.iguassu.web.service.ServiceUsuario;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
+
 @Controller
 public class ControllerLancamento {
 
@@ -41,7 +35,13 @@ public class ControllerLancamento {
 	@RequestMapping(value = "/lancamentos", method = RequestMethod.GET)
 	public @ResponseBody Object find() {
         return serviceLancamento.find();
-	}
+	};
+
+    @RequestMapping(value = "/lancamentos/{pagina}", method = RequestMethod.POST)
+    public @ResponseBody Object find(@RequestBody(required = false) Date [] datas,
+                                     @PathVariable Integer pagina) {
+        return serviceLancamento.find(datas[0], datas[1], datas[2], new PageRequest(pagina,5));
+    }
 
 
 

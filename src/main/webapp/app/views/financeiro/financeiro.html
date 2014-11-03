@@ -1,55 +1,141 @@
-<div class="view" ng-init="init()">
-
-  <div class="pull-right">
+  <div  class="pull-right">
     <a href="" class="btn btn-primary"
        data-ng-click="openLancamento()">Adicionar Lançamento
     </a>
   </div>
-    <h1>Lançamentos</h1>
-    <hr>
-    <div class="list-group">
-      <a data-ng-repeat="lancamento in lancamentos" href="" ng-click="openLancamento(lancamento)" class="list-group-item">
-        <div>
-          <strong>Código: </strong><small>{{lancamento.id}},</small>
-          <strong>Data de cadastro: </strong><small>{{lancamento.dataDeCadastro|date:'dd/MM/yyyy'}},</small>
-          <strong>Data de vencimento: </strong><small>{{lancamento.dataDeVencimento|date:'dd/MM/yyyy'}}</small>
-          <strong ng-if="lancamento.dataDePagamento">, Data de pagamento: </strong><small ng-if="lancamento.dataDePagamento">{{lancamento.dataDePagamento|date:'dd/MM/yyyy'}}</small>
-        </div>
+
+  <h1 ng-init="init()">Lançamentos</h1>
+  <hr>
+
+  <div class="row">
+    <div class="col-md-3">
+      <label class="control-label">Data</label>
+      <div ng-show="data" class="pull-right">
+        <a class="glyphicon glyphicon-remove" data-ng-click="data=null;"></a>
+      </div>
+      <p class="input-group">
+        <input  type="text" class="form-control" datepicker-popup="dd/MM/yyyy"
+                ng-model="data" is-open="openedDate"
+                show-button-bar="false" ng-required="true" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="openDatePickerDate($event)">
+            <i class="glyphicon glyphicon-calendar"></i>
+          </button>
+        </span>
+      </p>
+    </div>
+
+    <div class="col-md-3">
+      <label class="control-label">Data de vencimento</label>
+      <div ng-show="dataDeVencimento" class="pull-right">
+        <a class="glyphicon glyphicon-remove" data-ng-click="dataDeVencimento=null;"></a>
+      </div>
+      <p class="input-group">
+        <input  type="text" class="form-control" datepicker-popup="dd/MM/yyyy"
+                ng-model="dataDeVencimento" is-open="openedDateVencimento"
+                show-button-bar="false" ng-required="true" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="openDatePickerDateVencimento($event)">
+            <i class="glyphicon glyphicon-calendar"></i>
+          </button>
+        </span>
+      </p>
+    </div>
+
+    <div class="col-md-3">
+      <label class="control-label">Data de pagamento</label>
+      <div ng-show="dataDePagamento" class="pull-right">
+        <a class="glyphicon glyphicon-remove" data-ng-click="dataDePagamento=null;"></a>
+      </div>
+      <p class="input-group">
+        <input  type="text" class="form-control" datepicker-popup="dd/MM/yyyy"
+                ng-model="dataDePagamento" is-open="openedDatePagamento"
+                show-button-bar="false" ng-required="true" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="openDatePickerDatePagamento($event)">
+            <i class="glyphicon glyphicon-calendar"></i>
+          </button>
+        </span>
+      </p>
+    </div>
+    
+    
+
+    <div class="col-md-3">
+      <div class="pull-right">
+        <!-- <div class="btn-toolbar" role="toolbar"> -->
+        <br><button type="button" ng-click="init()" class="btn btn-default">Limpar <i class="glyphicon glyphicon-file"></i></button><!-- </div> 
+          <!-- <div class="btn-group"> --><button type="button" ng-click="search()" class="btn btn-primary">Consultar <i class="glyphicon glyphicon-search"></i></button><!-- </div> -->
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+
+
+  <div class="list-group">
+    <a data-ng-repeat="lancamento in lancamentos" href="" ng-click="openLancamento(lancamento)" class="list-group-item">
+      <div>
+        <strong>Código: </strong>{{lancamento.id}}
+        (<small>Data de cadastro</small> {{lancamento.dataDeCadastro|date:'dd/MM/yyyy'}}<small>, data de vencimento</small> {{lancamento.dataDeVencimento|date:'dd/MM/yyyy'}}
+           <span data-ng-show="lancamento.dataDePagamento"><small>, Pago em: </small>{{lancamento.dataDePagamento|date:'dd/MM/yyyy'}}</span>)
+      </div>
+      <div class="pull-right">
         <div class="pull-right">
           <span class="label" ng-class="class(lancamento)" data-ng-if="lancamento.tipoLancamento==='ENTRADA'">+ {{lancamento.valor | currency:"RS$ "}}</span>
           <span class="label" ng-class="class(lancamento)" data-ng-if="lancamento.tipoLancamento==='SAIDA'">- {{lancamento.valor | currency:"RS$ "}}</span>
         </div>
         <div>
-          <strong>Usuario: </strong><small>{{lancamento.usuario.login}},</small>
-          <strong ng-if="lancamento.pessoa.id">Pessoa: </strong><small>{{lancamento.pessoa.nome}},</small>
-          <strong>Descricao: </strong><small>{{lancamento.descricao}}</small>
+          <strong>Usuário: </strong>{{lancamento.usuario.login}}
         </div>
-        <!-- (<small>De</small> {{lancamento.dataInicio|date:'dd/MM/yyyy'}} <small>até</small> {{lancamento.dataTermino|date:'dd/MM/yyyy'}}
-           <span class="label label-warning"
-                   data-ng-show="!lancamento.dataTermino">atuando</span>) -->
-        <!-- <ul>
-          <li data-ng-if="lancamento.vinculoEmpregaticio">
-            <strong>Vínculo:&nbsp</strong>  
-            {{lancamento.vinculoEmpregaticio}}
-          </li>
-          <li data-ng-if="lancamento.cargo.descricao">
-            <strong>Descrição do cargo:&nbsp</strong>
-            {{lancamento.cargo.descricao}}
-          </li>
-          <li data-ng-show="lancamento.empresa">
-            <strong>Empresa:&nbsp</strong>
-            {{lancamento.empresa.nome}}
-          </li>
-          <li data-ng-show="lancamento.atividades">
-            <strong>Atividades Desenvolvidas:&nbsp</strong>
-            {{lancamento.atividades}}
-          </li>
-          <li data-ng-show="lancamento.observacoes">
-            <strong>Observações:&nbsp</strong>
-            {{lancamento.observacoes}}
-          </li>
-        </ul> -->
-      </a>
-    </div>
+      </div>
 
-</div>
+      <ul>
+        <li data-ng-if="lancamento.pessoa.id">
+          <strong>Vínculo á </strong>
+          {{lancamento.pessoa.nome}}
+        </li>
+        <li data-ng-if="lancamento.descricao">
+          <strong>Descrição: </strong>
+          {{lancamento.descricao}}
+        </li>
+        <li data-ng-show="experiencia.empresa">
+          <strong>Empresa:&nbsp</strong>
+          {{experiencia.empresa.nome}}
+        </li>
+        <li data-ng-show="experiencia.atividades">
+          <strong>Atividades Desenvolvidas:&nbsp</strong>
+          {{experiencia.atividades}}
+        </li>
+        <li data-ng-show="experiencia.observacoes">
+          <strong>Observações:&nbsp</strong>
+          {{experiencia.observacoes}}
+        </li>
+      </ul>
+      
+      <!-- (<small>De</small> {{lancamento.dataInicio|date:'dd/MM/yyyy'}} <small>até</small> {{lancamento.dataTermino|date:'dd/MM/yyyy'}}
+         <span class="label label-warning"
+                 data-ng-show="!lancamento.dataTermino">atuando</span>) -->
+      <!-- <ul>
+        <li data-ng-if="lancamento.vinculoEmpregaticio">
+          <strong>Vínculo:&nbsp</strong>  
+          {{lancamento.vinculoEmpregaticio}}
+        </li>
+        <li data-ng-if="lancamento.cargo.descricao">
+          <strong>Descrição do cargo:&nbsp</strong>
+          {{lancamento.cargo.descricao}}
+        </li>
+        <li data-ng-show="lancamento.empresa">
+          <strong>Empresa:&nbsp</strong>
+          {{lancamento.empresa.nome}}
+        </li>
+        <li data-ng-show="lancamento.atividades">
+          <strong>Atividades Desenvolvidas:&nbsp</strong>
+          {{lancamento.atividades}}
+        </li>
+        <li data-ng-show="lancamento.observacoes">
+          <strong>Observações:&nbsp</strong>
+          {{lancamento.observacoes}}
+        </li>
+      </ul> -->
+    </a>
+  </div>

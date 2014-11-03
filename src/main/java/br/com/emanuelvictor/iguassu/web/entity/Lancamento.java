@@ -24,6 +24,7 @@ public class Lancamento extends SpringData<Long> {
     @Temporal(TemporalType.DATE)
     private Calendar dataDeCadastro = Calendar.getInstance();
 
+    @Column(nullable = true)
 	@Temporal(TemporalType.DATE)
 	private Calendar dataDePagamento;
 

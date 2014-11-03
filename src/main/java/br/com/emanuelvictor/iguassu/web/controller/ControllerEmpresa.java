@@ -49,7 +49,7 @@ public class ControllerEmpresa {
         return serviceEmpresa.find(new PageRequest(0, 30, Sort.Direction.DESC, "dataDeCadastro"));
     }
 
-	@RequestMapping(value = "/empresas/{inicio}/{fim}/{order}", method = RequestMethod.GET)
+	@RequestMapping(value = "/empresas/{pagina}/{orderBy}", method = RequestMethod.GET)
 	public @ResponseBody Object find(@RequestParam(required = false) String nome,
                                      @RequestParam(required = false) String CNPJ,
                                      @RequestParam(required = false) String rua,
@@ -60,7 +60,7 @@ public class ControllerEmpresa {
                                      @RequestParam(required = false) Long idCidade,
                                      @RequestParam(required = false) Long idEstado,
                                      @RequestParam(required = false) Long idPais,
-                                     @PathVariable Integer inicio, @PathVariable Integer fim, @PathVariable String order) {
+                                     @PathVariable Integer pagina, @PathVariable String orderBy) {
 
 		complemento = Converter.enconding(complemento);
 		nome = Converter.enconding(nome);
@@ -75,7 +75,7 @@ public class ControllerEmpresa {
         empresa.getEndereco().setComplemento(complemento);
         empresa.getEndereco().setRua(rua);
 
-    return serviceEmpresa.find(empresa, idBairro, idCidade, idEstado, idPais, new PageRequest(inicio, fim, Sort.Direction.ASC, order));
+    return serviceEmpresa.find(empresa, idBairro, idCidade, idEstado, idPais, new PageRequest(pagina,20 , Sort.Direction.ASC, orderBy));
 
 
 	}

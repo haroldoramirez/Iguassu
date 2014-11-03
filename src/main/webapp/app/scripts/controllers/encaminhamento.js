@@ -28,6 +28,8 @@ angular.module('iguassuApp')
 	    $scope.getVagas();
 	  };
 
+	  // console.log($scope.encaminhamento);
+
 	  $scope.save = function(){
 	    var msg = 'Encaminhamento cadastrado com sucesso';
 	    if($scope.encaminhamento.id){

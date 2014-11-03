@@ -8,13 +8,45 @@
  * Controller of the iguassuApp
  */
 angular.module('iguassuApp')
-  .controller('FinanceiroCtrl', function ($scope, Financeiro, $modal) {
+  .controller('FinanceiroCtrl', function ($scope, Financeiro, $modal, $location) {
     
+
     $scope.init = function(){
-    	Financeiro.getAll(function(data){
-				$scope.lancamentos = data;
-			});
+    	$scope.data = new Date();
+    	$scope.dataDeVencimento = null;
+    	$scope.dataDePagamento = null;
+    	var datas = [];
+    	datas[0] = $scope.data;
+    	datas[1] = $scope.dataDeVencimento;
+    	datas[2] = $scope.dataDePagamento;
+    	Financeiro.query({pagina: 0}, datas, function(data){
+  			$scope.lancamentos = data;
+  			console.log(data);
+    	});
     };
+
+    $scope.openDatePickerDate = function($event) {
+      $event.preventDefault();
+	    $event.stopPropagation();   
+	    $scope.openedDate = !$scope.openedDate;
+	  };
+
+
+	  $scope.openDatePickerDateVencimento = function($event) {
+      $event.preventDefault();
+	    $event.stopPropagation();   
+	    $scope.openedDateVencimento = !$scope.openedDateVencimento;
+	  };
+
+	  $scope.openDatePickerDatePagamento = function($event) {
+      $event.preventDefault();
+	    $event.stopPropagation();   
+	    $scope.openedDatePagamento = !$scope.openedDatePagamento;
+	  };
+
+	  $scope.clear = function($event) {
+      $location.path('/financeiro');
+	  };
 
     $scope.class = function(lancamento){
     	if ($scope.today>lancamento.dataDeVencimento&&!lancamento.dataDeVencimento) {
@@ -25,6 +57,17 @@ angular.module('iguassuApp')
     	}else{
     		return 'label-success';
     	};
+    };
+
+    $scope.search = function(){
+    	var datas = [];
+    	datas[0] = $scope.data;
+    	datas[1] = $scope.dataDeVencimento;
+    	datas[2] = $scope.dataDePagamento;
+    	Financeiro.query({pagina: 0}, datas, function(data){
+  			$scope.lancamentos = data;
+  			console.log(data);
+    	});
     };
     
 		$scope.openLancamento = function(lancamento) {

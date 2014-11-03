@@ -52,7 +52,7 @@ angular.module('iguassuApp')
       });
     }else {
       Empresa.query({nome: $scope.empresa.nome, CNPJ: $scope.empresa.cnpj, 
-                     order: $scope.order, pagina: $scope.pagina, paginas:20}, function(data){
+                     order: $scope.order, pagina: $scope.pagina}, function(data){
         $scope.empresas = data;
       });
     };
@@ -66,7 +66,7 @@ angular.module('iguassuApp')
   $scope.next = function(){
     $scope.pagina = $scope.pagina + 1;
     Empresa.query({nome: $scope.empresa.nome, CNPJ: $scope.empresa.cnpj, 
-      order: $scope.order, pagina: $scope.pagina, paginas:20}, function(data){
+      order: $scope.order, pagina: $scope.pagina}, function(data){
       if (data.length===0) {
         $scope.pagina = $scope.pagina - 1;
       }else{
@@ -78,7 +78,7 @@ angular.module('iguassuApp')
   $scope.older = function(){
     $scope.pagina = $scope.pagina - 1;
     Empresa.query({nome: $scope.empresa.nome, CNPJ: $scope.empresa.cnpj, 
-      order: $scope.order, pagina: $scope.pagina, paginas:20}, function(data){
+      order: $scope.order, pagina: $scope.pagina}, function(data){
       $scope.empresas = data;
     });
   }
@@ -89,7 +89,7 @@ angular.module('iguassuApp')
     // $scope.endereco.cidade = null;
     // $scope.endereco.bairro = null;
     // $scope.endereco = null;
-$scope.endereco = {};
+    $scope.endereco = {};
     $scope.getPaises();
     $scope.empresa = {};
     // $scope.empresa.id = null;

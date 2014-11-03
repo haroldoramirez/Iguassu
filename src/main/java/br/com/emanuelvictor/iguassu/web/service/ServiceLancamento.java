@@ -3,9 +3,13 @@ package br.com.emanuelvictor.iguassu.web.service;
 import br.com.emanuelvictor.iguassu.web.entity.Lancamento;
 import br.com.emanuelvictor.iguassu.web.repository.DAOLancamento;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -27,6 +31,28 @@ public class ServiceLancamento {
 	public List<Lancamento> find() {
 		return daoLancamento.findAll();
 	}
+
+    public List<Lancamento> find(Date data, Date dataDeVencimento, Date dataDePagamento, PageRequest pageRequest) {
+        Calendar calendarData =  null;
+        Calendar calendarDataDeVencimento =  null;
+        Calendar calendarDataDePagamento =  null;
+        if (data!=null){
+            calendarData = Calendar.getInstance();
+            calendarData.setTime(data);
+            System.out.println(new SimpleDateFormat().format(calendarData.getTime()));
+            System.out.println(new SimpleDateFormat().format(data));
+        }
+        if (dataDeVencimento!=null){
+            calendarDataDeVencimento = Calendar.getInstance();
+            calendarDataDeVencimento.setTime(dataDeVencimento);
+        }
+        if (dataDePagamento!=null){
+            calendarDataDePagamento = Calendar.getInstance();
+            calendarDataDePagamento.setTime(dataDePagamento);
+        }
+
+        return daoLancamento.query(calendarData, calendarDataDeVencimento, calendarDataDePagamento, pageRequest);
+    }
 
 	public Lancamento find(Long id) {
 		return daoLancamento.findOne(id);
