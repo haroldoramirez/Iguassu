@@ -56,8 +56,10 @@ angular.module('iguassuApp').directive('fileModel', ['$parse', function ($parse)
     if ($routeParams.id) {
       Candidato.get({id: $routeParams.id}, function(data){
         $scope.candidato = data;
-        $scope.candidato.pathFoto = 'home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/images/candidatos/36';
+        $scope.url = 'Iguassu/app'+$scope.candidato.pathFoto;
+        console.log($scope.url);
         $scope.endereco = createAddress.desformateEndereco(data.endereco);
+
       });
       $scope.cursosDoCandidato = Candidato.getCursos({id: $routeParams.id});
       $scope.experienciasDoCandidato = Candidato.getExperiencias({id: $routeParams.id});

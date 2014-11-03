@@ -17,7 +17,6 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.file.FileSystems;
-import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -37,23 +36,12 @@ public class ControllerCandidato {
 		return this.serviceCandidato.save(candidato, lancamento);
 	}
 
-    @RequestMapping(value = "/app/candidatos/foto/{id}", method = RequestMethod.POST)
-    public String upload(@PathVariable Long id, MultipartHttpServletRequest request) {
-        System.out.print("fasd");
+    @RequestMapping(value = "/app/candidatos/foto", method = RequestMethod.POST)
+    public void uploadFoto(@RequestParam("id") String id, @RequestParam("file") MultipartFile file) {
 
-        Iterator<String> itr=request.getFileNames();
-
-        MultipartFile multiPartFile=request.getFile(itr.next());
-//        try{
-//            multiPartFile = (MultipartFile) file;
-//        }catch (Exception e){
-//            e.printStackTrace();
-//            return null;
-//        }
-
-        if (!multiPartFile.isEmpty()) {
+        if (!file.isEmpty()) {
             try {
-                byte[] bytes = multiPartFile.getBytes();
+                byte[] bytes = file.getBytes();
 
                 // Creating the directory to store file
                 String rootPath = "/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/images"/*System.getProperty("catalina.base")*/;
@@ -70,19 +58,18 @@ public class ControllerCandidato {
                 stream.write(bytes);
                 stream.close();
 
+                Candidato candidato = this.serviceCandidato.find(Long.parseLong(id));
+
+                candidato.setPathFoto(serverFile.getAbsolutePath());
+
+                this.serviceCandidato.save(candidato);
+
                 System.out.print("Server File Location="
                         + serverFile.getAbsolutePath());
-                return "redirect:#/candidatos";
-//                return "You successfully uploaded file=" + name;
             } catch (Exception e) {
-                return "You failed to upload " + id + " => " + e.getMessage();
+                e.printStackTrace();
             }
-        } else {
-            return "redirect:#/candidatos";
-//            return "You failed to upload " + name
-//                    + " because the file was empty.";
         }
-//        return "redirect:#/candidatos";
     }
 
 

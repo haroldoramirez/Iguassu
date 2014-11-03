@@ -6,13 +6,12 @@
       <div ng-if="candidato.id" class="col-md-3">
           <div class="thumbnail">
               <a href="" data-ng-click="goToPhoto()" class="thumbnail">
-                <img src="{{candidato.pathFoto}}">
+                <img src="Iguassu/app{{candidato.pathFoto}}">
               </a>
-            <input type="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
-            <button ng-click="uploadFile()" class="btn btn-primary">Enviar</button>
-            <!-- <form ng-submit="pushPhoto()" name="uploadForm" enctype="multipart/form-data">
-              <input type="file" name="file" id="file" file-model="fileToUpload">
-              <input name="somethingINeed" type="submit" class="btn btn-primary" value="Enviar">
+            <!-- <form method="POST" action="candidatos/foto" enctype="multipart/form-data">
+              Escolher o arquivo <input type="file" name="file">
+              <input type="hidden" name="name" ng-model="id" ng-value="id">
+              <input type="submit" value="Enviar"> Enviar
             </form> -->
           </div>
       </div>
