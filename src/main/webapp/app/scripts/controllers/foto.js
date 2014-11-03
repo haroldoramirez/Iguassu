@@ -8,13 +8,29 @@
  * Controller of the iguassuApp
  */
 angular.module('iguassuApp')
-  .controller('FotoCtrl', function ($scope, $routeParams, $location) {
-    $scope.id = $routeParams.id;
-    console.log($scope.id);
-    $scope.getFoto = function(id){
-    	console.log('FUNCIONOU');
-    	$location.path('/candidatos');
+  .controller('FotoCtrl', function ($scope, $routeParams, $upload, $location, $timeout, fileUpload) {
+    $scope.onFileSelect = function($files) {
+    for (var i = 0; i < $files.length; i++) {
+      var file = $files[i];
+      $scope.upload = $upload.upload({
+        url: 'candidatos/'+$routeParams.id+'/foto',
+        file: file,
+      }).progress(function(evt) {
+        console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+      }).success(function(data, status, headers, config) {
+        console.log(data);
+         $location.absUrl() == 'http://http://localhost:8080/Iguassu/app/#/candidatos/' + $routeParams.id;
+        $location.url('/candidatos/' + $routeParams.id);
+      }); 
     }
+  };
+
+    // $scope.uploadFile = function(){
+    //   var file = $scope.myFile;
+    //   console.log('file is ' + JSON.stringify(file) + ' ' + $routeParams.id);
+    //   var uploadUrl = 'candidatos/'+$routeParams.id+'/foto';
+    //   fileUpload.uploadFileToUrl(file, uploadUrl);
+    // };
   }).directive('fileModel', ['$parse', function ($parse) {
     return {
         restrict: 'A',
@@ -35,7 +51,7 @@ angular.module('iguassuApp')
         fd.append('file', file);
         $http.post(uploadUrl, fd, {
             transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
+            headers: {'Content-Type': 'multipart/form-data'}
         })
         .success(function(){
         })

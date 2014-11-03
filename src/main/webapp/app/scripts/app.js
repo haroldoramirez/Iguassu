@@ -20,7 +20,7 @@ angular
           'toastr',
           'duScroll',
           'ui.bootstrap',
-          'angularFileUpload',
+          'angularFileUpload'
  ]).config(function($routeProvider,toastrConfig) {
    $routeProvider
      .when('/candidatos', {

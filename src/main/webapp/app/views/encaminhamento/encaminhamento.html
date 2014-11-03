@@ -31,21 +31,28 @@
 		</div>
 	</div>
 
-	<br/>
+	<nav>
+    <ul class="pager">
+      <li ng-if="pagina>=1" class="previous"><a ng-click="older()" href="" >&larr; Anterior</a></li>
+      <li ng-if="encaminhamentos.length>0" class="next"><a ng-click="next()" href="">Próximo &rarr;</a></li>
+    </ul>
+  </nav>
 	
 	<table class="table table-hover">
 		<tr>
-			<th>Cargo</th>
-			<th>Empresa</th>
+			<th><a href="" ng-click="order = 'id'; search()">Código</a></th>
+			<th><a href="" ng-click="order = 'salario'; search()">Salário</a></th>
 			<th>Candidato</th>
-			<th>Salário</th>
-			<th>Situação</th>
+			<th>Em andamento</th>
+			<th>Sucesso</th>
+			<th>Falha</th>
 		</tr>
 		<tr data-ng-click="edit(encaminhamento);" data-ng-repeat="encaminhamento in encaminhamentos">
-			<td>{{encaminhamento.vaga.cargo.nome}}</td>
-			<td>{{encaminhamento.vaga.empresa.nome}}</td>
+			<td>{{encaminhamento.id}}</td>
 			<td>{{encaminhamento.candidato.nome}}</td>
 			<td>{{encaminhamento.vaga.salario}}</td>
-			<td>{{encaminhamento.situacao}}</td>
+			<td><span class="label label-warning" ng-if="encaminhamento.situacao==='ANDAMENTO'">Em andamento</span></td>
+			<td><span class="label label-success" ng-if="encaminhamento.situacao==='SUCESSO'">Sucesso</span></td>
+			<td><span class="label label-danger" ng-if="encaminhamento.situacao==='FALHA'">Falha</span></td>
 		</tr>
 	</table>

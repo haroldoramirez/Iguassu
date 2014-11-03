@@ -5,9 +5,10 @@
     <div class="row">
       <div ng-if="candidato.id" class="col-md-3">
           <div class="thumbnail">
-              <a href="" data-ng-click="goToPhoto()" class="thumbnail">
-                <img src="Iguassu/app{{candidato.pathFoto}}">
+              <a href="" ng-click="goToPhoto()" class="thumbnail" >
+                <img ng-src="{{url}}" >
               </a>
+              <input type="file" ng-file-select="onFileSelect($files)">
             <!-- <form method="POST" action="candidatos/foto" enctype="multipart/form-data">
               Escolher o arquivo <input type="file" name="file">
               <input type="hidden" name="name" ng-model="id" ng-value="id">

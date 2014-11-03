@@ -36,7 +36,7 @@ angular.module('iguassuApp')
            if (endereco.pais) enderecoResult.bairro.cidade.estado.pais = endereco.pais; 
           };
           if (enderecoResult.bairro.id===null){
-            return null
+            return {}
           } else{
             return enderecoResult;  
           }
@@ -66,8 +66,8 @@ angular.module('iguassuApp')
             }  
           }
         };
-        if (enderecoResult.bairro.id===null){
-          return null
+        if (enderecoResult.bairro===null){
+          return {}
         } else{
           return enderecoResult;  
         }

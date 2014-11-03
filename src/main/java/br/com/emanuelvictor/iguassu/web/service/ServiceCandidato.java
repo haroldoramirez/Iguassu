@@ -57,6 +57,7 @@ public class ServiceCandidato {
                     this.daoLancamento.save(lancamentoAux);
                 }
             }
+            candidato.setDataDeContrato(Calendar.getInstance());
             return daoCandidato.save(candidato);
         }else{
             candidato.setSituacao(this.daoCandidato.findOne(candidato.getId()).getSituacao());

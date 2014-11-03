@@ -1,65 +1,36 @@
 'use strict';
 
-angular.module('iguassuApp').directive('fileModel', ['$parse', function ($parse) {
-    return {
-        restrict: 'A',
-        link: function(scope, element, attrs) {
-            var model = $parse(attrs.fileModel);
-            var modelSetter = model.assign;
-            
-            element.bind('change', function(){
-                scope.$apply(function(){
-                    modelSetter(scope, element[0].files);
-                });
-            });
-        }
-    };
-}]).service('fileUpload', ['$http', function ($http) {
-    this.uploadFileToUrl = function(file,  uploadUrl){
-        var fd = new FormData();
-        fd.append('file', file);
-        $http.post(uploadUrl, {file:file}, {
-            transformRequest: angular.identity,
-            headers: {'Content-Type':'multipart/form-data'}
-        })
-        .success(function(){
-        })
-        .error(function(){
-        });
-    }
-}]).controller('CandidatoCtrl', function ($rootScope, $log, $http, $modal, $scope, $routeParams, $document, $location, Candidato, Pais, toastr, createAddress, fileUpload) {
+angular.module('iguassuApp')
+.controller('CandidatoCtrl', function ($rootScope, $timeout, $log, $http, $upload, $modal, $scope, $routeParams, $document, $location, Candidato, Pais, toastr, createAddress, fileUpload) {
 
-  $scope.myFile = {};
-
-//   var formData=new FormData();
-// formData.append("file",file.files[0]);
-
-
-  $scope.uploadFile = function(files){
-
-    var file = files[0];
-    console.log('file is ' + file);
-    var uploadUrl = 'candidatos/foto/'+$scope.candidato.id;
-
-    $http.post(uploadUrl, files, {
-        transformRequest: angular.identity,
-        headers: {'Content-Type':'multipart/form-data'}
-    }).success(function(){
-
-    }).error(function(){
-
-    });
-    // fileUpload.uploadFileToUrl(file, uploadUrl);
-  };
+  $scope.endereco = {};
   
+  $scope.onFileSelect = function($files) {
+    var test;
+    for (var i = 0; i < $files.length; i++) {
+      var file = $files[i];
+      $scope.upload = $upload.upload({
+        url: 'candidatos/'+$routeParams.id+'/foto',
+        file: file,
+      }).progress(function(evt) {
+        console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+      }).success(function(data, status, headers, config) {
+        toastr.success('Atualize a página para conferir a nova foto','Foto atualizada com sucesso');
+        $scope.candidato.pathFoto = data.pathFoto;
+        $scope.url = 'Iguassu/app' + $scope.candidato.pathFoto;
+      }).error(function() {
+        toastr.error('Verifique se o arquivo é muito grande','Falha ao atualizar foto');
+      }); 
+    }
+  };
+
   $scope.init = function(){
     if ($routeParams.id) {
       Candidato.get({id: $routeParams.id}, function(data){
         $scope.candidato = data;
-        $scope.url = 'Iguassu/app'+$scope.candidato.pathFoto;
+        $scope.url = 'Iguassu/app' + $scope.candidato.pathFoto;
         console.log($scope.url);
         $scope.endereco = createAddress.desformateEndereco(data.endereco);
-
       });
       $scope.cursosDoCandidato = Candidato.getCursos({id: $routeParams.id});
       $scope.experienciasDoCandidato = Candidato.getExperiencias({id: $routeParams.id});
@@ -80,6 +51,7 @@ angular.module('iguassuApp').directive('fileModel', ['$parse', function ($parse)
     if($scope.candidato.id){
       msg = 'atualizado com sucesso';
     }
+    $rootScope.candidato.endereco =  createAddress.formateEndereco($scope.endereco);
     Candidato.save($scope.candidato, function(data){
       $rootScope.candidato = data;
       $location.path('/candidatos/'+$scope.candidato.id);

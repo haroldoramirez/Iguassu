@@ -5,6 +5,8 @@ import javax.persistence.*;
 import br.com.emanuelvictor.iguassu.web.entity.address.Pais;
 import br.com.emanuelvictor.iguassu.web.entity.base.PessoaFisica;
 
+import java.util.Calendar;
+
 @Entity
 public class Candidato extends PessoaFisica {
 
@@ -29,7 +31,19 @@ public class Candidato extends PessoaFisica {
     @Column(nullable = true, length = 200)
     private String observacoes;
 
-	public String getPathFoto() {
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = true)
+    protected Calendar dataDeContrato;// = Calendar.getInstance();
+
+    public Calendar getDataDeContrato() {
+        return dataDeContrato;
+    }
+
+    public void setDataDeContrato(Calendar dataDeContrato) {
+        this.dataDeContrato = dataDeContrato;
+    }
+
+    public String getPathFoto() {
 		return pathFoto;
 	}
 

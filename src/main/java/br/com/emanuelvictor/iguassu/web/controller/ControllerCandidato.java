@@ -36,9 +36,10 @@ public class ControllerCandidato {
 		return this.serviceCandidato.save(candidato, lancamento);
 	}
 
-    @RequestMapping(value = "/app/candidatos/foto", method = RequestMethod.POST)
-    public void uploadFoto(@RequestParam("id") String id, @RequestParam("file") MultipartFile file) {
+    @RequestMapping(value = "/app/candidatos/{id}/foto", method = RequestMethod.POST)
+    public @ResponseBody Candidato uploadFoto(@PathVariable("id") String id, @RequestPart("file") MultipartFile file) {
 
+        Candidato candidato = this.serviceCandidato.find(Long.parseLong(id));
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
@@ -58,8 +59,6 @@ public class ControllerCandidato {
                 stream.write(bytes);
                 stream.close();
 
-                Candidato candidato = this.serviceCandidato.find(Long.parseLong(id));
-
                 candidato.setPathFoto(serverFile.getAbsolutePath());
 
                 this.serviceCandidato.save(candidato);
@@ -69,7 +68,7 @@ public class ControllerCandidato {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
+        } return candidato;
     }
 
 

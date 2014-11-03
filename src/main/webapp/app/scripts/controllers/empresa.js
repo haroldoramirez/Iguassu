@@ -10,9 +10,9 @@
 angular.module('iguassuApp')
   .controller('EmpresaCtrl', function ($scope, $rootScope, $routeParams, $location, Empresa, $document, toastr, createAddress) {
 
- $scope.empresa = {};
+  $scope.empresa = {};
 
-$scope.endereco = {};
+  $scope.endereco = {};
 
   $scope.pagina = 0;
 
