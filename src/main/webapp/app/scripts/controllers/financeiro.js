@@ -24,6 +24,9 @@ angular.module('iguassuApp')
     	datas[2] = $scope.dataDePagamento;
     	Financeiro.query({pagina: 0}, datas, function(data){
   			$scope.lancamentos = data;
+  			Financeiro.queryTotal(datas, function(data){
+	  			$scope.total = data[0];
+	    	});
     	});
     };
 
@@ -76,7 +79,7 @@ angular.module('iguassuApp')
 	  }
 
     $scope.class = function(lancamento){
-    	if ($scope.today>lancamento.dataDeVencimento&&!lancamento.dataDeVencimento) {
+    	if ($scope.today>lancamento.dataDeVencimento&&!lancamento.dataDePagamento) {
     		return 'label-danger';
     	};
     	if (!lancamento.dataDePagamento) {
@@ -93,13 +96,24 @@ angular.module('iguassuApp')
     	datas[2] = $scope.dataDePagamento;
     	Financeiro.query({pagina: 0}, datas, function(data){
   			$scope.lancamentos = data;
-  			console.log(data);
+  			Financeiro.queryTotal(datas, function(data){
+	  			$scope.total = data[0];
+	    	});
     	});
     };
     
 		$scope.openLancamento = function(lancamento) {
-    	if (!lancamento.pessoa.genero) {
-	    		$modal.open({
+    	if (!lancamento.pessoa) {
+    		$scope.openModal(lancamento);
+    	}else if (!lancamento.pessoa.genero) {
+    		$scope.openModal(lancamento);
+		  }else{
+	  		toastr.error('Desbloqueie o candidato no menu \"Candidatos\", ou defina uma data de pagamento no menu \"Encaminhamento\"','Não pode editar um lançamento relacionado á um candidato');
+	  	};
+  	};
+
+  	$scope.openModal = function(lancamento){
+  		$modal.open({
 		      templateUrl : 'lancamento.html',
 		      controller : 'FinanceiroModalCtrl',
 		      size : 'md',
@@ -129,10 +143,7 @@ angular.module('iguassuApp')
 			  			console.log(data);
 			    	});
 		    });
-		  }else{
-	  		toastr.error('Desbloqueie o candidato no menu \"Candidatos\", ou defina uma data de pagamento no menu \"Encaminhamento\"','Não pode editar um lançamento relacionado á um candidato');
-	  	};
-  	};
+  	}
 	    
   }).controller('FinanceiroModalCtrl', function ($scope, $rootScope, Empresa, $modalInstance, bundle, $modal, Financeiro, toastr) {
         
@@ -148,23 +159,29 @@ angular.module('iguassuApp')
 
 	  $scope.save = function(){
 	  	if (!$scope.lancamento.pessoa.id) {
-				$scope.lancamento.pessoa = null;
-	  	};
-	  	if (!$scope.lancamento.id) {
+	  		$scope.lancamento.pessoa = null;
+	  	}/*else{
+	  		var id = $scope.lancamento.pessoa.id;
+	  		$scope.lancamento.pessoa = {};
+	  		$scope.lancamento.pessoa.id = id;
+	  	}*/;
+	  	$scope.lancamento.usuario = null;
+	  	console.log($scope.lancamento);
+	  	// if (!$scope.lancamento.id) {
 				Financeiro.save($scope.lancamento, function(data){
-		      toastr.success('Informações salvas com sucesso');
+					toastr.success('Informações salvas com sucesso');
 		      $scope.close();
 				}, function(){
 					toastr.error('Erro ao atualizar informaçẽos');
 				});
-	  	}else{
-	  		Financeiro.update({id:$scope.lancamento.id}, $scope.lancamento, function(data){
-		      toastr.success('Informações salvas com sucesso');
-		      $scope.close();
-		    }, function(error){
-		    	toastr.error('Erro ao atualizar informaçẽos');
-		    });
-	  	};
+	  	// }else{
+	  	// 	Financeiro.update({id:$scope.lancamento.id}, $scope.lancamento, function(data){
+		  //     toastr.success('Informações salvas com sucesso');
+		  //     $scope.close();
+		  //   }, function(error){
+		  //   	toastr.error('Erro ao atualizar informaçẽos');
+		  //   });
+	  	// };
 	    
 	  };
 

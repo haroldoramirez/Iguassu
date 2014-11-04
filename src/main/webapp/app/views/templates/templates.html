@@ -504,8 +504,8 @@
 	<div class="modal-body"> 
 		<form ng-submit="save()">
       
-      <div class="row">	      
-				<div class="col-md-12">     	
+            
+				  	
 	        <div class="form-group">
 	          <label class="control-label">Descrição <span class="obrigatorio">*</span> </label>
 	          <div ng-class="{'form-group has-error': !lancamento.descricao}">
@@ -523,9 +523,8 @@
 		          </div>
 		        </div>
 		      </div>
-        </div>
-
-	      <div class="col-md-6">
+	     
+	        
 	        <div class="form-group">
 	          <label class="control-label">Data de cadastro</label>
 	          <p class="input-group">
@@ -568,16 +567,15 @@
 			        </span>
 			      </p>
 	        </div>
-	      </div>
 
-		  
-		    <div class="col-md-6" >
+		  		  
 		      <div class="form-group">
 		        <label class="control-label">Usuário</label>
 		          <div class="controls">
 		            <input disabled data-ng-model="usuario.login" type="text" class="form-control">
 		          </div>
 		      </div>
+
 		      <div class="form-group">
 		        <label class="control-label">Tipo <span class="obrigatorio">*</span></label>
 		        <div ng-class="{'form-group has-error': !lancamento.tipoLancamento}">
@@ -589,35 +587,34 @@
 		          </div>
 		        </div>
 		      </div>
+
 		      <div class="form-group">
 		        <label class="control-label">Empresa </label>
-		        <div ng-show="lancamento.empresa.id" class="pull-right">
-			        <a class="glyphicon glyphicon-remove" data-ng-click="lancamento.empresa=null;"></a>
+		        <div class="pull-right">
+		        	<a class="glyphicon glyphicon-plus" href="/empresas"></a>
+			        <a ng-show="lancamento.pessoa.id" class="glyphicon glyphicon-remove" data-ng-click="lancamento.pessoa.id=null;"></a>
 			      </div>
-			        <div class="controls">
-			          <select class="form-control" data-ng-options="empresa.nome for empresa in empresas" 
-			          				data-ng-model="lancamento.empresa">
-			          				<option disabled value="">{{lancamento.empresa.nome}}</option>
-			          </select>
-		          </div>
+		        <div class="controls">
+		          <select class="form-control" data-ng-options="empresa.nome for empresa in empresas" 
+		          				data-ng-model="lancamento.pessoa">
+		          				<option disabled value="">{{lancamento.pessoa	.nome}}</option>
+		          </select>
+	          </div>
 		      </div>
-		    </div>
-		    <div class="col-md-12">
+
 			    <div class="btn-toolbar">
-	      		<a href="" class="btn btn-danger" ng-if="usuario.id&&!validaRemove()" ng-click="delete()">
+	      		<a href="" class="btn btn-danger" ng-if="lancamento.id" ng-click="delete()">
 	      			<span class="glyphicon glyphicon-trash"></span> Remover
       			</a>
 			      <div class="pull-right">
 			      	<button class="btn btn-default" ng-click="close()" type="button">Cancelar</button>
-			          <button class="btn btn-primary" 
-			                  data-ng-disabled="!lancamento.descricao||!lancamento.valor||!lancamento.dataDeVencimento||!lancamento.tipoLancamento" 
-			                  type="submit">Salvar informações
-			          </button>
+		          <button class="btn btn-primary" 
+		                  data-ng-disabled="!lancamento.descricao||!lancamento.valor||!lancamento.dataDeVencimento||!lancamento.tipoLancamento" 
+		                  type="submit">Salvar informações
+		          </button>
 		        </div>
 		      </div>
-	      </div>
-			    
-    </div>   		      
+			    	      
   </form>
 </div>
 </script>

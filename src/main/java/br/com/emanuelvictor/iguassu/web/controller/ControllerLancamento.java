@@ -21,7 +21,7 @@ public class ControllerLancamento {
 	ServiceLancamento serviceLancamento;
 
 	@RequestMapping(value = "/lancamentos", method = RequestMethod.POST)
-	public @ResponseBody Object salve(@RequestBody Lancamento lancamento) {
+	public @ResponseBody Object save(@RequestBody Lancamento lancamento) {
         lancamento.setUsuario(serviceUsuario.getCurrentUser());
 		return serviceLancamento.save(lancamento);
 	}
@@ -36,6 +36,12 @@ public class ControllerLancamento {
 	public @ResponseBody Object find() {
         return serviceLancamento.find();
 	};
+
+    @RequestMapping(value = "/lancamentos/total", method = RequestMethod.POST)
+    public @ResponseBody Double[] find(@RequestBody(required = false) Date [] datas) {
+        Double[] doubles = new Double[]{serviceLancamento.find(datas[0], datas[1], datas[2])};
+        return doubles;
+    }
 
     @RequestMapping(value = "/lancamentos/{pagina}", method = RequestMethod.POST)
     public @ResponseBody Object find(@RequestBody(required = false) Date [] datas,

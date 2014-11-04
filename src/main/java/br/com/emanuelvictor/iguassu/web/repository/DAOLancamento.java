@@ -31,6 +31,9 @@ public interface DAOLancamento extends JpaRepository<Lancamento, Long> {
     @Query("select l from Lancamento l WHERE ((l.dataDeCadastro =:dataDeCadastro or :dataDeCadastro is null) and (l.dataDeVencimento =:dataDeVencimento or :dataDeVencimento is null) and (l.dataDePagamento =:dataDePagamento or :dataDePagamento is null))")
 	public List<Lancamento> query(@Param("dataDeCadastro") Calendar dataDeCadastro, @Param("dataDeVencimento") Calendar dataDeVencimento, @Param("dataDePagamento") Calendar dataDePagamento, Pageable pageable);
 
+    @Transactional(readOnly = true)
+    @Query("select l from Lancamento l WHERE ((l.dataDeCadastro =:dataDeCadastro or :dataDeCadastro is null) and (l.dataDeVencimento =:dataDeVencimento or :dataDeVencimento is null) and (l.dataDePagamento =:dataDePagamento or :dataDePagamento is null))")
+    public List<Lancamento> query(@Param("dataDeCadastro") Calendar dataDeCadastro, @Param("dataDeVencimento") Calendar dataDeVencimento, @Param("dataDePagamento") Calendar dataDePagamento);
 //    @Transactional(readOnly = true)
 //    @Query("select l from Lancamento l WHERE (l.dataDeCadastro =:dataDeCadastro)")
 //    public List<Lancamento> testQuery(@Param("dataDeCadastro") Calendar dataDeCadastro, Pageable pageable);
