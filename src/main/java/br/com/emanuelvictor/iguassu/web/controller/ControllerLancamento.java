@@ -40,7 +40,7 @@ public class ControllerLancamento {
     @RequestMapping(value = "/lancamentos/{pagina}", method = RequestMethod.POST)
     public @ResponseBody Object find(@RequestBody(required = false) Date [] datas,
                                      @PathVariable Integer pagina) {
-        return serviceLancamento.find(datas[0], datas[1], datas[2], new PageRequest(pagina,5));
+        return serviceLancamento.find(datas[0], datas[1], datas[2], new PageRequest(pagina,20));
     }
 
 

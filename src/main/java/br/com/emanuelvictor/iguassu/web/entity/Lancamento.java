@@ -17,7 +17,7 @@ public class Lancamento extends SpringData<Long> {
 
 	private static final long serialVersionUID = -2120199211795566673L;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 2000)
 	private String descricao;
 
     @Column(nullable = false)
