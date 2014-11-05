@@ -1,10 +1,9 @@
 package br.com.emanuelvictor.iguassu.web.entity;
 
-import javax.persistence.*;
-
 import br.com.emanuelvictor.iguassu.web.entity.address.Pais;
 import br.com.emanuelvictor.iguassu.web.entity.base.PessoaFisica;
 
+import javax.persistence.*;
 import java.util.Calendar;
 
 @Entity
