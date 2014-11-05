@@ -6,6 +6,10 @@ import br.com.emanuelvictor.iguassu.web.entity.job.Experiencia;
 import br.com.emanuelvictor.iguassu.web.entity.schooling.CandidatoCurso;
 import br.com.emanuelvictor.iguassu.web.service.ServiceCandidato;
 import br.com.emanuelvictor.iguassu.web.service.ServiceUsuario;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -80,6 +84,24 @@ public class ControllerCandidato {
 	List<Candidato> find() {
 		return serviceCandidato.find();
 	}
+
+
+    @RequestMapping(value = "/candidatos/{id}/contrato", method = RequestMethod.GET)
+    public @ResponseBody String[] contratos(@PathVariable Long id) throws Exception{
+        Candidato candidato  =this.serviceCandidato.find(id);
+        Document document = new Document(PageSize.A4);
+        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/candidatos/Contrato_"+candidato.getNome()+".pdf"));
+        document.open();
+        document.add(new Paragraph("Contrato de "+ candidato.getNome()));
+        document.close();
+        //TODO GAMBIA
+        String[] reponses = new String[]{"/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/contrato_candidato_"+candidato.getNome()+".pdf"};
+//        reponses[0] = "/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/contrato_candidato_"+id+".pdf";
+//        return "redirect:/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/contrato_candidato_"+id+".pdf";
+        return reponses;
+    }
+
+
 
 	// ---- experiencias
 

@@ -1,7 +1,7 @@
 <div class="btn-toolbar" >
   <p class="pull-right">
-			<button ng-if="encaminhamento.id" class="btn btn-primary btn-sm" 
-							onclick="window.print(); return false;" 
+			<button ng-if="encaminhamento.id" class="btn btn-primary btn-sm"
+							ng-click="getContrato()" 
 							type="button" title="Clique para Imprimir ou pressione as teclas 'Ctrl + P'">
 							<span class="glyphicon glyphicon-print"></span>
 			</button>

@@ -1,5 +1,6 @@
 package br.com.emanuelvictor.iguassu.web.controller;
 
+import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -8,6 +9,10 @@ import java.util.List;
 import br.com.emanuelvictor.iguassu.web.entity.Lancamento;
 import br.com.emanuelvictor.iguassu.web.service.ServiceLancamento;
 import br.com.emanuelvictor.iguassu.web.service.ServiceUsuario;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,6 +42,19 @@ public class ControllerEncaminhamento {
         }
 		return this.serviceEncaminhamento.save(encaminhamento);
 	}
+
+    @RequestMapping(value = "/encaminhamentos/{id}/contrato", method = RequestMethod.GET)
+    public @ResponseBody String[] contrato(@PathVariable Long id) throws Exception{
+        Encaminhamento encaminhamento = this.serviceEncaminhamento.find(id);
+        Document document = new Document(PageSize.A4);
+        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_de_"+encaminhamento.getCandidato().getNome()+"_para_vaga_"+encaminhamento.getVaga().getId()+".pdf"));
+        document.open();
+        document.add(new Paragraph("Encaminhamento de "+ encaminhamento.getCandidato().getNome()));
+        document.close();
+        //TODO GAMBIA
+        String[] reponses = new String[]{"/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_de_"+encaminhamento.getCandidato().getNome()+"_para_vaga_"+encaminhamento.getVaga().getId()+".pdf"};
+        return reponses;
+    }
 
     @RequestMapping(value = "/encaminhamentos", method = RequestMethod.GET)
     public @ResponseBody Object find() {

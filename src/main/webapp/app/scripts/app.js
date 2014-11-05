@@ -29,9 +29,9 @@ angular
    }).when('/candidatos/:id', {
      controller : 'CandidatoCtrl',
      templateUrl : './views/candidato/candidato.html'
-   }).when('/candidatos/:id/foto', {
-     controller : 'FotoCtrl',
-     templateUrl : './views/candidato/foto.html'
+   }).when('/candidatos/:id/contrato', {
+     controller : 'ContratoCadastroCandidatoCtrl',
+     templateUrl : './views/contrato.html'
    }).when('/empresas', {
       controller : 'EmpresaCtrl',
       templateUrl : './views/empresa/empresa.html'
@@ -50,6 +50,9 @@ angular
    }).when('/encaminhamentos/:id', {
       controller : 'EncaminhamentoCtrl',
       templateUrl : './views/encaminhamento/encaminhamento.html'
+   }).when('/encaminhamentos/:id/contrato', {
+      controller : 'ContratoEncaminhamentoCtrl',
+      templateUrl : './views/contrato.html'
    }).when('/login', {
      controller : 'LoginCtrl',
      templateUrl : './views/login.html'

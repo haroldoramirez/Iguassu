@@ -28,7 +28,9 @@ angular.module('iguassuApp')
 	    $scope.getVagas();
 	  };
 
-	  // console.log($scope.encaminhamento);
+	  $scope.getContrato = function(){
+		  $location.path('/encaminhamentos/'+$routeParams.id+'/contrato');
+		};
 
 	  $scope.save = function(){
 	    var msg = 'Encaminhamento cadastrado com sucesso';

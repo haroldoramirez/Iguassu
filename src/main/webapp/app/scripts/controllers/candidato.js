@@ -1,12 +1,11 @@
 'use strict';
 
 angular.module('iguassuApp')
-.controller('CandidatoCtrl', function ($rootScope, $timeout, $log, $http, $upload, $modal, $scope, $routeParams, $document, $location, Candidato, Pais, toastr, createAddress, fileUpload) {
+.controller('CandidatoCtrl', function ($rootScope, $timeout, $log, $http, $upload, $modal, $scope, $routeParams, $document, $location, Candidato, Pais, toastr, createAddress) {
 
   $scope.endereco = {};
   
   $scope.onFileSelect = function($files) {
-    var test;
     for (var i = 0; i < $files.length; i++) {
       var file = $files[i];
       $scope.upload = $upload.upload({
@@ -41,8 +40,8 @@ angular.module('iguassuApp')
     $scope.getCandidatos();
   };
 
-  $scope.goToPhoto = function(){
-    $location.path('/candidatos/' + $scope.candidato.id + '/foto');
+  $scope.getContrato = function(){
+    $location.path('/candidatos/'+$routeParams.id+'/contrato');
   };
   
   $scope.save = function(){
@@ -61,6 +60,29 @@ angular.module('iguassuApp')
       $scope.init();
     });
   };
+
+  // $scope.openContrato = function() {
+  //   Candidato.getContrato({id: $routeParams.id}, function(data){
+  //     $rootScope.urlContratoCandidato = '/Iguassu' + data[0];
+  //     // console.log($scope.url);
+  //   });
+  //   $modal.open({
+  //     templateUrl : 'contrato_candidato.html',
+  //     controller : '',
+  //     size : 'md',
+  //     resolve : {
+  //      bundle : function() {
+  //         return {
+  //             url : $rootScope.urlContratoCandidato,
+  //         }
+  //       }
+  //     }
+  //   }).result.then(function() {
+  //       $rootScope.urlContratoCandidato = null;
+  //     }, function(){
+  //       $rootScope.urlContratoCandidato = null;  
+  //   });
+  // };
 
   $scope.openCurso = function(candidatoCurso) {
     

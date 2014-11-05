@@ -7,7 +7,7 @@
       <span class="glyphicon glyphicon-send"></span>
     </button>
     <button ng-if="candidato.id" class="btn btn-primary btn-sm"
-            onclick="window.print(); return false;"
+            ng-click="getContrato();"
             type="button"
             title="Clique para Imprimir ou pressione as teclas 'Ctrl + P'">
       <span class="glyphicon glyphicon-print"></span>
