@@ -37,9 +37,9 @@ public class Experiencia extends SpringData<Long> {
     @ManyToOne(optional = true)
 	private Empresa empresa;
 
-	@Column(length = 100)
+	@Column(length = 20000)
 	private String atividades;
-	@Column(length = 200)
+	@Column(length = 20000)
 	private String observacoes;
 
     @Enumerated(EnumType.STRING)

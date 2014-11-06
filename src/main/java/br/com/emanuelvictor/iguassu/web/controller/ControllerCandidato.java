@@ -90,12 +90,12 @@ public class ControllerCandidato {
     public @ResponseBody String[] contratos(@PathVariable Long id) throws Exception{
         Candidato candidato  =this.serviceCandidato.find(id);
         Document document = new Document(PageSize.A4);
-        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/candidatos/Contrato_"+candidato.getNome()+".pdf"));
+        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/candidatos/Contrato_"+candidato.getId()+".pdf"));
         document.open();
         document.add(new Paragraph("Contrato de "+ candidato.getNome()));
         document.close();
         //TODO GAMBIA
-        String[] reponses = new String[]{"/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/contrato_candidato_"+candidato.getNome()+".pdf"};
+        String[] reponses = new String[]{"/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/candidatos/Contrato_"+candidato.getId()+".pdf"};
 //        reponses[0] = "/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/contrato_candidato_"+id+".pdf";
 //        return "redirect:/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/contrato_candidato_"+id+".pdf";
         return reponses;

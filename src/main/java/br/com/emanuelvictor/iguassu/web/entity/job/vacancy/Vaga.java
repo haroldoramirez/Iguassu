@@ -29,7 +29,7 @@ public class Vaga extends BaseEntity {
 	@ManyToOne(optional = false)
 	private Cargo cargo;
 
-	@Column(length = 100)
+	@Column(length = 20000)
 	private String observacoes;
 
 	@Column(length = 50, nullable = false)

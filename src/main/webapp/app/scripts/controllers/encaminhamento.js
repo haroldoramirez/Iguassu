@@ -18,6 +18,9 @@ angular.module('iguassuApp')
 	      	$scope.oldStatus = data.situacao;
 	        $scope.encaminhamento = data;
 	        $scope.valor = $scope.encaminhamento.vaga.salario / 3;
+	        Encaminhamento.getContrato({id: $routeParams.id}, function(data){
+		        $scope.contrato = '/Iguassu' + data[0];
+		      });
 	      });
 	      $rootScope.openAll();
 	    }else{

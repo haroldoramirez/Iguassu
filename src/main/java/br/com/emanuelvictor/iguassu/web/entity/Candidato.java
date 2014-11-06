@@ -27,7 +27,7 @@ public class Candidato extends PessoaFisica {
     @ManyToOne(optional = true, cascade = CascadeType.REFRESH)
 	private Pais nacionalidade;
 
-    @Column(nullable = true, length = 200)
+    @Column(nullable = true, length = 20000)
     private String observacoes;
 
     @Temporal(TemporalType.TIMESTAMP)

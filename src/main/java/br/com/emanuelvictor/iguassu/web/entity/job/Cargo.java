@@ -18,7 +18,7 @@ public class Cargo extends SpringData<Long> {
 	@Column(nullable = false, length = 30, unique = true)
 	private String nome;
 
-	@Column(length = 100)
+	@Column(length = 20000)
 	private String descricao;
 
 	public String getNome() {

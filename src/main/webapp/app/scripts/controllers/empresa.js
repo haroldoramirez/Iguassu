@@ -33,9 +33,14 @@ angular.module('iguassuApp')
   $scope.save = function(){
     $scope.empresa.endereco = createAddress.formateEndereco($scope.endereco);
     console.log($scope.empresa);
+    if ($scope.empresa.cnpj == '') {
+      $scope.empresa.cnpj = null;
+    };
     Empresa.save($scope.empresa, function(data){
       toastr.success("Salvo com sucesso");
       $scope.clear();
+    }, function(){
+      toastr.error('Verifique se há dados inconsistentes ou se o CNPJ já esta cadastrado','Não foi possível salvar essas informações');
     });
   };    
 

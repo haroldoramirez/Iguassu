@@ -47,12 +47,12 @@ public class ControllerEncaminhamento {
     public @ResponseBody String[] contrato(@PathVariable Long id) throws Exception{
         Encaminhamento encaminhamento = this.serviceEncaminhamento.find(id);
         Document document = new Document(PageSize.A4);
-        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_de_"+encaminhamento.getCandidato().getNome()+"_para_vaga_"+encaminhamento.getVaga().getId()+".pdf"));
+        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_de_"+encaminhamento.getCandidato().getId()+"_para_vaga_"+encaminhamento.getVaga().getId()+".pdf"));
         document.open();
         document.add(new Paragraph("Encaminhamento de "+ encaminhamento.getCandidato().getNome()));
         document.close();
         //TODO GAMBIA
-        String[] reponses = new String[]{"/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_de_"+encaminhamento.getCandidato().getNome()+"_para_vaga_"+encaminhamento.getVaga().getId()+".pdf"};
+        String[] reponses = new String[]{"/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_de_"+encaminhamento.getCandidato().getId()+"_para_vaga_"+encaminhamento.getVaga().getId()+".pdf"};
         return reponses;
     }
 

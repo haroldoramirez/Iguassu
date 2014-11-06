@@ -1,10 +1,10 @@
 <div class="btn-toolbar" >
   <p class="pull-right">
-			<button ng-if="encaminhamento.id" class="btn btn-primary btn-sm"
-							ng-click="getContrato()" 
-							type="button" title="Clique para Imprimir ou pressione as teclas 'Ctrl + P'">
-							<span class="glyphicon glyphicon-print"></span>
-			</button>
+			<a 	ng-if="encaminhamento.id" class="btn btn-primary btn-sm"
+					ng-href="{{contrato}}" target="_blank"
+					type="button" title="Clique para Imprimir ou pressione as teclas 'Ctrl + P'">
+					<span class="glyphicon glyphicon-print"></span>
+			</a>
 			<button class="btn btn-default btn-sm" 
 							data-ng-click="isCollapsed = !isCollapsed" 
 							type="button" title="Opções de filtro">

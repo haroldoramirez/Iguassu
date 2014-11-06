@@ -32,7 +32,7 @@ public class Encaminhamento extends SpringData<Long> {
 	@Column(length = 100, nullable = false)
 	private SituacaoEncaminhamento situacao;
 
-	@Column(length = 100)
+	@Column(length = 20000)
 	private String observacoes;
 
 	@Temporal(TemporalType.TIMESTAMP)

@@ -39,6 +39,8 @@ angular.module('iguassuApp')
       toastr.success(msg);
       $document.scrollTopAnimated(0, 700);
       $scope.init();
+    }, function(){
+      toastr.error('Verifique se há dados inconsistentes','Não foi possível salvar essas informações');
     });
   };
   

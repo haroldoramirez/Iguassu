@@ -28,7 +28,9 @@ angular.module('iguassuApp')
       Candidato.get({id: $routeParams.id}, function(data){
         $scope.candidato = data;
         $scope.url = 'Iguassu/app' + $scope.candidato.pathFoto;
-        console.log($scope.url);
+        Candidato.getContrato({id: $routeParams.id}, function(data){
+          $scope.contrato = '/Iguassu' + data[0];
+        });
         $scope.endereco = createAddress.desformateEndereco(data.endereco);
       });
       $scope.cursosDoCandidato = Candidato.getCursos({id: $routeParams.id});
@@ -40,16 +42,19 @@ angular.module('iguassuApp')
     $scope.getCandidatos();
   };
 
-  $scope.getContrato = function(){
-    $location.path('/candidatos/'+$routeParams.id+'/contrato');
-  };
+  // $scope.getContrato = function(){
+  //   $location.path('/candidatos/'+$routeParams.id+'/contrato');
+  // };
   
   $scope.save = function(){
     $scope.candidato.endereco = $scope.endereco;
     var msg = 'cadastrado com sucesso';
     if($scope.candidato.id){
       msg = 'atualizado com sucesso';
-    }
+    };
+    if ($scope.candidato.cpf == '') {
+      $scope.candidato.cpf = null;
+    };
     $rootScope.candidato.endereco =  createAddress.formateEndereco($scope.endereco);
     Candidato.save($scope.candidato, function(data){
       $rootScope.candidato = data;
@@ -58,6 +63,8 @@ angular.module('iguassuApp')
       toastr.success(msg,$scope.candidato.nome);
       $document.scrollTopAnimated(0, 700);
       $scope.init();
+    }, function(){
+      toastr.error('Verifique se há dados inconsistentes ou se o CPF já esta cadastrado','Não foi possível salvar essas informações');
     });
   };
 
