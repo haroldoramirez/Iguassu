@@ -6,20 +6,14 @@ import br.com.emanuelvictor.iguassu.web.entity.job.Experiencia;
 import br.com.emanuelvictor.iguassu.web.entity.schooling.CandidatoCurso;
 import br.com.emanuelvictor.iguassu.web.service.ServiceCandidato;
 import br.com.emanuelvictor.iguassu.web.service.ServiceUsuario;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.List;
 
+//Camada responsável apenas pelas URL's
 @Controller
 public class ControllerCandidato {
 
@@ -39,37 +33,7 @@ public class ControllerCandidato {
 
     @RequestMapping(value = "/app/candidatos/{id}/foto", method = RequestMethod.POST)
     public @ResponseBody Candidato uploadFoto(@PathVariable("id") String id, @RequestPart("file") MultipartFile file) {
-
-        Candidato candidato = this.serviceCandidato.find(Long.parseLong(id));
-        if (!file.isEmpty()) {
-            try {
-                byte[] bytes = file.getBytes();
-
-                // Creating the directory to store file
-                String rootPath = "/home/emanuel/Projetos/Iguassu/src/main/webapp/app/images"/*System.getProperty("catalina.base")*/;
-                System.out.println(" path " + rootPath);
-                File dir = new File(rootPath + File.separator + "candidatos");
-                if (!dir.exists())
-                    dir.mkdirs();
-
-                // Create the file on server
-                File serverFile = new File(dir.getAbsolutePath()
-                        + File.separator + id);
-                BufferedOutputStream stream = new BufferedOutputStream(
-                        new FileOutputStream(serverFile));
-                stream.write(bytes);
-                stream.close();
-
-                candidato.setPathFoto(serverFile.getAbsolutePath());
-
-                this.serviceCandidato.save(candidato);
-
-                System.out.print("Server File Location="
-                        + serverFile.getAbsolutePath());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } return candidato;
+        return this.serviceCandidato.uploadPhoto(id, file);
     }
 
 
@@ -87,18 +51,8 @@ public class ControllerCandidato {
 
 
     @RequestMapping(value = "/candidatos/{id}/contrato", method = RequestMethod.GET)
-    public @ResponseBody String[] contratos(@PathVariable Long id) throws Exception{
-        Candidato candidato  =this.serviceCandidato.find(id);
-        Document document = new Document(PageSize.A4);
-        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/candidatos/Contrato_"+candidato.getId()+".pdf"));
-        document.open();
-        document.add(new Paragraph("Contrato de "+ candidato.getNome()));
-        document.close();
-        //TODO GAMBIA
-        String[] reponses = new String[]{"/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/candidatos/Contrato_"+candidato.getId()+".pdf"};
-//        reponses[0] = "/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/contrato_candidato_"+id+".pdf";
-//        return "redirect:/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/contrato_candidato_"+id+".pdf";
-        return reponses;
+    public @ResponseBody String[] contrato(@PathVariable Long id) throws Exception{
+        return serviceCandidato.contrato(id);
     }
 
 

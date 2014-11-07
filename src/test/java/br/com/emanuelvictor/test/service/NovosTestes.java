@@ -506,36 +506,6 @@ public class NovosTestes {
         mayaraFaculdade.setInstituicaoDeEnsino(udc);
         mayaraFaculdade = serviceCandidato.save(mayaraFaculdade);
 
-        Vaga analistaDeSistemasUDC = new Vaga();
-        analistaDeSistemasUDC.setCargo(analistaDeSistemas);
-        analistaDeSistemasUDC.setEmpresa(udc);
-        analistaDeSistemasUDC.setEstadoCivil("casado");
-        analistaDeSistemasUDC.setIdadeInicialDoCandidato(30);
-        analistaDeSistemasUDC.setIdadeFinalDoCandidato(40);
-        analistaDeSistemasUDC.setObservacoes("Deve ser homem, deve ter boa referência, deve estar preparado a sofrer pressão e blá blá bla blá");
-        analistaDeSistemasUDC.setPreferenciaSexoMasculino("masculino");
-        analistaDeSistemasUDC.setSalario(7000.00);
-//        analistaDeSistemasUDC.setBairro(bairro);
-        analistaDeSistemasUDC = serviceVaga.save(analistaDeSistemasUDC);
-
-        Vaga pedagogoArnaldoBusatto = new Vaga();
-        pedagogoArnaldoBusatto.setCargo(pedagogo);
-        pedagogoArnaldoBusatto.setEmpresa(escolaEstadualArnaldoBusatto);
-        pedagogoArnaldoBusatto.setEstadoCivil("casado");
-        pedagogoArnaldoBusatto.setIdadeInicialDoCandidato(30);
-        pedagogoArnaldoBusatto.setIdadeFinalDoCandidato(40);
-        pedagogoArnaldoBusatto.setObservacoes("deve ter disponibilidade em várias horários e blá blá blá");
-//        pedagogoArnaldoBusatto.setBairro(bairro);
-        pedagogoArnaldoBusatto.setPreferenciaSexoMasculino("feminino");
-        pedagogoArnaldoBusatto.setSalario(4000.00);
-        pedagogoArnaldoBusatto = serviceVaga.save(pedagogoArnaldoBusatto);
-
-        Encaminhamento encaminhamentoSarah = new Encaminhamento();
-        encaminhamentoSarah.setCandidato(sarah);
-        encaminhamentoSarah.setDataDeCadastro(Calendar.getInstance());
-        encaminhamentoSarah.setVaga(pedagogoArnaldoBusatto);
-        encaminhamentoSarah = serviceEncaminhamento.save(encaminhamentoSarah);
-
 
         assertTrue(true);
 

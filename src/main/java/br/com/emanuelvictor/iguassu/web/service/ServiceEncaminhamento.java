@@ -6,10 +6,15 @@ import br.com.emanuelvictor.iguassu.web.repository.DAOCandidato;
 import br.com.emanuelvictor.iguassu.web.repository.DAOEncaminhamento;
 import br.com.emanuelvictor.iguassu.web.repository.DAOLancamento;
 import br.com.emanuelvictor.iguassu.web.repository.job.vacancy.DAOVaga;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.FileOutputStream;
 import java.util.Calendar;
 import java.util.List;
 
@@ -74,15 +79,17 @@ public class ServiceEncaminhamento {
         }
 	}
 
-    public Lancamento findLancamentoEncaminhamento(Encaminhamento encaminhamento) {
-        //TODO
-        return daoLancamento.getByIdPessoa(encaminhamento.getCandidato().getId()).getLast();
-    }
+    public String[] contrato(Long id) throws Exception{
 
-    public Lancamento pagarLancamentoEncaminhamento(Encaminhamento encaminhamento) {
-        //TODO
-        Lancamento lancamento = daoLancamento.getByIdPessoa(encaminhamento.getCandidato().getId()).getLast();
-        return daoLancamento.save(lancamento);
+        Encaminhamento encaminhamento = this.daoEncaminhamento.findOne(id);
+        Document document = new Document(PageSize.A4);
+        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_de_" + encaminhamento.getCandidato().getId() + "_para_vaga_" + encaminhamento.getVaga().getId() + ".pdf"));
+        document.open();
+        document.add(new Paragraph("Encaminhamento de "+ encaminhamento.getCandidato().getNome()));
+        document.close();
+        //TODO GAMBIA
+        String[] reponses = new String[]{"/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_de_"+encaminhamento.getCandidato().getId()+"_para_vaga_"+encaminhamento.getVaga().getId()+".pdf"};
+        return reponses;
     }
 
 	public void delete(Long id) {
