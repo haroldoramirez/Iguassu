@@ -12,16 +12,20 @@ angular.module('iguassuApp')
     
     $scope.oldStatus = null;
 
+    var oldDate = null;
+
     $scope.init = function(){
 	    if ($routeParams.id) {
 	      Encaminhamento.get({id: $routeParams.id}, function(data){
 	      	$scope.oldStatus = data.situacao;
+	      	oldDate = data.lancamento.dataDePagamento;
 	        $scope.encaminhamento = data;
 	        $scope.valor = $scope.encaminhamento.vaga.salario / 3;
 	        Encaminhamento.getContrato({id: $routeParams.id}, function(data){
 		        $scope.contrato = '/Iguassu' + data[0];
 		      });
 	      });
+
 	      $rootScope.openAll();
 	    }else{
 	      $scope.clear(); 
@@ -46,6 +50,11 @@ angular.module('iguassuApp')
 					$scope.encaminhamento.lancamento.usuario = null;
 		    };
 	    };
+	    
+	    if (!$scope.encaminhamento.lancamento.dataDePagamento) {
+	    	$scope.encaminhamento.lancamento.dataDePagamento = oldDate;	
+	    };
+	    console.log(oldDate);
 	    console.log($scope.encaminhamento);
 	    Encaminhamento.save($scope.encaminhamento, function(data){
 	    	$scope.encaminhamento = data;

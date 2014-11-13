@@ -6,6 +6,7 @@ import br.com.emanuelvictor.iguassu.web.repository.DAOCandidato;
 import br.com.emanuelvictor.iguassu.web.repository.DAOEncaminhamento;
 import br.com.emanuelvictor.iguassu.web.repository.DAOLancamento;
 import br.com.emanuelvictor.iguassu.web.repository.job.vacancy.DAOVaga;
+import br.com.emanuelvictor.iguassu.web.util.Contracts;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
@@ -34,10 +35,10 @@ public class ServiceEncaminhamento {
     @Autowired
     DAOCandidato daoCandidato;
 
-	public Encaminhamento save(Encaminhamento encaminhamento) {
+	public Encaminhamento save(Encaminhamento encaminhamento) throws Exception{
         // Se o usuário estiver bloqueado ele não salva
         if (encaminhamento.getCandidato().getSituacao() == SituacaoCandidato.BLOQUEADO){
-            return null;
+            throw new Exception();
         }
 
 		if (encaminhamento.getId() == null) { // Novo encaminhamento
@@ -60,7 +61,15 @@ public class ServiceEncaminhamento {
             calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) + 30);
             Lancamento lancamento = new Lancamento();
             if (encaminhamento.getLancamento()!=null){
+                //TODO
                 lancamento =encaminhamento.getLancamento();
+                Lancamento lancamentoAux = this.daoLancamento.findOne(lancamento.getId());
+                if (lancamentoAux.getDataDePagamento()!=null){
+                    System.out.print(lancamento.getDataDePagamento());
+                    if (lancamento.getDataDePagamento()==null){
+                        lancamento.setDataDeCadastro(lancamentoAux.getDataDePagamento());
+                    }
+                }
             }
             lancamento.setValor(vaga.getSalario()/3);
             lancamento.setDataDeVencimento(calendar);
@@ -74,22 +83,20 @@ public class ServiceEncaminhamento {
             //SETA O LANÇAMENTO NO ENCAMINHAMENTO
             encaminhamento.setLancamento(lancamento);
             return daoEncaminhamento.save(encaminhamento);
-        }else {// Handler de falha "SE O ENCAMINHAMENTO É CADASTRADO COMO FALHA, NÃO LANÇA LANÇAMENTO E NEM FAZ NADA, SÓ FICA COMO FALHA"
+        }else if (encaminhamento.getSituacao() == SituacaoEncaminhamento.FALHA){// Handler de falha "SE O ENCAMINHAMENTO É CADASTRADO COMO FALHA, NÃO LANÇA LANÇAMENTO E NEM FAZ NADA, SÓ FICA COMO FALHA"
             return daoEncaminhamento.save(encaminhamento);
+        }else {
+            throw new Exception();
         }
+
 	}
 
     public String[] contrato(Long id) throws Exception{
-
         Encaminhamento encaminhamento = this.daoEncaminhamento.findOne(id);
-        Document document = new Document(PageSize.A4);
-        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_de_" + encaminhamento.getCandidato().getId() + "_para_vaga_" + encaminhamento.getVaga().getId() + ".pdf"));
-        document.open();
-        document.add(new Paragraph("Encaminhamento de "+ encaminhamento.getCandidato().getNome()));
-        document.close();
-        //TODO GAMBIA
-        String[] reponses = new String[]{"/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_de_"+encaminhamento.getCandidato().getId()+"_para_vaga_"+encaminhamento.getVaga().getId()+".pdf"};
-        return reponses;
+        if (encaminhamento!=null){
+            return Contracts.getContractForward(encaminhamento);
+        }
+        return new String[]{};
     }
 
 	public void delete(Long id) {

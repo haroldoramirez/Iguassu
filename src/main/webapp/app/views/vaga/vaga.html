@@ -49,14 +49,16 @@
 				<th><a href="" ng-click="order = 'id'; search()">Código</a></th>
 	      <th><a href="" ng-click="order = 'salario'; search()">Salário</a></th>
 	      <th>Cargo</th>
+	      <th>Empresa</th>
 				<th>Ocupada</th>
 				<th>Disponível</th>
 				<th>Cancelada</th>
 			</tr>
 			<tr data-ng-click="edit(vaga);" data-ng-repeat="vaga in vagas">
 				<td>{{vaga.id}}</td>
-				<td>{{vaga.cargo.nome}}</td>
 				<td>{{vaga.salario}}</td>
+				<td>{{vaga.cargo.nome}}</td>
+				<td>{{vaga.empresa.nome}}</td>
 				<td><span class="label label-warning" ng-if="vaga.situacao==='OCUPADA'">Ocupada</span></td>
 				<td><span class="label label-success" ng-if="vaga.situacao==='DISPONIVEL'">Disponível</span></td>
 				<td><span class="label label-default" ng-if="vaga.situacao==='CANCELADA'">Cancelada</span></td>

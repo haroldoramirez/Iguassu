@@ -61,4 +61,33 @@ public class Endereco{
     public void setComplemento(String complemento) {
         this.complemento = complemento;
     }
+
+    private String getLocale(){
+        String str = new String();
+        if (bairro!=null){
+            str =   "\n " + bairro.getNome()
+                    + ", " + bairro.getCidade().getNome()
+                    + ", " + bairro.getCidade().getEstado().getSigla()
+                    + ", " + bairro.getCidade().getEstado().getPais().getNome();
+        }
+        return str;
+    }
+    @Override
+    public String toString() {
+
+        String str = new String();
+        if (rua!=null&&rua.trim()!=""){
+            str = str + "\n Rua " + rua;
+        }
+        if (numero!=null&&numero.trim()!=""){
+            str = str + "\n nº " + numero;
+        }
+        if(cep!=null&&cep.trim()!=""){
+            str = str + "\n CEP " + cep;
+        }
+        if (complemento!=null&&complemento.trim()!=""){
+            str = str + "\n " + complemento;
+        }
+        return  str + getLocale();
+    }
 }

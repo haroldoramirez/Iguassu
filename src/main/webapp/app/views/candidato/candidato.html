@@ -14,7 +14,10 @@
 
       <div style="margin-bottom: 5px;" ng-include="'views/endereco/endereco.html'"></div>
 
+      <div ng-include="'views/candidato/candidato_outros_filtros.html'"></div>
+
     </accordion>
+    
 
     <div class="btn-group btn-group-justified">
       <div class="btn-group">
@@ -62,7 +65,7 @@
       <tr data-ng-repeat="candidato in candidatos">
         <td data-ng-click="edit(candidato)">{{candidato.id}}</td>
         <td data-ng-click="edit(candidato)">{{candidato.nome}}</td>
-        <td data-ng-click="edit(candidato)">{{candidato.sexo}}</td>
+        <td data-ng-click="edit(candidato)">{{candidato.genero}}</td>
         <td data-ng-click="edit(candidato)">{{candidato.dataNasc|date:'dd/MM/yyyy'}}</td>
         <td><span class="label label-warning" ng-if="candidato.situacao==='EMPREGADO'">Empregado (a)</span></td>
         <td><span class="label label-success" ng-if="candidato.situacao==='DISPONIVEL'">Disponível</span></td>

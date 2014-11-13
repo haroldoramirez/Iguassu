@@ -43,14 +43,18 @@
 			<th><a href="" ng-click="order = 'id'; search()">Código</a></th>
 			<th><a href="" ng-click="order = 'salario'; search()">Salário</a></th>
 			<th>Candidato</th>
+			<th>Vaga</th>
+			<th>Empresa</th>
 			<th>Em andamento</th>
 			<th>Sucesso</th>
 			<th>Falha</th>
 		</tr>
 		<tr data-ng-click="edit(encaminhamento);" data-ng-repeat="encaminhamento in encaminhamentos">
 			<td>{{encaminhamento.id}}</td>
-			<td>{{encaminhamento.candidato.nome}}</td>
 			<td>{{encaminhamento.vaga.salario}}</td>
+			<td>{{encaminhamento.candidato.nome}}</td>
+			<td>{{encaminhamento.vaga.cargo.nome}} / código {{encaminhamento.vaga.id}}</td>
+			<td>{{encaminhamento.vaga.empresa.nome}}</td>
 			<td><span class="label label-warning" ng-if="encaminhamento.situacao==='ANDAMENTO'">Em andamento</span></td>
 			<td><span class="label label-success" ng-if="encaminhamento.situacao==='SUCESSO'">Sucesso</span></td>
 			<td><span class="label label-danger" ng-if="encaminhamento.situacao==='FALHA'">Falha</span></td>

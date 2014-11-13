@@ -40,8 +40,9 @@
 								<a class="glyphicon glyphicon-plus" href="#candidatos"></a>
 							</div>
 							<div ng-class="{'has-error':!encaminhamento.candidato.id}">
-								<select class="form-control" data-ng-model="encaminhamento.candidato" 
-												data-ng-options="(candidato.nome) for candidato in candidatos">
+								<select ng-disabled="encaminhamento.id"  
+												class="form-control" data-ng-model="encaminhamento.candidato" 
+												data-ng-options="(candidato.nome) for candidato in candidatos | orderBy:'dataDeAlteracao':true">
 									<option value="" disabled data-ng-selected="encaminhamento.id">{{encaminhamento.candidato.nome}}</option>
 								</select>
 							</div>
@@ -57,9 +58,10 @@
 									<a class="glyphicon glyphicon-plus" href="#vagas"></a>
 							</div>
 							<div ng-class="{'has-error':!encaminhamento.vaga.id}">
-								<select class="form-control" data-ng-model="encaminhamento.vaga" 
-												data-ng-options="(vaga.cargo.nome +' / '+ vaga.id) for vaga in vagas">
-									<option value="" disabled data-ng-selected="vaga.id">{{encaminhamento.vaga.cargo.nome}} / {{encaminhamento.vaga.id}}</option>
+								<select ng-disabled="encaminhamento.id" 
+												class="form-control" data-ng-model="encaminhamento.vaga" 
+												data-ng-options="(vaga.cargo.nome +' / código '+ vaga.id) for vaga in vagas | orderBy:'dataDeAlteracao':true">
+									<option value="" disabled data-ng-selected="vaga.id">{{encaminhamento.vaga.cargo.nome}} / código {{encaminhamento.vaga.id}}</option>
 								</select>
 							</div>
 						</div>

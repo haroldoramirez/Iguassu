@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.awt.print.Pageable;
+import java.util.Calendar;
 import java.util.List;
 
 @Service
@@ -21,7 +22,8 @@ public class ServiceEmpresa {
 	DAOEmpresa daoEmpresa;
 
 	public Empresa save(Empresa empresa) {
-		return daoEmpresa.save(empresa);
+        empresa.setDataDeAlteracao(Calendar.getInstance());
+        return daoEmpresa.save(empresa);
 	}
 
 	public void delete(Long id) {

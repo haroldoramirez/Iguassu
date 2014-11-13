@@ -131,7 +131,9 @@ angular.module('iguassuApp')
 			    	datas[2] = $scope.dataDePagamento;
 			    	Financeiro.query({pagina: 0}, datas, function(data){
 			  			$scope.lancamentos = data;
-			  			console.log(data);
+			  			Financeiro.queryTotal(datas, function(data){
+				  			$scope.total = data[0];
+				    	});
 			    	});
 		      }, function(){
 		        var datas = [];
@@ -140,7 +142,9 @@ angular.module('iguassuApp')
 			    	datas[2] = $scope.dataDePagamento;
 			    	Financeiro.query({pagina: 0}, datas, function(data){
 			  			$scope.lancamentos = data;
-			  			console.log(data);
+			  			Financeiro.queryTotal(datas, function(data){
+				  			$scope.total = data[0];
+				    	});
 			    	});
 		    });
   	}
@@ -158,13 +162,11 @@ angular.module('iguassuApp')
 	  };
 
 	  $scope.save = function(){
-	  	if (!$scope.lancamento.pessoa.id) {
-	  		$scope.lancamento.pessoa = null;
-	  	}/*else{
-	  		var id = $scope.lancamento.pessoa.id;
-	  		$scope.lancamento.pessoa = {};
-	  		$scope.lancamento.pessoa.id = id;
-	  	}*/;
+	  	if ($scope.lancamento.pessoa) {
+	  		if (!$scope.lancamento.pessoa.id) {
+		  		$scope.lancamento.pessoa = null;
+		  	}
+	  	};
 	  	$scope.lancamento.usuario = null;
 	  	console.log($scope.lancamento);
 	  	// if (!$scope.lancamento.id) {

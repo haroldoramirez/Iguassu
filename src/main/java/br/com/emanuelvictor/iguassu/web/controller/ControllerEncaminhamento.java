@@ -35,7 +35,7 @@ public class ControllerEncaminhamento {
 	ServiceEncaminhamento serviceEncaminhamento;
 
 	@RequestMapping(value = "/encaminhamentos", method = RequestMethod.POST)
-	public @ResponseBody Encaminhamento save(@RequestBody Encaminhamento encaminhamento) {
+	public @ResponseBody Encaminhamento save(@RequestBody Encaminhamento encaminhamento) throws Exception{
         encaminhamento.setUsuario(serviceUsuario.getCurrentUser());
         if (encaminhamento.getLancamento()!=null){
             encaminhamento.getLancamento().setUsuario(serviceUsuario.getCurrentUser());

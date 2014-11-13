@@ -19,20 +19,21 @@ public class ServiceVaga {
 
 	public Vaga save(Vaga vaga) {
 
-		System.out.println("Salvando vaga" + vaga);
-		try {
-			if (vaga.getEmpresa().getId()==null) {
-				vaga.setEmpresa(null);
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			vaga.setEmpresa(null);
-		}
+//		System.out.println("Salvando vaga" + vaga);
+//		try {
+//			if (vaga.getEmpresa().getId()==null) {
+//				vaga.setEmpresa(null);
+//			}
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			vaga.setEmpresa(null);
+//		}
 		
 
 		if (vaga.getSituacao() == null) {
 			vaga.setSituacao(SituacaoVaga.DISPONIVEL);
 		}
+        vaga.setDataDeAlteracao(Calendar.getInstance());
 		return daoVaga.save(vaga);
 	}
 

@@ -4,6 +4,11 @@ angular.module('iguassuApp')
 .controller('CandidatoCtrl', function ($rootScope, $timeout, $log, $http, $upload, $modal, $scope, $routeParams, $document, $location, Candidato, Pais, toastr, createAddress) {
 
   $scope.endereco = {};
+
+  $scope.isCollapsed = false;
+  $rootScope.getCursos();
+
+  $rootScope.getCargos();
   
   $scope.onFileSelect = function($files) {
     for (var i = 0; i < $files.length; i++) {
@@ -19,7 +24,7 @@ angular.module('iguassuApp')
         $scope.url = 'Iguassu/app' + $scope.candidato.pathFoto;
       }).error(function() {
         toastr.error('Verifique se o arquivo é muito grande','Falha ao atualizar foto');
-      }); 
+      });
     }
   };
 
@@ -29,7 +34,9 @@ angular.module('iguassuApp')
         $scope.candidato = data;
         $scope.url = 'Iguassu/app' + $scope.candidato.pathFoto;
         Candidato.getContrato({id: $routeParams.id}, function(data){
-          $scope.contrato = '/Iguassu' + data[0];
+          if (data[0]) {
+            $scope.contrato = '/Iguassu' + data[0];
+          };
         });
         $scope.endereco = createAddress.desformateEndereco(data.endereco);
       });

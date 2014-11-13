@@ -503,56 +503,57 @@
 	</div>
 	<div class="modal-body"> 
 		<form ng-submit="save()">
-      
-            
-				  	
-	        <div class="form-group">
-	          <label class="control-label">Descrição <span class="obrigatorio">*</span> </label>
-	          <div ng-class="{'form-group has-error': !lancamento.descricao}">
-	            <div class="controls">
-	              <input 	data-ng-model="lancamento.descricao" type="text" 
-	              				placeholder="Insira a descrição do lançamento ..." class="form-control">
-	            </div>
-	          </div>
-	        </div>
-	        <div class="form-group">
-		        <label class="control-label">Valor <span class="obrigatorio">*</span></label>
-		        <div ng-class="{'form-group has-error': !lancamento.valor}">
-			        <div class="controls">
-			          <input data-ng-model="lancamento.valor" type="number" class="form-control" placeholder="Insira o valor do lançamento ...">
-		          </div>
-		        </div>
-		      </div>
-	     
-	        
-	        <div class="form-group">
-	          <label class="control-label">Data de cadastro</label>
-	          <p class="input-group">
-			        <input disabled type="text" class="form-control" datepicker-popup="dd/MM/yyyy"
-			                ng-model="lancamento.dataDeCadastro" />
-			        <span class="input-group-btn">
-			          <button disabled type="button" class="btn btn-default" >
-			            <i class="glyphicon glyphicon-calendar"></i>
-			          </button>
-			        </span>
-			      </p>
-	        </div>
+      	  	
+      <div class="form-group">
+        <label class="control-label">Descrição <span class="obrigatorio">*</span> </label>
+        <div ng-class="{'form-group has-error': !lancamento.descricao}">
+          <div class="controls">
+            <input 	data-ng-model="lancamento.descricao" type="text" 
+            				placeholder="Insira a descrição do lançamento ..." class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Valor 
+	        <span class="obrigatorio">* 
+	        	<i ng-if="lancamento.valor<=0">O valor deve ser maior que 0 (zero) </i>
+	        </span>
+        </label>
+        <div ng-class="{'form-group has-error': !lancamento.valor}">
+	        <div class="controls">
+	          <input data-ng-model="lancamento.valor" type="number" class="form-control" placeholder="Insira o valor do lançamento ...">
+          </div>
+        </div>
+      </div>
+	     	        
+      <div class="form-group">
+        <label class="control-label">Data de cadastro</label>
+        <p class="input-group">
+	        <input disabled type="text" class="form-control" datepicker-popup="dd/MM/yyyy"
+	                ng-model="lancamento.dataDeCadastro" />
+	        <span class="input-group-btn">
+	          <button disabled type="button" class="btn btn-default" >
+	            <i class="glyphicon glyphicon-calendar"></i>
+	          </button>
+	        </span>
+	      </p>
+      </div>
 
-	        <div class="form-group">
-	          <label class="control-label">Data de vencimento <span class="obrigatorio">*</span> </label>
-	          <div ng-class="{'form-group has-error': !lancamento.dataDeVencimento}">
-	          	<p class="input-group">
-		            <input  type="text" class="form-control" datepicker-popup="dd/MM/yyyy"
-				                ng-model="lancamento.dataDeVencimento" is-open="openedDateVencimento"
-				                show-button-bar="false" ng-required="true" />
-				        <span class="input-group-btn">
-				          <button type="button" class="btn btn-default" ng-click="openDatePickerDateVencimento($event)">
-				            <i class="glyphicon glyphicon-calendar"></i>
-				          </button>
-				        </span>
-			      	</p>
-			      </div>	
-	        </div>
+      <div class="form-group">
+        <label class="control-label">Data de vencimento <span class="obrigatorio">*</span> </label>
+        <div ng-class="{'form-group has-error': !lancamento.dataDeVencimento}">
+        	<p class="input-group">
+            <input  type="text" class="form-control" datepicker-popup="dd/MM/yyyy"
+		                ng-model="lancamento.dataDeVencimento" is-open="openedDateVencimento"
+		                show-button-bar="false" ng-required="true" />
+		        <span class="input-group-btn">
+		          <button type="button" class="btn btn-default" ng-click="openDatePickerDateVencimento($event)">
+		            <i class="glyphicon glyphicon-calendar"></i>
+		          </button>
+		        </span>
+	      	</p>
+	      </div>	
+      </div>
 	        
 	        <div class="form-group">
 	          <label class="control-label">Data de pagamento <span class="obrigatorio">*</span> </label>
@@ -591,8 +592,8 @@
 		      <div class="form-group">
 		        <label class="control-label">Empresa </label>
 		        <div class="pull-right">
-		        	<a class="glyphicon glyphicon-plus" href="/empresas"></a>
-			        <a ng-show="lancamento.pessoa.id" class="glyphicon glyphicon-remove" data-ng-click="lancamento.pessoa.id=null;"></a>
+		        	<a class="glyphicon glyphicon-plus" href="#/empresas" data-ng-click="close()"></a>
+			        <a ng-show="lancamento.pessoa.id" class="glyphicon glyphicon-remove" data-ng-click="lancamento.pessoa=null;"></a>
 			      </div>
 		        <div class="controls">
 		          <select class="form-control" data-ng-options="empresa.nome for empresa in empresas" 
@@ -609,7 +610,7 @@
 			      <div class="pull-right">
 			      	<button class="btn btn-default" ng-click="close()" type="button">Cancelar</button>
 		          <button class="btn btn-primary" 
-		                  data-ng-disabled="!lancamento.descricao||!lancamento.valor||!lancamento.dataDeVencimento||!lancamento.tipoLancamento" 
+		                  data-ng-disabled="!lancamento.descricao||!lancamento.valor||!lancamento.dataDeVencimento||!lancamento.tipoLancamento||lancamento.valor<=0" 
 		                  type="submit">Salvar informações
 		          </button>
 		        </div>

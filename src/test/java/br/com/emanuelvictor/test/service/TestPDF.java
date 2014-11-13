@@ -1,7 +1,9 @@
 package br.com.emanuelvictor.test.service;
 
 import br.com.emanuelvictor.iguassu.web.entity.Candidato;
+import br.com.emanuelvictor.iguassu.web.entity.Encaminhamento;
 import br.com.emanuelvictor.iguassu.web.repository.DAOCandidato;
+import br.com.emanuelvictor.iguassu.web.repository.DAOEncaminhamento;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfDocument;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -17,6 +19,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 
 @TransactionConfiguration
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -27,13 +30,15 @@ public class TestPDF {
     @Autowired
     DAOCandidato daoCandidato;
 
+    @Autowired
+    DAOEncaminhamento daoEncaminhamento;
 
     @Test
     @Rollback(false)
     @Transactional
-    public void generatedPDF() {
+    public void generatedPDFContratoCandidato() {
         try{
-            Candidato candidato  =this.daoCandidato.findOne(Long.parseLong("51"));
+            Candidato candidato  =this.daoCandidato.findOne(Long.parseLong("112"));
             String CPF = "__________________";
             if (candidato.getCpf()!=null){
                 CPF = candidato.getCpf().toUpperCase();
@@ -43,7 +48,7 @@ public class TestPDF {
                 RG = candidato.getRg().toUpperCase();
             }
 
-            Image topImageDoc = Image.getInstance("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/images/title.png");
+            Image topImageDoc = Image.getInstance("/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/images/title.png");
             topImageDoc.setAlignment(Element.ALIGN_CENTER);
 
             Paragraph titleDoc = new Paragraph("Um mundo de oportunidades para VOCÊ!", new Font(Font.FontFamily.HELVETICA, 15, Font.UNDEFINED));
@@ -210,9 +215,40 @@ public class TestPDF {
                     new Font(Font.FontFamily.HELVETICA, 13, Font.NORMAL));
             asPartesEmComumAcordo.setAlignment(Element.ALIGN_JUSTIFIED);
 
+            Paragraph date = new Paragraph("Foz do Iguaçu, "+new SimpleDateFormat("dd/MM/yyyy").format(candidato.getDataDeContrato().getTime()),
+                    new Font(Font.FontFamily.HELVETICA, 13, Font.NORMAL));
+            date.setAlignment(Element.ALIGN_RIGHT);
+            date.setSpacingBefore(100);
+            date.setSpacingAfter(100);
+
+
+            Paragraph assinaturas = new Paragraph("                _____________________                _____________________                ",
+                    new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD));
+            assinaturas.setAlignment(Element.ALIGN_CENTER);
+
+            Paragraph nomes = new Paragraph("                   Contratante                                  Iguassu agência de empregos                ",
+                    new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD));
+            nomes.setAlignment(Element.ALIGN_CENTER);
+
+            Paragraph cpfRg = new Paragraph("                     CPF:\n                      RG:",
+                    new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD));
+            cpfRg.setAlignment(Element.ALIGN_LEFT);
+            cpfRg.setSpacingAfter(100);
+
+            Paragraph testeMunha1 = new Paragraph("   Testemunha (01): __________________________________________\n" +
+                                                  "                           RG: __________________________________________",
+                    new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD));
+            testeMunha1.setAlignment(Element.ALIGN_LEFT);
+
+            Paragraph testeMunha2 = new Paragraph("   Testemunha (02): __________________________________________\n" +
+                                                  "                           RG: __________________________________________",
+                    new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD));
+            testeMunha2.setAlignment(Element.ALIGN_LEFT);
+            testeMunha2.setSpacingAfter(118);
+
             //Pegando e abrindo o documento
             Document document = new Document(PageSize.A4);
-            PdfWriter.getInstance(document, new FileOutputStream("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/candidatos/Contrato_" + candidato.getId() + ".pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/candidatos/Contrato_" + candidato.getId() + ".pdf"));
 
 
             document.open();
@@ -257,6 +293,143 @@ public class TestPDF {
             document.add(underline1);
             document.add(footer);
             document.add(asPartesEmComumAcordo);
+            document.add(date);
+            document.add(assinaturas);
+            document.add(nomes);
+            document.add(cpfRg);
+            document.add(testeMunha1);
+            document.add(testeMunha2);
+            document.add(underline1);
+            document.add(footer);
+            document.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
+
+    }
+
+    @Test
+    @Rollback(false)
+    @Transactional
+    public void generatedPDFContratoEncaminhamento() {
+        try{
+            Encaminhamento encaminhamento  =this.daoEncaminhamento.findOne(Long.parseLong("1"));
+
+            Image topImageDoc = Image.getInstance("/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/images/title.png");
+            topImageDoc.setAlignment(Element.ALIGN_CENTER);
+
+            String empresaString = "_______________________________________________";
+            String enderecoEmpresaString = "_______________________________________________";
+            String contatosEmpresaString = "_______________________________________________";
+            String emailEmpresaString = "_______________________________________________";
+
+            if (encaminhamento.getVaga().getEndereco()!=null){
+                enderecoEmpresaString = encaminhamento.getVaga().getEndereco().toString();
+            }
+            if (encaminhamento.getVaga().getEmpresa()!=null){
+                empresaString = encaminhamento.getVaga().getEmpresa().getNome();
+                if (encaminhamento.getVaga().getEmpresa().getTelefoneComercial()!=null){
+                    contatosEmpresaString = encaminhamento.getVaga().getEmpresa().getTelefoneComercial();
+                }
+                if (encaminhamento.getVaga().getEmpresa().getTelefoneResidencial()!=null){
+                    contatosEmpresaString = contatosEmpresaString + " / " + encaminhamento.getVaga().getEmpresa().getTelefoneResidencial();
+                }
+                if (encaminhamento.getVaga().getEmpresa().getEmail()!=null){
+                    emailEmpresaString = encaminhamento.getVaga().getEmpresa().getEmail();
+                }
+            }
+
+            //Pegando e abrindo o documento
+            Document document = new Document(PageSize.A4);
+            PdfWriter.getInstance(document, new FileOutputStream("/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_" + encaminhamento.getId() + ".pdf"));
+
+            Paragraph titleDoc = new Paragraph("Encaminhamento", new Font(Font.FontFamily.HELVETICA, 20, Font.BOLD));
+            titleDoc.setAlignment(Element.TITLE);
+            titleDoc.setSpacingAfter(8);
+            titleDoc.setSpacingBefore(0);
+
+            Paragraph empresa = new Paragraph("Empresa: "+empresaString, new Font(Font.FontFamily.HELVETICA, 15, Font.NORMAL));
+            empresa.setAlignment(Element.ALIGN_LEFT);
+
+            Paragraph endereco = new Paragraph("Endereço: "+enderecoEmpresaString, new Font(Font.FontFamily.COURIER, 15, Font.NORMAL));
+            endereco.setSpacingBefore(20);
+            endereco.setAlignment(Element.ALIGN_LEFT);
+
+            Paragraph contatos = new Paragraph("Contatos: "+contatosEmpresaString, new Font(Font.FontFamily.HELVETICA, 15, Font.NORMAL));
+            contatos.setAlignment(Element.ALIGN_LEFT);
+
+            Paragraph email = new Paragraph("Email: "+emailEmpresaString, new Font(Font.FontFamily.HELVETICA, 15, Font.NORMAL));
+            email.setAlignment(Element.ALIGN_LEFT);
+
+            Paragraph horárioDaEntrevista = new Paragraph("Horário: __________________________________", new Font(Font.FontFamily.HELVETICA, 15, Font.NORMAL));
+            horárioDaEntrevista.setAlignment(Element.ALIGN_LEFT);
+
+
+            Paragraph estamosEncaminhando = new Paragraph("Estamos encaminhando o Sr.(a) "+encaminhamento.getCandidato().getNome()+
+                    " para entrevista nesta empresa para a função de "+encaminhamento.getVaga().getCargo().getNome()+" igualmente, caso a entrevista seja favorável por gentileza entrar em contato com a agência pelo tel.: 3572- 1977.", new Font(Font.FontFamily.TIMES_ROMAN, 15, Font.NORMAL));
+            estamosEncaminhando.setAlignment(Element.ALIGN_JUSTIFIED);
+            estamosEncaminhando.setSpacingBefore(10);
+            estamosEncaminhando.setSpacingAfter(10);
+            estamosEncaminhando.setFirstLineIndent(60);
+
+            Paragraph agradecimentos = new Paragraph("Agradecemos à costumeira atenção.", new Font(Font.FontFamily.TIMES_ROMAN, 15, Font.NORMAL));
+            agradecimentos.setSpacingBefore(10);
+            agradecimentos.setAlignment(Element.ALIGN_CENTER);
+
+
+            Paragraph assinatura = new Paragraph("                __________________________________________                ",
+                    new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD));
+            assinatura.setAlignment(Element.ALIGN_CENTER);
+            assinatura.setSpacingBefore(40);
+
+            Paragraph date = new Paragraph("Foz do Iguaçu, "+new SimpleDateFormat("dd/MM/yyyy").format(encaminhamento.getDataDeCadastro().getTime()),
+                    new Font(Font.FontFamily.HELVETICA, 13, Font.NORMAL));
+            date.setAlignment(Element.ALIGN_RIGHT);
+            date.setSpacingBefore(50);
+            date.setSpacingAfter(60);
+
+            Paragraph nomeIguassu = new Paragraph("              Iguassu Agência de Empregos                ",
+                    new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD));
+            nomeIguassu.setAlignment(Element.ALIGN_CENTER);
+
+
+            Paragraph nomeCandidato = new Paragraph("              "+encaminhamento.getCandidato().getNome()+"                ",
+                    new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD));
+            nomeCandidato.setAlignment(Element.ALIGN_CENTER);
+
+            Paragraph enderecoIguassu = new Paragraph("AVENIDA J.K– 201 – GALERIA WANI – SALA 25 – CENTRO - TEL. 3572 -1977",
+                    new Font(Font.FontFamily.HELVETICA, 13, Font.NORMAL));
+            enderecoIguassu.setAlignment(Element.ALIGN_CENTER);
+
+
+
+            document.open();
+            document.add(topImageDoc);
+
+            document.add(titleDoc);
+            document.add(empresa);
+
+            document.add(contatos);
+            document.add(email);
+            document.add(horárioDaEntrevista);
+            document.add(endereco);
+            document.add(estamosEncaminhando);
+            document.add(agradecimentos);
+
+            document.add(assinatura);
+            document.add(nomeCandidato);
+
+            document.add(assinatura);
+            document.add(nomeIguassu);
+
+            document.add(date);
+            document.add(enderecoIguassu);
+
+
             document.close();
 
         }catch (Exception e){

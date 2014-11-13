@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.util.Calendar;
 import java.util.List;
 
 //@Service("serviceUsuario")
@@ -41,6 +42,7 @@ public class ServiceUsuario implements UserDetailsService {
             usuario.setFilial(this.getCurrentUser().getFilial());
             usuario.setPerfil(this.find(id).getPerfil());
         }
+        usuario.setDataDeAlteracao(Calendar.getInstance());
         usuario = this.daoUsuario.save(usuario);
         System.out.println("Senha que ficou " + this.daoUsuario.findOne(id).getSenha());
         return usuario;
@@ -48,8 +50,8 @@ public class ServiceUsuario implements UserDetailsService {
 
     public Usuario save(Usuario usuario) {
         usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
-        usuario = this.daoUsuario.save(usuario);
-        return usuario;
+        usuario.setDataDeAlteracao(Calendar.getInstance());
+        return this.daoUsuario.save(usuario);
     }
 
 	public void delete(Long id) {
