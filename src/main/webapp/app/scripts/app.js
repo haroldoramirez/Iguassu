@@ -142,6 +142,17 @@ angular
     $rootScope.cursos = Curso.getAll();
   };
 
+  $rootScope.contratoVencido = function(contrato){
+    var date = new Date();
+    date.setMonth(date.getMonth()-6);
+    // console.log(date);
+    if (contrato<date) {
+      return true;
+    } else{
+      return false;
+    };
+  };
+
   $rootScope.getCategoriasDeCursos = function(){
     $rootScope.categoriasDeCursos = CategoriasCursos.getAll();
   };

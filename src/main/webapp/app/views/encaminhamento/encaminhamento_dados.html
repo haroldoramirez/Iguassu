@@ -34,6 +34,7 @@
 							<label class="control-label">Candidato 
 								<span class="obrigatorio"> 
 									<i ng-if="encaminhamento.candidato.situacao==='BLOQUEADO'">Candidato bloqueado</i>
+									<i ng-if="contratoVencido(encaminhamento.candidato.dataDeContrato)">Contrato vencido</i>
 								*</span>
 							</label>
 							<div class="pull-right">
@@ -60,7 +61,7 @@
 							<div ng-class="{'has-error':!encaminhamento.vaga.id}">
 								<select ng-disabled="encaminhamento.id" 
 												class="form-control" data-ng-model="encaminhamento.vaga" 
-												data-ng-options="(vaga.cargo.nome +' / código '+ vaga.id) for vaga in vagas | orderBy:'dataDeAlteracao':true">
+												data-ng-options="('código '+ vaga.id + ' / ' + vaga.cargo.nome + ' / '+ vaga.situacao) for vaga in vagas | orderBy:'dataDeAlteracao':true">
 									<option value="" disabled data-ng-selected="vaga.id">{{encaminhamento.vaga.cargo.nome}} / código {{encaminhamento.vaga.id}}</option>
 								</select>
 							</div>

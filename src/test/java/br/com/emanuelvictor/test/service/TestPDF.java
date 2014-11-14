@@ -322,10 +322,10 @@ public class TestPDF {
             Image topImageDoc = Image.getInstance("/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/images/title.png");
             topImageDoc.setAlignment(Element.ALIGN_CENTER);
 
-            String empresaString = "_______________________________________________";
-            String enderecoEmpresaString = "_______________________________________________";
-            String contatosEmpresaString = "_______________________________________________";
-            String emailEmpresaString = "_______________________________________________";
+            String empresaString = new String();
+            String enderecoEmpresaString = new String();
+            String contatosEmpresaString = new String();
+            String emailEmpresaString = new String();
 
             if (encaminhamento.getVaga().getEndereco()!=null){
                 enderecoEmpresaString = encaminhamento.getVaga().getEndereco().toString();
@@ -370,7 +370,7 @@ public class TestPDF {
 
 
             Paragraph estamosEncaminhando = new Paragraph("Estamos encaminhando o Sr.(a) "+encaminhamento.getCandidato().getNome()+
-                    " para entrevista nesta empresa para a função de "+encaminhamento.getVaga().getCargo().getNome()+" igualmente, caso a entrevista seja favorável por gentileza entrar em contato com a agência pelo tel.: 3572- 1977.", new Font(Font.FontFamily.TIMES_ROMAN, 15, Font.NORMAL));
+                    " para entrevista para a função de "+encaminhamento.getVaga().getCargo().getNome()+" igualmente, caso a entrevista seja favorável por gentileza entrar em contato com a agência pelo tel.: 3572- 1977.", new Font(Font.FontFamily.TIMES_ROMAN, 15, Font.NORMAL));
             estamosEncaminhando.setAlignment(Element.ALIGN_JUSTIFIED);
             estamosEncaminhando.setSpacingBefore(10);
             estamosEncaminhando.setSpacingAfter(10);
@@ -411,12 +411,24 @@ public class TestPDF {
             document.add(topImageDoc);
 
             document.add(titleDoc);
-            document.add(empresa);
+            if (empresaString!=null||empresaString.trim()==""){
+                document.add(empresa);
+            }
 
-            document.add(contatos);
-            document.add(email);
+            if (contatosEmpresaString!=null||contatosEmpresaString.trim()==""){
+                document.add(contatos);
+            }
+
+            if (emailEmpresaString!=null||emailEmpresaString.trim()==""){
+                document.add(email);
+            }
+
             document.add(horárioDaEntrevista);
-            document.add(endereco);
+
+            if (enderecoEmpresaString!=null||enderecoEmpresaString.trim()==""){
+                document.add(endereco);
+            }
+
             document.add(estamosEncaminhando);
             document.add(agradecimentos);
 

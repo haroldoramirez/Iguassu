@@ -39,6 +39,7 @@ angular.module('iguassuApp')
     Empresa.save($scope.empresa, function(data){
       toastr.success("Salvo com sucesso");
       $scope.clear();
+      $scop.init();
     }, function(){
       toastr.error('Verifique se há dados inconsistentes ou se o CNPJ já esta cadastrado','Não foi possível salvar essas informações');
     });

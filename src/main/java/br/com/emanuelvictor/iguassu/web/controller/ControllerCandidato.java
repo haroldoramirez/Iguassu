@@ -7,6 +7,7 @@ import br.com.emanuelvictor.iguassu.web.entity.schooling.CandidatoCurso;
 import br.com.emanuelvictor.iguassu.web.service.ServiceCandidato;
 import br.com.emanuelvictor.iguassu.web.service.ServiceUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,10 +27,14 @@ public class ControllerCandidato {
 	@RequestMapping(value = "/candidatos", method = RequestMethod.POST)
 	public @ResponseBody
 	Candidato save(@RequestBody Candidato candidato) {
-        Lancamento lancamento = new Lancamento();
-        lancamento.setUsuario(this.serviceUsuario.getCurrentUser());
-		return this.serviceCandidato.save(candidato, lancamento);
+        return this.serviceCandidato.save(candidato, this.serviceUsuario.getCurrentUser());
 	}
+
+    @RequestMapping(value = "/candidatos/{id}/renovar/contrato", method = RequestMethod.GET)
+    public @ResponseBody
+    Candidato renovarContrato(@PathVariable("id") Long id) throws Exception{
+        return this.serviceCandidato.renovarContrato(id, this.serviceUsuario.getCurrentUser());
+    }
 
     @RequestMapping(value = "/app/candidatos/{id}/foto", method = RequestMethod.POST)
     public @ResponseBody Candidato uploadFoto(@PathVariable("id") String id, @RequestPart("file") MultipartFile file) {
@@ -49,13 +54,10 @@ public class ControllerCandidato {
 		return serviceCandidato.find();
 	}
 
-
     @RequestMapping(value = "/candidatos/{id}/contrato", method = RequestMethod.GET)
     public @ResponseBody String[] contrato(@PathVariable Long id) throws Exception{
         return serviceCandidato.contrato(id);
     }
-
-
 
 	// ---- experiencias
 
@@ -90,6 +92,12 @@ public class ControllerCandidato {
 	List<CandidatoCurso> findCursos(@PathVariable Long id) {
 		return serviceCandidato.findCursos(id);
 	}
+
+    @RequestMapping(value = "/candidatos/{id}/lancamentos", method = RequestMethod.GET)
+    public @ResponseBody
+    String[] getLancamentos(@PathVariable Long id) throws Exception {
+        return serviceCandidato.getLancamentosString(id, this.serviceUsuario.getCurrentUser());
+    }
 
 	@RequestMapping(value = "/candidatos/cursos/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody

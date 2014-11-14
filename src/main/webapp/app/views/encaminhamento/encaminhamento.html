@@ -19,7 +19,7 @@
 		</div>
 		<div class="btn-group">
 			<button type="button" class="btn btn-primary" 
-							data-ng-disabled="!encaminhamento.vaga.id||!encaminhamento.candidato.id||((encaminhamento.vaga.situacao==='OCUPADA'||encaminhamento.vaga.situacao==='CANCELADA')&&!encaminhamento.id)||encaminhamento.candidato.situacao==='BLOQUEADO'" 
+							data-ng-disabled="!encaminhamento.vaga.id||!encaminhamento.candidato.id||((encaminhamento.vaga.situacao==='OCUPADA'||encaminhamento.vaga.situacao==='CANCELADA')&&!encaminhamento.id)||encaminhamento.candidato.situacao==='BLOQUEADO'||contratoVencido(encaminhamento.candidato.dataDeContrato)" 
 							data-ng-click="save()">
 				<span class="glyphicon glyphicon-save">&nbspSalvar</span>
 			</button>
@@ -56,7 +56,9 @@
 			<td>{{encaminhamento.vaga.cargo.nome}} / código {{encaminhamento.vaga.id}}</td>
 			<td>{{encaminhamento.vaga.empresa.nome}}</td>
 			<td><span class="label label-warning" ng-if="encaminhamento.situacao==='ANDAMENTO'">Em andamento</span></td>
-			<td><span class="label label-success" ng-if="encaminhamento.situacao==='SUCESSO'">Sucesso</span></td>
+			<!-- <td><span class="label label-success" ng-if="encaminhamento.situacao==='SUCESSO'">Sucesso</span></td> -->
+			<td ng-if="encaminhamento.situacao==='SUCESSO'&&!encaminhamento.lancamento.dataDePagamento"><span class="label label-warning">Sucesso e não pago</span></td>
+      <td ng-if="encaminhamento.situacao==='SUCESSO'&&encaminhamento.lancamento.dataDePagamento"><span class="label label-success">Sucesso</span></td>
 			<td><span class="label label-danger" ng-if="encaminhamento.situacao==='FALHA'">Falha</span></td>
 		</tr>
 	</table>

@@ -87,3 +87,8 @@ footer {
 .slide-animate.ng-leave.ng-leave-active {
   top:50px;
 }
+
+.popover{
+  width:200px;
+  height:255px;    
+}

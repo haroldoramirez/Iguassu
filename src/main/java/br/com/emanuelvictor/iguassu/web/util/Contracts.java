@@ -24,7 +24,7 @@ public abstract class Contracts {
             RG = candidato.getRg().toUpperCase();
         }
 
-        Image topImageDoc = Image.getInstance("/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/images/title.png");
+        Image topImageDoc = Image.getInstance("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/images/title.png");
         topImageDoc.setAlignment(Element.ALIGN_CENTER);
 
         Paragraph titleDoc = new Paragraph("Um mundo de oportunidades para VOCÊ!", new Font(Font.FontFamily.HELVETICA, 15, Font.UNDEFINED));
@@ -224,7 +224,7 @@ public abstract class Contracts {
 
         //Pegando e abrindo o documento
         Document document = new Document(PageSize.A4);
-        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/candidatos/Contrato_" + candidato.getId() + ".pdf"));
+        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/candidatos/Contrato_" + candidato.getId() + ".pdf"));
 
 
         document.open();
@@ -279,19 +279,19 @@ public abstract class Contracts {
         document.add(footer);
         document.close();
 
-        return new String[]{"/app/Iguassu/app/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/candidatos/Contrato_"+candidato.getId()+".pdf"};
+        return new String[]{"/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/candidatos/Contrato_"+candidato.getId()+".pdf"};
 
     }
 
     public final static String[] getContractForward(Encaminhamento encaminhamento) throws  Exception {
 
-        Image topImageDoc = Image.getInstance("/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/images/title.png");
+        Image topImageDoc = Image.getInstance("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/images/title.png");
         topImageDoc.setAlignment(Element.ALIGN_CENTER);
 
-        String empresaString = "_______________________________________________";
-        String enderecoEmpresaString = "_______________________________________________";
-        String contatosEmpresaString = "_______________________________________________";
-        String emailEmpresaString = "_______________________________________________";
+        String empresaString = new String();
+        String enderecoEmpresaString = new String();
+        String contatosEmpresaString = new String();
+        String emailEmpresaString = new String();
 
         if (encaminhamento.getVaga().getEndereco()!=null){
             enderecoEmpresaString = encaminhamento.getVaga().getEndereco().toString();
@@ -311,7 +311,7 @@ public abstract class Contracts {
 
         //Pegando e abrindo o documento
         Document document = new Document(PageSize.A4);
-        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_" + encaminhamento.getId() + ".pdf"));
+        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_" + encaminhamento.getId() + ".pdf"));
 
         Paragraph titleDoc = new Paragraph("Encaminhamento", new Font(Font.FontFamily.HELVETICA, 20, Font.BOLD));
         titleDoc.setAlignment(Element.TITLE);
@@ -336,7 +336,7 @@ public abstract class Contracts {
 
 
         Paragraph estamosEncaminhando = new Paragraph("Estamos encaminhando o Sr.(a) "+encaminhamento.getCandidato().getNome()+
-                " para entrevista nesta empresa para a função de "+encaminhamento.getVaga().getCargo().getNome()+" igualmente, caso a entrevista seja favorável por gentileza entrar em contato com a agência pelo tel.: 3572- 1977.", new Font(Font.FontFamily.TIMES_ROMAN, 15, Font.NORMAL));
+                " para entrevista para a função de "+encaminhamento.getVaga().getCargo().getNome()+" igualmente, caso a entrevista seja favorável por gentileza entrar em contato com a agência pelo tel.: 3572- 1977.", new Font(Font.FontFamily.TIMES_ROMAN, 15, Font.NORMAL));
         estamosEncaminhando.setAlignment(Element.ALIGN_JUSTIFIED);
         estamosEncaminhando.setSpacingBefore(10);
         estamosEncaminhando.setSpacingAfter(10);
@@ -377,12 +377,24 @@ public abstract class Contracts {
         document.add(topImageDoc);
 
         document.add(titleDoc);
-        document.add(empresa);
+        if (empresaString!=null||empresaString.trim()==""){
+            document.add(empresa);
+        }
 
-        document.add(contatos);
-        document.add(email);
+        if (contatosEmpresaString!=null||contatosEmpresaString.trim()==""){
+            document.add(contatos);
+        }
+
+        if (emailEmpresaString!=null||emailEmpresaString.trim()==""){
+            document.add(email);
+        }
+
         document.add(horárioDaEntrevista);
-        document.add(endereco);
+
+        if (enderecoEmpresaString!=null||enderecoEmpresaString.trim()==""){
+            document.add(endereco);
+        }
+
         document.add(estamosEncaminhando);
         document.add(agradecimentos);
 
@@ -399,7 +411,7 @@ public abstract class Contracts {
         document.close();
 
 
-        return new String[]{"/app/Iguassu/app/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_" + encaminhamento.getId() + ".pdf"};
+        return new String[]{"/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_" + encaminhamento.getId() + ".pdf"};
     }
 
 }

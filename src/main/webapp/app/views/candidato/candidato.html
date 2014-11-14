@@ -57,19 +57,29 @@
         <th><a href="" ng-click="order = 'nome'; search()">Nome</a></th>
         <th><a href="" ng-click="order = 'sexo'; search()">Sexo</a></th>
         <th><a href="" ng-click="order = 'sexo'; search()">Data de nascimento</a></th>
+        <th><a href="" ng-click="order = 'sexo'; search()">Data de contrato</a></th>
         <th>Empregado (a)</th>
         <th>Disponível</th>
         <th>Bloqueado</th>
         <!--<th></th>-->
       </tr>
-      <tr data-ng-repeat="candidato in candidatos">
-        <td data-ng-click="edit(candidato)">{{candidato.id}}</td>
-        <td data-ng-click="edit(candidato)">{{candidato.nome}}</td>
-        <td data-ng-click="edit(candidato)">{{candidato.genero}}</td>
-        <td data-ng-click="edit(candidato)">{{candidato.dataNasc|date:'dd/MM/yyyy'}}</td>
-        <td><span class="label label-warning" ng-if="candidato.situacao==='EMPREGADO'">Empregado (a)</span></td>
-        <td><span class="label label-success" ng-if="candidato.situacao==='DISPONIVEL'">Disponível</span></td>
-        <td><span class="label label-danger" ng-if="candidato.situacao==='BLOQUEADO'">Bloqueado (a)</span></td>
+      <tr data-ng-click="edit(candidato)" data-ng-repeat="candidato in candidatos">
+        <td>{{candidato.id}}</td>
+        <td>{{candidato.nome}}</td>
+        <td>{{candidato.genero}}</td>
+        <td>{{candidato.dataNasc|date:'dd/MM/yyyy'}} </td>
+        <td>{{candidato.dataDeContrato|date:'dd/MM/yyyy'}}</td>
+        <td ng-if="candidato.situacao==='EMPREGADO'&&contratoVencido(candidato.dataDeContrato)"><span class="label label-warning">Empregado com contrato vencido</span></td>
+        <td ng-if="candidato.situacao==='EMPREGADO'&&!contratoVencido(candidato.dataDeContrato)"><span class="label label-warning">Empregado</span></td>
+        <td ng-if="candidato.situacao!=='EMPREGADO'"></td>
+
+        <td ng-if="candidato.situacao==='DISPONIVEL'&&contratoVencido(candidato.dataDeContrato)"><span class="label label-warning" >Disponível com contrato vencido</span></td>
+        <td ng-if="candidato.situacao==='DISPONIVEL'&&!contratoVencido(candidato.dataDeContrato)"><span class="label label-success" >Disponível</span></td>
+        <td ng-if="candidato.situacao!=='DISPONIVEL'"></td>
+
+        <td ng-if="candidato.situacao==='BLOQUEADO'&&contratoVencido(candidato.dataDeContrato)"><span class="label label-danger" >Bloqueado com contrato vencido</span></td>
+        <td ng-if="candidato.situacao==='BLOQUEADO'&&!contratoVencido(candidato.dataDeContrato)"><span class="label label-danger" >Bloqueado</span></td>
+        <td ng-if="candidato.situacao!=='BLOQUEADO'"></td>
         <!--<td>-->
           <!--<span class="glyphicon glyphicon-print"></span>-->
           <!--<span data-ng-click="deleteCandidato(candidato.id)" class="glyphicon glyphicon-trash"></span>-->

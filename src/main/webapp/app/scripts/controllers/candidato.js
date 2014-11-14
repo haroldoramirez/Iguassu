@@ -5,7 +5,8 @@ angular.module('iguassuApp')
 
   $scope.endereco = {};
 
-  $scope.isCollapsed = false;
+  $scope.today = new Date();
+
   $rootScope.getCursos();
 
   $rootScope.getCargos();
@@ -38,6 +39,9 @@ angular.module('iguassuApp')
             $scope.contrato = '/Iguassu' + data[0];
           };
         });
+        Candidato.getLancamentos({id: $routeParams.id}, function(data){
+          $scope.lancamentosDoCandidato = data[0];
+        });
         $scope.endereco = createAddress.desformateEndereco(data.endereco);
       });
       $scope.cursosDoCandidato = Candidato.getCursos({id: $routeParams.id});
@@ -49,10 +53,6 @@ angular.module('iguassuApp')
     $scope.getCandidatos();
   };
 
-  // $scope.getContrato = function(){
-  //   $location.path('/candidatos/'+$routeParams.id+'/contrato');
-  // };
-  
   $scope.save = function(){
     $scope.candidato.endereco = $scope.endereco;
     var msg = 'cadastrado com sucesso';
@@ -66,7 +66,6 @@ angular.module('iguassuApp')
     Candidato.save($scope.candidato, function(data){
       $rootScope.candidato = data;
       $location.path('/candidatos/'+$scope.candidato.id);
-      $scope.getCandidatos();
       toastr.success(msg,$scope.candidato.nome);
       $document.scrollTopAnimated(0, 700);
       $scope.init();
@@ -75,38 +74,22 @@ angular.module('iguassuApp')
     });
   };
 
-  // $scope.openContrato = function() {
-  //   Candidato.getContrato({id: $routeParams.id}, function(data){
-  //     $rootScope.urlContratoCandidato = '/Iguassu' + data[0];
-  //     // console.log($scope.url);
-  //   });
-  //   $modal.open({
-  //     templateUrl : 'contrato_candidato.html',
-  //     controller : '',
-  //     size : 'md',
-  //     resolve : {
-  //      bundle : function() {
-  //         return {
-  //             url : $rootScope.urlContratoCandidato,
-  //         }
-  //       }
-  //     }
-  //   }).result.then(function() {
-  //       $rootScope.urlContratoCandidato = null;
-  //     }, function(){
-  //       $rootScope.urlContratoCandidato = null;  
-  //   });
-  // };
+  $scope.renovarContrato = function(){
+    Candidato.renovarContrato({id: $routeParams.id}, function(data){
+      $rootScope.candidato = data;
+      $location.path('/candidatos/'+$scope.candidato.id);
+      toastr.success('Contrato renovado pelo usuário ' + $scope.usuario.nome,'Contrato renovado com sucesso');
+      $document.scrollTopAnimated(0, 700);
+      $scope.init();
+    }, function(data){
+      console.log(data);
+      toastr.error('Não foi possível renovar o contrato do candidato, verifique se o mesmo tem alguma conta a pagar com a empresa');
+    });
+  }
 
   $scope.openCurso = function(candidatoCurso) {
-    
-    if (!$scope.empresas) {
-      $scope.getEmpresas();  
-    };
-    if (!$scope.cursos) {
-      $scope.getCursos();  
-    };
-
+    $scope.getEmpresas(); 
+    $scope.getCursos();
     $modal.open({
       templateUrl : 'cursosDoCandidato.html',
       controller : 'CandidatoCursoCtrl',
@@ -127,14 +110,8 @@ angular.module('iguassuApp')
   };
 
   $scope.openExperiencia = function(experiencia) {
-    
-    if (!$scope.empresas) {
-      $scope.getEmpresas();  
-    };
-    if (!$scope.cargos) {
-      $scope.getCargos();  
-    };
-
+    $scope.getEmpresas();
+    $scope.getCargos();
     $modal.open({
         templateUrl : 'experienciasDoCandidato.html',
         controller : 'CandidatoExperienciaCtrl',
@@ -175,6 +152,13 @@ angular.module('iguassuApp')
     $event.preventDefault();
     $event.stopPropagation();   
     $scope.opened = !$scope.opened;
+  };
+
+  $scope.openDateContratoPicker = function($event) {
+    
+    $event.preventDefault();
+    $event.stopPropagation();   
+    $scope.openedDateContrato = !$scope.openedDateContrato;
   };
 
 }).controller('CandidatoExperienciaCtrl', function ($scope, $modalInstance,  $modal, Candidato, toastr, bundle) {
