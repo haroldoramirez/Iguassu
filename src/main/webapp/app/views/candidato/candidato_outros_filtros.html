@@ -1,11 +1,19 @@
-<div class="col-xs-12 col-12 col-sm-12 col-lg-6" >
+<div class="col-xs-12 col-12 col-sm-12 col-lg-4" >
   <label class="control-label">Cursos</label>
   <select class="form-control" data-ng-model="filter1" data-ng-options="(curso.nome+' / '+ curso.categoriaCurso.nome) for curso in cursos">
   </select>
 </div>
-<div class="col-xs-12 col-12 col-sm-12 col-lg-6">
+<div class="col-xs-12 col-12 col-sm-12 col-lg-4">
   <label class="control-label">Experiência</label>
   <select class="form-control" data-ng-model="filter2" data-ng-options="(cargo.nome) for cargo in cargos">
+  </select>
+</div>
+<div class="col-xs-12 col-12 col-sm-12 col-lg-4">
+  <label class="control-label">Situação do candidato</label>
+  <select class="form-control" data-ng-model="filter3">
+    <option value="DISPONIVEL">Disponível</option>
+    <option value="BLOQUEADO">Bloqueado</option>
+    <option value="EMPREGADO">Empregado (a)</option>
   </select>
 </div>
 <br>

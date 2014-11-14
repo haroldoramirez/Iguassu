@@ -33,7 +33,7 @@
         <div class="form-group">
           <label class="control-label">Filial</label>
           <div class="controls">
-            <input data-ng-model="usuario.filial" type="text" placeholder="Insira a filial onde o usuário (a) trabalha .." class="form-control">
+            <input ng-disabled="usuario.perfil!='GERENTE'" data-ng-model="usuario.filial" type="text" placeholder="Insira a filial onde o usuário (a) trabalha .." class="form-control">
           </div>
         </div>
 
