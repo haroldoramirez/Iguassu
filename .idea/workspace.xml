@@ -2,33 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fd9cdac-4d76-402e-87e5-7ce55a584879" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/services/createLancamentosVencidos.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/candidato/teste.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/reports/candidatos/Contrato_112.pdf" afterPath="$PROJECT_DIR$/src/main/webapp/app/reports/candidatos/Contrato_112.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/reports/candidatos/Contrato_113.pdf" afterPath="$PROJECT_DIR$/src/main/webapp/app/reports/candidatos/Contrato_113.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/reports/candidatos/Contrato_5.pdf" afterPath="$PROJECT_DIR$/src/main/webapp/app/reports/candidatos/Contrato_5.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_1.pdf" afterPath="$PROJECT_DIR$/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_1.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_2.pdf" afterPath="$PROJECT_DIR$/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_2.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_3.pdf" afterPath="$PROJECT_DIR$/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_3.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_4.pdf" afterPath="$PROJECT_DIR$/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_4.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Candidato.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Candidato.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/util/Contracts.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/util/Contracts.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerCandidato.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerCandidato.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceCandidato.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceCandidato.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceUsuario.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceUsuario.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/br/com/emanuelvictor/test/service/TestCandidato.java" afterPath="$PROJECT_DIR$/src/test/java/br/com/emanuelvictor/test/service/TestCandidato.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/app.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/candidato/candidato.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/candidato/candidato.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/candidato/candidato_dados.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/candidato/candidato_dados.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/candidato/candidato_outros_filtros.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/candidato/candidato_outros_filtros.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/encaminhamento/encaminhamento.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/encaminhamento/encaminhamento.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/encaminhamento/encaminhamento_dados.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/encaminhamento/encaminhamento_dados.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/endereco/endereco.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/endereco/endereco.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/templates/templates.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/templates/templates.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/vaga/vaga.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/vaga/vaga.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/vaga/vaga_dados.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/vaga/vaga_dados.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Iguassu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,7 +33,7 @@
       <file leaf-file-name="ServiceUsuario.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceUsuario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49447513" vertical-offset="1243" max-vertical-offset="1980">
+            <state vertical-scroll-proportion="0.5939227" vertical-offset="1207" max-vertical-offset="1980">
               <caret line="101" column="16" selection-start-line="101" selection-start-column="16" selection-end-line="101" selection-end-column="16" />
               <folding />
             </state>
@@ -69,7 +43,7 @@
       <file leaf-file-name="TestCandidato.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/br/com/emanuelvictor/test/service/TestCandidato.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="159" max-vertical-offset="648">
+            <state vertical-scroll-proportion="0.0" vertical-offset="594" max-vertical-offset="954">
               <caret line="33" column="33" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="44" />
               <folding />
             </state>
@@ -79,7 +53,7 @@
       <file leaf-file-name="ServiceCandidato.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceCandidato.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="366" max-vertical-offset="3708">
+            <state vertical-scroll-proportion="0.0" vertical-offset="702" max-vertical-offset="4194">
               <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
               <folding />
             </state>
@@ -89,7 +63,7 @@
       <file leaf-file-name="Candidato.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Candidato.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1081" max-vertical-offset="1494">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1746" max-vertical-offset="2052">
               <caret line="97" column="9" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
               <folding />
             </state>
@@ -99,7 +73,7 @@
       <file leaf-file-name="ServiceEmpresa.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceEmpresa.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="127" max-vertical-offset="936">
+            <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="1278">
               <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
@@ -247,9 +221,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1366" />
-    <option name="y" value="24" />
+    <option name="y" value="-4" />
     <option name="width" value="1600" />
-    <option name="height" value="876" />
+    <option name="height" value="904" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -282,8 +256,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -632,7 +606,7 @@
       <recent name="br.com.emanuelvictor.iguassu.web.entity.base" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestCandidato.saveCandidatoContratoVencido">
+  <component name="RunManager" selected="Maven.Iguassu [tomcat7:run]">
     <configuration default="false" name="Iguassu [tomcat7:run]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -996,19 +970,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1366" y="24" width="1600" height="876" extended-state="6" />
-    <editor active="false" />
+    <frame x="1366" y="-4" width="1600" height="904" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271605" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31939977" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7083333" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287879" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48076922" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48076922" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41282052" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1018,6 +991,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31939977" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1317,7 +1291,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.48230088" vertical-offset="1024" max-vertical-offset="1476">
           <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1325,7 +1298,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.4191344" vertical-offset="0" max-vertical-offset="1728">
           <caret line="76" column="17" selection-start-line="76" selection-start-column="17" selection-end-line="76" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1333,7 +1305,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="17.545454" vertical-offset="686" max-vertical-offset="8838">
           <caret line="497" column="0" selection-start-line="497" selection-start-column="0" selection-end-line="497" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1341,7 +1312,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4090909" vertical-offset="5256" max-vertical-offset="7992">
           <caret line="321" column="12" selection-start-line="321" selection-start-column="12" selection-end-line="444" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1349,7 +1319,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.192053" vertical-offset="648" max-vertical-offset="1134">
           <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1371,7 +1340,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.8675497" vertical-offset="0" max-vertical-offset="1332">
           <caret line="56" column="51" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1379,7 +1347,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34192672" vertical-offset="0" max-vertical-offset="737">
           <caret line="14" column="76" selection-start-line="14" selection-start-column="76" selection-end-line="14" selection-end-column="76" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1387,7 +1354,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5861601" vertical-offset="0" max-vertical-offset="737">
           <caret line="24" column="59" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1395,9 +1361,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.75576663" vertical-offset="6877" max-vertical-offset="7614">
           <caret line="413" column="64" selection-start-line="413" selection-start-column="64" selection-end-line="413" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1413,10 +1376,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5939227" vertical-offset="1045" max-vertical-offset="1512">
           <caret line="98" column="55" selection-start-line="98" selection-start-column="55" selection-end-line="98" selection-end-column="55" />
-          <folding>
-            <element signature="e#3560#3561#0" expanded="false" />
-            <element signature="e#3624#3625#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1446,7 +1405,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceUsuario.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49447513" vertical-offset="1243" max-vertical-offset="1980">
+        <state vertical-scroll-proportion="0.5939227" vertical-offset="1207" max-vertical-offset="1980">
           <caret line="101" column="16" selection-start-line="101" selection-start-column="16" selection-end-line="101" selection-end-column="16" />
           <folding />
         </state>
