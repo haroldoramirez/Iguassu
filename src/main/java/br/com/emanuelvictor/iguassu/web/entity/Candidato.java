@@ -4,6 +4,7 @@ import br.com.emanuelvictor.iguassu.web.entity.address.Pais;
 import br.com.emanuelvictor.iguassu.web.entity.base.PessoaFisica;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 @Entity
@@ -90,5 +91,19 @@ public class Candidato extends PessoaFisica {
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
 	}
+
+    public boolean contratoVencido() {
+        if (this.dataDeContrato==null){
+            return false;
+        }
+        Calendar calendar =  Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) - 180);
+//        System.out.println(new SimpleDateFormat().format(calendar.getTime()));
+//        System.out.println(new SimpleDateFormat().format(dataDeContrato.getTime()));
+        if (this.dataDeContrato.before(calendar)){
+            return true;
+        }
+        return false;
+    }
 
 }

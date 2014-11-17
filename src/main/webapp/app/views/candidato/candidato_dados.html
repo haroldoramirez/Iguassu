@@ -107,7 +107,7 @@
               <a class="glyphicon glyphicon-plus" data-ng-click="openPais('sm')"></a>
             </div>
             <div class="controls">
-              <select class="form-control" data-ng-model="candidato.nacionalidade" data-ng-options="(pais.nome) for pais in paises">
+              <select class="form-control" data-ng-model="candidato.nacionalidade" data-ng-options="(pais.nome) for pais in paises.slice().reverse()">
                 <option value="" disabled data-ng-selected="candidato.nacionalidade.id">{{candidato.nacionalidade.nome}}</option>
               </select>
             </div>

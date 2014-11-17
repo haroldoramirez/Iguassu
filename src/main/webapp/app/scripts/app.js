@@ -143,6 +143,9 @@ angular
   };
 
   $rootScope.contratoVencido = function(contrato){
+    if (!contrato) {
+      return false;
+    }
     var date = new Date();
     date.setMonth(date.getMonth()-6);
     // console.log(date);

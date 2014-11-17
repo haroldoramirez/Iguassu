@@ -1,11 +1,11 @@
 <div class="col-xs-12 col-12 col-sm-12 col-lg-4" >
   <label class="control-label">Cursos</label>
-  <select class="form-control" data-ng-model="filter1" data-ng-options="(curso.nome+' / '+ curso.categoriaCurso.nome) for curso in cursos">
+  <select class="form-control" data-ng-model="filter1" data-ng-options="(curso.nome+' / '+ curso.categoriaCurso.nome) for curso in cursos.slice().reverse()">
   </select>
 </div>
 <div class="col-xs-12 col-12 col-sm-12 col-lg-4">
   <label class="control-label">Experiência</label>
-  <select class="form-control" data-ng-model="filter2" data-ng-options="(cargo.nome) for cargo in cargos">
+  <select class="form-control" data-ng-model="filter2" data-ng-options="(cargo.nome) for cargo in cargos.slice().reverse()">
   </select>
 </div>
 <div class="col-xs-12 col-12 col-sm-12 col-lg-4">

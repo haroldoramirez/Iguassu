@@ -69,7 +69,7 @@
           </div>
           <select class="form-control" data-ng-model="endereco.pais" 
                   ng-change="getEstados(endereco.pais.id);endereco.estado=null;endereco.cidade=null;endereco.bairro=null;"
-                  data-ng-options="(pais.nome) for pais in paises">
+                  data-ng-options="(pais.nome) for pais in paises.slice().reverse()">
             <option value="" disabled data-ng-selected="endereco.pais.id">
               {{endereco.pais.nome}}
             </option>
@@ -88,7 +88,7 @@
           <select ng-disabled="!endereco.pais.id" class="form-control" 
                   data-ng-model="endereco.estado"
                   ng-change="getCidades(endereco.estado.id);endereco.cidade=null;endereco.bairro=null;"
-                  data-ng-options="(estado.nome +' / '+ estado.sigla) for estado in estados">
+                  data-ng-options="(estado.nome +' / '+ estado.sigla) for estado in estados.slice().reverse()">
             <option value="" disabled data-ng-selected="endereco.estado.id">
               {{endereco.estado.nome}} / {{endereco.estado.sigla}}
             </option>
@@ -106,7 +106,7 @@
           <select ng-disabled="!endereco.estado.id" class="form-control" 
                   data-ng-model="endereco.cidade" 
                   ng-change="getBairros(endereco.cidade.id);endereco.bairro=null;"
-                  data-ng-options="(cidade.nome) for cidade in cidades">
+                  data-ng-options="(cidade.nome) for cidade in cidades.slice().reverse()">
             <option value="" disabled data-ng-selected="endereco.cidade.id">
               {{endereco.cidade.nome}}
             </option>
@@ -128,7 +128,7 @@
           </div>
           <select ng-disabled="!endereco.cidade.id" 
                   class="form-control" data-ng-model="endereco.bairro"
-                  data-ng-options="(bairro.nome) for bairro in bairros">
+                  data-ng-options="(bairro.nome) for bairro in bairros.slice().reverse()">
             <option value="" disabled data-ng-selected="endereco.bairro.id">
                   {{endereco.bairro.nome}}
             </option>
@@ -141,7 +141,7 @@
 <script type="text/ng-template" id="bairro.html">
 	<div class="modal-header">
 		<button type="button" class="close" ng-click="cancel()" data-dismiss="modal">&times;</button>
-			<h4 class="modal-title">Bairros</h4>
+			<h4 class="modal-title">Bairro</h4>
 	</div>
 	<div class="modal-body">
 		<form name="bairroForm" ng-submit="save()" role="form">
@@ -176,7 +176,7 @@
 <script type="text/ng-template" id="cidade.html">
 	<div class="modal-header">
 		<button type="button" class="close" ng-click="cancel()" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title">Cidades</h4>
+		<h4 class="modal-title">Cidade</h4>
 	</div>
 	<div class="modal-body">
 		<form name="cidadeForm" ng-submit="save()" role="form">
@@ -216,7 +216,7 @@
 <script type="text/ng-template" id="estado.html">
 	<div class="modal-header">
 		<button type="button" class="close" ng-click="cancel()" data-dismiss="modal">&times;</button>
-			<h4 class="modal-title">Estados</h4>
+			<h4 class="modal-title">Estado</h4>
 	</div>
 	<div class="modal-body">
 		
@@ -267,7 +267,7 @@
 <script type="text/ng-template" id="pais.html">
 	<div class="modal-header">
 		<button type="button" class="close" data-ng-click="cancel()" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title">Paises</h4>
+		<h4 class="modal-title">País</h4>
 	</div>
 	<div class="modal-body">
 		<form name="paisForm" ng-submit="save()" role="form">

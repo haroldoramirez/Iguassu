@@ -96,7 +96,7 @@ public class ControllerCandidato {
     @RequestMapping(value = "/candidatos/{id}/lancamentos", method = RequestMethod.GET)
     public @ResponseBody
     String[] getLancamentos(@PathVariable Long id) throws Exception {
-        return serviceCandidato.getLancamentosString(id, this.serviceUsuario.getCurrentUser());
+        return serviceCandidato.getLancamentosString(id);
     }
 
 	@RequestMapping(value = "/candidatos/cursos/{id}", method = RequestMethod.DELETE)

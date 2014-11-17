@@ -8,6 +8,8 @@
 
 		<div style="margin-bottom: 5px;" ng-include="'views/encaminhamento/encaminhamento_dados.html'"></div>
 
+		<div style="margin-bottom: 5px;" ng-include="'views/encaminhamento/encaminhamento_pesquisa.html'"></div>
+
 	</accordion>
 
 	<div class="btn-group btn-group-justified">
@@ -59,6 +61,7 @@
 			<!-- <td><span class="label label-success" ng-if="encaminhamento.situacao==='SUCESSO'">Sucesso</span></td> -->
 			<td ng-if="encaminhamento.situacao==='SUCESSO'&&!encaminhamento.lancamento.dataDePagamento"><span class="label label-warning">Sucesso e não pago</span></td>
       <td ng-if="encaminhamento.situacao==='SUCESSO'&&encaminhamento.lancamento.dataDePagamento"><span class="label label-success">Sucesso</span></td>
+      <td ng-if="encaminhamento.situacao!=='SUCESSO'"></td>
 			<td><span class="label label-danger" ng-if="encaminhamento.situacao==='FALHA'">Falha</span></td>
 		</tr>
 	</table>

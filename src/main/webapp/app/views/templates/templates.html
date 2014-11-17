@@ -12,7 +12,7 @@
         	<a class="glyphicon glyphicon-plus" data-ng-click="openCargos('lg')"></a>
         </div>
 	      <div ng-class="{'has-error': !experiencia.cargo.id}">
-	        <select class="form-control" data-ng-model="experiencia.cargo" data-ng-options="(cargo.nome) for cargo in cargos">
+	        <select class="form-control" data-ng-model="experiencia.cargo" data-ng-options="(cargo.nome) for cargo in cargos.slice().reverse()">
 	          <option value="" disabled  data-ng-selected="experiencia.cargo.id">{{experiencia.cargo.nome}}</option>
 	        </select>
 	      </div>
@@ -23,7 +23,7 @@
         	<a class="glyphicon glyphicon-remove" ng-if="experiencia.empresa.id" data-ng-click="experiencia.empresa=null"></a>
           <a class="glyphicon glyphicon-plus" data-ng-click="close()" href="#/empresas"></a>
         </div>
-        <select class="form-control" data-ng-model="experiencia.empresa" data-ng-options="empresa as empresa.nome for empresa in empresas">
+        <select class="form-control" data-ng-model="experiencia.empresa" data-ng-options="empresa as empresa.nome for empresa in empresas.slice().reverse()">
           <option value="" disabled >{{experiencia.empresa.nome}}</option>
         </select>
 	    </div>
@@ -168,7 +168,7 @@
 				<div ng-class="{'has-error': !candidatoCurso.curso.id}">
 					<select class="form-control" 
 									data-ng-model="candidatoCurso.curso" 
-									data-ng-options="(curso.nome+' / '+curso.categoriaCurso.nome) for curso in cursos">
+									data-ng-options="(curso.nome+' / '+curso.categoriaCurso.nome) for curso in cursos.slice().reverse()">
 						<option value="" data-ng-selected="candidatoCurso.id" disabled>{{candidatoCurso.curso.nome}}</option>
 					</select>
 				</div>
@@ -301,7 +301,7 @@
 				<a class="glyphicon glyphicon-plus" data-ng-click="openCategoriasCursos()"></a>
 			</div>
 			<div ng-class="{'has-error':!curso.categoriaCurso.id}">	
-				<select class="form-control" data-ng-model="curso.categoriaCurso" data-ng-options="(categoriaCurso.nome) for categoriaCurso in categoriasDeCursos">
+				<select class="form-control" data-ng-model="curso.categoriaCurso" data-ng-options="(categoriaCurso.nome) for categoriaCurso in categoriasDeCursos.slice().reverse()">
 					<option value="" disabled>{{curso.categoriaCurso.nome}}</option>
 				</select>
 			</div>
@@ -596,7 +596,7 @@
 			        <a ng-show="lancamento.pessoa.id" class="glyphicon glyphicon-remove" data-ng-click="lancamento.pessoa=null;"></a>
 			      </div>
 		        <div class="controls">
-		          <select class="form-control" data-ng-options="empresa.nome for empresa in empresas" 
+		          <select class="form-control" data-ng-options="empresa.nome for empresa in empresas.slice().reverse()" 
 		          				data-ng-model="lancamento.pessoa">
 		          				<option disabled value="">{{lancamento.pessoa	.nome}}</option>
 		          </select>

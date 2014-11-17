@@ -71,35 +71,35 @@ public class ServiceUsuario implements UserDetailsService {
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 //        Usuario usuario1 = new Usuario();
 //        usuario1.setSenha(new BCryptPasswordEncoder().encode("123456"));
-//        usuario1.setNome("Fernando");
-//        usuario1.setLogin("Fernando");
+//        usuario1.setNome("Gerente");
+//        usuario1.setLogin("Gerente");
 //        usuario1.setPerfil(Perfil.GERENTE);
 //
 //        daoUsuario.save(usuario1);
 //
 //        Usuario usuario2 = new Usuario();
-//        usuario2.setNome("Emanuel");
+//        usuario2.setNome("Atendente");
 //        usuario2.setSenha(new BCryptPasswordEncoder().encode("123456"));
-//        usuario2.setLogin("Emanuel");
+//        usuario2.setLogin("Atendente");
 //        usuario2.setPerfil(Perfil.ATENDENTE);
 //
 //        daoUsuario.save(usuario2);
 //
 //        Usuario usuario3 = new Usuario();
-//        usuario3.setNome("Eliandro");
+//        usuario3.setNome("Administrador");
 //        usuario3.setSenha(new BCryptPasswordEncoder().encode("123456"));
-//        usuario3.setLogin("Eliandro");
+//        usuario3.setLogin("Administrador");
 //        usuario3.setPerfil(Perfil.ADMINISTRADOR);
 //
 //        daoUsuario.save(usuario3);
 //
 //        Usuario usuario4 = new Usuario();
-//        usuario4.setNome("Fransisca");
+//        usuario4.setNome("Bloqueado");
 //        usuario4.setSenha(new BCryptPasswordEncoder().encode("123456"));
-//        usuario4.setLogin("Fransisca");
+//        usuario4.setLogin("Bloqueado");
 //        usuario4.setPerfil(Perfil.BLOQUEADO);
 //
-//        return daoUsuario.save(usuario4);
+//        retu  rn daoUsuario.save(usuario4);
 
         Usuario user = daoUsuario.findByLogin(login);
         if (user == null || user.getId() == null || user.getId() == 0){

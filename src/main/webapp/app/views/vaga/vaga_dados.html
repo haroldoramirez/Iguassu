@@ -26,7 +26,7 @@
         </div>
         <div ng-class="{'has-error':!vaga.cargo.id}">
           <select class="form-control" data-ng-model="vaga.cargo" 
-                  data-ng-options="(cargo.nome) for cargo in cargos">
+                  data-ng-options="(cargo.nome) for cargo in cargos.slice().reverse()">
               <option value="" disabled data-ng-selected="vaga.id">{{vaga.cargo.nome}}</option>
           </select>
         </div>
@@ -34,7 +34,10 @@
     </div>
     <div class="col-6 col-sm-6 col-lg-3">
       <div class="form-group">
-        <label class="control-label">Salário</label> <span class="obrigatorio">*</span>
+        <label class="control-label">Salário</label> 
+        <span class="obrigatorio">* 
+            <i ng-if="vaga.salario<=0">Deve ser maior que 0 (zero) </i>
+          </span>
         <div ng-class="{'has-error':!vaga.salario}">
           <div class="controls">
             <input  class="form-control" type="number" data-ng-model="vaga.salario" 
@@ -52,7 +55,7 @@
         </div>
         <div class="controls">
           <select  class="form-control" data-ng-model="vaga.empresa" 
-                   data-ng-options="(empresa.nome) for empresa in empresas">
+                   data-ng-options="(empresa.nome) for empresa in empresas.slice().reverse()">
             <option value="" data-ng-selected="empresa.id">{{vaga.empresa.nome}}</option>
           </select>
         </div>

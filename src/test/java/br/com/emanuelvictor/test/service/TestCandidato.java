@@ -33,7 +33,7 @@ public class TestCandidato {
     @Transactional
     public void saveCandidatoContratoVencido() {
 
-        Candidato candidato = daoCandidato.findOne(Long.parseLong("9"));
+        Candidato candidato = daoCandidato.findOne(Long.parseLong("5"));
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH)-50);

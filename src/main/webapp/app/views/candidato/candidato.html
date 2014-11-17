@@ -31,7 +31,7 @@
         <button type="button" 
                 class="btn btn-primary" 
                 data-ng-click="save()"
-                data-ng-disabled="candidato.nome==null||candidato.nome==''||candidato.genero==null||candidato.genero==''||candidato.dataNasc==null||candidato.dataNasc==''">
+                data-ng-disabled="candidato.nome==null||candidato.nome==''||candidato.genero==null||candidato.genero==''||candidato.dataNasc==null||candidato.dataNasc==''||contratoVencido(candidato.dataDeContrato)">
                 <span class="glyphicon glyphicon-save">&nbspSalvar</span>
         </button>
       </div>

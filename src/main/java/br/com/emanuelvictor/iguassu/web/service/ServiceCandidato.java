@@ -36,6 +36,9 @@ public class ServiceCandidato {
     DAOLancamento daoLancamento;
 
     public Candidato save(Candidato candidato, Usuario usuario) {
+        if (candidato.contratoVencido()){
+            return candidato;
+        }
         Lancamento lancamento = new Lancamento();
         candidato.setDataDeAlteracao(Calendar.getInstance());
         if (candidato.getId() == null) {
@@ -55,7 +58,7 @@ public class ServiceCandidato {
             if (candidatoAux.getSituacao()==SituacaoCandidato.BLOQUEADO){
                 Lancamento lancamentoAux = this.daoLancamento.getByIdPessoa(candidato.getId()).getLast();
                 if (lancamentoAux!=null){
-                    lancamentoAux.setUsuario(lancamento.getUsuario());
+                    lancamentoAux.setUsuario(usuario);
                     lancamentoAux.setDataDePagamento(Calendar.getInstance());
                     this.daoLancamento.save(lancamentoAux);
                 }
@@ -73,7 +76,7 @@ public class ServiceCandidato {
         return this.daoLancamento.getByIdPessoa(id);
     }
 
-    public String[] getLancamentosString(Long id, Usuario usuario) throws Exception{
+    public String[] getLancamentosString(Long id/*, Usuario usuario*/) throws Exception{
         List<Lancamento> lancamentos = this.getLancamentos(id);
         int cont = 0;
         for (int i = 0; i < lancamentos.size(); i++) {
@@ -86,7 +89,6 @@ public class ServiceCandidato {
         }else{
             return new String[]{"Esse candidato tem "+cont+" contas a pagar em aberto. Caso o contrato desse candidato seja renovado, tais contas serão contabilizadas como pagas no caixa da empresa e uma nova conta a receber com o valor da taxa de cadastro será criada e também contabilizada como paga."};
         }
-
     }
 
     public Candidato renovarContrato(Long id, Usuario usuario) throws Exception{
@@ -131,7 +133,7 @@ public class ServiceCandidato {
                 byte[] bytes = file.getBytes();
 
                 // Creating the directory to store file
-                String rootPath = "/home/emanuel/Projetos/Iguassu/src/main/webapp/app/images"/*System.getProperty("catalina.base")*/;
+                String rootPath = "/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/images"/*System.getProperty("catalina.base")*/;
                 System.out.println(" path " + rootPath);
                 File dir = new File(rootPath + File.separator + "candidatos");
                 if (!dir.exists())
