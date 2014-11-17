@@ -75,7 +75,7 @@ public class ControllerEmpresa {
         empresa.getEndereco().setComplemento(complemento);
         empresa.getEndereco().setRua(rua);
 
-    return serviceEmpresa.find(empresa, idBairro, idCidade, idEstado, idPais, new PageRequest(pagina,20 , Sort.Direction.ASC, orderBy));
+    return serviceEmpresa.find(empresa, idBairro, idCidade, idEstado, idPais, new PageRequest(pagina,20, Sort.Direction.ASC, orderBy));
 
 
 	}

@@ -1,0 +1,962 @@
+<!doctype html>
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>Dicionário de dados</title> 
+<!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head> 
+<style type="text/css"> 
+	table {width: 100%; border-collapse: collapse;} 
+	table, td, th {border: 1px solid black;} 
+</style> 
+<body>
+<div class="container">
+<ol> 
+<h1>Iguassu</h1> 
+<ol> 
+<li><a href="#Bairro">Bairro</a> (3 campos)</li><li><a href="#BaseEntity">BaseEntity</a> (8 campos)</li><li><a href="#Candidato">Candidato</a> (8 campos)</li><li><a href="#CandidatoCurso">CandidatoCurso</a> (9 campos)</li><li><a href="#Cargo">Cargo</a> (3 campos)</li><li><a href="#CategoriaCurso">CategoriaCurso</a> (2 campos)</li><li><a href="#Cidade">Cidade</a> (3 campos)</li><li><a href="#Curso">Curso</a> (4 campos)</li><li><a href="#Empresa">Empresa</a> (1 campos)</li><li><a href="#Encaminhamento">Encaminhamento</a> (8 campos)</li><li><a href="#Estado">Estado</a> (4 campos)</li><li><a href="#Experiencia">Experiencia</a> (9 campos)</li><li><a href="#Lancamento">Lancamento</a> (9 campos)</li><li><a href="#Pais">Pais</a> (2 campos)</li><li><a href="#Pessoa">Pessoa</a> (5 campos)</li><li><a href="#PessoaFisica">PessoaFisica</a> (6 campos)</li><li><a href="#PessoaJuridica">PessoaJuridica</a> (2 campos)</li><li><a href="#Usuario">Usuario</a> (5 campos)</li><li><a href="#Vaga">Vaga</a> (7 campos)</li></ol> 
+<ol> 
+<li id="Bairro"> 
+<h2>Bairro</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td>AUTO_INCREMENT</td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+<tr> 
+   <td>nome</td> 
+   <td>VARCHAR(30)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome do bairro</td> 
+</tr> 
+<tr> 
+   <td>cidade_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave estrangeiro da cidade</td> 
+</tr> 
+</table> 
+</li> 
+<li id="BaseEntity"> 
+<h2>BaseEntity</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td>AUTO_INCREMENT</td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+<tr> 
+   <td>dataDeAlteracao</td> 
+   <td>DATETIME</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Data de alteração da tabela</td> 
+</tr> 
+<tr> 
+   <td>dataDeCadastro</td> 
+   <td>DATETIME</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Data de cadastro da tabela</td> 
+</tr> 
+<tr> 
+   <td>cep</td> 
+   <td>VARCHAR(15)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>CEP do endereço</td> 
+</tr> 
+<tr> 
+   <td>complemento</td> 
+   <td>VARCHAR(50)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Complemento do endereço</td> 
+</tr> 
+<tr> 
+   <td>numero</td> 
+   <td>VARCHAR(8)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Número do endereço</td> 
+</tr> 
+<tr> 
+   <td>rua</td> 
+   <td>VARCHAR(50)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Rua do endereço</td> 
+</tr> 
+<tr> 
+   <td>bairro_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Chave estrangeiro para bairro do endereço</td> 
+</tr> 
+</table> 
+</li> 
+<li id="Candidato"> 
+<h2>Candidato</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>dataDeContrato</td> 
+   <td>DATETIME</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Data de contrato do candidato</td> 
+</tr> 
+<tr> 
+   <td>estadoCivil</td> 
+   <td>VARCHAR(255)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Estado civil do candidato</td> 
+</tr> 
+<tr> 
+   <td>necessidadeEspecial</td> 
+   <td>VARCHAR(255)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Necessidade especial do candidato</td> 
+</tr> 
+<tr> 
+   <td>observacoes</td> 
+   <td>LONGTEXT</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Observações do candidato</td> 
+</tr> 
+<tr> 
+   <td>pathFoto</td> 
+   <td>VARCHAR(255)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Caminho da foto do candidato</td> 
+</tr> 
+<tr> 
+   <td>situacao</td> 
+   <td>VARCHAR(255)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Situação do candidato</td> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+<tr> 
+   <td>nacionalidade_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Chave estrangeira para o país natal do candidato</td> 
+</tr> 
+</table> 
+</li> 
+<li id="CandidatoCurso"> 
+<h2>CandidatoCurso</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td>AUTO_INCREMENT</td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+<tr> 
+   <td>outrasInformacoes</td> 
+   <td>LONGTEXT</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Outras informações do curso do candidato</td> 
+</tr> 
+<tr> 
+   <td>periodosConcluidos</td> 
+   <td>INT(11)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Períodos concluídos do curso</td> 
+</tr> 
+<tr> 
+   <td>quantidadeDePeriodos</td> 
+   <td>INT(11)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Total de períodos do curso</td> 
+</tr> 
+<tr> 
+   <td>regime</td> 
+   <td>VARCHAR(30)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Regime do curso</td> 
+</tr> 
+<tr> 
+   <td>situacaoDoCurso</td> 
+   <td>VARCHAR(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Situação do curso.</td> 
+</tr> 
+<tr> 
+   <td>candidato_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave estrangeira do candidato</td> 
+</tr> 
+<tr> 
+   <td>curso_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave estrangeira do curso</td> 
+</tr> 
+<tr> 
+   <td>instituicaoDeEnsino_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Chave estrangeira da instituição de ensino</td> 
+</tr> 
+</table> 
+</li> 
+<li id="Cargo"> 
+<h2>Cargo</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td>AUTO_INCREMENT</td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+<tr> 
+   <td>descricao</td> 
+   <td>LONGTEXT</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Descrição do cargo</td> 
+</tr> 
+<tr> 
+   <td>nome</td> 
+   <td>VARCHAR(30)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome do cargo</td> 
+</tr> 
+</table> 
+</li> 
+<li id="CategoriaCurso"> 
+<h2>CategoriaCurso</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td>AUTO_INCREMENT</td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+<tr> 
+   <td>nome</td> 
+   <td>VARCHAR(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome da categoria do curso</td> 
+</tr> 
+</table> 
+</li> 
+<li id="Cidade"> 
+<h2>Cidade</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td>AUTO_INCREMENT</td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+<tr> 
+   <td>nome</td> 
+   <td>VARCHAR(30)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome da cidade</td> 
+</tr> 
+<tr> 
+   <td>estado_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave estrangeira do estado</td> 
+</tr> 
+</table> 
+</li> 
+<li id="Curso"> 
+<h2>Curso</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td>AUTO_INCREMENT</td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+<tr> 
+   <td>descricao</td> 
+   <td>LONGTEXT</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Descrição do curso</td> 
+</tr> 
+<tr> 
+   <td>nome</td> 
+   <td>VARCHAR(50)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome do curso</td> 
+</tr> 
+<tr> 
+   <td>categoriaCurso_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave estrangeira da categoria do curso</td> 
+</tr> 
+</table> 
+</li> 
+<li id="Empresa"> 
+<h2>Empresa</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+</table> 
+</li> 
+<li id="Encaminhamento"> 
+<h2>Encaminhamento</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td>AUTO_INCREMENT</td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+<tr> 
+   <td>dataDeCadastro</td> 
+   <td>DATETIME</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Data de cadastro do encaminhamento</td> 
+</tr> 
+<tr> 
+   <td>observacoes</td> 
+   <td>LONGTEXT</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Observações do encaminhamento</td> 
+</tr> 
+<tr> 
+   <td>situacao</td> 
+   <td>INT(11)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Situação do encaminhamento</td> 
+</tr> 
+<tr> 
+   <td>candidato_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave estrangeira do candidato</td> 
+</tr> 
+<tr> 
+   <td>lancamento_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Chave estrangeira do lançamento</td> 
+</tr> 
+<tr> 
+   <td>usuario_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave estrangeira do usuário que efetuou o encaminhamento</td> 
+</tr> 
+<tr> 
+   <td>vaga_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave estrangeira da vaga</td> 
+</tr> 
+</table> 
+</li> 
+<li id="Estado"> 
+<h2>Estado</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td>AUTO_INCREMENT</td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+<tr> 
+   <td>nome</td> 
+   <td>VARCHAR(30)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome do estado</td> 
+</tr> 
+<tr> 
+   <td>sigla</td> 
+   <td>VARCHAR(2)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Sigla do estado</td> 
+</tr> 
+<tr> 
+   <td>pais_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave estrangeira do país</td> 
+</tr> 
+</table> 
+</li> 
+<li id="Experiencia"> 
+<h2>Experiencia</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td>AUTO_INCREMENT</td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+<tr> 
+   <td>atividades</td> 
+   <td>LONGTEXT</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Atividades executadas na experiência</td> 
+</tr> 
+<tr> 
+   <td>dataInicio</td> 
+   <td>DATE</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Data de início da experiência</td> 
+</tr> 
+<tr> 
+   <td>dataTermino</td> 
+   <td>DATE</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Data de término da experiẽncia</td> 
+</tr> 
+<tr> 
+   <td>observacoes</td> 
+   <td>LONGTEXT</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Observações da experiência</td> 
+</tr> 
+<tr> 
+   <td>vinculoEmpregaticio</td> 
+   <td>VARCHAR(255)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Vínculo empregatício durante a experiência</td> 
+</tr> 
+<tr> 
+   <td>candidato_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave estrangeira do candidato</td> 
+</tr> 
+<tr> 
+   <td>cargo_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave estrangeira do cargo</td> 
+</tr> 
+<tr> 
+   <td>empresa_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Chave estrangeira da empresa</td> 
+</tr> 
+</table> 
+</li> 
+<li id="Lancamento"> 
+<h2>Lancamento</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td>AUTO_INCREMENT</td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+<tr> 
+   <td>dataDeCadastro</td> 
+   <td>DATE</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Data de cadastro do lançamento</td> 
+</tr> 
+<tr> 
+   <td>dataDePagamento</td> 
+   <td>DATE</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Data de pagamento do lançamento</td> 
+</tr> 
+<tr> 
+   <td>dataDeVencimento</td> 
+   <td>DATE</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Data de evncimento do lançamento</td> 
+</tr> 
+<tr> 
+   <td>descricao</td> 
+   <td>LONGTEXT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Descrição do lançamento</td> 
+</tr> 
+<tr> 
+   <td>tipoLancamento</td> 
+   <td>INT(11)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Tipo do lançamento (entrada, saída)</td> 
+</tr> 
+<tr> 
+   <td>valor</td> 
+   <td>DOUBLE</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Valor do lançamento</td> 
+</tr> 
+<tr> 
+   <td>pessoa_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Chave estrangeira da pessoa do lançamento</td> 
+</tr> 
+<tr> 
+   <td>usuario_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Usuário que efetuou o lançamento</td> 
+</tr> 
+</table> 
+</li> 
+<li id="Pais"> 
+<h2>Pais</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td>AUTO_INCREMENT</td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+<tr> 
+   <td>nome</td> 
+   <td>VARCHAR(30)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome do país</td> 
+</tr> 
+</table> 
+</li> 
+<li id="Pessoa"> 
+<h2>Pessoa</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>email</td> 
+   <td>VARCHAR(50)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Email da pessoa</td> 
+</tr> 
+<tr> 
+   <td>nome</td> 
+   <td>VARCHAR(100)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome da pessoa</td> 
+</tr> 
+<tr> 
+   <td>telefoneComercial</td> 
+   <td>VARCHAR(20)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Telefone comercial da pessoa</td> 
+</tr> 
+<tr> 
+   <td>telefoneResidencial</td> 
+   <td>VARCHAR(20)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Telefone residencial da pessoa</td> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+</table> 
+</li> 
+<li id="PessoaFisica"> 
+<h2>PessoaFisica</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>cpf</td> 
+   <td>VARCHAR(15)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>CPF da pessoa</td> 
+</tr> 
+<tr> 
+   <td>dataNasc</td> 
+   <td>DATE</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Data de nascimento da pessoa</td> 
+</tr> 
+<tr> 
+   <td>genero</td> 
+   <td>VARCHAR(255)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Gênero da pessoa</td> 
+</tr> 
+<tr> 
+   <td>rg</td> 
+   <td>VARCHAR(30)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>RG da pessoa</td> 
+</tr> 
+<tr> 
+   <td>telefoneCelular</td> 
+   <td>VARCHAR(20)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Telefone celuar da pessoa</td> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+</table> 
+</li> 
+<li id="PessoaJuridica"> 
+<h2>PessoaJuridica</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>cnpj</td> 
+   <td>VARCHAR(20)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>CNPJ da pessoa</td> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+</table> 
+</li> 
+<li id="Usuario"> 
+<h2>Usuario</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>filial</td> 
+   <td>VARCHAR(255)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Finial onde o usuário trabalha</td> 
+</tr> 
+<tr> 
+   <td>login</td> 
+   <td>VARCHAR(50)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Login do usuário</td> 
+</tr> 
+<tr> 
+   <td>perfil</td> 
+   <td>VARCHAR(30)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Perfil do usuário</td> 
+</tr> 
+<tr> 
+   <td>senha</td> 
+   <td>LONGTEXT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Senha do usuário</td> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+</table> 
+</li> 
+<li id="Vaga"> 
+<h2>Vaga</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>dataDeCadastro</td> 
+   <td>DATETIME</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Data de cadastro da vaga</td> 
+</tr> 
+<tr> 
+   <td>observacoes</td> 
+   <td>LONGTEXT</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Observações da vaga</td> 
+</tr> 
+<tr> 
+   <td>salario</td> 
+   <td>DOUBLE</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Salário da vaga</td> 
+</tr> 
+<tr> 
+   <td>situacao</td> 
+   <td>INT(11)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Situação da vaga</td> 
+</tr> 
+<tr> 
+   <td>id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave primária da tabela</td> 
+</tr> 
+<tr> 
+   <td>cargo_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Chave estrangeira do cargo da vaga</td> 
+</tr> 
+<tr> 
+   <td>empresa_id</td> 
+   <td>BIGINT(20)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Chave estrangeira da empresa da vaga</td> 
+</tr> 
+</table> 
+</li> 
+</ol> 
+</div>
+</body> 
+</html>

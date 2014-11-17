@@ -68,6 +68,9 @@ angular
    }).when('/', {
      controller : 'HomeCtrl',
      templateUrl : './views/home.html'
+   }).when('/dicionario', {
+     controller : '',
+     templateUrl : './views/dicionario.html'
    }).otherwise({
      redirectTo : '/'
    });
