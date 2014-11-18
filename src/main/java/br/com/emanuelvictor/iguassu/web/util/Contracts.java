@@ -24,7 +24,7 @@ public abstract class Contracts {
             RG = candidato.getRg().toUpperCase();
         }
 
-        Image topImageDoc = Image.getInstance("/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/images/title.png");
+        Image topImageDoc = Image.getInstance("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/images/title.png");
         topImageDoc.setAlignment(Element.ALIGN_CENTER);
 
         Paragraph titleDoc = new Paragraph("Um mundo de oportunidades para VOCÊ!", new Font(Font.FontFamily.HELVETICA, 15, Font.UNDEFINED));
@@ -224,7 +224,7 @@ public abstract class Contracts {
 
         //Pegando e abrindo o documento
         Document document = new Document(PageSize.A4);
-        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/candidatos/Contrato_" + candidato.getId() + ".pdf"));
+        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/candidatos/Contrato_" + candidato.getId() + ".pdf"));
 
 
         document.open();
@@ -279,13 +279,13 @@ public abstract class Contracts {
         document.add(footer);
         document.close();
 
-        return new String[]{"/app/Iguassu/app/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/candidatos/Contrato_"+candidato.getId()+".pdf"};
+        return new String[]{"/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/candidatos/Contrato_"+candidato.getId()+".pdf"};
 
     }
 
     public final static String[] getContractForward(Encaminhamento encaminhamento) throws  Exception {
 
-        Image topImageDoc = Image.getInstance("/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/images/title.png");
+        Image topImageDoc = Image.getInstance("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/images/title.png");
         topImageDoc.setAlignment(Element.ALIGN_CENTER);
 
         String empresaString = new String();
@@ -311,7 +311,7 @@ public abstract class Contracts {
 
         //Pegando e abrindo o documento
         Document document = new Document(PageSize.A4);
-        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_" + encaminhamento.getId() + ".pdf"));
+        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_" + encaminhamento.getId() + ".pdf"));
 
         Paragraph titleDoc = new Paragraph("Encaminhamento", new Font(Font.FontFamily.HELVETICA, 20, Font.BOLD));
         titleDoc.setAlignment(Element.TITLE);
@@ -321,8 +321,7 @@ public abstract class Contracts {
         Paragraph empresa = new Paragraph("Empresa: "+empresaString, new Font(Font.FontFamily.HELVETICA, 15, Font.NORMAL));
         empresa.setAlignment(Element.ALIGN_LEFT);
 
-        Paragraph endereco = new Paragraph("Endereço: "+enderecoEmpresaString, new Font(Font.FontFamily.COURIER, 15, Font.NORMAL));
-        endereco.setSpacingBefore(20);
+        Paragraph endereco = new Paragraph("Endereço da vaga: "+enderecoEmpresaString, new Font(Font.FontFamily.COURIER, 15, Font.NORMAL));
         endereco.setAlignment(Element.ALIGN_LEFT);
 
         Paragraph contatos = new Paragraph("Contatos: "+contatosEmpresaString, new Font(Font.FontFamily.HELVETICA, 15, Font.NORMAL));
@@ -350,13 +349,13 @@ public abstract class Contracts {
         Paragraph assinatura = new Paragraph("                __________________________________________                ",
                 new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD));
         assinatura.setAlignment(Element.ALIGN_CENTER);
-        assinatura.setSpacingBefore(40);
+        assinatura.setSpacingBefore(30);
 
         Paragraph date = new Paragraph("Foz do Iguaçu, "+new SimpleDateFormat("dd/MM/yyyy").format(encaminhamento.getDataDeCadastro().getTime()),
                 new Font(Font.FontFamily.HELVETICA, 13, Font.NORMAL));
         date.setAlignment(Element.ALIGN_RIGHT);
-        date.setSpacingBefore(50);
-        date.setSpacingAfter(60);
+        date.setSpacingBefore(40);
+        date.setSpacingAfter(50);
 
         Paragraph nomeIguassu = new Paragraph("              Iguassu Agência de Empregos                ",
                 new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD));
@@ -411,7 +410,7 @@ public abstract class Contracts {
         document.close();
 
 
-        return new String[]{"/app/Iguassu/app/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_" + encaminhamento.getId() + ".pdf"};
+        return new String[]{"/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos/Encaminhamento_" + encaminhamento.getId() + ".pdf"};
     }
 
 }

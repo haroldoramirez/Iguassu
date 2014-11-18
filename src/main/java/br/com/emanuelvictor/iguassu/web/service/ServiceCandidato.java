@@ -133,7 +133,7 @@ public class ServiceCandidato {
                 byte[] bytes = file.getBytes();
 
                 // Creating the directory to store file
-                String rootPath = "/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/images"/*System.getProperty("catalina.base")*/;
+                String rootPath = "/home/emanuel/Projetos/Iguassu/src/main/webapp/app/images"/*System.getProperty("catalina.base")*/;
                 System.out.println(" path " + rootPath);
                 File dir = new File(rootPath + File.separator + "candidatos");
                 if (!dir.exists())
