@@ -46,38 +46,17 @@ public class ControllerEmpresa {
 
     @RequestMapping(value = "/empresas", method = RequestMethod.GET)
     public @ResponseBody Object find() {
-        return serviceEmpresa.find(new PageRequest(0, 30, Sort.Direction.DESC, "dataDeCadastro"));
+        return serviceEmpresa.find();
     }
 
-	@RequestMapping(value = "/empresas/{pagina}/{orderBy}", method = RequestMethod.GET)
-	public @ResponseBody Object find(@RequestParam(required = false) String nome,
-                                     @RequestParam(required = false) String CNPJ,
-                                     @RequestParam(required = false) String rua,
-                                     @RequestParam(required = false) String numero,
-                                     @RequestParam(required = false) String CEP,
-                                     @RequestParam(required = false) String complemento,
+	@RequestMapping(value = "/empresas/{pagina}/{orderBy}", method = RequestMethod.POST)
+	public @ResponseBody Object find(@RequestBody(required = false) Empresa empresa,
                                      @RequestParam(required = false) Long idBairro,
                                      @RequestParam(required = false) Long idCidade,
                                      @RequestParam(required = false) Long idEstado,
                                      @RequestParam(required = false) Long idPais,
                                      @PathVariable Integer pagina, @PathVariable String orderBy) {
-
-		complemento = Converter.enconding(complemento);
-		nome = Converter.enconding(nome);
-		rua = Converter.enconding(rua);
-
-        Empresa empresa = new Empresa();
-        empresa.setNome(nome);
-        empresa.setCnpj(CNPJ);
-        empresa.setEndereco(new Endereco());
-        empresa.getEndereco().setCep(CEP);
-        empresa.getEndereco().setNumero(numero);
-        empresa.getEndereco().setComplemento(complemento);
-        empresa.getEndereco().setRua(rua);
-
-    return serviceEmpresa.find(empresa, idBairro, idCidade, idEstado, idPais, new PageRequest(pagina,20, Sort.Direction.ASC, orderBy));
-
-
+        return serviceEmpresa.find(empresa, idBairro, idCidade, idEstado, idPais, new PageRequest(pagina,20, Sort.Direction.ASC, orderBy));
 	}
 
 }

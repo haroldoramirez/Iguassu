@@ -40,6 +40,9 @@ public class Cidade extends SpringData<Long> {
 	}
 
 	public Estado getEstado() {
+        if (estado==null){
+            estado = new Estado();
+        }
 		return estado;
 	}
 

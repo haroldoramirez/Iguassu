@@ -39,6 +39,9 @@ public class Bairro extends SpringData<Long> {
 	}
 
 	public Cidade getCidade() {
+        if (cidade==null){
+            cidade = new Cidade();
+        }
 		return cidade;
 	}
 

@@ -134,7 +134,7 @@ angular
   };                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 
   $rootScope.getEmpresas = function(){
-    $rootScope.empresas = Empresa.query();
+    $rootScope.empresas = Empresa.getAll();
   };
 
   $rootScope.getCargos = function(){

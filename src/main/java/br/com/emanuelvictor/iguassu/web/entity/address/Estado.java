@@ -48,6 +48,9 @@ public class Estado extends SpringData<Long> {
 	}
 
 	public Pais getPais() {
+        if (pais==null){
+            pais = new Pais();
+        }
 		return pais;
 	}
 

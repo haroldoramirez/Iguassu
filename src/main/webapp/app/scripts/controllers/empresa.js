@@ -27,15 +27,17 @@ angular.module('iguassuApp')
         $rootScope.openAll();
       });      
     }
-    $scope.getEmpresas();
-   };
+      Empresa.query({order: $scope.order, pagina: $scope.pagina},{},function(data){
+        $scope.empresas = data;
+      });
+    };
 
   $scope.save = function(){
     $scope.empresa.endereco = createAddress.formateEndereco($scope.endereco);
-    console.log($scope.empresa);
     if ($scope.empresa.cnpj == '') {
       $scope.empresa.cnpj = null;
     };
+    console.log($scope.empresa);
     Empresa.save($scope.empresa, function(data){
       toastr.success("Salvo com sucesso");
       $scope.clear();
@@ -46,22 +48,10 @@ angular.module('iguassuApp')
   };    
 
   $scope.search = function(){
-    if ($scope.empresa.id) {
-      Empresa.get({id: $scope.empresa.id}, function(data){
-        $scope.empresas = [];
-        $scope.empresas[0] = data;
-      });
-    }else if ($routeParams.id){
-      Empresa.get({id: $routeParams.id}, function(data){
-        $scope.empresas = [];
-        $scope.empresas[0] = data;
-      });
-    }else {
-      Empresa.query({nome: $scope.empresa.nome, CNPJ: $scope.empresa.cnpj, 
-                     order: $scope.order, pagina: $scope.pagina}, function(data){
-        $scope.empresas = data;
-      });
-    };
+    $scope.empresa.endereco = $scope.endereco;
+    Empresa.query({order: $scope.order, pagina: $scope.pagina}, $scope.empresa, function(data){
+      $scope.empresas = data;
+    });
   };
 
 
@@ -71,8 +61,7 @@ angular.module('iguassuApp')
 
   $scope.next = function(){
     $scope.pagina = $scope.pagina + 1;
-    Empresa.query({nome: $scope.empresa.nome, CNPJ: $scope.empresa.cnpj, 
-      order: $scope.order, pagina: $scope.pagina}, function(data){
+    Empresa.query($scope.empresa, {order: $scope.order, pagina: $scope.pagina}, function(data){
       if (data.length===0) {
         $scope.pagina = $scope.pagina - 1;
       }else{
@@ -83,8 +72,7 @@ angular.module('iguassuApp')
 
   $scope.older = function(){
     $scope.pagina = $scope.pagina - 1;
-    Empresa.query({nome: $scope.empresa.nome, CNPJ: $scope.empresa.cnpj, 
-      order: $scope.order, pagina: $scope.pagina}, function(data){
+    Empresa.query($scope.empresa, {order: $scope.order, pagina: $scope.pagina}, function(data){
       $scope.empresas = data;
     });
   }
