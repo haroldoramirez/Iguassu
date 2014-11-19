@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fd9cdac-4d76-402e-87e5-7ce55a584879" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/address/Bairro.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/address/Bairro.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/base/BaseEntity.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/base/BaseEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/address/Cidade.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/address/Cidade.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerEmpresa.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerEmpresa.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOEmpresa.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOEmpresa.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/address/Estado.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/address/Estado.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/app.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/controllers/empresa.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/controllers/empresa.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/services/empresa.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/services/empresa.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Iguassu.iws" />
     <ignored path=".idea/workspace.xml" />

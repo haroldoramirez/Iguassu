@@ -78,15 +78,9 @@ angular.module('iguassuApp')
   }
 
   $scope.clear = function(){
-    // $scope.endereco.pais = null;
-    // $scope.endereco.estado = null;
-    // $scope.endereco.cidade = null;
-    // $scope.endereco.bairro = null;
-    // $scope.endereco = null;
     $scope.endereco = {};
     $scope.getPaises();
     $scope.empresa = {};
-    // $scope.empresa.id = null;
     if ($routeParams.id) {
       $location.path('/empresas');
     };
