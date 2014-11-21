@@ -16,9 +16,7 @@ angular.module('iguassuApp')
 
   $scope.pagina = 0;
 
-  $scope.order = 'dataDeCadastro';
-
-   $scope.init = function(){
+  $scope.init = function(){
     if ($routeParams.id) {
       Empresa.get({id: $routeParams.id}, function(data){
         $scope.empresa = data;
@@ -27,10 +25,10 @@ angular.module('iguassuApp')
         $rootScope.openAll();
       });      
     }
-      Empresa.query({order: $scope.order, pagina: $scope.pagina},{},function(data){
-        $scope.empresas = data;
-      });
-    };
+    Empresa.query({pagina: $scope.pagina},{},function(data){
+      $scope.empresas = data;
+    });
+  };
 
   $scope.save = function(){
     $scope.empresa.endereco = createAddress.formateEndereco($scope.endereco);
@@ -48,8 +46,9 @@ angular.module('iguassuApp')
   };    
 
   $scope.search = function(){
-    $scope.empresa.endereco = $scope.endereco;
-    Empresa.query({order: $scope.order, pagina: $scope.pagina}, $scope.empresa, function(data){
+    $scope.empresa.endereco = createAddress.formateEndereco($scope.endereco);
+    console.log($scope.empresa);
+    Empresa.query({pagina: $scope.pagina}, $scope.empresa, function(data){
       $scope.empresas = data;
     });
   };
@@ -61,7 +60,7 @@ angular.module('iguassuApp')
 
   $scope.next = function(){
     $scope.pagina = $scope.pagina + 1;
-    Empresa.query($scope.empresa, {order: $scope.order, pagina: $scope.pagina}, function(data){
+    Empresa.query($scope.empresa, {pagina: $scope.pagina}, function(data){
       if (data.length===0) {
         $scope.pagina = $scope.pagina - 1;
       }else{
@@ -72,7 +71,7 @@ angular.module('iguassuApp')
 
   $scope.older = function(){
     $scope.pagina = $scope.pagina - 1;
-    Empresa.query($scope.empresa, {order: $scope.order, pagina: $scope.pagina}, function(data){
+    Empresa.query($scope.empresa, {pagina: $scope.pagina}, function(data){
       $scope.empresas = data;
     });
   }
@@ -81,9 +80,7 @@ angular.module('iguassuApp')
     $scope.endereco = {};
     $scope.getPaises();
     $scope.empresa = {};
-    if ($routeParams.id) {
-      $location.path('/empresas');
-    };
+    $location.path('/empresas');
   }
 
 });

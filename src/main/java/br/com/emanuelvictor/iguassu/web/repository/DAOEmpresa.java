@@ -17,24 +17,44 @@ public interface DAOEmpresa extends JpaRepository<Empresa, Long> {
     @Query("select e from Empresa e")
     public List<Empresa> find(Pageable pageable);
 
-	@Transactional(readOnly = true)
-	@Query("select e from Empresa e WHERE ((e.nome LIKE %:nome% or :nome is null) and (e.cnpj LIKE %:cnpj% or :cnpj is null) and (e.endereco.rua LIKE %:rua% or :rua is null) and (e.endereco.numero LIKE %:numero% or :numero is null) and (e.endereco.cep LIKE %:cep% or :cep is null) and (e.endereco.complemento LIKE %:complemento% or :complemento is null))")
-	public List<Empresa> find(@Param("nome") String nome,
-                              @Param("cnpj") String cnpj, @Param("rua") String rua,
-			                  @Param("numero") String numero, @Param("cep") String cep,
-			                  @Param("complemento") String complemento, Pageable pageable);
+//    @Transactional(readOnly = true)
+//    @Query("select e from Empresa e WHERE ((e.nome LIKE %:nome% or :nome is null) and (e.cnpj LIKE %:cnpj% or :cnpj is null) and (e.endereco.bairro.id =:bairro_id or :bairro_id is null) and (e.endereco.rua LIKE %:rua% or :rua is null) and (e.endereco.numero LIKE %:numero% or :numero is null) and (e.endereco.cep LIKE %:cep% or :cep is null) and (e.endereco.complemento LIKE %:complemento% or :complemento is null))")
+//    public List<Empresa> find(@Param("nome") String nome, @Param("cnpj") String cnpj,
+//                              @Param("rua") String rua, @Param("bairro_id") Long bairro_d,
+//                              @Param("numero") String numero, @Param("cep") String cep,
+//                              @Param("complemento") String complemento, Pageable pageable);
 
-	@Transactional(readOnly = true)
-	@Query("select e from Empresa e WHERE ((e.nome LIKE %:nome% or :nome is null) and (e.cnpj LIKE %:cnpj% or :cnpj is null) and (e.endereco.rua LIKE %:rua% or :rua is null) and (e.endereco.numero LIKE %:numero% or :numero is null) and (e.endereco.cep LIKE %:cep% or :cep is null) and (e.endereco.complemento LIKE %:complemento% or :complemento is null) and (e.endereco.bairro.id =:bairro_id or :bairro_id is null) and (e.endereco.bairro.cidade.id =:cidade_id or :cidade_id is null) and (e.endereco.bairro.cidade.estado.id =:estado_id or :estado_id is null) and (e.endereco.bairro.cidade.estado.pais.id =:pais_id or :pais_id is null))")
-	public List<Empresa> find(@Param("nome") String nome,
-			                  @Param("cnpj") String cnpj, @Param("rua") String rua,
-			                  @Param("numero") String numero, @Param("cep") String cep,
-			                  @Param("complemento") String complemento,
-			                  @Param("bairro_id") Long bairro_id,
-			                  @Param("cidade_id") Long cidade_id,
-			                  @Param("estado_id") Long estado_id,
+    @Transactional(readOnly = true)
+    @Query("select e from Empresa e WHERE ((e.nome LIKE %:nome% or :nome is null) and (e.cnpj LIKE %:cnpj% or :cnpj is null) and (e.endereco.rua LIKE %:rua% or :rua is null) and (e.endereco.numero LIKE %:numero% or :numero is null) and (e.endereco.cep LIKE %:cep% or :cep is null) and (e.endereco.complemento LIKE %:complemento% or :complemento is null) " +
+            "and ((e.endereco.bairro.id =:bairro_id or :bairro_id is null) or e.endereco.bairro.id is null)" +
+            "and ((e.endereco.bairro.cidade.id =:cidade_id or :cidade_id is null) or e.endereco.bairro.cidade.id is null)" +
+            "and ((e.endereco.bairro.cidade.estado.id =:estado_id or :estado_id is null) or e.endereco.bairro.cidade.estado.id is null) " +
+            "and ((e.endereco.bairro.cidade.estado.pais.id =:pais_id or :pais_id is null) or e.endereco.bairro.cidade.estado.pais.id is null))")
+    public List<Empresa> find(@Param("nome") String nome,
+                              @Param("cnpj") String cnpj, @Param("rua") String rua,
+                              @Param("numero") String numero, @Param("cep") String cep,
+                              @Param("complemento") String complemento,
+                              @Param("bairro_id") Long bairro_d,
+                              @Param("cidade_id") Long cidade_id,
+                              @Param("estado_id") Long estado_id,
                               @Param("pais_id") Long pais_id,
                               Pageable pageable);
+
+//    @Transactional(readOnly = true)
+//    @Query("select e from Empresa e WHERE ((e.nome LIKE %:nome% or :nome is null) and (e.cnpj LIKE %:cnpj% or :cnpj is null) and (e.endereco.rua LIKE %:rua% or :rua is null) and (e.endereco.numero LIKE %:numero% or :numero is null) and (e.endereco.cep LIKE %:cep% or :cep is null) and (e.endereco.complemento LIKE %:complemento% or :complemento is null) " +
+//            "and ((e.endereco.bairro.id =:bairro_id and :bairro_id is not null) " +
+//            "or  ((e.endereco.bairro.cidade.id =:cidade_id and :cidade_id is not null) and :bairro_id is null) " +
+//            "or  ((e.endereco.bairro.cidade.estado.id =:estado_id and :estado_id is not null) and :cidade_id is null) " +
+//            "or  ((e.endereco.bairro.cidade.estado.pais.id =:pais_id and :pais_id is not null) and :estado_id is null)))")
+//    public List<Empresa> find(@Param("nome") String nome,
+//                              @Param("cnpj") String cnpj, @Param("rua") String rua,
+//                              @Param("numero") String numero, @Param("cep") String cep,
+//                              @Param("complemento") String complemento,
+//                              @Param("bairro_id") Long bairro_d,
+//                              @Param("cidade_id") Long cidade_id,
+//                              @Param("estado_id") Long estado_id,
+//                              @Param("pais_id") Long pais_id,
+//                              Pageable pageable);
 
 //    @Transactional(readOnly = true)
 //    @Query("select e from Empresa e WHERE ((e.nome LIKE %:nome% or :nome is null) and (e.cnpj LIKE %:cnpj% or :cnpj is null) and (e.endereco.rua LIKE %:rua% or :rua is null and e.endereco.rua is null) and (e.endereco.numero LIKE %:numero% or :numero is null and e.endereco.numero is null) and (e.endereco.cep LIKE %:cep% or :cep is null and e.endereco.cep is null) and (e.endereco.complemento LIKE %:complemento% or :complemento is null and e.endereco.complemento is null) and (e.endereco.bairro.id =:bairro_id or :bairro_id is null and e.endereco.bairro.id is null) and (e.endereco.bairro.cidade.id =:cidade_id or :cidade_id is null and e.endereco.bairro.cidade.id is null) and (e.endereco.bairro.cidade.estado.id =:estado_id or :estado_id is null and e.endereco.bairro.cidade.estado.id is null) and (e.endereco.bairro.cidade.estado.pais.id =:pais_id or :pais_id is null and e.endereco.bairro.cidade.estado.pais.id is null))")

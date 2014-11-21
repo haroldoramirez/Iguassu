@@ -44,23 +44,26 @@ public class ServiceEmpresa {
         return daoEmpresa.find(pageRequest);
     }
 
-	public List<Empresa> find(Empresa empresa,
-                              Long idBairro, Long idCidade,
-                              Long idEstado, Long idPais,
-                              PageRequest pageRequest) {
+	public List<Empresa> find(Empresa empresa, PageRequest pageRequest) {
 
 
-        if (idBairro==null && idCidade==null && idEstado==null && idPais==null){
-            return daoEmpresa.find(empresa.getNome(),empresa.getCnpj(),
-                    empresa.getEndereco().getRua(), empresa.getEndereco().getNumero(),
-                    empresa.getEndereco().getCep(), empresa.getEndereco().getComplemento(),
-                    pageRequest);
-        }
+
+//            return daoEmpresa.find(empresa.getNome(),empresa.getCnpj(),
+//                    empresa.getEndereco().getRua(),
+//                    empresa.getEndereco().getBairro().getId(),
+//                    empresa.getEndereco().getNumero(),
+//                    empresa.getEndereco().getCep(), empresa.getEndereco().getComplemento(),
+//                    pageRequest);
+
 
 		return daoEmpresa.find(empresa.getNome(), empresa.getCnpj(),
-                    empresa.getEndereco().getRua(), empresa.getEndereco().getNumero(),
-                    empresa.getEndereco().getCep(), empresa.getEndereco().getComplemento(),
-                    idBairro, idCidade, idEstado, idPais, pageRequest);
+                empresa.getEndereco().getRua(), empresa.getEndereco().getNumero(),
+                empresa.getEndereco().getCep(), empresa.getEndereco().getComplemento(),
+                empresa.getEndereco().getBairro().getId(),
+                empresa.getEndereco().getBairro().getCidade().getId(),
+                empresa.getEndereco().getBairro().getCidade().getEstado().getId(),
+                empresa.getEndereco().getBairro().getCidade().getEstado().getPais().getId(),
+                pageRequest);
 	}
 
 }

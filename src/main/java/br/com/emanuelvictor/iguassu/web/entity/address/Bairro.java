@@ -26,6 +26,8 @@ public class Bairro extends SpringData<Long> {
 		this.cidade = cidade;
 	}
 
+
+
 	public Bairro() {
 		super();
 	}

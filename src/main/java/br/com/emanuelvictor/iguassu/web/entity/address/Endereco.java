@@ -23,6 +23,9 @@ public class Endereco{
     private String complemento;
 
     public Bairro getBairro() {
+        if (bairro==null){
+            bairro = new Bairro();
+        }
         return bairro;
     }
 

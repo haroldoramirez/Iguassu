@@ -49,14 +49,10 @@ public class ControllerEmpresa {
         return serviceEmpresa.find();
     }
 
-	@RequestMapping(value = "/empresas/{pagina}/{orderBy}", method = RequestMethod.POST)
+	@RequestMapping(value = "/empresas/{pagina}", method = RequestMethod.POST)
 	public @ResponseBody Object find(@RequestBody(required = false) Empresa empresa,
-                                     @RequestParam(required = false) Long idBairro,
-                                     @RequestParam(required = false) Long idCidade,
-                                     @RequestParam(required = false) Long idEstado,
-                                     @RequestParam(required = false) Long idPais,
-                                     @PathVariable Integer pagina, @PathVariable String orderBy) {
-        return serviceEmpresa.find(empresa, idBairro, idCidade, idEstado, idPais, new PageRequest(pagina,20, Sort.Direction.ASC, orderBy));
+                                     @PathVariable Integer pagina) {
+        return serviceEmpresa.find(empresa, new PageRequest(pagina,20));
 	}
 
 }
