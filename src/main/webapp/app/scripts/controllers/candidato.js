@@ -5,6 +5,8 @@ angular.module('iguassuApp')
 
   $scope.endereco = {};
 
+  $scope.pagina = 0;
+
   $scope.today = new Date();
 
   $rootScope.getCursos();
@@ -62,7 +64,7 @@ angular.module('iguassuApp')
     if ($scope.candidato.cpf == '') {
       $scope.candidato.cpf = null;
     };
-    $rootScope.candidato.endereco =  createAddress.formateEndereco($scope.endereco);
+    $rootScope.candidato.endereco =  createAddress.formateSaveEndereco($scope.endereco);
     Candidato.save($scope.candidato, function(data){
       $rootScope.candidato = data;
       $location.path('/candidatos/'+$scope.candidato.id);
@@ -73,6 +75,32 @@ angular.module('iguassuApp')
       toastr.error('Verifique se há dados inconsistentes ou se o CPF já esta cadastrado','Não foi possível salvar essas informações');
     });
   };
+
+  $scope.search = function(){
+    $scope.candidato.endereco = createAddress.formateEndereco($scope.endereco);
+    console.log($scope.candidato);
+    Candidato.query({pagina: $scope.pagina}, $scope.candidato, function(data){
+      $scope.candidatos = data;
+    });
+  };
+
+  $scope.next = function(){
+    $scope.pagina = $scope.pagina + 1;
+    Candidato.query({pagina: $scope.pagina}, $scope.candidato, function(data){
+      if (data.length===0) {
+        $scope.pagina = $scope.pagina - 1;
+      }else{
+        $scope.candidatos = data;
+      };
+    });
+  }
+
+  $scope.older = function(){
+    $scope.pagina = $scope.pagina - 1;
+    Candidato.query({pagina: $scope.pagina}, $scope.candidato, function(data){
+      $scope.candidatos = data;
+    });
+  }
 
   $scope.renovarContrato = function(){
     Candidato.renovarContrato({id: $routeParams.id}, function(data){
@@ -85,6 +113,24 @@ angular.module('iguassuApp')
       console.log(data);
       toastr.error('Não foi possível renovar o contrato do candidato, verifique se o mesmo tem alguma conta a pagar com a empresa');
     });
+  }
+
+  $scope.edit = function(candidato){
+    $document.scrollTopAnimated(0, 700);
+    $location.path('/candidatos/'+candidato.id);
+  }
+
+  $scope.clear = function(){
+    $scope.endereco = null;
+    $scope.endereco = createAddress.desformateEndereco($scope.endereco);
+    $scope.endereco = {};
+    $document.scrollTopAnimated(0, 700);
+    $scope.candidato = {};
+    $scope.cursosDoCandidato = {};
+    $scope.experienciasDoCandidato = {};
+    if ($routeParams.id) {
+      $location.path('/candidatos');
+    }
   }
 
   $scope.openCurso = function(candidatoCurso) {
@@ -131,31 +177,13 @@ angular.module('iguassuApp')
     });
   };
 
-  $scope.edit = function(candidato){
-    $document.scrollTopAnimated(0, 700);
-    $location.path('/candidatos/'+candidato.id);
-  }
-
-  $scope.clear = function(){
-    $rootScope.endereco = {};
-    $document.scrollTopAnimated(0, 700);
-    $rootScope.candidato = {};
-    $scope.cursosDoCandidato = {};
-    $scope.experienciasDoCandidato = {};
-    if ($routeParams.id) {
-      $location.path('/candidatos');
-    }
-  }
-
-  $scope.openDatePicker = function($event) {
-    
+  $scope.openDatePicker = function($event) { 
     $event.preventDefault();
     $event.stopPropagation();   
     $scope.opened = !$scope.opened;
   };
 
   $scope.openDateContratoPicker = function($event) {
-    
     $event.preventDefault();
     $event.stopPropagation();   
     $scope.openedDateContrato = !$scope.openedDateContrato;

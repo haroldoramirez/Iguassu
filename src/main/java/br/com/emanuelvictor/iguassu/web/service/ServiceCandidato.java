@@ -9,6 +9,7 @@ import br.com.emanuelvictor.iguassu.web.repository.job.DAOExperiencia;
 import br.com.emanuelvictor.iguassu.web.repository.schooling.DAOCandidatoCurso;
 import br.com.emanuelvictor.iguassu.web.util.Contracts;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -212,6 +213,45 @@ public class ServiceCandidato {
         candidato.setDataDeAlteracao(Calendar.getInstance());
         this.daoCandidato.save(candidato);
         this.daoCandidatoCurso.delete(id);
+    }
+
+
+    public List<Candidato> find(Candidato candidato, PageRequest pageRequest) {
+
+        if (candidato.getEndereco().getBairro().getCidade().getEstado().getPais().getId() == null) {
+            return daoCandidato.find(candidato.getId(), candidato.getNome(), candidato.getCpf(), candidato.getRg(),
+                    candidato.getTelefoneCelular(), candidato.getTelefoneComercial(), candidato.getTelefoneResidencial(),
+                    candidato.getEmail(), candidato.getObservacoes(),
+                    candidato.getSituacao(), candidato.getGenero(),
+                    candidato.getNecessidadeEspecial(), candidato.getEstadoCivil(),
+                    candidato.getDataNasc(), candidato.getNacionalidade().getId(),
+                    candidato.getEndereco().getRua(), candidato.getEndereco().getNumero(),
+                    candidato.getEndereco().getCep(), candidato.getEndereco().getComplemento(),
+                    pageRequest);
+        }
+        return daoCandidato.find(candidato.getId(), candidato.getNome(), candidato.getCpf(), candidato.getRg(),
+                candidato.getTelefoneCelular(), candidato.getTelefoneComercial(), candidato.getTelefoneResidencial(),
+                candidato.getEmail(), candidato.getObservacoes(),
+                candidato.getSituacao(), candidato.getGenero(),
+                candidato.getNecessidadeEspecial(), candidato.getEstadoCivil(),
+                candidato.getDataNasc(), candidato.getNacionalidade().getId(),
+                candidato.getEndereco().getRua(), candidato.getEndereco().getNumero(),
+                candidato.getEndereco().getCep(), candidato.getEndereco().getComplemento(),
+                candidato.getEndereco().getBairro().getId(),
+                candidato.getEndereco().getBairro().getCidade().getId(),
+                candidato.getEndereco().getBairro().getCidade().getEstado().getId(),
+                candidato.getEndereco().getBairro().getCidade().getEstado().getPais().getId(),
+                pageRequest);
+
+
+//        return daoEmpresa.find(empresa.getId(), empresa.getNome(), empresa.getCnpj(),
+//                empresa.getEndereco().getRua(), empresa.getEndereco().getNumero(),
+//                empresa.getEndereco().getCep(), empresa.getEndereco().getComplemento(),
+//                empresa.getEndereco().getBairro().getId(),
+//                empresa.getEndereco().getBairro().getCidade().getId(),
+//                empresa.getEndereco().getBairro().getCidade().getEstado().getId(),
+//                empresa.getEndereco().getBairro().getCidade().getEstado().getPais().getId(),
+//                pageRequest);
     }
 
 //    @ResponseStatus(value= HttpStatus.NOT_ACCEPTABLE, reason="Esse candidato tem contas a pagar com a empresa e seu contrato não pode ser renovado")

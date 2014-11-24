@@ -35,11 +35,7 @@ angular.module('iguassuApp')
            if (endereco.estado) enderecoResult.bairro.cidade.estado = endereco.estado;
            if (endereco.pais) enderecoResult.bairro.cidade.estado.pais = endereco.pais; 
           };
-          if (enderecoResult.bairro.id===null){
-            return {}
-          } else{
-            return enderecoResult;  
-          }
+          return enderecoResult;
       },
       desformateEndereco: function (endereco) {
         var enderecoResult = {
@@ -66,11 +62,17 @@ angular.module('iguassuApp')
             }  
           }
         };
-        if (enderecoResult.bairro===null){
-          return {}
-        } else{
-          return enderecoResult;  
-        }
+        return enderecoResult;
+      },
+      formateSaveEndereco: function (endereco) {
+        if (endereco.bairro) {
+          if (!endereco.bairro.id) {
+            endereco.bairro = null;
+          } else {
+            endereco = this.formateEndereco(endereco);
+          };  
+        };
+        return endereco;
       }
     };
   });

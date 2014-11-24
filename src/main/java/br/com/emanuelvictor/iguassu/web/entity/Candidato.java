@@ -61,7 +61,10 @@ public class Candidato extends PessoaFisica {
     }
 
     public Pais getNacionalidade() {
-		return nacionalidade;
+		if (nacionalidade==null){
+            return new Pais();
+        }
+        return nacionalidade;
 	}
 
 	public void setNacionalidade(Pais nacionalidade) {

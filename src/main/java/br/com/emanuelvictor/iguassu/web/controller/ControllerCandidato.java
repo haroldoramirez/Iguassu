@@ -1,12 +1,14 @@
 package br.com.emanuelvictor.iguassu.web.controller;
 
 import br.com.emanuelvictor.iguassu.web.entity.Candidato;
+import br.com.emanuelvictor.iguassu.web.entity.Empresa;
 import br.com.emanuelvictor.iguassu.web.entity.Lancamento;
 import br.com.emanuelvictor.iguassu.web.entity.job.Experiencia;
 import br.com.emanuelvictor.iguassu.web.entity.schooling.CandidatoCurso;
 import br.com.emanuelvictor.iguassu.web.service.ServiceCandidato;
 import br.com.emanuelvictor.iguassu.web.service.ServiceUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +41,12 @@ public class ControllerCandidato {
     @RequestMapping(value = "/app/candidatos/{id}/foto", method = RequestMethod.POST)
     public @ResponseBody Candidato uploadFoto(@PathVariable("id") String id, @RequestPart("file") MultipartFile file) {
         return this.serviceCandidato.uploadPhoto(id, file);
+    }
+
+    @RequestMapping(value = "/candidatos/{pagina}", method = RequestMethod.POST)
+    public @ResponseBody Object find(@RequestBody(required = false) Candidato candidato,
+                                     @PathVariable Integer pagina) {
+        return serviceCandidato.find(candidato, new PageRequest(pagina,20));
     }
 
 

@@ -31,7 +31,7 @@ angular.module('iguassuApp')
   };
 
   $scope.save = function(){
-    $scope.empresa.endereco = createAddress.formateEndereco($scope.endereco);
+    $scope.empresa.endereco = createAddress.formateSaveEndereco($scope.endereco);
     if ($scope.empresa.cnpj == '') {
       $scope.empresa.cnpj = null;
     };
@@ -53,14 +53,9 @@ angular.module('iguassuApp')
     });
   };
 
-
-  $scope.edit = function(empresa){
-    $location.path('/empresas/'+empresa.id);
-  }
-
   $scope.next = function(){
     $scope.pagina = $scope.pagina + 1;
-    Empresa.query($scope.empresa, {pagina: $scope.pagina}, function(data){
+    Empresa.query({pagina: $scope.pagina}, $scope.empresa, function(data){
       if (data.length===0) {
         $scope.pagina = $scope.pagina - 1;
       }else{
@@ -71,12 +66,18 @@ angular.module('iguassuApp')
 
   $scope.older = function(){
     $scope.pagina = $scope.pagina - 1;
-    Empresa.query($scope.empresa, {pagina: $scope.pagina}, function(data){
+    Empresa.query({pagina: $scope.pagina}, $scope.empresa, function(data){
       $scope.empresas = data;
     });
   }
 
+  $scope.edit = function(empresa){
+    $location.path('/empresas/'+empresa.id);
+  }
+ 
   $scope.clear = function(){
+    $scope.endereco = null;
+    $scope.endereco = createAddress.desformateEndereco($scope.endereco);
     $scope.endereco = {};
     $scope.getPaises();
     $scope.empresa = {};

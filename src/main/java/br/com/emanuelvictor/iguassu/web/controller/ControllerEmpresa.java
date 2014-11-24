@@ -30,7 +30,7 @@ public class ControllerEmpresa {
 	
 
 	@RequestMapping(value = "/empresas", method = RequestMethod.POST)
-	public @ResponseBody Object salve(@RequestBody Empresa empresa) {
+	public @ResponseBody Object save(@RequestBody Empresa empresa) {
 		return this.serviceEmpresa.save(empresa);
     }
 

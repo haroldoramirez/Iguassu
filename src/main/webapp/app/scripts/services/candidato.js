@@ -12,6 +12,7 @@ angular.module('iguassuApp')
     function($resource, BaseUrl){
       return $resource(BaseUrl + '/candidatos/:id', {}, {
         getAll: {method: 'GET', url: BaseUrl + '/candidatos/', isArray: true},
+        query: {method: 'POST', url: BaseUrl + '/candidatos/:pagina', isArray: true},
         renovarContrato: {method: 'GET', url: BaseUrl + '/candidatos/:id/renovar/contrato', isArray: false},
         getLancamentos: {method: 'GET', url: BaseUrl + '/candidatos/:id/lancamentos', isArray: true},
         getContrato: {method: 'GET', url: BaseUrl + '/candidatos/:id/contrato', isArray:true},
