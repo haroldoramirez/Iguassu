@@ -40,6 +40,9 @@ public class Encaminhamento extends SpringData<Long> {
 	private Calendar dataDeCadastro = Calendar.getInstance();
 
     public Usuario getUsuario() {
+        if (usuario==null){
+            return new Usuario();
+        }
         return usuario;
     }
 
@@ -48,6 +51,9 @@ public class Encaminhamento extends SpringData<Long> {
     }
 
     public Lancamento getLancamento() {
+        if (lancamento==null){
+            new Lancamento();
+        }
         return lancamento;
     }
 
@@ -56,6 +62,9 @@ public class Encaminhamento extends SpringData<Long> {
     }
 
     public Vaga getVaga() {
+        if (vaga==null){
+            return new Vaga();
+        }
 		return vaga;
 	}
 
@@ -64,6 +73,9 @@ public class Encaminhamento extends SpringData<Long> {
 	}
 
 	public Candidato getCandidato() {
+        if (candidato==null){
+            return new Candidato();
+        }
 		return candidato;
 	}
 

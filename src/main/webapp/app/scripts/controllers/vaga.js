@@ -11,6 +11,10 @@ angular.module('iguassuApp')
   .controller('VagaCtrl', function ($scope, $rootScope, $routeParams, $location, $document, toastr, createAddress, Vaga, Empresa, Cargo) {
   
   $scope.vaga = {};
+
+  $scope.endereco = {};
+
+  $scope.pagina = 0; 
   
   $scope.init = function(){
     if ($routeParams.id) {
@@ -20,14 +24,15 @@ angular.module('iguassuApp')
       });
       $rootScope.openAll();
     };
-    $scope.getVagas();
-    $scope.getCargos();
     $scope.getEmpresas();
+    $scope.getCargos();
+    Vaga.query({pagina: $scope.pagina},{},function(data){
+      $scope.vagas = data;
+    });
   };
 
-
   $scope.save = function(){
-    $scope.vaga.endereco = $scope.endereco;
+    $scope.vaga.endereco = createAddress.formateSaveEndereco($scope.endereco);
     var msg = 'Vaga cadastrada com sucesso';
     if($scope.vaga.id){
       msg = 'Vaga atualizada com sucesso';
@@ -43,6 +48,32 @@ angular.module('iguassuApp')
       toastr.error('Verifique se há dados inconsistentes','Não foi possível salvar essas informações');
     });
   };
+
+  $scope.search = function(){
+    $scope.vaga.endereco = createAddress.formateEndereco($scope.endereco);
+    console.log($scope.vaga);
+    Vaga.query({pagina: $scope.pagina}, $scope.vaga, function(data){
+      $scope.vagas = data;
+    });
+  };
+
+  $scope.next = function(){
+    $scope.pagina = $scope.pagina + 1;
+    Vaga.query({pagina: $scope.pagina}, $scope.vaga, function(data){
+      if (data.length===0) {
+        $scope.pagina = $scope.pagina - 1;
+      }else{
+        $scope.vagas = data;
+      };
+    });
+  }
+
+  $scope.older = function(){
+    $scope.pagina = $scope.pagina - 1;
+    Vaga.query({pagina: $scope.pagina}, $scope.vaga, function(data){
+      $scope.vagas = data;
+    });
+  }
   
   $scope.edit = function(vaga){
     $document.scrollTopAnimated(0, 700);
@@ -50,7 +81,9 @@ angular.module('iguassuApp')
   }
   
   $scope.clear = function(){
-    $rootScope.endereco = {};
+    $scope.endereco = null;
+    $scope.endereco = createAddress.desformateEndereco($scope.endereco);
+    $scope.endereco = {};
     $scope.vaga = {};
     $document.scrollTopAnimated(0, 700);
     if ($routeParams.id) {

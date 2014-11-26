@@ -7,15 +7,11 @@ import br.com.emanuelvictor.iguassu.web.repository.DAOEncaminhamento;
 import br.com.emanuelvictor.iguassu.web.repository.DAOLancamento;
 import br.com.emanuelvictor.iguassu.web.repository.job.vacancy.DAOVaga;
 import br.com.emanuelvictor.iguassu.web.util.Contracts;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.FileOutputStream;
 import java.util.Calendar;
 import java.util.List;
 
@@ -26,8 +22,8 @@ public class ServiceEncaminhamento {
     @Autowired
     DAOLancamento daoLancamento;
 
-	@Autowired
-	DAOEncaminhamento daoEncaminhamento;
+    @Autowired
+    DAOEncaminhamento daoEncaminhamento;
 
     @Autowired
     DAOVaga daoVaga;
@@ -35,16 +31,16 @@ public class ServiceEncaminhamento {
     @Autowired
     DAOCandidato daoCandidato;
 
-	public Encaminhamento save(Encaminhamento encaminhamento) throws Exception{
+    public Encaminhamento save(Encaminhamento encaminhamento) throws Exception {
         // Se o usuário estiver bloqueado ele não salva
-        if (encaminhamento.getCandidato().getSituacao() == SituacaoCandidato.BLOQUEADO){
+        if (encaminhamento.getCandidato().getSituacao() == SituacaoCandidato.BLOQUEADO) {
             throw new Exception();
         }
 
-		if (encaminhamento.getId() == null) { // Novo encaminhamento
-			encaminhamento.setSituacao(SituacaoEncaminhamento.ANDAMENTO);
+        if (encaminhamento.getId() == null) { // Novo encaminhamento
+            encaminhamento.setSituacao(SituacaoEncaminhamento.ANDAMENTO);
             return daoEncaminhamento.save(encaminhamento);
-		}else if (encaminhamento.getSituacao() == SituacaoEncaminhamento.SUCESSO){
+        } else if (encaminhamento.getSituacao() == SituacaoEncaminhamento.SUCESSO) {
 
             // Atualiza o status do candidato para 'EMPREGADO'
             Candidato candidato = encaminhamento.getCandidato();
@@ -60,18 +56,18 @@ public class ServiceEncaminhamento {
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) + 30);
             Lancamento lancamento = new Lancamento();
-            if (encaminhamento.getLancamento()!=null){
+            if (encaminhamento.getLancamento() != null) {
                 //TODO
-                lancamento =encaminhamento.getLancamento();
+                lancamento = encaminhamento.getLancamento();
                 Lancamento lancamentoAux = this.daoLancamento.findOne(lancamento.getId());
-                if (lancamentoAux.getDataDePagamento()!=null){
+                if (lancamentoAux.getDataDePagamento() != null) {
                     System.out.print(lancamento.getDataDePagamento());
-                    if (lancamento.getDataDePagamento()==null){
+                    if (lancamento.getDataDePagamento() == null) {
                         lancamento.setDataDeCadastro(lancamentoAux.getDataDePagamento());
                     }
                 }
             }
-            lancamento.setValor(vaga.getSalario()/3);
+            lancamento.setValor(vaga.getSalario() / 3);
             lancamento.setDataDeVencimento(calendar);
             lancamento.setTipoLancamento(TipoLancamento.ENTRADA);
             lancamento.setDescricao("Encaminhamento do candidato " + candidato.getNome() + " para a vaga de código " + vaga.getId());
@@ -83,32 +79,45 @@ public class ServiceEncaminhamento {
             //SETA O LANÇAMENTO NO ENCAMINHAMENTO
             encaminhamento.setLancamento(lancamento);
             return daoEncaminhamento.save(encaminhamento);
-        }else if (encaminhamento.getSituacao() == SituacaoEncaminhamento.FALHA){// Handler de falha "SE O ENCAMINHAMENTO É CADASTRADO COMO FALHA, NÃO LANÇA LANÇAMENTO E NEM FAZ NADA, SÓ FICA COMO FALHA"
+        } else if (encaminhamento.getSituacao() == SituacaoEncaminhamento.FALHA) {// Handler de falha "SE O ENCAMINHAMENTO É CADASTRADO COMO FALHA, NÃO LANÇA LANÇAMENTO E NEM FAZ NADA, SÓ FICA COMO FALHA"
             return daoEncaminhamento.save(encaminhamento);
-        }else {
+        } else {
             throw new Exception();
         }
 
-	}
+    }
 
-    public String[] contrato(Long id) throws Exception{
+    public String[] contrato(Long id) throws Exception {
         Encaminhamento encaminhamento = this.daoEncaminhamento.findOne(id);
-        if (encaminhamento!=null){
+        if (encaminhamento != null) {
             return Contracts.getContractForward(encaminhamento);
         }
         return new String[]{};
     }
 
-	public void delete(Long id) {
-		daoEncaminhamento.delete(id);
-	}
+    public void delete(Long id) {
+        daoEncaminhamento.delete(id);
+    }
 
-	public List<Encaminhamento> find() {
-		return daoEncaminhamento.findAll();
-	}
+    public List<Encaminhamento> find() {
+        return daoEncaminhamento.findAll();
+    }
 
-	public Encaminhamento find(Long id) {
-		return daoEncaminhamento.findOne(id);
-	}
+    public Encaminhamento find(Long id) {
+        return daoEncaminhamento.findOne(id);
+    }
 
+    public List<Encaminhamento> find(Encaminhamento encaminhamento, PageRequest pageRequest) {
+        return daoEncaminhamento.find(
+                encaminhamento.getId(),
+                encaminhamento.getObservacoes(),
+                encaminhamento.getSituacao(),
+                encaminhamento.getVaga().getId(),
+                encaminhamento.getCandidato().getId(),
+                encaminhamento.getUsuario().getId(),
+                encaminhamento.getDataDeCadastro(),
+                encaminhamento.getLancamento().getDataDePagamento(),
+                encaminhamento.getLancamento().getValor(),
+                pageRequest);
+    }
 }

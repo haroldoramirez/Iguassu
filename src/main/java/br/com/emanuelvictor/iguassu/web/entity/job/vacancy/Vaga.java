@@ -43,7 +43,10 @@ public class Vaga extends BaseEntity {
 	private Calendar dataDeCadastro = Calendar.getInstance();
 
 	public Empresa getEmpresa() {
-		return empresa;
+        if(empresa==null){
+            return new Empresa();
+        }
+        return empresa;
 	}
 
 	public void setEmpresa(Empresa empresa) {
@@ -51,6 +54,9 @@ public class Vaga extends BaseEntity {
 	}
 
 	public Cargo getCargo() {
+        if(cargo==null){
+            return new Cargo();
+        }
 		return cargo;
 	}
 

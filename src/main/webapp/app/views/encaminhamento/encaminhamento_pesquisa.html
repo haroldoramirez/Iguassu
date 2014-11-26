@@ -1,19 +1,19 @@
-<accordion-group is-open="panel.open1" > 
+<accordion-group is-open="panel.open2" > 
 			<accordion-heading>
-				Pesquisar encaminhamento <i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open1, 'glyphicon-chevron-right': !panel.open1}"></i>
+				Pesquisar encaminhamento <i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open2, 'glyphicon-chevron-right': !panel.open2}"></i>
 			</accordion-heading>
 			
 					<div class="col-6 col-sm-6 col-lg-3">
 					<div class="form-group">
 			      <label class="control-label">Código </label>
 			      <div class="controls">
-			        <input data-ng-model="encaminhamento.id" type="number" class="form-control">
+			        <input data-ng-model="encaminhamentoFilter.id" type="number" class="form-control">
 			      </div>
 			    </div>
 						<div class="form-group">
 							<label class="control-label">Situacao </label>
 								<div class="controls" >
-									<select class="form-control" data-ng-model="encaminhamento.situacao">
+									<select class="form-control" data-ng-model="encaminhamentoFilter.situacao">
 										<option value="ANDAMENTO">Em andamento</option>
 		                <option value="SUCESSO">Sucesso</option>
 		                <option value="FALHA">Falha</option>
@@ -25,7 +25,7 @@
 							<div class="controls">
                 <p class="input-group">
                   <input  type="text" class="form-control" datepicker-popup="dd/MM/yyyy"
-                          ng-model="encaminhamento.lancamento.dataDePagamento" is-open="opened" min-date="encaminhamento.lancamento.dataDeCadastro"
+                          ng-model="encaminhamentoFilter.lancamento.dataDePagamento" is-open="opened" min-date="encaminhamentoFilter.lancamento.dataDeCadastro"
                           show-button-bar="false"/>
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="openDatePicker($event)">
@@ -38,44 +38,34 @@
 					</div>
 					<div class="col-6 col-sm-6 col-lg-3">
 						<div class="form-group">
-							<label class="control-label">Candidato 
-								<span class="obrigatorio"> 
-									<i ng-if="encaminhamento.candidato.situacao==='BLOQUEADO'">Candidato bloqueado</i>
-									<i ng-if="contratoVencido(encaminhamento.candidato.dataDeContrato)">Contrato vencido</i>
-								*</span>
-							</label>
+							<label class="control-label">Candidato </label>
 							<div class="pull-right">
 								<a class="glyphicon glyphicon-plus" href="#/candidatos"></a>
 							</div>
-							<div ng-class="{'has-error':!encaminhamento.candidato.id}">
+							<div ng-class="{'has-error':!encaminhamentoFilter.candidato.id}">
 								<select  
-												class="form-control" data-ng-model="encaminhamento.candidato" 
+												class="form-control" data-ng-model="encaminhamentoFilter.candidato" 
 												data-ng-options="(candidato.nome) for candidato in candidatos | orderBy:'dataDeAlteracao':true">
-									<option value="" disabled data-ng-selected="encaminhamento.id">{{encaminhamento.candidato.nome}}</option>
+									<option value="" disabled data-ng-selected="encaminhamentoFilter.id">{{encaminhamentoFilter.candidato.nome}}</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label">Vaga 
-								<span class="obrigatorio"> 
-									<i ng-if="encaminhamento.vaga.situacao==='OCUPADA'">Vaga ocupada</i>
-									<i ng-if="encaminhamento.vaga.situacao==='CANCELADA'">Vaga cancelada</i>
-								*</span>
-							</label>
+							<label class="control-label">Vaga </label>
 							<div class="pull-right">
 									<a class="glyphicon glyphicon-plus" href="#vagas"></a>
 							</div>
-							<div ng-class="{'has-error':!encaminhamento.vaga.id}">
-								<select class="form-control" data-ng-model="encaminhamento.vaga" 
+							<div ng-class="{'has-error':!encaminhamentoFilter.vaga.id}">
+								<select class="form-control" data-ng-model="encaminhamentoFilter.vaga" 
 												data-ng-options="(vaga.id + ' / ' + vaga.cargo.nome + ' / '+ vaga.situacao +' / '+vaga.empresa.nome) for vaga in vagas | orderBy:'dataDeAlteracao':true">
-									<option value="" disabled data-ng-selected="vaga.id">{{encaminhamento.vaga.id}} / {{encaminhamento.vaga.cargo.nome}} / {{encaminhamento.vaga.empresa.nome}}</option>
+									<option value="" disabled data-ng-selected="vaga.id">{{encaminhamentoFilter.vaga.id}} / {{encaminhamentoFilter.vaga.cargo.nome}} / {{encaminhamentoFilter.vaga.empresa.nome}}</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label">Ultima alteração</label>
 							<div class="controls">
-				        <input data-ng-model="encaminhamento.usuario.nome" type="text" class="form-control">
+				        <input data-ng-model="encaminhamentoFilter.usuario.nome" type="text" class="form-control">
 				      </div>
 						</div>
 						
@@ -85,7 +75,7 @@
 							<label class="control-label">Valor (RS$)</label>
 								<div class="controls">
 									<input	type="number" class="form-control" 
-													data-ng-model="encaminhamento.lancamento.valor" 
+													data-ng-model="encaminhamentoFilter.lancamento.valor" 
 													placeholder="Valor do encaminhamento (30% do primeiro salário da vaga)"/>
 								</div>
 						</div>
@@ -94,7 +84,7 @@
 							<div class="controls">
                 <p class="input-group">
                   <input  type="text" class="form-control" datepicker-popup="dd/MM/yyyy"
-                          ng-model="encaminhamento.lancamento.dataDePagamento" is-open="opened" min-date="encaminhamento.lancamento.dataDeCadastro"
+                          ng-model="encaminhamentoFilter.lancamento.dataDePagamento" is-open="opened" min-date="encaminhamentoFilter.lancamento.dataDeCadastro"
                           show-button-bar="false"/>
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="openDatePicker($event)">
@@ -109,7 +99,7 @@
 						<div class="form-group">
 							<label class="control-label">Observações</label>
 							<div class="controls">
-								<textarea class="form-control" data-ng-model="encaminhamento.observacoes" 
+								<textarea class="form-control" data-ng-model="encaminhamentoFilter.observacoes" 
 													rows="5" placeholder="Insira aqui as observações da encaminhamento">
 								</textarea>
 							</div>

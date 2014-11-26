@@ -2,27 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fd9cdac-4d76-402e-87e5-7ce55a584879" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/reports/candidatos/Contrato_5.pdf" afterPath="$PROJECT_DIR$/src/main/webapp/app/reports/candidatos/Contrato_5.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/reports/candidatos/Contrato_8.pdf" afterPath="$PROJECT_DIR$/src/main/webapp/app/reports/candidatos/Contrato_8.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Candidato.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Candidato.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/util/Contracts.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/util/Contracts.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerCandidato.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerCandidato.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerEmpresa.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerEmpresa.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/job/vacancy/ControllerVaga.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/job/vacancy/ControllerVaga.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOCandidato.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOCandidato.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOEmpresa.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOEmpresa.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerEncaminhamento.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerEncaminhamento.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOEncaminhamento.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOEncaminhamento.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/job/vacancy/DAOVaga.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/job/vacancy/DAOVaga.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceCandidato.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceCandidato.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceEmpresa.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceEmpresa.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/job/vacancy/ServiceVaga.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/job/vacancy/ServiceVaga.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/candidato/candidato.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/candidato/candidato.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/controllers/candidato.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/controllers/candidato.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/services/candidato.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/services/candidato.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/services/createaddress.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/services/createaddress.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Encaminhamento.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Encaminhamento.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceEncaminhamento.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceEncaminhamento.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/job/vacancy/Vaga.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/job/vacancy/Vaga.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/controllers/empresa.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/controllers/empresa.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/services/empresa.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/services/empresa.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/controllers/encaminhamento.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/controllers/encaminhamento.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/services/encaminhamento.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/services/encaminhamento.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/encaminhamento/encaminhamento_pesquisa.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/encaminhamento/encaminhamento_pesquisa.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/views/vaga/vaga.html" afterPath="$PROJECT_DIR$/src/main/webapp/app/views/vaga/vaga.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/controllers/vaga.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/controllers/vaga.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/app/scripts/services/vaga.js" afterPath="$PROJECT_DIR$/src/main/webapp/app/scripts/services/vaga.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Iguassu.iws" />
@@ -54,38 +46,8 @@
       <file leaf-file-name="DAOEmpresa.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOEmpresa.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1188">
-              <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="43" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServiceEmpresa.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceEmpresa.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="477" max-vertical-offset="1008">
-              <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="61" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ControllerEmpresa.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerEmpresa.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="648">
-              <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DAOVaga.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/job/vacancy/DAOVaga.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="166" max-vertical-offset="774">
-              <caret line="39" column="61" selection-start-line="39" selection-start-column="61" selection-end-line="39" selection-end-column="61" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="1314">
+              <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="22" selection-end-column="91" />
               <folding />
             </state>
           </provider>
@@ -94,23 +56,61 @@
       <file leaf-file-name="ServiceVaga.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/job/vacancy/ServiceVaga.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="513" max-vertical-offset="1134">
-              <caret line="62" column="44" selection-start-line="62" selection-start-column="44" selection-end-line="62" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="864" max-vertical-offset="1404">
+              <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="66" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControllerVaga.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ControllerVaga.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/job/vacancy/ControllerVaga.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44755244" vertical-offset="42" max-vertical-offset="846">
-              <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="936" max-vertical-offset="1044">
+              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DAOEncaminhamento.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOEncaminhamento.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
+              <caret line="19" column="304" selection-start-line="19" selection-start-column="304" selection-end-line="19" selection-end-column="304" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServiceEncaminhamento.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceEncaminhamento.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.45753425" vertical-offset="1597" max-vertical-offset="1962">
+              <caret line="117" column="51" selection-start-line="117" selection-start-column="16" selection-end-line="117" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ControllerEncaminhamento.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerEncaminhamento.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="990">
+              <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Encaminhamento.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Encaminhamento.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1296" max-vertical-offset="1674">
+              <caret line="99" column="5" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
               <folding>
-                <element signature="e#650#651#0" expanded="true" />
-                <element signature="e#700#701#0" expanded="true" />
-                <element signature="e#1437#1438#0" expanded="true" />
-                <element signature="e#1511#1512#0" expanded="true" />
+                <element signature="e#2294#2295#0" expanded="true" />
+                <element signature="e#2322#2323#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -129,7 +129,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/base/PessoaFisica.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Perfil.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Usuario.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/TipoLancamento.java" />
@@ -145,18 +144,14 @@
         <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerLancamento.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceLancamento.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Encaminhamento.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/job/Cargo.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/job/Experiencia.java" />
-        <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/job/vacancy/Vaga.java" />
         <option value="$PROJECT_DIR$/src/test/java/br/com/emanuelvictor/test/service/TestPdf.java" />
         <option value="$PROJECT_DIR$/src/test/java/br/com/emanuelvictor/test/service/NovosTestes.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerEncaminhamento.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/util/ConstructorContract.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/base/Pessoa.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/base/SpringData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceEncaminhamento.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/test/java/br/com/emanuelvictor/test/service/TestPDF.java" />
         <option value="$PROJECT_DIR$/src/test/java/br/com/emanuelvictor/test/service/TestCandidato.java" />
@@ -177,9 +172,14 @@
         <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOCandidato.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceCandidato.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/job/vacancy/ServiceVaga.java" />
-        <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/job/vacancy/DAOVaga.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/job/vacancy/ControllerVaga.java" />
         <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerEmpresa.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/job/vacancy/DAOVaga.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/job/vacancy/Vaga.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Encaminhamento.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerEncaminhamento.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOEncaminhamento.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceEncaminhamento.java" />
       </list>
     </option>
   </component>
@@ -260,9 +260,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1366" />
-    <option name="y" value="24" />
+    <option name="y" value="-4" />
     <option name="width" value="1600" />
-    <option name="height" value="876" />
+    <option name="height" value="904" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -295,6 +295,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -650,7 +651,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1040,8 +1040,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1366" y="24" width="1600" height="876" extended-state="6" />
-    <editor active="false" />
+    <frame x="1366" y="-4" width="1600" height="904" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271605" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1051,11 +1051,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7083333" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32818532" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30384615" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.47692308" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41153845" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41025642" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36164737" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36136365" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24848485" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1080,11 +1080,11 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32818532" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30384615" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16512346" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41153845" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41049382" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36164737" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36136365" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1119,31 +1119,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/schooling/CategoriaCurso.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2" vertical-offset="4" max-vertical-offset="504">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/schooling/CandidatoCurso.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5934066" vertical-offset="378" max-vertical-offset="1422">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/job/Cargo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5934066" vertical-offset="0" max-vertical-offset="594">
           <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Encaminhamento.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4065934" vertical-offset="337" max-vertical-offset="1314">
-          <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1224,13 +1203,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerEncaminhamento.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40397352" vertical-offset="141" max-vertical-offset="756">
-          <caret line="40" column="83" selection-start-line="40" selection-start-column="69" selection-end-line="40" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerLancamento.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8741722" vertical-offset="0" max-vertical-offset="882">
@@ -1294,14 +1266,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceEncaminhamento.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="838" max-vertical-offset="1728">
-          <caret line="96" column="40" selection-start-line="96" selection-start-column="40" selection-end-line="96" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/address/Estado.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.60583943" vertical-offset="298" max-vertical-offset="936">
@@ -1320,7 +1284,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3759124" vertical-offset="190" max-vertical-offset="792">
           <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1328,7 +1291,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.5714285" vertical-offset="432" max-vertical-offset="5580">
           <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1343,7 +1305,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5698324" vertical-offset="324" max-vertical-offset="882">
           <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="46" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1351,7 +1312,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="218" max-vertical-offset="1512">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1373,7 +1333,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8310185" vertical-offset="1" max-vertical-offset="7488">
           <caret line="26" column="60" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1388,7 +1347,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="1584">
           <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1396,7 +1354,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="486">
           <caret line="12" column="39" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1404,7 +1361,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="792">
           <caret line="19" column="38" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1412,7 +1368,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1754386" vertical-offset="0" max-vertical-offset="513">
           <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1420,7 +1375,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="657" max-vertical-offset="1584">
           <caret line="64" column="30" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1428,7 +1382,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1278">
           <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1436,23 +1389,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.252" vertical-offset="108" max-vertical-offset="4410">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOEmpresa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1188">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="43" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/job/vacancy/Vaga.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1134">
-          <caret line="32" column="30" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1460,23 +1396,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="477" max-vertical-offset="1008">
           <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="61" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/job/vacancy/DAOVaga.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="166" max-vertical-offset="774">
-          <caret line="39" column="61" selection-start-line="39" selection-start-column="61" selection-end-line="39" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/job/vacancy/ServiceVaga.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="513" max-vertical-offset="1134">
-          <caret line="62" column="44" selection-start-line="62" selection-start-column="44" selection-end-line="62" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1484,20 +1403,88 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="648">
           <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/job/vacancy/Vaga.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14677104" vertical-offset="537" max-vertical-offset="1314">
+          <caret line="46" column="30" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/job/vacancy/ServiceVaga.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="486" max-vertical-offset="1134">
+          <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="66" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/job/vacancy/ControllerVaga.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44755244" vertical-offset="42" max-vertical-offset="846">
-          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="276" max-vertical-offset="774">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/job/vacancy/DAOVaga.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15221988" vertical-offset="252" max-vertical-offset="774">
+          <caret line="28" column="335" selection-start-line="28" selection-start-column="335" selection-end-line="28" selection-end-column="335" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOEmpresa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1188">
+          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="22" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Lancamento.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.1671388" vertical-offset="189" max-vertical-offset="1332">
+          <caret line="78" column="20" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/controller/ControllerEncaminhamento.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="990">
+          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/entity/Encaminhamento.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1296" max-vertical-offset="1674">
+          <caret line="99" column="5" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
           <folding>
-            <element signature="e#650#651#0" expanded="true" />
-            <element signature="e#700#701#0" expanded="true" />
-            <element signature="e#1437#1438#0" expanded="true" />
-            <element signature="e#1511#1512#0" expanded="true" />
+            <element signature="e#2294#2295#0" expanded="true" />
+            <element signature="e#2322#2323#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/repository/DAOEncaminhamento.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
+          <caret line="19" column="304" selection-start-line="19" selection-start-column="304" selection-end-line="19" selection-end-column="304" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/emanuelvictor/iguassu/web/service/ServiceEncaminhamento.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45753425" vertical-offset="1597" max-vertical-offset="1962">
+          <caret line="117" column="51" selection-start-line="117" selection-start-column="16" selection-end-line="117" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>

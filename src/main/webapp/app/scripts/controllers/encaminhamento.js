@@ -14,6 +14,8 @@ angular.module('iguassuApp')
 
     var oldDate = null;
 
+    $scope.pagina = 0;
+
     $scope.init = function(){
 	    if ($routeParams.id) {
 	      Encaminhamento.get({id: $routeParams.id}, function(data){
@@ -27,12 +29,13 @@ angular.module('iguassuApp')
 		        $scope.contrato = '/Iguassu' + data[0];
 		      });
 	      });
-
 	      $rootScope.openAll();
 	    }else{
 	      $scope.clear(); 
 	    };
-	    $scope.getEncaminhamentos();
+	    Encaminhamento.query({pagina: $scope.pagina},{},function(data){
+	      $scope.encaminhamentos = data;
+	    });
 	    $scope.getCandidatos();
 	    $scope.getVagas();
 	  };
@@ -59,9 +62,6 @@ angular.module('iguassuApp')
 		    };	
 	    };
 	    
-
-	    console.log(oldDate);
-	    console.log($scope.encaminhamento);
 	    Encaminhamento.save($scope.encaminhamento, function(data){
 	    	$scope.encaminhamento = data;
 	      $location.path('/encaminhamentos/'+$scope.encaminhamento.id);
@@ -72,7 +72,31 @@ angular.module('iguassuApp')
 	    }, function(){
 	    	toastr.error('Verifique se ' + $scope.encaminhamento.candidato.nome + ' já foi encaminhado (a) para essa vaga','Erro ao efetuar encaminhamento');
 	    });
-	  };    
+	  };   
+
+	  $scope.search = function(){
+	    Encaminhamento.query({pagina: $scope.pagina}, $scope.encaminhamento, function(data){
+	      $scope.encaminhamentos = data;
+	    });
+	  };
+
+	  $scope.next = function(){
+	    $scope.pagina = $scope.pagina + 1;
+	    Encaminhamento.query({pagina: $scope.pagina}, $scope.encaminhamento, function(data){
+	      if (data.length===0) {
+	        $scope.pagina = $scope.pagina - 1;
+	      }else{
+	        $scope.encaminhamentos = data;
+	      };
+	    });
+	  }
+
+	  $scope.older = function(){
+	    $scope.pagina = $scope.pagina - 1;
+	    Encaminhamento.query({pagina: $scope.pagina}, $scope.encaminhamento, function(data){
+	      $scope.encaminhamentos = data;
+	    });
+	  } 
 
 	  $scope.edit = function(encaminhamento){
 	    $document.scrollTopAnimated(0, 700);
