@@ -8,8 +8,13 @@
        <a class="dropdown-toggle" href="">
             <span >Relatórios</span><b class="caret"></b></a>
         <ul class="dropdown-menu">
-           <li><a href="" data-ng-click="openCurso('lg')">Candidatos inadimplentes</a></li>
-           <li><a href="" data-ng-click="openCategoria('sm')">Contratos vencidos</a></li>
+           <li><a href="http://localhost:8080/Iguassu/app/Iguassu/app/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/candidatos_inadimplentes.pdf" target="_blank" data-ng-click="candidatosInadimplentes()">Candidatos inadimplentes</a></li>
+           <li><a href="http://localhost:8080/Iguassu/app/Iguassu/app/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/contratos_vencidos.pdf" target="_blank" data-ng-click="contratosVencidos()">Contratos vencidos</a></li>
+           <li><a href="http://localhost:8080/Iguassu/app/Iguassu/app/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/vagas_disponiveis.pdf" target="_blank" data-ng-click="vagasDisponiveis()">Vagas disponíveis</a></li>
+           <li><a href="http://localhost:8080/Iguassu/app/Iguassu/app/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/vagas_ocupadas.pdf" target="_blank" data-ng-click="vagasOcupadas()">Vagas ocupadas</a></li>
+           <li><a href="http://localhost:8080/Iguassu/app/Iguassu/app/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos_nao_pagos.pdf" target="_blank" data-ng-click="encaminhamentosNaoPagos()">Encaminhamentos não pagos</a></li>
+           <li><a href="http://localhost:8080/Iguassu/app/Iguassu/app/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/encaminhamentos_em_andamento.pdf" target="_blank" data-ng-click="encaminhamentosEmAndamento()">Encaminhamentos em andamento</a></li>
+           <li><a href="http://localhost:8080/Iguassu/app/Iguassu/app/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/manual.pdf" target="_blank">Passo a passo</a></li>
         </ul>
     </li>
     <li class="dropdown">
@@ -19,7 +24,9 @@
         <li><a href="" data-ng-click="openCursos()" >Cursos</a></li>
         <li><a href="" data-ng-click="openCategoriasCursos()" >Categorias de Cursos</a></li>
         <li><a href="" data-ng-click="openCargos()" >Cargos</a></li>
-        <li><a href="http://localhost:8080/Iguassu/app/Iguassu/app/home/emanuel/Projetos/Iguassu/src/main/webapp/app/reports/manual.pdf" target="_blank">Passo a passo</a></li>
+        <li><a href="" data-ng-click="openTaxaDeCadastro()" >Taxa de cadastro</a></li>
+        <li><a href="" data-ng-click="openTaxaDeEncaminhamento()" >Taxa de encaminhamento</a></li>
+        <li><a href="#/dicionario">Dicionario de dados</a></li>
       </ul>
     </li>
   </ul>

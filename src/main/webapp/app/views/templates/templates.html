@@ -620,6 +620,41 @@
 	</div>
 </script>
 
+<script type="text/ng-template" id="taxaDeCadastro.html">
+	<div class="modal-header">
+		<button type="button" class="close" data-ng-click="close()" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title">Lançamento</h4>
+	</div>
+	<div class="modal-body"> 
+		<form ng-submit="save()">
+     	  	
+      <div class="form-group">
+        <label class="control-label">Taxa <span class="obrigatorio">*</span> </label>
+        <div ng-class="{'form-group has-error': !taxaDeCadastro.valor}">
+          <div class="controls">
+            <input 	data-ng-model="taxaDeCadastro.valor" type="number" 
+            				placeholder="Insira o valor da taxa de cadastro ..." class="form-control">
+          </div>
+        </div>
+      </div>
+
+	    <div class="btn-toolbar">
+    		<a href="" class="btn btn-danger" ng-if="taxaDeCadastro.id" ng-click="delete()">
+    			<span class="glyphicon glyphicon-trash"></span> Remover
+  			</a>
+	      <div class="pull-right">
+	      	<button class="btn btn-default" ng-click="close()" type="button">Cancelar</button>
+          <button class="btn btn-primary" 
+                  data-ng-disabled="!taxaDeCadastro.valor" 
+                  type="submit">Salvar
+          </button>
+        </div>
+      </div>
+			    	      
+	  </form>
+	</div>
+</script>
+
 <script type="text/ng-template" id="contrato_candidato.html">
 	<iframe ng-src="{{urlContratoCandidato}}" width="600" height="830" style="border: none;"></iframe>
 </script>

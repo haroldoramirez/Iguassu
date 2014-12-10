@@ -64,9 +64,9 @@ angular.module('iguassuApp')
     if ($scope.candidato.cpf == '') {
       $scope.candidato.cpf = null;
     };
-    $rootScope.candidato.endereco =  createAddress.formateSaveEndereco($scope.endereco);
+    $scope.candidato.endereco = createAddress.formateSaveEndereco($scope.endereco);
     Candidato.save($scope.candidato, function(data){
-      $rootScope.candidato = data;
+      $scope.candidato = data;
       $location.path('/candidatos/'+$scope.candidato.id);
       toastr.success(msg,$scope.candidato.nome);
       $document.scrollTopAnimated(0, 700);
@@ -104,7 +104,7 @@ angular.module('iguassuApp')
 
   $scope.renovarContrato = function(){
     Candidato.renovarContrato({id: $routeParams.id}, function(data){
-      $rootScope.candidato = data;
+      $scope.candidato = data;
       $location.path('/candidatos/'+$scope.candidato.id);
       toastr.success('Contrato renovado pelo usuário ' + $scope.usuario.nome,'Contrato renovado com sucesso');
       $document.scrollTopAnimated(0, 700);

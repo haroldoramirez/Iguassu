@@ -145,6 +145,30 @@ angular
     $rootScope.cursos = Curso.getAll();
   };
 
+  $rootScope.candidatosInadimplentes = function(){
+    Candidato.getReportInadimplentes();
+  };
+
+  $rootScope.contratosVencidos = function(){
+    Candidato.getReportContratosVencidos();
+  };
+
+  $rootScope.vagasDisponiveis = function(){
+    Vaga.getReportDisponiveis();
+  };
+
+  $rootScope.vagasOcupadas = function(){
+    Vaga.getReportOcupadas();
+  };
+
+  $rootScope.encaminhamentosNaoPagos = function(){
+    Encaminhamento.getReportNaoPagos();
+  };
+
+  $rootScope.encaminhamentosEmAndamento = function(){
+    Encaminhamento.getReportEmAndamento();
+  };
+
   $rootScope.contratoVencido = function(contrato){
     if (!contrato) {
       return false;
@@ -201,6 +225,20 @@ angular
     $modal.open({
       templateUrl : 'cargos.html',
       controller : 'CargoCtrl',
+      size : 'md'
+    }).result.then(function() {
+      $rootScope.getCargos();  
+    }, function(){
+      $rootScope.getCargos();
+    });
+  };
+
+  $rootScope.openTaxaDeCadastro = function() {
+    $rootScope.getCargos();
+    $rootScope.getEmpresas();
+    $modal.open({
+      templateUrl : 'taxaDeCadastro.html',
+      controller : 'TaxadecadastroCtrl',
       size : 'md'
     }).result.then(function() {
       $rootScope.getCargos();  

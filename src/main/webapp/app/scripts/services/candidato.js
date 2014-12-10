@@ -21,6 +21,8 @@ angular.module('iguassuApp')
         deleteCurso: {method: 'DELETE', url: BaseUrl + '/candidatos/cursos/:id'},
         getExperiencias: {method: 'GET', url: BaseUrl + '/candidatos/:id/experiencias', isArray: true},
         saveExperiencia: {method: 'POST', url: BaseUrl + '/candidatos/experiencias', isArray: false},
-        deleteExperiencia: {method: 'DELETE', url: BaseUrl + '/candidatos/experiencias/:id'}
+        deleteExperiencia: {method: 'DELETE', url: BaseUrl + '/candidatos/experiencias/:id'},
+        getReportInadimplentes: {method: 'GET', url: BaseUrl + '/candidatos/inadimplentes', isArray: false},
+        getReportContratosVencidos: {method: 'GET', url: BaseUrl + '/candidatos/contratos/vencidos', isArray: false}
       });
     }]);

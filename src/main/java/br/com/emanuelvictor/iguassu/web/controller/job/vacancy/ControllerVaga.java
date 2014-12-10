@@ -49,4 +49,20 @@ public class ControllerVaga {
         return serviceVaga.find(vaga, new PageRequest(pagina, 20));
     }
 
+    @RequestMapping(value = "/vagas/disponiveis", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    Object vagasDisponiveis() throws Exception{
+        serviceVaga.getVagasDisponiveis();
+        return null;
+    }
+
+    @RequestMapping(value = "/vagas/ocupadas", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    Object vagasOcupadas() throws Exception{
+        serviceVaga.getVagasOcupadas();
+        return null;
+    }
+
 }

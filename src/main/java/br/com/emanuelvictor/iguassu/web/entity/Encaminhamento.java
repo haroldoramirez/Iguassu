@@ -52,7 +52,7 @@ public class Encaminhamento extends SpringData<Long> {
 
     public Lancamento getLancamento() {
         if (lancamento==null){
-            new Lancamento();
+            return new Lancamento();
         }
         return lancamento;
     }

@@ -99,7 +99,7 @@ public class ServiceUsuario implements UserDetailsService {
 //        usuario4.setLogin("Bloqueado");
 //        usuario4.setPerfil(Perfil.BLOQUEADO);
 //
-//        retu  rn daoUsuario.save(usuario4);
+//        return daoUsuario.save(usuario4);
 
         Usuario user = daoUsuario.findByLogin(login);
         if (user == null || user.getId() == null || user.getId() == 0){

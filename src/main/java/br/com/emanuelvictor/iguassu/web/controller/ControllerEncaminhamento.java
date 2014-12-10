@@ -57,5 +57,20 @@ public class ControllerEncaminhamento {
         return serviceEncaminhamento.find(encaminhamento, new PageRequest(pagina, 20));
     }
 
+    @RequestMapping(value = "/encaminhamentos/naopagos", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    Object encaminhamentosNaoPagos() throws Exception{
+        serviceEncaminhamento.getEncaminhamentosNaoPagos();
+        return null;
+    }
+
+    @RequestMapping(value = "/encaminhamentos/emandamento", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    Object encaminhamentosEmAndamento() throws Exception{
+        serviceEncaminhamento.getEncaminhamentosEmAndamento();
+        return null;
+    }
 
 }

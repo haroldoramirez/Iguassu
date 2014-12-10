@@ -33,9 +33,7 @@ angular.module('iguassuApp')
 	    }else{
 	      $scope.clear(); 
 	    };
-	    Encaminhamento.query({pagina: $scope.pagina},{},function(data){
-	      $scope.encaminhamentos = data;
-	    });
+	    $scope.getEncaminhamentos();
 	    $scope.getCandidatos();
 	    $scope.getVagas();
 	  };
@@ -75,14 +73,14 @@ angular.module('iguassuApp')
 	  };   
 
 	  $scope.search = function(){
-	    Encaminhamento.query({pagina: $scope.pagina}, $scope.encaminhamento, function(data){
+	    Encaminhamento.query({pagina: $scope.pagina}, {}, function(data){
 	      $scope.encaminhamentos = data;
 	    });
 	  };
 
 	  $scope.next = function(){
 	    $scope.pagina = $scope.pagina + 1;
-	    Encaminhamento.query({pagina: $scope.pagina}, $scope.encaminhamento, function(data){
+	    Encaminhamento.query({pagina: $scope.pagina}, {}, function(data){
 	      if (data.length===0) {
 	        $scope.pagina = $scope.pagina - 1;
 	      }else{
@@ -93,7 +91,7 @@ angular.module('iguassuApp')
 
 	  $scope.older = function(){
 	    $scope.pagina = $scope.pagina - 1;
-	    Encaminhamento.query({pagina: $scope.pagina}, $scope.encaminhamento, function(data){
+	    Encaminhamento.query({pagina: $scope.pagina}, {}, function(data){
 	      $scope.encaminhamentos = data;
 	    });
 	  } 
@@ -104,7 +102,7 @@ angular.module('iguassuApp')
 	  }
 
 	  $scope.openDatePicker = function($event) {
-	    $event.preventDefault();
+	    $event.preventDefault();	
 	    $event.stopPropagation();
 	    $scope.opened = !$scope.opened;
 	  };

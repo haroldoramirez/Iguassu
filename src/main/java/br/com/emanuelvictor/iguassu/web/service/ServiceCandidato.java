@@ -8,9 +8,12 @@ import br.com.emanuelvictor.iguassu.web.repository.DAOLancamento;
 import br.com.emanuelvictor.iguassu.web.repository.job.DAOExperiencia;
 import br.com.emanuelvictor.iguassu.web.repository.schooling.DAOCandidatoCurso;
 import br.com.emanuelvictor.iguassu.web.util.Contracts;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,6 +21,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Calendar;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -65,10 +69,23 @@ public class ServiceCandidato {
                 }
             }
             candidato.setDataDeContrato(Calendar.getInstance());
-            return daoCandidato.save(candidato);
+            try{
+                candidato =this.daoCandidato.save(candidato);
+            }catch (Exception e){
+                candidato.setNacionalidade(null);
+                candidato =this.daoCandidato.save(candidato);
+            }
+            return candidato;
         }else{
             candidato.setSituacao(this.daoCandidato.findOne(candidato.getId()).getSituacao());
-            return this.daoCandidato.save(candidato);
+
+            try{
+                candidato =this.daoCandidato.save(candidato);
+            }catch (Exception e){
+                candidato.setNacionalidade(null);
+                candidato =this.daoCandidato.save(candidato);
+            }
+            return candidato;
         }
 
     }
@@ -134,7 +151,7 @@ public class ServiceCandidato {
                 byte[] bytes = file.getBytes();
 
                 // Creating the directory to store file
-                String rootPath = "/home/emanuel/Projetos/Iguassu/src/main/webapp/app/images"/*System.getProperty("catalina.base")*/;
+                String rootPath = "/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/images"/*System.getProperty("catalina.base")*/;
                 System.out.println(" path " + rootPath);
                 File dir = new File(rootPath + File.separator + "candidatos");
                 if (!dir.exists())
@@ -252,6 +269,109 @@ public class ServiceCandidato {
 //                empresa.getEndereco().getBairro().getCidade().getEstado().getId(),
 //                empresa.getEndereco().getBairro().getCidade().getEstado().getPais().getId(),
 //                pageRequest);
+    }
+
+    public void getCandidatosInadimplentes() throws Exception {
+
+        Calendar today = Calendar.getInstance();
+
+        List<Candidato> candidatoList = this.daoCandidato.findAll();
+
+        List<Candidato> candidatosInadimplentes = new LinkedList<Candidato>();
+
+        for (int i = 0; i < candidatoList.size(); i++) {
+            List<Lancamento> lancamentosDoCandidato = daoLancamento.getByIdPessoa(candidatoList.get(i).getId());
+            for (int j = 0; j < lancamentosDoCandidato.size(); j++) {
+                if (lancamentosDoCandidato.get(j).getDataDePagamento()==null){
+                    if (lancamentosDoCandidato.get(j).getDataDeVencimento().before(today)){
+                        candidatosInadimplentes.add(candidatoList.get(i));
+                    }
+                }
+            }
+        }
+
+        Image topImageDoc = Image.getInstance("/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/images/title.png");
+        topImageDoc.setAlignment(Element.ALIGN_CENTER);
+
+        Paragraph titleDoc = new Paragraph("Um mundo de oportunidades para VOCÊ!", new Font(Font.FontFamily.HELVETICA, 15, Font.UNDEFINED));
+        titleDoc.setAlignment(Element.TITLE);
+
+        Paragraph underline1 = new Paragraph("_________________________________________________________________________________________________________________________________________________________________________________________________________________", new Font(Font.FontFamily.TIMES_ROMAN, 5, Font.NORMAL));
+        underline1.setAlignment(Element.ALIGN_CENTER);
+        underline1.setSpacingAfter(0);
+
+        Paragraph nameDoc = new Paragraph("Candidatos inadimplentes", new Font(Font.FontFamily.HELVETICA, 20, Font.BOLD));
+        nameDoc.setAlignment(Element.TITLE);
+        nameDoc.setSpacingAfter(8);
+        nameDoc.setSpacingBefore(0);
+
+
+        Document document = new Document(PageSize.A4);
+        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/candidatos_inadimplentes.pdf"));
+        document.open();
+        document.add(topImageDoc);
+        document.add(titleDoc);
+        document.add(underline1);
+        document.add(nameDoc);
+
+        for (int i = 0; i < candidatosInadimplentes.size(); i++) {
+            Paragraph inadimplente = new Paragraph((i+1)+" - Nome: " + candidatosInadimplentes.get(i).getNome() + ", código: " + candidatosInadimplentes.get(i).getId(),
+                    new Font(Font.FontFamily.HELVETICA, 13, Font.NORMAL));
+            inadimplente.setIndentationLeft(20);
+            inadimplente.setSpacingAfter(8);
+
+            document.add(inadimplente);
+
+        }
+
+        document.close();
+
+    }
+
+    public void getContratosVencidos( ) throws  Exception {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH)-6);
+
+        List<Candidato> candidatoList = this.daoCandidato.findAll();
+
+        Image topImageDoc = Image.getInstance("/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/images/title.png");
+        topImageDoc.setAlignment(Element.ALIGN_CENTER);
+
+        Paragraph titleDoc = new Paragraph("Um mundo de oportunidades para VOCÊ!", new Font(Font.FontFamily.HELVETICA, 15, Font.UNDEFINED));
+        titleDoc.setAlignment(Element.TITLE);
+
+        Paragraph underline1 = new Paragraph("_________________________________________________________________________________________________________________________________________________________________________________________________________________", new Font(Font.FontFamily.TIMES_ROMAN, 5, Font.NORMAL));
+        underline1.setAlignment(Element.ALIGN_CENTER);
+        underline1.setSpacingAfter(0);
+
+        Paragraph nameDoc = new Paragraph("Contratos vencidos", new Font(Font.FontFamily.HELVETICA, 20, Font.BOLD));
+        nameDoc.setAlignment(Element.TITLE);
+        nameDoc.setSpacingAfter(8);
+        nameDoc.setSpacingBefore(0);
+
+
+        Document document = new Document(PageSize.A4);
+        PdfWriter.getInstance(document, new FileOutputStream("/home/emanuelvictor/Projetos/Iguassu/src/main/webapp/app/reports/contratos_vencidos.pdf"));
+        document.open();
+        document.add(topImageDoc);
+        document.add(titleDoc);
+        document.add(underline1);
+        document.add(nameDoc);
+
+        for (int i = 0; i < candidatoList.size(); i++) {
+            if (candidatoList.get(i).getDataDeContrato()!=null){
+                if (candidatoList.get(i).getDataDeContrato().before(calendar)){
+                    Paragraph inadimplente = new Paragraph((i+1)+" - Nome: " + candidatoList.get(i).getNome() + ", código: " + candidatoList.get(i).getId(),
+                            new Font(Font.FontFamily.HELVETICA, 13, Font.NORMAL));
+                    inadimplente.setIndentationLeft(20);
+                    inadimplente.setSpacingAfter(8);
+
+                    document.add(inadimplente);
+                }
+            }
+        }
+
+        document.close();
     }
 
 //    @ResponseStatus(value= HttpStatus.NOT_ACCEPTABLE, reason="Esse candidato tem contas a pagar com a empresa e seu contrato não pode ser renovado")

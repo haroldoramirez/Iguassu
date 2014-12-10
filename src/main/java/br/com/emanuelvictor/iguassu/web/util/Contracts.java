@@ -376,21 +376,21 @@ public abstract class Contracts {
         document.add(topImageDoc);
 
         document.add(titleDoc);
-        if (empresaString!=null||empresaString.trim()==""){
+        if (empresaString!=null&&empresaString.trim()==""){
             document.add(empresa);
         }
 
-        if (contatosEmpresaString!=null||contatosEmpresaString.trim()==""){
+        if (contatosEmpresaString!=null&&contatosEmpresaString.trim()==""){
             document.add(contatos);
         }
 
-        if (emailEmpresaString!=null||emailEmpresaString.trim()==""){
+        if (emailEmpresaString!=null&&emailEmpresaString.trim()==""){
             document.add(email);
         }
 
         document.add(horárioDaEntrevista);
 
-        if (enderecoEmpresaString!=null||enderecoEmpresaString.trim()==""){
+        if (enderecoEmpresaString!=null&&enderecoEmpresaString.trim()==""){
             document.add(endereco);
         }
 

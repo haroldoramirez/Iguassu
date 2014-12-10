@@ -17,12 +17,16 @@ import java.util.List;
 public interface DAOEncaminhamento extends JpaRepository<Encaminhamento, Long> {
 
     @Transactional(readOnly = true)
-    @Query("select e from Encaminhamento e WHERE ((e.id =:id or :id is null) and (e.observacoes LIKE %:observacoes% or :observacoes is null) and (e.situacao LIKE %:situacao% or :situacao is null) and (e.vaga.id =:vaga_id or :vaga_id is null) and (e.usuario.id =:usuario_id or :usuario_id is null) and (e.candidato.id =:candidato_id or :candidato_id is null) and (e.dataDeCadastro =:dataDeCadastro or :dataDeCadastro is null) and (e.lancamento.dataDePagamento =:dataDePagamento or :dataDePagamento is null) and (e.lancamento.valor =:valor or :valor is null))")
+    @Query("select e from Encaminhamento e WHERE ((e.id =:id or :id is null) and (e.observacoes LIKE %:observacoes% or :observacoes is null) and (e.situacao LIKE %:situacao% or :situacao is null) and (e.vaga.id =:vaga_id or :vaga_id is null) and (e.usuario.id =:usuario_id or :usuario_id is null) and (e.candidato.id =:candidato_id or :candidato_id is null) and (e.lancamento.dataDePagamento =:dataDePagamento or :dataDePagamento is null) and (e.lancamento.valor =:valor or :valor is null))")
     public List<Encaminhamento> find(@Param("id") Long id, @Param("observacoes") String observacoes,
                                      @Param("situacao") SituacaoEncaminhamento situacao, @Param("vaga_id") Long vaga_id,
                                      @Param("candidato_id") Long candidato_id, @Param("usuario_id") Long usuario_id,
-                                     @Param("dataDeCadastro") Calendar dataDeCadastro, @Param("dataDePagamento") Calendar dataDePagamento,
+                                     @Param("dataDePagamento") Calendar dataDePagamento,
                                      @Param("valor") Double valor, Pageable pageable);
+
+    @Transactional(readOnly = true)
+    @Query("select e from Encaminhamento e")
+    public List<Encaminhamento> find(Pageable pageable);
 //
 //	@Transactional(readOnly = true)
 //	@Query("select e from Empresa e where e.nome like %?1%")

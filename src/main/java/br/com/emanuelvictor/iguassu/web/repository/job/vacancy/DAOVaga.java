@@ -43,6 +43,10 @@ public interface DAOVaga extends JpaRepository<Vaga, Long> {
                            @Param("pais_id") Long pais_id,
                            Pageable pageable);
 
+    @Transactional(readOnly = true)
+    @Query("select v from Vaga v WHERE (v.situacao =:situacao or :situacao is null)")
+    public List<Vaga> find(@Param("situacao") SituacaoVaga situacao);
+
 
 
 }

@@ -113,4 +113,22 @@ public class ControllerCandidato {
 		serviceCandidato.deleteCurso(id);
 	}
 
+
+
+    // reports
+
+    @RequestMapping(value = "/candidatos/inadimplentes", method = RequestMethod.GET)
+    public @ResponseBody
+    Object candidatosInadimplentes() throws Exception {
+        this.serviceCandidato.getCandidatosInadimplentes();
+        return null;
+    }
+
+    @RequestMapping(value = "/candidatos/contratos/vencidos", method = RequestMethod.GET)
+    public @ResponseBody
+    Object contratosVencidos() throws Exception {
+        this.serviceCandidato.getContratosVencidos();
+        return null;
+    }
+
 }

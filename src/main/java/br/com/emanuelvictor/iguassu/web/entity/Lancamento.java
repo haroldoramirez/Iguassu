@@ -77,7 +77,7 @@ public class Lancamento extends SpringData<Long> {
 	}
 
 	public Calendar getDataDePagamento() {
-		return dataDePagamento;
+        return dataDePagamento;
 	}
 
 	public void setDataDePagamento(Calendar dataDePagamento) {
